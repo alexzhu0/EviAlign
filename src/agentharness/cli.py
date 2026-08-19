@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import argparse
 from contextlib import redirect_stderr
+from datetime import datetime, timezone
 from io import StringIO
 import json
+import os
 from pathlib import Path
+import secrets
+import stat
 import sys
 from typing import Sequence
 
@@ -53,6 +57,18 @@ from .pi_methodology_permit_v1 import (
     parse_methodology_permit_request_json_v1,
 )
 from .pi_tool_call_mapping import build_pi_tool_call_mapping_report
+from .runtime_shadow_v1 import (
+    MAX_OBSERVATION_BYTES,
+    MAX_REQUEST_BYTES,
+    MODEL_ID as SHADOW_MODEL_ID,
+    NOT_EXECUTED as SHADOW_NOT_EXECUTED,
+    RUNTIME_ID as SHADOW_RUNTIME_ID,
+    TOOL_NAME as SHADOW_TOOL_NAME,
+    RuntimeShadowValidationError,
+    issue_shadow_request_v1,
+    parse_shadow_json_v1,
+    verify_shadow_observation_v1,
+)
 from .validate import ValidationReport, validate_policy
 from .yamlio import YamlLoadError, load_yaml
 
@@ -62,17 +78,28 @@ DEFAULT_POLICY = "examples/agent_policy.example.yaml"
 DEFAULT_SUITE = "evals/agent_safety_eval_suite.yaml"
 DEFAULT_CASES = "PI-001,PD-001,SEC-001"
 MAX_EVAL_ARG_COUNT = 128
+MAX_SHADOW_ARG_COUNT = 6
+MAX_SHADOW_ARG_LENGTH = 4096
+_SHADOW_REJECTION_CODES = frozenset({
+    "shadow.request_malformed",
+    "shadow.request_too_large",
+    "shadow.observation_malformed",
+    "shadow.observation_too_large",
+})
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = _build_parser()
     values = sys.argv[1:] if argv is None else argv
     is_eval = _is_eval_invocation(values)
+    is_shadow = _is_shadow_invocation(values)
     eval_format = _requested_eval_format(values) if is_eval else "text"
     if is_eval and not _eval_argv_is_bounded(values):
         return _emit_eval_error_for_format(eval_format, "argument.invalid")
+    if is_shadow and not _shadow_argv_is_bounded(values):
+        return _emit_shadow_error("shadow.argument_invalid")
     try:
-        if is_eval:
+        if is_eval or is_shadow:
             with redirect_stderr(StringIO()):
                 args = parser.parse_args(argv)
         else:
@@ -80,6 +107,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     except SystemExit as exc:
         if is_eval and exc.code != 0:
             return _emit_eval_error_for_format(eval_format, "argument.invalid")
+        if is_shadow and exc.code != 0:
+            return _emit_shadow_error("shadow.argument_invalid")
         raise
     try:
         return args.func(args)
@@ -96,6 +125,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     except Exception:
         if args.command == "eval":
             return _emit_eval_error(args, "evaluation.internal_error", internal=True)
+        if args.command == "shadow":
+            return _emit_shadow_error("shadow.internal_error", internal=True)
         raise
 
 
@@ -103,7 +134,7 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="agentharness",
         description="Validate AgentHarness policy assets and run policy smoke evals.",
-        epilog="Commands include: validate, eval, loop check, handoff inspect, handoff export, handoff manifest, handoff verify-manifest, audit checklist, audit report, audit verify-report, pi contract-check, pi evidence-evaluate-v1, pi methodology-permit-v1",
+        epilog="Commands include: validate, eval, loop check, handoff inspect, handoff export, handoff manifest, handoff verify-manifest, audit checklist, audit report, audit verify-report, pi contract-check, pi evidence-evaluate-v1, pi methodology-permit-v1, shadow issue, shadow verify",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -266,6 +297,31 @@ def _build_parser() -> argparse.ArgumentParser:
         ),
     )
     methodology_permit_parser.set_defaults(func=_cmd_pi_methodology_permit_v1)
+
+    shadow_parser = subparsers.add_parser(
+        "shadow",
+        help="issue or verify an offline non-executing runtime shadow document",
+        allow_abbrev=False,
+        add_help=False,
+    )
+    shadow_subparsers = shadow_parser.add_subparsers(dest="shadow_command", required=True)
+    shadow_issue_parser = shadow_subparsers.add_parser(
+        "issue",
+        help="issue one bounded shadow request",
+        allow_abbrev=False,
+        add_help=False,
+    )
+    shadow_issue_parser.add_argument("--request-id", required=True)
+    shadow_issue_parser.add_argument("--runtime-revision", required=True)
+    shadow_issue_parser.set_defaults(func=_cmd_shadow_issue)
+    shadow_verify_parser = shadow_subparsers.add_parser(
+        "verify",
+        help="verify one bounded shadow observation from stdin",
+        allow_abbrev=False,
+        add_help=False,
+    )
+    shadow_verify_parser.add_argument("request_path")
+    shadow_verify_parser.set_defaults(func=_cmd_shadow_verify)
     return parser
 
 
@@ -373,6 +429,164 @@ def _requested_eval_format(values: Sequence[str]) -> str:
     except (TypeError, IndexError):
         return "text"
     return output_format
+
+
+def _is_shadow_invocation(values: Sequence[str]) -> bool:
+    try:
+        return bool(values) and type(values[0]) is str and values[0] == "shadow"
+    except (TypeError, IndexError):
+        return False
+
+
+def _shadow_argv_is_bounded(values: Sequence[str]) -> bool:
+    try:
+        return len(values) <= MAX_SHADOW_ARG_COUNT and all(
+            type(value) is str and len(value) <= MAX_SHADOW_ARG_LENGTH
+            for value in values
+        )
+    except TypeError:
+        return False
+
+
+def _cmd_shadow_issue(args: argparse.Namespace) -> int:
+    try:
+        request = issue_shadow_request_v1(
+            request_id=args.request_id,
+            now=datetime.now(timezone.utc),
+            challenge=secrets.token_hex(32),
+            runtime_revision=args.runtime_revision,
+        )
+    except RuntimeShadowValidationError:
+        return _emit_shadow_error("shadow.request_invalid")
+    except Exception:
+        return _emit_shadow_error("shadow.internal_error", internal=True)
+    _emit_shadow_payload(request)
+    return 0
+
+
+def _cmd_shadow_verify(args: argparse.Namespace) -> int:
+    try:
+        raw_request = _read_shadow_file(args.request_path)
+    except (OSError, ValueError, TypeError):
+        return _emit_shadow_error("shadow.request_unreadable")
+    try:
+        request = parse_shadow_json_v1(
+            raw_request, maximum_bytes=MAX_REQUEST_BYTES, document_kind="request"
+        )
+    except RuntimeShadowValidationError as exc:
+        return _emit_shadow_error(_shadow_rejection_code(exc, "shadow.request_invalid"))
+    except Exception:
+        return _emit_shadow_error("shadow.internal_error", internal=True)
+
+    try:
+        raw_observation = _read_shadow_stdin()
+    except (OSError, ValueError, TypeError):
+        return _emit_shadow_error("shadow.observation_unreadable")
+    try:
+        observation = parse_shadow_json_v1(
+            raw_observation,
+            maximum_bytes=MAX_OBSERVATION_BYTES,
+            document_kind="observation",
+        )
+    except RuntimeShadowValidationError as exc:
+        return _emit_shadow_error(_shadow_rejection_code(exc, "shadow.observation_invalid"))
+    except Exception:
+        return _emit_shadow_error("shadow.internal_error", internal=True)
+
+    try:
+        report = verify_shadow_observation_v1(
+            request, observation, now=datetime.now(timezone.utc)
+        )
+    except Exception:
+        return _emit_shadow_error("shadow.internal_error", internal=True)
+    _emit_shadow_payload({"kind": "shadow.verification.v1", **report})
+    return 0 if report.get("ok") is True else 2
+
+
+def _read_shadow_file(path: str) -> bytes:
+    nofollow = getattr(os, "O_NOFOLLOW", 0)
+    if not nofollow:
+        raise OSError("no-follow file reads are unavailable")
+    requested = Path(path)
+    components = requested.parts
+    if requested.is_absolute():
+        directory = os.open(
+            requested.anchor,
+            os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | nofollow,
+        )
+        components = components[1:]
+    else:
+        directory = os.open(
+            ".",
+            os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | nofollow,
+        )
+    descriptor: int | None = None
+    try:
+        if not components or any(component in {"", ".", ".."} for component in components):
+            raise OSError("shadow request path is invalid")
+        directory_flags = (
+            os.O_RDONLY
+            | getattr(os, "O_DIRECTORY", 0)
+            | getattr(os, "O_NONBLOCK", 0)
+            | nofollow
+        )
+        for component in components[:-1]:
+            child = os.open(component, directory_flags, dir_fd=directory)
+            try:
+                if not stat.S_ISDIR(os.fstat(child).st_mode):
+                    raise OSError("shadow request parent is not a directory")
+            except Exception:
+                os.close(child)
+                raise
+            os.close(directory)
+            directory = child
+        descriptor = os.open(
+            components[-1],
+            os.O_RDONLY | nofollow | getattr(os, "O_NONBLOCK", 0),
+            dir_fd=directory,
+        )
+        metadata = os.fstat(descriptor)
+        if not stat.S_ISREG(metadata.st_mode) or metadata.st_nlink != 1:
+            raise OSError("shadow request is not an unlinked regular file")
+        with os.fdopen(os.dup(descriptor), "rb") as stream:
+            return stream.read(MAX_REQUEST_BYTES + 1)
+    finally:
+        if descriptor is not None:
+            os.close(descriptor)
+        os.close(directory)
+
+
+def _read_shadow_stdin() -> bytes:
+    stream = getattr(sys.stdin, "buffer", sys.stdin)
+    return stream.read(MAX_OBSERVATION_BYTES + 1)
+
+
+def _shadow_rejection_code(
+    error: RuntimeShadowValidationError, default: str
+) -> str:
+    return error.code if error.code in _SHADOW_REJECTION_CODES else default
+
+
+def _shadow_error_payload(code: str, *, internal: bool = False) -> dict[str, object]:
+    return {
+        "kind": "shadow.verification.v1",
+        "ok": False,
+        "code": "shadow.internal_error" if internal else code,
+        "request_id": None,
+        "runtime_id": SHADOW_RUNTIME_ID,
+        "model": SHADOW_MODEL_ID,
+        "tool_name": SHADOW_TOOL_NAME,
+        "result_status": SHADOW_NOT_EXECUTED,
+    }
+
+
+def _emit_shadow_error(code: str, *, internal: bool = False) -> int:
+    _emit_shadow_payload(_shadow_error_payload(code, internal=internal))
+    return 1 if internal else 2
+
+
+def _emit_shadow_payload(payload: dict[str, object]) -> None:
+    print(json.dumps(payload, separators=(",", ":"), sort_keys=True))
 
 
 def _cmd_loop_check(args: argparse.Namespace) -> int:
