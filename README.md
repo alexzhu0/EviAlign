@@ -255,6 +255,21 @@ AgentHarness includes a small local CLI for keeping the YAML assets honest:
 ./agentharness pi methodology-permit-v1 < request.json
 ```
 
+### Offline Runtime Shadow Contract
+
+The offline-only runtime shadow contract issues a bounded request and verifies
+one bounded observation. It is evidence-only and preserves
+`result_status: not_executed`:
+
+```bash
+./agentharness shadow issue --request-id shadow-001 --runtime-revision <40-hex-sha> > request.json
+./agentharness shadow verify request.json < observation.json
+```
+
+This feature does not launch DeepSeek Harness, load credentials, call a model,
+or authorize a tool. It has no external runtime invocation or policy-allow
+decision surface.
+
 ### Declarative Safety Evaluations
 
 The local evaluator has a compatibility default for the original smoke cases,
