@@ -134,16 +134,12 @@ def verify_shadow_observation_v1(
             return _report(False, "shadow.request_invalid", validated_request)
         if current_time >= _parse_rfc3339(validated_request["expires_at"]):
             return _report(False, "shadow.request_expired", validated_request)
-    except (RuntimeShadowValidationError, TypeError, ValueError, OverflowError, RecursionError):
-        return _report(False, "shadow.request_invalid", None)
-    except Exception:
+    except RuntimeShadowValidationError:
         return _report(False, "shadow.request_invalid", None)
 
     try:
         validated_observation = _validate_observation(observation)
-    except (RuntimeShadowValidationError, TypeError, ValueError, OverflowError, RecursionError):
-        return _report(False, "shadow.observation_invalid", validated_request)
-    except Exception:
+    except RuntimeShadowValidationError:
         return _report(False, "shadow.observation_invalid", validated_request)
 
     if not _observation_binds_request(validated_request, validated_observation):
@@ -298,7 +294,11 @@ def _valid_hex(value: object, pattern: re.Pattern[str]) -> bool:
 
 
 def _valid_request_id(value: object) -> bool:
-    return type(value) is str and _REQUEST_ID_RE.fullmatch(value) is not None
+    return (
+        type(value) is str
+        and not value.startswith("sk-")
+        and _REQUEST_ID_RE.fullmatch(value) is not None
+    )
 
 
 def _valid_identifier(value: object) -> bool:

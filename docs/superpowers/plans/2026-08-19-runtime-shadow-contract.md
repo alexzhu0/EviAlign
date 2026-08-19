@@ -177,8 +177,11 @@ Add an exact `shadow` parser with `issue` and `verify` children. `issue` writes
 one compact JSON request to stdout; `verify` reads its request with a 4097-byte
 bounded file reader, reads observation from stdin with an 8193-byte bounded
 reader, maps all path/JSON/internal errors to a public `shadow.*` code, and
-writes one compact JSON report plus newline to stdout. Both return 0 only when
-`ok:true`; rejection returns 2 and internal failure returns 1.
+writes one compact JSON report plus newline to stdout. `shadow verify` returns
+0 only for `ok:true`; rejection returns 2 and internal failure returns 1.
+**Adjudication (2026-08-19):** `shadow issue` returns 0 with the exact raw
+`shadow-request-v1` document, which intentionally has no `ok` wrapper so the
+external runtime can consume its strict schema unchanged.
 
 Document only this offline contract use:
 

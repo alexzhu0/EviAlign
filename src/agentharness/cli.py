@@ -120,6 +120,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     except (YamlLoadError, ValueError) as exc:
         if args.command == "eval":
             return _emit_eval_error(args, "evaluation.input_invalid")
+        if args.command == "shadow":
+            return _emit_shadow_error("shadow.internal_error", internal=True)
         print(f"ERROR: {exc}")
         return 2
     except Exception:
@@ -546,10 +548,12 @@ def _read_shadow_file(path: str) -> bytes:
             dir_fd=directory,
         )
         metadata = os.fstat(descriptor)
-        if not stat.S_ISREG(metadata.st_mode) or metadata.st_nlink != 1:
+        if not _is_stable_shadow_file(metadata):
             raise OSError("shadow request is not an unlinked regular file")
-        with os.fdopen(os.dup(descriptor), "rb") as stream:
-            return stream.read(MAX_REQUEST_BYTES + 1)
+        raw = _read_shadow_descriptor(descriptor)
+        if _shadow_file_identity(metadata) != _shadow_file_identity(os.fstat(descriptor)):
+            raise OSError("shadow request changed while reading")
+        return raw
     finally:
         if descriptor is not None:
             os.close(descriptor)
@@ -559,6 +563,33 @@ def _read_shadow_file(path: str) -> bytes:
 def _read_shadow_stdin() -> bytes:
     stream = getattr(sys.stdin, "buffer", sys.stdin)
     return stream.read(MAX_OBSERVATION_BYTES + 1)
+
+
+def _is_stable_shadow_file(metadata: os.stat_result) -> bool:
+    return stat.S_ISREG(metadata.st_mode) and metadata.st_nlink == 1
+
+
+def _shadow_file_identity(metadata: os.stat_result) -> tuple[int, int, int, int, int, int, int]:
+    return (
+        metadata.st_dev,
+        metadata.st_ino,
+        metadata.st_mode,
+        metadata.st_nlink,
+        metadata.st_size,
+        metadata.st_mtime_ns,
+        metadata.st_ctime_ns,
+    )
+
+
+def _read_shadow_descriptor(descriptor: int) -> bytes:
+    duplicate = os.dup(descriptor)
+    try:
+        stream = os.fdopen(duplicate, "rb")
+    except Exception:
+        os.close(duplicate)
+        raise
+    with stream:
+        return stream.read(MAX_REQUEST_BYTES + 1)
 
 
 def _shadow_rejection_code(

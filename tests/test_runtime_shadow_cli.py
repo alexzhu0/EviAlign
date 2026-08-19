@@ -17,6 +17,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from agentharness import cli as cli_module
 from agentharness.cli import main
 from agentharness.runtime_shadow_v1 import (
     MAX_OBSERVATION_BYTES,
@@ -192,6 +193,7 @@ class RuntimeShadowCliTests(unittest.TestCase):
         cases = (
             (["shadow", "issue", "--runtime-revision", REVISION], "shadow.argument_invalid"),
             (["shadow", "issue", "--request-id", "shadow-001", "--runtime-revision", "not-a-sha"], "shadow.request_invalid"),
+            (["shadow", "issue", "--request-id", "sk-private-request", "--runtime-revision", REVISION], "shadow.request_invalid"),
         )
         for argv, expected_code in cases:
             with self.subTest(argv=argv):
@@ -199,6 +201,7 @@ class RuntimeShadowCliTests(unittest.TestCase):
                 self.assertEqual(2, code)
                 self.assertEqual("", stderr)
                 self.assertEqual(expected_code, _one_bounded_json_document(stdout)["code"])
+                self.assertNotIn("sk-private-request", stdout)
 
     def test_shadow_rejects_format_and_external_execution_flags_as_json(self) -> None:
         with self._request_path() as request_path:
@@ -223,6 +226,51 @@ class RuntimeShadowCliTests(unittest.TestCase):
         self.assertEqual("shadow.internal_error", _one_bounded_json_document(stdout)["code"])
         self.assertNotIn(secret, stdout)
         self.assertNotIn("/private/runtime", stdout)
+
+    def test_shadow_value_error_is_redacted_json_internal_failure(self) -> None:
+        secret = "secret /private/issue sk-secret-value"
+        with patch("agentharness.cli._cmd_shadow_issue", side_effect=ValueError(secret)):
+            code, stdout, stderr = _invoke_cli(
+                ["shadow", "issue", "--request-id", "shadow-001", "--runtime-revision", REVISION]
+            )
+
+        self.assertEqual(1, code)
+        self.assertEqual("", stderr)
+        self.assertEqual("shadow.internal_error", _one_bounded_json_document(stdout)["code"])
+        self.assertNotIn(secret, stdout)
+        self.assertNotIn("/private/issue", stdout)
+
+    def test_shadow_reader_rejects_file_changed_during_read(self) -> None:
+        with self._request_path() as request_path:
+            original_fdopen = cli_module.os.fdopen
+
+            def replace_contents_before_read(descriptor: int, *args, **kwargs):
+                request_path.write_bytes(b"changed")
+                return original_fdopen(descriptor, *args, **kwargs)
+
+            with patch.object(cli_module.os, "fdopen", side_effect=replace_contents_before_read):
+                with self.assertRaises(OSError):
+                    cli_module._read_shadow_file(str(request_path))
+
+    def test_shadow_reader_closes_duplicate_when_fdopen_fails(self) -> None:
+        with self._request_path() as request_path:
+            original_dup = cli_module.os.dup
+            duplicates: list[int] = []
+
+            def track_duplicate(descriptor: int) -> int:
+                duplicate = original_dup(descriptor)
+                duplicates.append(duplicate)
+                return duplicate
+
+            with patch.object(cli_module.os, "dup", side_effect=track_duplicate), patch.object(
+                cli_module.os, "fdopen", side_effect=OSError("fdopen failed")
+            ):
+                with self.assertRaises(OSError):
+                    cli_module._read_shadow_file(str(request_path))
+
+        self.assertEqual(1, len(duplicates))
+        with self.assertRaises(OSError):
+            os.fstat(duplicates[0])
 
     def _request_path(self):
         return self._file_path(json.dumps(self.request, separators=(",", ":")).encode("utf-8"))

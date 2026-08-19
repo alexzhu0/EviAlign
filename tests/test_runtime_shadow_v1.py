@@ -7,11 +7,13 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from agentharness import runtime_shadow_v1 as runtime_shadow
 from agentharness.runtime_shadow_v1 import (
     MAX_OBSERVATION_BYTES,
     RuntimeShadowValidationError,
@@ -229,6 +231,11 @@ class RuntimeShadowV1Tests(unittest.TestCase):
         report = verify_shadow_observation_v1(self.request, observation, now=NOW)
         self.assertEqual(False, report["ok"])
         self.assertEqual("shadow.observation_invalid", report["code"])
+
+    def test_unexpected_observation_validation_error_is_not_misclassified(self) -> None:
+        with patch.object(runtime_shadow, "_validate_observation", side_effect=RuntimeError("internal")):
+            with self.assertRaises(RuntimeError):
+                verify_shadow_observation_v1(self.request, valid_observation(self.request), now=NOW)
 
 
 if __name__ == "__main__":
