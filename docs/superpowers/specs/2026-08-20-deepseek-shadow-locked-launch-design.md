@@ -24,6 +24,9 @@ code runtime, session title, compaction, retry, settings, credentials, and
 all other provider routes. It does not parse profile manifests or accept a
 profile name, a patch path, a workspace path, or arbitrary child arguments.
 
+The one allowed session dependency is an in-memory `SessionStore` required by
+the pinned `AgentLoop`; session persistence plugins remain forbidden.
+
 The DeepSeek adapter is configured in code with only `deepseek-v4-flash`,
 `thinking: disabled`, `maxTokens: 256`, a 60-second idle timeout, and no retry
 policy. The launcher allows at most one provider call in the first acceptance

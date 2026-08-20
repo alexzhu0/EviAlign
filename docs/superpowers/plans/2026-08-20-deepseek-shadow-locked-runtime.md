@@ -54,6 +54,9 @@ Run `corepack pnpm exec vitest run shadow-plugin/tests/locked-runtime.spec.ts`; 
 
 Mount only Cordis, `dsh-tools`, `dsh-system-prompt`, `dsh-llm`, `dsh-llm-deepseek`, `dsh-agent`, `dsh-agent-loop`, and the synthetic plugin. Configure the adapter literal with `thinking: 'disabled'`, `maxTokens: 256`, `streamIdleTimeoutMs: 60000`, `models: [{ id: 'deepseek-v4-flash', maxTokens: 256 }]`, and retry disabled by omission of the retry plugin. Reject boot if the registry differs from the one-tool allowlist.
 
+Mount one in-memory `SessionStore` only because the pinned `AgentLoop` requires
+the `sessions` service; do not mount any session persistence plugin.
+
 - [ ] **Step 4: Verify GREEN and commit**
 
 Run `corepack pnpm exec vitest run shadow-plugin/tests/locked-runtime.spec.ts && git diff --check`; explicitly stage the Task-1 replacement paths, cached-check, and commit `feat: lock shadow runtime composition`.
