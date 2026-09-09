@@ -270,6 +270,13 @@ This feature does not launch DeepSeek Harness, load credentials, call a model,
 or authorize a tool. It has no external runtime invocation or policy-allow
 decision surface.
 
+The separately maintained DeepSeek Harness shadow pilot completed one live
+model request and AgentHarness verification on 2026-09-09. This validates the
+fixed `inspect_policy_summary` evidence path only. For the current checkpoints,
+credential-update procedure, failure interpretation, and next development step,
+see the [shadow handoff and runbook](docs/30-deepseek-shadow-handoff.md) and
+[local milestone record](release/2026.09.09.md).
+
 ### Declarative Safety Evaluations
 
 The local evaluator has a compatibility default for the original smoke cases,

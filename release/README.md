@@ -23,11 +23,13 @@ it is a published version. It is not automatically a publication date.
 | 4. Pi contract and block-only shadow integration | 2026-07-07 to 2026-07-16 | Static contracts, block-only bridge, evidence integrity, shadow verification | `d9c1c8e`, `5ff9bef` |
 | 5. Finite methodology-permit evidence pilot | 2026-07-20 | Exact, single-use evidence decision and source prerelease | `12ba939` (`v0.2.0-alpha.1`) |
 | 6. Local maintenance and workflow migration | 2026-08-11 to 2026-08-13 | Evidence-contract hardening, maintenance closure, Superpowers migration | `c77d7ad`, `3cb0542` |
+| 7. DeepSeek shadow pilot and handoff | 2026-08-19 to 2026-09-09 | Fixed synthetic tool, live evidence verification, offline acceptance | AgentHarness `2434026`; external runtime `946ba919a1` |
 
 ## Record inventory
 
 | Record | Type | Evidence basis | GitHub release body |
 | --- | --- | --- | --- |
+| [`2026.09.09.md`](./2026.09.09.md) | Local shadow acceptance and handoff record | One live verified observation and offline acceptance; session-result summary | No |
 | [`2026.08.13.md`](./2026.08.13.md) | Local workflow-migration record | WSL Superpowers cutover and verified OMX retirement | No |
 | [`2026.08.11.md`](./2026.08.11.md) | Local maintenance-closure record | AgentHarness-only commits and fresh repository verification | No |
 | [`2026.07.20.md`](./2026.07.20.md) | Versioned source prerelease | Release commit, merged `main`, annotated tag | Yes: `v0.2.0-alpha.1` |
