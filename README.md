@@ -5,6 +5,14 @@ AgentHarness is a pre-execution evidence control-plane for agent actions.
 Current prerelease: **v0.2.0-alpha.1**. This GitHub source prerelease does not
 publish a PyPI or npm package.
 
+Latest source milestone (2026-09-09): the bounded shadow request/verifier CLI
+is implemented, and the separate DeepSeek runtime completed one live synthetic
+evidence round trip. Offline acceptance passed 515 AgentHarness tests and 158
+external shadow tests. This source milestone is newer than the tagged prerelease;
+it does not add business-tool execution. Start with the
+[current handoff](docs/30-deepseek-shadow-handoff.md) and
+[milestone record](release/2026.09.09.md).
+
 AgentHarness validates, binds, and exports evidence. Its finite methodology
 pilot emits one exact `permit_once` evidence decision; that value has no
 in-repo execution effect and is not runtime approval. In the accepted

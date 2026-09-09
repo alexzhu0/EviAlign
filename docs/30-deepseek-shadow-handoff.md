@@ -131,5 +131,19 @@ and a bounded live sample.
 
 Actual business execution requires a separate external-runtime design,
 implementation, adversarial tests, and approval gate. Until then the accepted
-milestone is the fixed synthetic evidence path only. Push, public release,
+milestone is the fixed synthetic evidence path only. Public release,
 package publication, and deployment are separate outstanding decisions.
+
+## GitHub source synchronization follow-up
+
+After documentation commit `379fa8b`, the user authorized maintaining and
+pushing the latest AgentHarness source to GitHub. Fetching `origin` confirmed
+that local `main` was 15 commits ahead and zero behind; a normal fast-forward
+push can include that history. The target is `alexzhu0/AgentHarness`, branch
+`main`. Verify the remote commit and its CI result after pushing; this
+pre-push record does not itself prove remote synchronization.
+
+This follow-up authorizes the AgentHarness source push only. The external
+runtime checkpoint and locally installed `project-maintainer` skill remain
+separate artifacts. The existing prerelease tag and package version stay
+unchanged; no new hosted release or package publication is requested.
