@@ -10,7 +10,10 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "src"))
+
+from tests.pi_mapping_fixtures import temporary_payloads as _temporary_payloads
 
 from agentharness.audit_contract import NOT_EXECUTED
 from agentharness.pi_tool_call_mapping import (
@@ -572,31 +575,6 @@ def _raw_host_path_matches(value: Any) -> list[str]:
         "C:\\\\Users",
     ]
     return [needle for needle in needles if needle in payload]
-
-
-def _temporary_payloads():
-    class _Payloads:
-        def __enter__(self) -> dict[str, Path]:
-            self._temp = tempfile.TemporaryDirectory()
-            root = Path(self._temp.name)
-            self.paths = {
-                "observations": root / "pi_tool_call_observations.json",
-                "expectations": root / "expected_mapping.json",
-            }
-            self.paths["observations"].write_text(
-                OBSERVATIONS_PATH.read_text(encoding="utf-8"),
-                encoding="utf-8",
-            )
-            self.paths["expectations"].write_text(
-                EXPECTATIONS_PATH.read_text(encoding="utf-8"),
-                encoding="utf-8",
-            )
-            return self.paths
-
-        def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
-            self._temp.cleanup()
-
-    return _Payloads()
 
 
 if __name__ == "__main__":

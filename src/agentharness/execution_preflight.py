@@ -330,14 +330,14 @@ def validate_execution_preflight_report(
                 {"decisions": [entry]},
                 decision_context,
             )
-            _merge_prefixed(report, approval_report, f"approval_records.{request_id}")
+            report.merge(approval_report, f"approval_records.{request_id}")
         decision_report = validate_execution_preflight_decision(
             decisions_by_request[request_id],
             entry,
             approval_record,
             decision_context,
         )
-        _merge_prefixed(report, decision_report, f"decisions.{request_id}")
+        report.merge(decision_report, f"decisions.{request_id}")
 
     for request_id in decisions_by_request:
         if request_id not in gate_entries_by_request:
@@ -487,10 +487,3 @@ def _string_or_none(value: Any) -> str | None:
     if isinstance(value, str) and value:
         return value
     return None
-
-
-def _merge_prefixed(
-    target: ValidationReport, source: ValidationReport, prefix: str
-) -> None:
-    target.errors.extend(f"{prefix}.{error}" for error in source.errors)
-    target.warnings.extend(f"{prefix}.{warning}" for warning in source.warnings)

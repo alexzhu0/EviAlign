@@ -1,6 +1,6 @@
 # AgentHarness Enterprise Audit Report and Buyer Demo
 
-last checked date: 2026-06-24
+Guidance consolidated: 2026-09-14. Historical T017–T025 references are retained below.
 
 AgentHarness is a pre-execution evidence control-plane for agent actions.
 
@@ -31,21 +31,11 @@ No execution has occurred. The current package, manifest, and verification repor
 
 ## Reviewer workflow
 
-A reviewer can follow this read-only workflow from the repository root:
-
-1. **Validate policy**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness validate examples/agent_policy.example.yaml`
-2. **Run eval smoke checks**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness eval --cases PI-001,PD-001,SEC-001`
-3. **Loop check bus**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness loop check examples/agent_bus_adapter_registry`
-4. **Inspect handoff**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness handoff inspect examples/agent_bus_adapter_registry`
-5. **Export ready-only package**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness handoff export examples/agent_bus_adapter_registry`
-6. **Manifest package**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness handoff manifest examples/agent_bus_adapter_registry > /tmp/agentharness-manifest.json`
-7. **Verify manifest readback**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness handoff verify-manifest examples/agent_bus_adapter_registry /tmp/agentharness-manifest.json`
-8. **Build machine-readable enterprise audit report**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness audit report examples/agent_bus_adapter_registry > /tmp/agentharness-audit-report.json`
-9. **Verify saved audit report readback**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness audit verify-report examples/agent_bus_adapter_registry /tmp/agentharness-audit-report.json`
-10. **Review goal/check checklist**: `PYTHONDONTWRITEBYTECODE=1 ./agentharness audit checklist examples/agent_bus_adapter_registry`
-11. **Decide whether evidence is acceptable for external runtime owner review**: approve or reject the evidence package for downstream review without treating AgentHarness as the execution owner.
-
-This workflow validates, inspects, exports, digests, verifies, and summarizes evidence only. The checklist is a reviewer convenience report over existing evidence builders, not a new runtime step. It does not call adapters, execute tools, mutate task lifecycle, or write product artifacts from AgentHarness export/manifest/audit commands.
+Use the [reproducible command flow](./11-reproducible-enterprise-demo.md#copy-paste-command-flow)
+to generate and verify the evidence, then apply the
+[decision guide](./12-buyer-reviewer-decision-guide.md#decision-outcomes) and
+[reviewer rubric](./13-external-reviewer-checklist.md#reviewer-checklist-table).
+AgentHarness reports evidence; the external runtime owns execution and authorization.
 
 ## Evidence-chain walkthrough
 
@@ -63,105 +53,23 @@ This workflow validates, inspects, exports, digests, verifies, and summarizes ev
 
 ## Embedded audit report examples
 
-These examples use `examples/agent_bus_adapter_registry` and are illustrative documentation, not a new audit-report schema or fixture. T018 added the separate read-only `audit report` CLI described below; the embedded examples remain explanatory narrative.
+The [demo summaries](./11-reproducible-enterprise-demo.md#expected-summary-counts)
+and [five request cases](./11-reproducible-enterprise-demo.md#ready-blocked-and-unsupported-case-interpretation)
+are maintained in the reproducible demo. Exact tool, intent, scope, preflight,
+and gate fields are in the committed
+[handoff fixture](../examples/agent_bus_adapter_registry/handoffs/T008-handoff-report.yaml).
+These examples describe evidence; they are not a separate report schema.
 
-### Summary
-
-| Field | Value |
-| --- | --- |
-| reports | 1 |
-| total_handoffs | 5 |
-| handoff_ready/exported | 2 |
-| blocked | 2 |
-| unsupported | 1 |
-| result_status | not_executed |
-
-Compact report line: `reports=1 total_handoffs=5 handoff_ready/exported=2 blocked=2 unsupported=1 result_status=not_executed`.
-
-### ready/no-approval: TR-read
-
-- Request id: `TR-read`
-- Tool: `read_file`
-- Category: `file_read`
-- Intent: `inspect_workspace`
-- Target scope: `repository`
-- Handoff status: `handoff_ready`
-- Preflight status: `ready_without_approval`
-- Exported: yes
-- Result status: `not_executed`
-
-Buyer interpretation: this request is ready because policy and adapter support allow a read-only handoff without an approval record. It is still evidence-only; no file read has been executed by AgentHarness.
-
-### ready/approval-backed: TR-approve-delete
-
-- Request id: `TR-approve-delete`
-- Tool: `delete_file`
-- Category: `file_delete`
-- Intent: `delete_file`
-- Target scope: `repository`
-- Handoff status: `handoff_ready`
-- Preflight status: `ready_with_approval`
-- Exported: yes
-- Result status: `not_executed`
-
-Buyer interpretation: this request is ready because the approval-required delete action has matching approval evidence and adapter support. It is still evidence-only; a downstream runtime owner must separately decide whether to execute under its own controls.
-
-### unsupported: TR-read-unsupported-intent
-
-- Request id: `TR-read-unsupported-intent`
-- Tool: `read_file`
-- Category: `file_read`
-- Intent: `inspect_config`
-- Target scope: `repository`
-- Handoff status: `unsupported`
-- Preflight status: `ready_without_approval`
-- Exported: no
-- Result status: `not_executed`
-
-Buyer interpretation: the policy/preflight side may be ready, but the selected adapter spec does not support the request dimensions. AgentHarness excludes it from the ready-only export package.
-
-### blocked/missing approval: TR-missing-approval-delete
-
-- Request id: `TR-missing-approval-delete`
-- Tool: `delete_file`
-- Category: `file_delete`
-- Intent: `delete_file`
-- Target scope: `repository`
-- Handoff status: `blocked`
-- Preflight status: `blocked_missing_approval`
-- Exported: no
-- Result status: `not_executed`
-
-Buyer interpretation: the delete request is blocked because approval-required evidence is missing or invalid. It cannot enter export until the evidence chain is repaired.
-
-### blocked/policy-denied: TR-deny-unknown
-
-- Request id: `TR-deny-unknown`
-- Tool: `mystery_shell`
-- Category: `shell`
-- Intent: `run_tests`
-- Target scope: `repository`
-- Handoff status: `blocked`
-- Preflight status: `blocked_by_policy`
-- Exported: no
-- Result status: `not_executed`
-
-Buyer interpretation: the proposed shell-like request is policy-denied. AgentHarness reports it as blocked and excludes it from export.
-
-### manifest/readback: package digest and verify ok:true
-
-The current registry-backed manifest names the ready-only export package with this canonical digest:
+The original registry-backed example recorded this canonical package digest:
 
 ```text
-package_digest: sha256:63806cd94fb4a5b012a2b79e7bbef1c5068009a972a73ae26dc72ef04a010965
+sha256:63806cd94fb4a5b012a2b79e7bbef1c5068009a972a73ae26dc72ef04a010965
 ```
 
-The manifest items preserve the ready request order:
-
-1. `TR-read`
-2. `TR-approve-delete`
-
-A matching saved manifest verifies with `ok: true`, an empty errors list, and `result_status: not_executed`. That means the reviewer can regenerate the manifest from current bus state and prove the saved readback still matches the expected package and item structure.
+Its ready item order is `TR-read`, then `TR-approve-delete`. A matching saved
+manifest verifies with `ok: true`, an empty errors list, and
+`result_status: not_executed`. Regenerate evidence for a current review rather
+than treating this recorded digest as fresh verification.
 
 ## T018/T020 machine-readable enterprise audit report
 
@@ -225,13 +133,10 @@ For an operational third-party acceptance rubric, see [`docs/13-external-reviewe
 
 ## Buyer-demo talk track
 
-1. **Start with the buyer pain**: agent systems can propose high-impact tool actions, but reviewers need deterministic evidence before a runtime acts.
-2. **Show the boundary**: AgentHarness is not the runtime; it is the pre-execution evidence control-plane that prepares a reviewable package.
-3. **Walk the evidence chain**: file-bus, tool gate, approval, preflight, handoff, adapter registry, export package, digest manifest, and manifest verification.
-4. **Highlight the split outcome**: in the example, two requests are ready/exported, two are blocked, and one is unsupported; blocked and unsupported items do not leak into the export package.
-5. **Explain replayability**: the manifest can be saved and verified later; if the bus or registry changes, readback detects drift.
-6. **Name external owners**: runtime, governance, auth, identity, sandbox, and execution-plane teams keep their own enforcement responsibilities.
-7. **Close with value**: AgentHarness gives platform/security/compliance reviewers deterministic pre-execution evidence, approval binding, ready-only export, and replayable manifests without expanding into execution.
+Explain the need for evidence before high-impact agent actions, run the
+[demo](./11-reproducible-enterprise-demo.md), and show why some requests are
+exported while others are blocked or unsupported. Demonstrate saved-artifact
+readback, then identify the external owner responsible for any execution decision.
 
 ## Objections and answers
 
@@ -245,21 +150,19 @@ For an operational third-party acceptance rubric, see [`docs/13-external-reviewe
 
 ## Red-line boundaries
 
-T017 did not add runtime behavior. T018 adds only a read-only, stdout-only machine-readable audit report command. T020 adds only a repo-native conceptual schema and pure payload validation. T021 adds only saved-report readback verification. T022 adds only a read-only, stdout-only goal/check checklist report. T024 adds only repo-native checklist schema validation. T025 adds only a regression harness for the accepted evidence chain. They still do not add or imply:
+T017 provided the narrative; T018/T020 added report generation and payload
+validation; T021 added report readback; T022/T024 added checklist generation and
+validation; T025 added evidence-chain regression coverage. These milestones
+remain evidence-only, with `result_status: not_executed`.
 
-- audit-report file writing, saved output flag, or product example artifact;
-- runtime execution;
-- runtime adapter invocation;
-- future execution-plane repository modification, import, dependency, test, or call;
-- daemon, scheduler, watcher, queue, or realtime chat;
-- run, execute, dispatch, submit, or task-mutation CLI;
-- lifecycle state expansion;
-- auth gateway, identity provider, sandbox, signing, timestamp, attestation, or trust-root implementation;
-- SDK/package adoption or framework wrapper implementation.
+The [product contract](./08-glossary-and-product-contract.md#product-contract)
+is the normative boundary for runtime ownership, authorization, adapters,
+file output, scheduling, signing, and trust roots.
 
 ## Future follow-ups
 
-- Add a later evidence-envelope schema only if buyers and reviewers need a stable external interchange contract beyond the accepted enterprise audit report schema.
-- Keep runtime spikes deferred behind explicit adapter/spec boundaries and the product contract in [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md).
-- Use the T025 end-to-end evidence-chain regression harness as a guard before accepting later contract changes.
-- T016 and T017 may be committed together later only after user acceptance.
+Add further interchange contracts only when an external consumer has a concrete
+need. Any runtime work follows the separate approval and ownership boundaries in
+the [product contract](./08-glossary-and-product-contract.md#product-contract).
+Use the [end-to-end regression harness](../tests/test_end_to_end_evidence_chain.py)
+when reviewing later evidence-contract changes.

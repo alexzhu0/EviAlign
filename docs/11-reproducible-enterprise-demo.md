@@ -26,15 +26,10 @@ The demo proves that AgentHarness can validate and export reviewable evidence be
 
 ## What the demo does not do
 
-This demo does not:
-
-- execute tools;
-- invoke a runtime adapter;
-- depend on an external `pi` repository;
-- mutate task lifecycle state;
-- enforce governance, auth, sandbox, signing, timestamp, attestation, certificate, notarization, or trust-root controls;
-- start a daemon, scheduler, watcher, queue, or realtime chat surface;
-- add a product output writer, script, helper, CLI command, or CLI flag.
+The commands validate and summarize local fixtures without executing tools,
+invoking runtime adapters, or granting runtime authorization. Saved JSON files
+are created by reviewer shell redirection. The full ownership boundary is in
+the [product contract](./08-glossary-and-product-contract.md#product-contract).
 
 ## Prerequisites
 
@@ -95,16 +90,9 @@ Ready means evidence is eligible for external owner review; it does not mean the
 
 ## Brief review questions answered
 
-| Reviewer question | Demo evidence |
-| --- | --- |
-| What was requested? | Handoff inspection and audit report list the request IDs, tool names, categories, intents, and target scopes. |
-| Was it policy-allowed? | Tool gate, preflight, handoff status, and audit report rows distinguish ready, blocked, and unsupported outcomes. |
-| Was approval required and present? | `TR-approve-delete` shows approval-backed readiness; `TR-missing-approval-delete` shows blocked missing approval. |
-| Was adapter/spec support checked? | Registry-backed handoff export and manifest include adapter reference and digest-bound evidence. |
-| Which requests are ready vs blocked vs unsupported? | The inspection summary and audit report show ready/exported `2`, blocked `2`, unsupported `1`. |
-| Can the package, manifest, and report be regenerated and compared? | Manifest verification and audit report verification return `ok=true` when saved `/tmp` artifacts match regenerated evidence. |
-| What remains manual? | Checklist manual items are saved manifest readback and saved audit report readback, because reviewers must provide the saved paths. |
-| Who owns actual execution? | The external runtime owner; AgentHarness only validates and exports pre-execution evidence. |
+Use the [reviewer questions to evidence map](./12-buyer-reviewer-decision-guide.md#reviewer-questions-to-evidence-map)
+to interpret the generated artifacts. Saved manifest and audit report readback
+remain manual checklist items because the reviewer supplies the saved paths.
 
 ## Failure interpretation
 

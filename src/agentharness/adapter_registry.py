@@ -8,7 +8,7 @@ from typing import Any, Mapping
 
 from .execution_handoff import execution_handoff_digest, validate_runtime_adapter_spec
 from .validate import ValidationReport
-from .yamlio import YamlLoadError, load_yaml
+from .yamlio import YamlLoadError, load_yaml, resolve_bus_reference
 
 
 REQUIRED_ENTRY_FIELDS = {
@@ -83,12 +83,12 @@ def validate_runtime_adapter_registry(
         spec, spec_report = _load_adapter_spec(
             root, spec_path, f"{entry_path}.adapter_spec_path"
         )
-        _merge(report, spec_report)
+        report.merge(spec_report)
         if spec is None:
             continue
 
-        _merge_prefixed(
-            report, validate_runtime_adapter_spec(spec), f"{entry_path}.adapter_spec"
+        report.merge(
+            validate_runtime_adapter_spec(spec), f"{entry_path}.adapter_spec"
         )
         _validate_entry_matches_spec(entry, spec, entry_path, report)
 
@@ -125,17 +125,17 @@ def validate_adapter_registry_binding(
     registry, registry_load_report = _load_registry(
         root, registry_path, "adapter_registry_path"
     )
-    _merge(report, registry_load_report)
+    report.merge(registry_load_report)
 
     adapter_ref = handoff_report.get("adapter_ref")
     ref_report = _validate_adapter_ref(adapter_ref)
-    _merge_prefixed(report, ref_report, "adapter_ref")
+    report.merge(ref_report, "adapter_ref")
 
     if registry is None or not isinstance(adapter_ref, Mapping):
         return report
 
     registry_report = validate_runtime_adapter_registry(registry, root)
-    _merge_prefixed(report, registry_report, "adapter_registry")
+    report.merge(registry_report, "adapter_registry")
 
     if ref_report.errors:
         return report
@@ -298,7 +298,7 @@ def _load_registry(
     bus_root: Path, reference: Any, path: str
 ) -> tuple[Mapping[str, Any] | None, ValidationReport]:
     report = ValidationReport()
-    resolved, error = _resolve_reference(bus_root, reference)
+    resolved, error = resolve_bus_reference(bus_root, reference)
     if error:
         report.error(path, error)
         return None, report
@@ -320,7 +320,7 @@ def _load_adapter_spec(
     bus_root: Path, reference: Any, path: str
 ) -> tuple[Mapping[str, Any] | None, ValidationReport]:
     report = ValidationReport()
-    resolved, error = _resolve_reference(bus_root, reference)
+    resolved, error = resolve_bus_reference(bus_root, reference)
     if error:
         report.error(path, error)
         return None, report
@@ -336,26 +336,3 @@ def _load_adapter_spec(
         report.error(path, "adapter spec must be a mapping")
         return None, report
     return adapter_spec, report
-
-
-def _resolve_reference(bus_root: Path, reference: Any) -> tuple[Path | None, str | None]:
-    if not isinstance(reference, str) or not reference:
-        return None, "must be a non-empty string"
-    path = Path(reference)
-    candidate = path if path.is_absolute() else bus_root / path
-    resolved = candidate.resolve(strict=False)
-    if not resolved.is_relative_to(bus_root):
-        return resolved, "referenced path must stay within bus_root"
-    return resolved, None
-
-
-def _merge(target: ValidationReport, source: ValidationReport) -> None:
-    target.errors.extend(source.errors)
-    target.warnings.extend(source.warnings)
-
-
-def _merge_prefixed(
-    target: ValidationReport, source: ValidationReport, prefix: str
-) -> None:
-    target.errors.extend(f"{prefix}.{error}" for error in source.errors)
-    target.warnings.extend(f"{prefix}.{warning}" for warning in source.warnings)

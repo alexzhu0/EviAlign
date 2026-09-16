@@ -6,6 +6,19 @@ from pathlib import Path
 from typing import Any
 
 
+def resolve_bus_reference(bus_root: Path, reference: Any) -> tuple[Path | None, str | None]:
+    """Resolve a file-bus reference within the caller's already resolved root."""
+
+    if not isinstance(reference, str) or not reference:
+        return None, "must be a non-empty string"
+    path = Path(reference)
+    candidate = path if path.is_absolute() else bus_root / path
+    resolved = candidate.resolve(strict=False)
+    if not resolved.is_relative_to(bus_root):
+        return resolved, "referenced path must stay within bus_root"
+    return resolved, None
+
+
 class YamlLoadError(RuntimeError):
     """Raised when a YAML file cannot be loaded."""
 

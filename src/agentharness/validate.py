@@ -23,6 +23,16 @@ class ValidationReport:
     def warn(self, path: str, message: str) -> None:
         self.warnings.append(f"{path}: {message}")
 
+    def merge(self, source: ValidationReport, prefix: str | None = None) -> None:
+        """Append another report's messages, optionally qualifying their paths."""
+
+        if prefix is None:
+            self.errors.extend(source.errors)
+            self.warnings.extend(source.warnings)
+        else:
+            self.errors.extend(f"{prefix}.{error}" for error in source.errors)
+            self.warnings.extend(f"{prefix}.{warning}" for warning in source.warnings)
+
 
 def validate_policy(policy: dict[str, Any], schema: dict[str, Any]) -> ValidationReport:
     """Validate a policy against the repository's conceptual schema."""

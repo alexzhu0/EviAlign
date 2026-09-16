@@ -6,9 +6,9 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from .audit_contract import sanitize_audit_message
-from .loop_bus import parse_ledger, validate_bus
+from .loop_bus import handoff_report_references, parse_ledger, validate_bus
 from .validate import ValidationReport
-from .yamlio import YamlLoadError, load_yaml
+from .yamlio import YamlLoadError, load_yaml, resolve_bus_reference
 
 
 def inspect_handoff_bus(bus_root: str | Path) -> tuple[dict[str, Any] | None, ValidationReport]:
@@ -20,11 +20,11 @@ def inspect_handoff_bus(bus_root: str | Path) -> tuple[dict[str, Any] | None, Va
         return None, report
 
     events, ledger_report = parse_ledger(root / "ledger.jsonl")
-    _merge(report, ledger_report)
+    report.merge(ledger_report)
     if not report.ok:
         return None, report
 
-    references = _handoff_report_references(events)
+    references = handoff_report_references(events)
     if not references:
         report.error(
             "ledger.execution_handoff_report_path",
@@ -35,7 +35,7 @@ def inspect_handoff_bus(bus_root: str | Path) -> tuple[dict[str, Any] | None, Va
     reports: list[dict[str, Any]] = []
     for index, reference in enumerate(references):
         field_path = f"ledger.handoff_reports[{index}]"
-        resolved, error = _resolve_bus_reference(root, reference)
+        resolved, error = resolve_bus_reference(root, reference)
         if error:
             report.error(field_path, error)
             continue
@@ -128,17 +128,6 @@ def sanitize_handoff_inspection_message(value: Any) -> str:
     """Sanitize one handoff-inspection error or warning for CLI/JSON output."""
 
     return sanitize_audit_message(value).replace("<path>", "<bus_root>")
-
-
-def _handoff_report_references(events: list[dict[str, Any]]) -> list[str]:
-    references: list[str] = []
-    for event in events:
-        if event.get("event_type") != "designer_review":
-            continue
-        reference = event.get("execution_handoff_report_path")
-        if isinstance(reference, str) and reference:
-            references.append(reference)
-    return references
 
 
 def _summarize_report(
@@ -237,17 +226,6 @@ def _summary_from_handoffs(
     }
 
 
-def _resolve_bus_reference(bus_root: Path, reference: Any) -> tuple[Path | None, str | None]:
-    if not isinstance(reference, str) or not reference:
-        return None, "must be a non-empty string"
-    path = Path(reference)
-    candidate = path if path.is_absolute() else bus_root / path
-    resolved = candidate.resolve(strict=False)
-    if not resolved.is_relative_to(bus_root):
-        return resolved, "referenced path must stay within bus_root"
-    return resolved, None
-
-
 def _relative_to(root: Path, path: Path) -> str:
     try:
         return path.relative_to(root).as_posix()
@@ -265,8 +243,3 @@ def _int_value(value: Any) -> int:
     if isinstance(value, int):
         return value
     return 0
-
-
-def _merge(target: ValidationReport, source: ValidationReport) -> None:
-    target.errors.extend(source.errors)
-    target.warnings.extend(source.warnings)

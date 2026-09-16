@@ -253,7 +253,7 @@ def validate_execution_handoff(
     if preflight_decision.get("request_id") != tool_gate_entry.get("request_id"):
         report.error("request_id", "preflight decision must match tool gate request_id")
 
-    _merge_prefixed(report, validate_runtime_adapter_spec(adapter_spec), "adapter_spec")
+    report.merge(validate_runtime_adapter_spec(adapter_spec), "adapter_spec")
     _validate_complete_context(expected_context, report, "task_context")
     return report
 
@@ -291,8 +291,7 @@ def validate_execution_handoff_report(
 
     context = _report_context(handoff_report, task_context)
     _validate_report_context(handoff_report, context, report)
-    _merge_prefixed(
-        report,
+    report.merge(
         validate_tool_gate_report(
             tool_gate_report,
             {
@@ -307,8 +306,7 @@ def validate_execution_handoff_report(
     )
     approvals = _approval_records_by_request(approval_records)
     paths = approval_record_paths or {}
-    _merge_prefixed(
-        report,
+    report.merge(
         validate_execution_preflight_report(
             preflight_report,
             tool_gate_report,
@@ -322,7 +320,7 @@ def validate_execution_handoff_report(
         ),
         "preflight_report",
     )
-    _merge_prefixed(report, validate_runtime_adapter_spec(adapter_spec), "adapter_spec")
+    report.merge(validate_runtime_adapter_spec(adapter_spec), "adapter_spec")
 
     for request_id, approval_record in approvals.items():
         approval_context = {
@@ -331,8 +329,7 @@ def validate_execution_handoff_report(
             "attempt": context.get("attempt"),
             "tool_gate_report_path": context.get("tool_gate_report_path"),
         }
-        _merge_prefixed(
-            report,
+        report.merge(
             validate_approval_record(approval_record, tool_gate_report, approval_context),
             f"approval_records.{request_id}",
         )
@@ -376,7 +373,7 @@ def validate_execution_handoff_report(
             handoff_context,
             approvals.get(request_id),
         )
-        _merge_prefixed(report, handoff_validation, item_path)
+        report.merge(handoff_validation, item_path)
         valid_handoffs.append(handoff)
 
     summary = _mapping(handoff_report.get("summary"), "summary", report)
@@ -651,10 +648,3 @@ def _string_or_none(value: Any) -> str | None:
     if isinstance(value, str) and value:
         return value
     return None
-
-
-def _merge_prefixed(
-    target: ValidationReport, source: ValidationReport, prefix: str
-) -> None:
-    target.errors.extend(f"{prefix}.{error}" for error in source.errors)
-    target.warnings.extend(f"{prefix}.{warning}" for warning in source.warnings)

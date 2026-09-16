@@ -13,7 +13,7 @@ from .execution_handoff import validate_execution_handoff_report
 from .execution_preflight import validate_execution_preflight_report
 from .tool_gate import validate_tool_gate_report
 from .validate import ValidationReport
-from .yamlio import YamlLoadError, load_yaml
+from .yamlio import YamlLoadError, load_yaml, resolve_bus_reference
 
 
 REQUIRED_TASK_FIELDS = {
@@ -146,6 +146,19 @@ def parse_ledger(path: str | Path) -> tuple[list[dict[str, Any]], ValidationRepo
     return events, report
 
 
+def handoff_report_references(events: list[dict[str, Any]]) -> list[str]:
+    """Select designer-review handoff references in ledger order, without deduplication."""
+
+    references: list[str] = []
+    for event in events:
+        if event.get("event_type") != "designer_review":
+            continue
+        reference = event.get("execution_handoff_report_path")
+        if isinstance(reference, str) and reference:
+            references.append(reference)
+    return references
+
+
 def validate_bus(bus_root: str | Path) -> ValidationReport:
     """Validate a file-bus fixture directory."""
 
@@ -172,13 +185,13 @@ def validate_bus(bus_root: str | Path) -> ValidationReport:
     for task_path in sorted(tasks_dir.glob("*.yaml")):
         task = load_task(task_path)
         task_report = validate_task(task)
-        _merge(report, task_report)
+        report.merge(task_report)
         task_id = task.get("id")
         if isinstance(task_id, str):
             tasks[task_id] = task
 
     events, ledger_report = parse_ledger(ledger_path)
-    _merge(report, ledger_report)
+    report.merge(ledger_report)
     tool_gate_policy, tool_gate_governance = _load_tool_gate_validation_assets(
         root, events, report
     )
@@ -199,7 +212,7 @@ def validate_bus(bus_root: str | Path) -> ValidationReport:
             tool_gate_policy=tool_gate_policy,
             tool_gate_governance=tool_gate_governance,
         )
-        _merge(report, chain_report)
+        report.merge(chain_report)
 
     return report
 
@@ -655,7 +668,7 @@ def _validate_referenced_paths(
     for field_name in ("evidence_path", "review_path"):
         if field_name not in event:
             continue
-        reference, error = _resolve_reference(root, event[field_name])
+        reference, error = resolve_bus_reference(root, event[field_name])
         if error:
             report.error(f"{path}.{field_name}", error)
             continue
@@ -696,7 +709,7 @@ def _validate_tool_gate_report_path(
     if bus_root is None:
         return None
     root = Path(bus_root).resolve()
-    reference, error = _resolve_reference(root, event["tool_gate_report_path"])
+    reference, error = resolve_bus_reference(root, event["tool_gate_report_path"])
     field_path = f"{path}.tool_gate_report_path"
     if error:
         report.error(field_path, error)
@@ -723,7 +736,7 @@ def _validate_tool_gate_report_path(
         policy=tool_gate_policy,
         governance=tool_gate_governance,
     )
-    _merge_prefixed(report, gate_report, field_path)
+    report.merge(gate_report, field_path)
     return value
 
 
@@ -765,7 +778,7 @@ def _validate_approval_record_paths(
     approval_record_paths: dict[str, str] = {}
     for index, approval_path in enumerate(approval_paths):
         field_path = f"{path}.approval_record_paths[{index}]"
-        reference, error = _resolve_reference(root, approval_path)
+        reference, error = resolve_bus_reference(root, approval_path)
         if error:
             report.error(field_path, error)
             continue
@@ -801,7 +814,7 @@ def _validate_approval_record_paths(
             tool_gate_report,
             expected_context,
         )
-        _merge_prefixed(report, approval_report, field_path)
+        report.merge(approval_report, field_path)
     return approval_records, approval_record_paths
 
 
@@ -832,7 +845,7 @@ def _validate_preflight_report_path(
         return None
 
     root = Path(bus_root).resolve()
-    reference, error = _resolve_reference(root, event["preflight_report_path"])
+    reference, error = resolve_bus_reference(root, event["preflight_report_path"])
     field_path = f"{path}.preflight_report_path"
     if error:
         report.error(field_path, error)
@@ -862,7 +875,7 @@ def _validate_preflight_report_path(
         approval_records_by_attempt.get(attempt, {}),
         expected_context,
     )
-    _merge_prefixed(report, preflight_validation, field_path)
+    report.merge(preflight_validation, field_path)
     return event["preflight_report_path"], preflight_report
 
 
@@ -905,7 +918,7 @@ def _validate_execution_handoff_report_path(
 
     root = Path(bus_root).resolve()
     field_path = f"{path}.execution_handoff_report_path"
-    reference, error = _resolve_reference(root, event["execution_handoff_report_path"])
+    reference, error = resolve_bus_reference(root, event["execution_handoff_report_path"])
     if error:
         report.error(field_path, error)
         return
@@ -922,7 +935,7 @@ def _validate_execution_handoff_report_path(
         return
 
     adapter_spec_path = handoff_report.get("adapter_spec_path")
-    adapter_reference, adapter_error = _resolve_reference(root, adapter_spec_path)
+    adapter_reference, adapter_error = resolve_bus_reference(root, adapter_spec_path)
     adapter_field_path = f"{field_path}.adapter_spec_path"
     if adapter_error:
         report.error(adapter_field_path, adapter_error)
@@ -943,7 +956,7 @@ def _validate_execution_handoff_report_path(
         adapter_spec,
         root,
     )
-    _merge_prefixed(report, registry_validation, field_path)
+    report.merge(registry_validation, field_path)
 
     tool_gate_report_path, tool_gate_report = tool_gate_info
     preflight_report_path, preflight_report = preflight_info
@@ -966,7 +979,7 @@ def _validate_execution_handoff_report_path(
         approval_record_paths=approval_record_paths_by_attempt.get(attempt, {}),
         task_context=expected_context,
     )
-    _merge_prefixed(report, handoff_validation, field_path)
+    report.merge(handoff_validation, field_path)
 
 
 def _load_tool_gate_validation_assets(
@@ -1063,17 +1076,6 @@ def _find_repo_root(start: Path) -> Path:
     return start.resolve()
 
 
-def _resolve_reference(bus_root: Path, reference: Any) -> tuple[Path | None, str | None]:
-    if not isinstance(reference, str) or not reference:
-        return None, "must be a non-empty string"
-    path = Path(reference)
-    candidate = path if path.is_absolute() else bus_root / path
-    resolved = candidate.resolve(strict=False)
-    if not resolved.is_relative_to(bus_root):
-        return resolved, "referenced path must stay within bus_root"
-    return resolved, None
-
-
 def _read_frontmatter(path: Path) -> dict[str, str]:
     lines = path.read_text(encoding="utf-8").splitlines()
     if not lines or lines[0].strip() != "---":
@@ -1104,15 +1106,3 @@ def _mapping(value: Any, path: str, report: ValidationReport) -> dict[str, Any] 
         report.error(path, "must be a mapping")
         return None
     return value
-
-
-def _merge(target: ValidationReport, source: ValidationReport) -> None:
-    target.errors.extend(source.errors)
-    target.warnings.extend(source.warnings)
-
-
-def _merge_prefixed(
-    target: ValidationReport, source: ValidationReport, prefix: str
-) -> None:
-    target.errors.extend(f"{prefix}.{error}" for error in source.errors)
-    target.warnings.extend(f"{prefix}.{warning}" for warning in source.warnings)

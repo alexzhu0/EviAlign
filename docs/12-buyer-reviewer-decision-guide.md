@@ -53,15 +53,10 @@ Escalation is external-owner routing. It is not an AgentHarness lifecycle state.
 
 ## Case walkthrough
 
-| Request ID | Case | Reviewer conclusion | Export result |
-| --- | --- | --- | --- |
-| `TR-read` | ready without approval | Evidence is complete for a read request that does not require approval. Accept the evidence for downstream review if the rest of the package verifies. | Exported because it is handoff-ready. |
-| `TR-approve-delete` | ready with approval | Evidence includes the required approval-backed readiness for a delete request. Accept the evidence for downstream review if the rest of the package verifies. | Exported because it is handoff-ready and approval-backed. |
-| `TR-read-unsupported-intent` | unsupported | Adapter/spec evidence does not support this request intent. Reject this item from export evidence or escalate adapter coverage questions externally. | Not exported because it is unsupported. |
-| `TR-missing-approval-delete` | blocked missing approval | Approval evidence is required but missing. Reject this item until the missing evidence is resolved. | Not exported because it is blocked. |
-| `TR-deny-unknown` | blocked by policy | Policy blocks the unknown/shell-like request. Reject this item from the evidence package. | Not exported because it is blocked by policy. |
-
-Ready means evidence is eligible for downstream review. It does not mean safe to execute and does not mean executed.
+Apply these decisions to the [five demo requests](./11-reproducible-enterprise-demo.md#ready-blocked-and-unsupported-case-interpretation).
+The ready items may enter the evidence package; blocked and unsupported items
+are excluded. An unsupported intent may require an external adapter owner to
+review coverage. Accepting evidence never grants execution permission.
 
 ## Manual checks and limits
 
@@ -76,18 +71,10 @@ AgentHarness can validate, inspect, export, digest, and verify evidence. It cann
 
 ## Boundary red lines
 
-T028 does not add or claim:
-
-- runtime execution;
-- runtime adapter invocation;
-- external pi repository integration;
-- daemon, scheduler, watcher, queue, or realtime chat behavior;
-- run, execute, dispatch, submit, or task mutation CLI;
-- lifecycle expansion;
-- auth, sandbox, signing, timestamp, attestation, trust-root, or governance enforcement;
-- SDK or framework wrapper behavior.
-
-All current handoff, export, manifest, verification, audit report, report readback, checklist, and demo outputs remain `result_status: not_executed`.
+All current handoff, export, manifest, verification, audit, checklist, and demo
+outputs remain `result_status: not_executed`. The T028 decision guide introduced
+no execution or enforcement capability. See the normative
+[product contract](./08-glossary-and-product-contract.md#product-contract).
 
 ## Traceability links
 
@@ -101,13 +88,7 @@ All current handoff, export, manifest, verification, audit report, report readba
 
 ## Anti-claims / wording guardrail
 
-Do not say:
-
-- ready means safe to execute;
-- ready means already executed;
-- AgentHarness approves execution;
-- AgentHarness enforces governance, auth, sandbox, signing, timestamping, attestation, or trust-root controls;
-- AgentHarness is a runtime, scheduler, adapter loader, queue, or execution plane;
-- AgentHarness replaces an external runtime, governance, auth, sandbox, signing, or operations owner.
-
-Use evidence wording instead: accept evidence for downstream review, reject evidence package, or escalate externally.
+Use the three [decision outcomes](#decision-outcomes): accept evidence for
+downstream review, reject evidence package, or escalate externally. “Ready”
+means evidence eligibility, never execution, runtime approval, or a safety
+guarantee. External owners retain enforcement and operational responsibility.

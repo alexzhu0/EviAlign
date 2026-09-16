@@ -7,9 +7,9 @@ from typing import Any, Mapping
 
 from .adapter_registry import validate_adapter_registry_binding
 from .execution_handoff import execution_handoff_digest
-from .loop_bus import parse_ledger, validate_bus
+from .loop_bus import handoff_report_references, parse_ledger, validate_bus
 from .validate import ValidationReport
-from .yamlio import YamlLoadError, load_yaml
+from .yamlio import YamlLoadError, load_yaml, resolve_bus_reference
 
 
 NOT_EXECUTED = "not_executed"
@@ -26,11 +26,11 @@ def build_handoff_export_package(
         return None, report
 
     events, ledger_report = parse_ledger(root / "ledger.jsonl")
-    _merge(report, ledger_report)
+    report.merge(ledger_report)
     if not report.ok:
         return None, report
 
-    references = _handoff_report_references(events)
+    references = handoff_report_references(events)
     if not references:
         report.error(
             "ledger.execution_handoff_report_path",
@@ -85,7 +85,7 @@ def build_handoff_export_package(
             continue
 
         binding = validate_adapter_registry_binding(handoff_report, adapter_spec, root)
-        _merge_prefixed(report, binding, field_path)
+        report.merge(binding, field_path)
         if not binding.ok:
             continue
 
@@ -191,17 +191,6 @@ def _export_item(
     }
 
 
-def _handoff_report_references(events: list[dict[str, Any]]) -> list[str]:
-    references: list[str] = []
-    for event in events:
-        if event.get("event_type") != "designer_review":
-            continue
-        reference = event.get("execution_handoff_report_path")
-        if isinstance(reference, str) and reference:
-            references.append(reference)
-    return references
-
-
 def _load_mapping_reference(
     root: Path,
     reference: Any,
@@ -209,7 +198,7 @@ def _load_mapping_reference(
     label: str,
     report: ValidationReport,
 ) -> tuple[Path | None, Mapping[str, Any] | None]:
-    resolved, error = _resolve_bus_reference(root, reference)
+    resolved, error = resolve_bus_reference(root, reference)
     if error:
         report.error(path, error)
         return None, None
@@ -256,17 +245,6 @@ def _handoff_status(handoff: Mapping[str, Any]) -> str:
     return "blocked"
 
 
-def _resolve_bus_reference(root: Path, reference: Any) -> tuple[Path | None, str | None]:
-    if not isinstance(reference, str) or not reference:
-        return None, "must be a non-empty string"
-    path = Path(reference)
-    candidate = path if path.is_absolute() else root / path
-    resolved = candidate.resolve(strict=False)
-    if not resolved.is_relative_to(root):
-        return resolved, "referenced path must stay within bus_root"
-    return resolved, None
-
-
 def _relative_to(root: Path, path: Path) -> str:
     return path.relative_to(root).as_posix()
 
@@ -275,15 +253,3 @@ def _mapping_or_empty(value: Any) -> Mapping[str, Any]:
     if isinstance(value, Mapping):
         return value
     return {}
-
-
-def _merge(target: ValidationReport, source: ValidationReport) -> None:
-    target.errors.extend(source.errors)
-    target.warnings.extend(source.warnings)
-
-
-def _merge_prefixed(
-    target: ValidationReport, source: ValidationReport, prefix: str
-) -> None:
-    target.errors.extend(f"{prefix}.{error}" for error in source.errors)
-    target.warnings.extend(f"{prefix}.{warning}" for warning in source.warnings)

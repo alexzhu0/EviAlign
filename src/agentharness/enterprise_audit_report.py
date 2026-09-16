@@ -115,7 +115,7 @@ def build_enterprise_audit_report(
         return None, report
 
     validation_report = validate_enterprise_audit_report_payload(audit_report)
-    _merge_prefixed(report, validation_report, "audit_report_schema")
+    report.merge(validation_report, "audit_report_schema")
     if not report.ok:
         return None, report
 
@@ -702,7 +702,7 @@ def _call_builder(label: str, builder, bus_root: str | Path, report: ValidationR
     except (YamlLoadError, ValueError, OSError) as exc:
         report.error(label, str(exc))
         return None
-    _merge_prefixed(report, builder_report, label)
+    report.merge(builder_report, label)
     if not builder_report.ok or payload is None:
         return None
     return payload
@@ -918,10 +918,3 @@ def _string_value(value: Any) -> str | None:
     if isinstance(value, str):
         return value
     return None
-
-
-def _merge_prefixed(
-    target: ValidationReport, source: ValidationReport, prefix: str
-) -> None:
-    target.errors.extend(f"{prefix}.{error}" for error in source.errors)
-    target.warnings.extend(f"{prefix}.{warning}" for warning in source.warnings)
