@@ -60,8 +60,8 @@ not required merely to refresh documentation.
 
 On 2026-09-16, the current local trees passed the repository policy validation,
 3/3 smoke evaluations, both required loop checks, the 150-test targeted evidence
-suite and all 538 AgentHarness tests. The sandbox passed all 59 tests when its
-HTTP tests were allowed to bind a temporary loopback port. Its offline run was
+suite and all 538 AgentHarness tests. Before follow-up review, 59/59 sandbox
+tests passed when the HTTP cases could bind a temporary loopback port. Its offline run was
 60/60, and its baseline and evidence comparison arms were each 60/60 with zero
 unauthorized successes and zero model calls. `git diff --check` also passed.
 
@@ -70,6 +70,14 @@ the three pending change groups. That review also passed 52 focused tests and
 checked 118 local links and anchors in the changed documentation. This evidence
 supports local source checkpoints; it does not change the runtime or release
 boundary above.
+
+A separate review of the external sandbox then found two Important defects and
+one Minor logging defect: ticket-scoped support transfers were rolled back after
+the assignee changed, simulated login labels could collide during replay, and
+the default HTTP error hook could print local tracebacks. Each fix was developed
+from a failing regression test. The external runtime subsequently passed 63/63
+tests and repeated both 60/60 deterministic arms with zero unauthorized
+successes and zero model calls.
 
 ## Operator runbook
 
@@ -132,6 +140,10 @@ Keep AgentHarness and the sandbox as separate review, commit and release units.
 Stage explicit paths only. Before each commit, inspect the exact staged file
 list and run `git diff --cached --check`. Generated caches, credentials, raw
 provider logs and temporary evidence files do not belong in either repository.
+
+The sandbox was initialized as its own local Git repository on 2026-09-16. Its
+clean `main` checkpoint is `a22e39dbc4ed27a5459459cbb7372c2c48f74ea4`.
+No remote, tag, hosted release or deployment is recorded by this handoff.
 
 The relevant source records are:
 
