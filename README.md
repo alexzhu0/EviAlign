@@ -209,6 +209,9 @@ and not runtime authorization:
 Current AgentHarness-only local maintenance closure:
 [`docs/29`](docs/29-agentharness-maintenance-closure.md)
 
+Current business-sandbox maintenance handoff and real-data pilot boundary:
+[`docs/32`](docs/32-business-sandbox-maintenance-handoff.md)
+
 Latest local release record, dated 2026-08-13:
 [`release/2026.08.13.md`](release/2026.08.13.md)
 
@@ -284,6 +287,29 @@ fixed `inspect_policy_summary` evidence path only. For the current checkpoints,
 credential-update procedure, failure interpretation, and next development step,
 see the [shadow handoff and runbook](docs/30-deepseek-shadow-handoff.md) and
 [local milestone record](release/2026.09.09.md).
+
+### Synthetic Data Access Lab
+
+A separate local lab exercises synthetic customer/order queries across customer,
+support, and analyst identities. AgentHarness verifies bounded pre-execution
+evidence; the external lab independently authorizes and performs fixture reads.
+The default Agent is a rule-based offline simulator, not a live model. See the
+[lab guide](docs/31-synthetic-data-access-lab.md) for launch and test instructions.
+
+### Business Sandbox
+
+The separate `agentharness-business-sandbox` runtime expands the synthetic lab
+to correlated orders, payments, refunds, shipments, tickets, documents, events,
+role changes, approvals and reversible simulated writes. AgentHarness supplies
+the bounded `business-action-evidence-v1` correlation check; the external
+runtime retains identity, authorization, transaction and execution ownership.
+See the [contract](docs/business-action-evidence-v1.md) and the
+[current handoff](docs/32-business-sandbox-maintenance-handoff.md).
+
+The accepted synthetic result is a development checkpoint. It does not validate
+real SSO, production databases, real payments, production authorization or
+internal adoption. The next recommended experiment is one low-risk, read-only
+shadow pilot against a single internal data source.
 
 ### Declarative Safety Evaluations
 
@@ -474,7 +500,7 @@ docs/
   17-pi-integration-boundary-and-contract.md
   18-pi-tool-call-mapping-fixture.md
   19-pi-contract-check-cli.md
-  20-29 Pi boundary, evidence, ADR, handoff, and maintenance records
+  20-32 Pi boundary, evidence, lab, handoff, and maintenance records
 release/
   README.md
   YYYY.MM.DD.md
