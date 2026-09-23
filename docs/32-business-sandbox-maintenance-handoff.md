@@ -61,9 +61,10 @@ not required merely to refresh documentation.
 On 2026-09-16, the current local trees passed the repository policy validation,
 3/3 smoke evaluations, both required loop checks, the 150-test targeted evidence
 suite and all 538 AgentHarness tests. Before follow-up review, 59/59 sandbox
-tests passed when the HTTP cases could bind a temporary loopback port. Its offline run was
-60/60, and its baseline and evidence comparison arms were each 60/60 with zero
-unauthorized successes and zero model calls. `git diff --check` also passed.
+tests passed when the HTTP cases could bind a temporary loopback port. Its
+offline run was 60/60, and its baseline and evidence comparison arms were each
+60/60 with zero unauthorized successes and zero model calls. `git diff --check`
+also passed.
 
 An independent read-only review found no Critical, Important or Minor issue in
 the three pending change groups. That review also passed 52 focused tests and

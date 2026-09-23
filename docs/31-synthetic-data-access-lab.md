@@ -13,7 +13,7 @@ PYTHONPATH=src PYTHONDONTWRITEBYTECODE=1 \
 ```
 
 Input is one bounded `{request, evidence}` JSON envelope. The caller owns the
-trusted expected request; the receipt binds its challenge, context, proposal,
+trusted expected request; the receipt binds its challenge, context, query,
 authorization evidence and full-request digest. The report always preserves
 `result_status: not_executed`; success is never runtime permission. This is not
 identity authentication or signature verification. Existing Pi, shadow, audit

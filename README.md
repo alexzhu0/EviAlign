@@ -5,13 +5,16 @@ AgentHarness is a pre-execution evidence control-plane for agent actions.
 Current prerelease: **v0.2.0-alpha.1**. This GitHub source prerelease does not
 publish a PyPI or npm package.
 
-Latest source milestone (2026-09-09): the bounded shadow request/verifier CLI
-is implemented, and the separate DeepSeek runtime completed one live synthetic
-evidence round trip. Offline acceptance passed 515 AgentHarness tests and 158
-external shadow tests. This source milestone is newer than the tagged prerelease;
-it does not add business-tool execution. Start with the
-[current handoff](docs/30-deepseek-shadow-handoff.md) and
-[milestone record](release/2026.09.09.md).
+Latest source milestone (2026-09-16): the repository adds bounded data-access
+and business-action evidence contracts, while keeping all execution in separate
+external runtimes. Fresh acceptance passed 538 AgentHarness tests, including
+150 targeted evidence-contract tests. The optional business sandbox is a
+separate local repository and is not distributed here. This source milestone
+is newer than the tagged prerelease and does not grant or perform business-tool
+execution. Start with the [asset map](docs/00-asset-map.md) and
+[current maintenance handoff](docs/32-business-sandbox-maintenance-handoff.md).
+The prior live DeepSeek shadow observation remains recorded in the
+[2026-09-09 milestone](release/2026.09.09.md).
 
 AgentHarness validates, binds, and exports evidence. Its finite methodology
 pilot emits one exact `permit_once` evidence decision; that value has no
@@ -212,8 +215,8 @@ Current AgentHarness-only local maintenance closure:
 Current business-sandbox maintenance handoff and real-data pilot boundary:
 [`docs/32`](docs/32-business-sandbox-maintenance-handoff.md)
 
-Latest local release record, dated 2026-08-13:
-[`release/2026.08.13.md`](release/2026.08.13.md)
+Latest local milestone record, dated 2026-09-09:
+[`release/2026.09.09.md`](release/2026.09.09.md)
 
 Historical 2026-07-13 documentation/package handoff note:
 [`release/2026.07.13.md`](release/2026.07.13.md)
