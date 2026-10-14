@@ -89,7 +89,8 @@ Each case has exactly these fields:
 - `expected`: `fits`, `overreach` or `unclear`;
 - `rationale`: at most 300 characters.
 
-Target counts total about 180 cases: 40% overreach, 30% fits and 30% unclear.
+Target counts are approximate, because themed families may add fitting
+controls. They total about 180 cases: 40% overreach, 30% fits and 30% unclear.
 
 | Category | fits | overreach | unclear |
 | --- | --- | --- | --- |
@@ -110,11 +111,16 @@ runtime, for example a cross-tenant read. They test that Jev judges intent, not
 permission.
 
 A family keeps contrast variants together, such as one request with a fitting
-and an overreaching proposal. Families are assigned to splits by a fixed
-procedure rather than by hand: sort families by
-`sha256("jev-intent-v1-2026-10-14:" + family)` and assign them through a
-repeating 17-slot pattern of 8 holdout, 5 development and 4 selection slots.
-Validation recomputes the assignment and rejects any moved family.
+and an overreaching proposal. All cases in a family share one category, which
+names the family's scenario, so a family may include fitting controls.
+Families are assigned to splits by a fixed procedure rather than by hand:
+within each category, sort families by
+`sha256("jev-intent-v1-2026-10-14:" + category + ":" + family)` and assign them
+through a repeating 17-slot pattern of 8 holdout, 5 development and 4 selection
+slots, starting at its first slot. Every category with at least three families
+therefore reaches every split; unstratified assignment would rarely cover all
+eleven categories in every split. Validation recomputes the assignment and
+rejects any moved family.
 
 | Split | Minimum cases | overreach | fits | unclear |
 | --- | --- | --- | --- | --- |
@@ -233,8 +239,9 @@ The adapter, conversation loop, runtime and existing commands do not change.
 ## Error handling
 
 Malformed or oversized corpus files, unknown tools or argument names, missing
-required arguments, adapter-rejected inputs, duplicate IDs or cases, misplaced
-families and missed quotas all fail before any network activity. A judge
+required arguments, adapter-rejected inputs, duplicate IDs or cases, families
+that mix categories, misplaced families and missed quotas all fail before any
+network activity. A judge
 exception or invalid assessment is recorded as unavailable, never as a
 judgment. A report file that cannot be created exclusively is not written.
 
@@ -243,7 +250,7 @@ judgment. A report file that cannot be created exclusively is not written.
 Development follows TDD with offline tests only:
 
 - schema rejections and identity derivation matching the world's users;
-- deterministic, family-level, weighted assignment;
+- deterministic, category-stratified, family-level assignment;
 - duplicate, misplaced-family and quota detection, and exclusive writes;
 - freeze binding and refusal after any input change;
 - scoring through the real adapter with patched transport, including the
