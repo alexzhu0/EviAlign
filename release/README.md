@@ -25,11 +25,13 @@ it is a published version. It is not automatically a publication date.
 | 6. Local maintenance and workflow migration | 2026-08-11 to 2026-08-13 | Evidence-contract hardening, maintenance closure, Superpowers migration | `c77d7ad`, `3cb0542` |
 | 7. DeepSeek shadow pilot and handoff | 2026-08-19 to 2026-09-09 | Fixed synthetic tool, live evidence verification, offline acceptance | AgentHarness `2434026`; external runtime `946ba919a1` |
 | 8. Business sandbox evidence boundary | 2026-09-14 to 2026-09-16 | Bounded data-access and business-action evidence contracts; separate synthetic runtime | AgentHarness `fd55abb`; external runtime `a22e39d` |
+| 9. Optional Jev intent observation | 2026-10-14 | External sandbox observer, offline acceptance and three frozen live synthetic tasks | AgentHarness design/handoff `6b99f8e`; external runtime `a670abe` |
 
 ## Record inventory
 
 | Record | Type | Evidence basis | GitHub release body |
 | --- | --- | --- | --- |
+| [`2026.10.14.md`](./2026.10.14.md) | Local Jev shadow maintenance record | Offline integration and three frozen live synthetic tasks; sanitized session summary | No |
 | [`2026.09.09.md`](./2026.09.09.md) | Local shadow acceptance and handoff record | One live verified observation and offline acceptance; session-result summary | No |
 | [`2026.08.13.md`](./2026.08.13.md) | Local workflow-migration record | WSL Superpowers cutover and verified OMX retirement | No |
 | [`2026.08.11.md`](./2026.08.11.md) | Local maintenance-closure record | AgentHarness-only commits and fresh repository verification | No |
@@ -64,7 +66,7 @@ Historical entries are prereleases with no assets and do not become GitHub's
 Latest release. The alpha release is also a source prerelease with no PyPI or
 npm publication.
 
-The 2026-08 and 2026-09 records describe later local commits. They do not move
+The 2026-08 through 2026-10 records describe later local commits. They do not move
 the `v0.2.0-alpha.1` tag and do not claim a new public release, package
 publication, or deployment. The external business sandbox checkpoint is kept
 in a separate local repository and is not part of this public source tree.

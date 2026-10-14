@@ -1,5 +1,11 @@
 # AgentHarness 四类资产地图
 
+当前维护入口（2026-10-14）：
+[`Jev shadow 维护与交接`](./33-jev-shadow-maintenance-handoff.md)。
+独立业务沙盒已加入默认关闭的 Jev 意图观察器；本仓库只保留设计和验收摘要，
+不执行 Jev 或业务工具，不把模型判断转换为权限。
+本地里程碑见 [`release/2026.10.14.md`](../release/2026.10.14.md)。
+
 ## 背景
 
 AgentHarness 的目标不是复制任何第三方 system prompt，而是把公开语料中的 agent scaffold 设计沉淀为可复用的架构资产。CL4R1T4S 可以作为样本库，但必须按“不可信外部语料”处理。

@@ -342,3 +342,15 @@ is not implemented and this discrepancy must remain visible to future readers.
 
 The review's stale-workflow-status note is reconciled by this normal execution
 record and the design checkpoint update. It required no source-code change.
+
+## Subsequent live check and maintenance
+
+After the offline implementation checkpoint above, the user separately approved
+three read-only synthetic tasks using the retained DeepSeek/Jev integration.
+A pre-call freeze bound the cases, runner, source and rubric. All three passed
+their business/evidence/scoring checks; the cross-tenant attempt was denied by
+the runtime even though Jev classified its intent as `fits`. This does not
+change the earlier offline-only acceptance claim or establish general accuracy.
+The [2026-10-14 handoff](../../33-jev-shadow-maintenance-handoff.md) retains the
+sanitized results, costs, evidence digests and remaining limits. No source
+change or new provider call is part of the subsequent documentation maintenance.

@@ -5,16 +5,25 @@ AgentHarness is a pre-execution evidence control-plane for agent actions.
 Current prerelease: **v0.2.0-alpha.1**. This GitHub source prerelease does not
 publish a PyPI or npm package.
 
-Latest source milestone (2026-09-16): the repository adds bounded data-access
+Core source milestone (2026-09-16): the repository adds bounded data-access
 and business-action evidence contracts, while keeping all execution in separate
 external runtimes. Fresh acceptance passed 538 AgentHarness tests, including
 150 targeted evidence-contract tests. The optional business sandbox is a
 separate local repository and is not distributed here. This source milestone
 is newer than the tagged prerelease and does not grant or perform business-tool
 execution. Start with the [asset map](docs/00-asset-map.md) and
-[current maintenance handoff](docs/32-business-sandbox-maintenance-handoff.md).
+[business-sandbox boundary](docs/32-business-sandbox-maintenance-handoff.md).
 The prior live DeepSeek shadow observation remains recorded in the
 [2026-09-09 milestone](release/2026.09.09.md).
+
+Latest local maintenance (2026-10-14): the separate business sandbox now has
+an opt-in Jev intent observer via OpenRouter. Offline integration passed 91
+sandbox tests; three frozen live DeepSeek/Jev tasks passed their synthetic
+read-only checks, including a runtime-denied cross-tenant read. Jev judgments
+never grant permission or alter execution. AgentHarness code is unchanged.
+See the [current handoff](docs/33-jev-shadow-maintenance-handoff.md) for results,
+limits, operator commands and the JevHarness assessment. This is not a new
+tagged release or a general model-accuracy claim.
 
 AgentHarness validates, binds, and exports evidence. Its finite methodology
 pilot emits one exact `permit_once` evidence decision; that value has no
@@ -212,11 +221,14 @@ and not runtime authorization:
 Current AgentHarness-only local maintenance closure:
 [`docs/29`](docs/29-agentharness-maintenance-closure.md)
 
-Current business-sandbox maintenance handoff and real-data pilot boundary:
+Business-sandbox foundation handoff and real-data pilot boundary (2026-09-16):
 [`docs/32`](docs/32-business-sandbox-maintenance-handoff.md)
 
-Latest local milestone record, dated 2026-09-09:
-[`release/2026.09.09.md`](release/2026.09.09.md)
+Current optional Jev shadow maintenance handoff (2026-10-14):
+[`docs/33`](docs/33-jev-shadow-maintenance-handoff.md)
+
+Latest local milestone record, dated 2026-10-14:
+[`release/2026.10.14.md`](release/2026.10.14.md)
 
 Historical 2026-07-13 documentation/package handoff note:
 [`release/2026.07.13.md`](release/2026.07.13.md)
@@ -306,13 +318,22 @@ to correlated orders, payments, refunds, shipments, tickets, documents, events,
 role changes, approvals and reversible simulated writes. AgentHarness supplies
 the bounded `business-action-evidence-v1` correlation check; the external
 runtime retains identity, authorization, transaction and execution ownership.
-See the [contract](docs/business-action-evidence-v1.md) and the
-[current handoff](docs/32-business-sandbox-maintenance-handoff.md).
+See the [contract](docs/business-action-evidence-v1.md), the
+[foundation handoff](docs/32-business-sandbox-maintenance-handoff.md) and the
+[current Jev shadow handoff](docs/33-jev-shadow-maintenance-handoff.md).
+
+The sandbox optionally scores planner proposals with Jev using `--jev-shadow`.
+It is default-off, consumes model credits when enabled and records intent
+hints separately from authorization and tool results. `human_review` is a
+recommendation, not an execution pause or a completed review. This observer
+is implemented in the external sandbox, not in the AgentHarness CLI.
 
 The accepted synthetic result is a development checkpoint. It does not validate
 real SSO, production databases, real payments, production authorization or
-internal adoption. The next recommended experiment is one low-risk, read-only
-shadow pilot against a single internal data source.
+internal adoption. The immediate Jev follow-up is a broader frozen synthetic
+evaluation before changing its rubric. A low-risk, read-only shadow pilot
+against one internal data source remains a separate future design and data
+approval decision, not an authorized consequence of these tests.
 
 ### Declarative Safety Evaluations
 

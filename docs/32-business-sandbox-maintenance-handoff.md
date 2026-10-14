@@ -2,6 +2,12 @@
 
 Updated: 2026-09-16
 
+Follow-up dated 2026-10-14: the independent sandbox now includes an optional
+Jev intent observer. See the [current maintenance handoff](33-jev-shadow-maintenance-handoff.md)
+for its separate source checkpoint, offline acceptance and three-task live
+result. The dated foundation evidence and real-data boundary below are retained;
+they are not relabeled as fresh Jev acceptance.
+
 ## Current decision
 
 Keep AgentHarness and the separate `agentharness-business-sandbox` runtime as
