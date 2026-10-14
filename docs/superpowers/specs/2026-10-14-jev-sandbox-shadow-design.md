@@ -1,8 +1,8 @@
 # Optional Jev shadow scoring for the synthetic business sandbox
 
 Date: 2026-10-14
-Status: draft for written-spec review; no retained implementation authorized by
-this document alone.
+Status: spec and plan approved on 2026-10-14; native implementation completed
+in the existing external sandbox checkout and independently reviewed.
 
 ## Intent and scope
 
@@ -154,7 +154,23 @@ runtime authorization changes require separate designs and approvals.
 
 ## Workflow checkpoint
 
-Written-spec approval is the next required checkpoint. After that, create the
-written implementation plan and obtain the execution-method decision under the
-repository's Superpowers workflow. No implementation, push, tag, package
-publication or deployment is performed by this draft.
+The user approved this written spec and the implementation plan on 2026-10-14,
+then selected native execution in the existing sandbox checkout. Sandbox source
+checkpoint `a670abe992ca8cc69f5105c48c04e27d6f1156a5` contains the three scoped
+local implementation commits. Independent review found no Critical or Important
+issue. Default-off behavior, observation isolation and post-score context
+revocation were checked; this is not live semantic or production acceptance.
+
+Fresh offline verification passed 91 sandbox tests, 60/60 deterministic cases
+and both comparison arms at 60/60 with zero unauthorized successes and zero model
+calls. AgentHarness passed all 538 tests, policy validation, three smoke cases,
+both required loop checks and whitespace checks. Original outputs were captured
+in this session's ignored execution workspace; these figures are retained as
+session-result evidence, not a new replayable live-model bundle.
+
+One nonblocking implementation-plan discrepancy is retained: each submitted
+state includes only the proposed tool's description, while the complete
+thirteen-tool catalog is maintained and hashed in the rubric. The approved
+minimal-state design is preserved; transmitting the whole catalog is deferred.
+No new live provider call, semantic accuracy claim, push, tag, public release,
+package publication or deployment accompanies this source checkpoint.
