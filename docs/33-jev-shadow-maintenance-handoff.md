@@ -204,3 +204,15 @@ experiment requiring data minimization, external-runtime review and approval.
 No production write path or runtime authorization can be inferred from these
 synthetic checks. This maintenance makes a scoped local documentation commit
 only: no version bump, tag, push, hosted release, package publication or deployment.
+
+## Follow-up on 2026-10-19
+
+The frozen judge-only corpus is in the sandbox at `2b2c738`, freeze digest
+`21840682033bc94127f276ccce64051020e086f0dcc67a9b3c5c0f59c76c1902`.
+Development and selection completed: 219 provider requests, reported spend
+US$0.006826848, provisional verdict `usable_as_observation`. The holdout stays
+sealed. Details are in the sandbox document `docs/jev-intent-eval-v1.md`.
+
+Two earlier statements are dated, not rewritten: `1265fc7` was pushed after this
+handoff at the user's request, and the three-task live artifacts now live in
+sandbox commit `5dc2b0d` rather than only in the temporary directory.
