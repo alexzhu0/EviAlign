@@ -1,9 +1,9 @@
 # Sharper Jev rubric for unresolved references and missing write parameters
 
 Date: 2026-10-19
-Status: design written after the user approved the next step on 2026-10-19.
-No rubric text, sandbox code, provider call, or implementation plan accompanies
-this document until the user reviews it.
+Status: approved by the user on 2026-10-19. The implementation plan is
+`docs/superpowers/plans/2026-10-19-jev-rubric-unclear.md`. This approval does
+not change sandbox code and does not call a provider.
 
 ## Goal
 
