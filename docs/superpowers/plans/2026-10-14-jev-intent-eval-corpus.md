@@ -162,22 +162,45 @@ class JevEvalTests(unittest.TestCase):
                case(1, proposal={'tool': 'approve_refund', 'args': {'request_id': 'r_new_000001'}}),
                case(1, proposal={'tool': 'create_ticket', 'args': {
                    'order_id': 'o_acme_0001', 'title': 't', 'body': 'x' * 17000}}),
+               case(1, proposal={'tool': 'list_orders', 'args': {'limit': '5'}}),
+               case(1, proposal={'tool': 'request_refund', 'args': {
+                   'order_id': 'o_acme_0001', 'amount_cents': -5, 'reason': '配送延误'}}),
+               case(1, proposal={'tool': 'approve_refund', 'args': {
+                   'request_id': 'r_new_000001', 'decision': 'approve'}}),
+               case(1, proposal={'tool': 'order_detail', 'args': {'order_id': 'o acme;drop'}}),
+               case(1, proposal={'tool': 'order_detail', 'args': {'order_id': ' '}}),
+               case(1, proposal={'tool': 'order_detail', 'args': {'order_id': {'nested': 1}}}),
+               case(1, proposal={'tool': 'finance_summary', 'args': {'date_from': 'yesterday'}}),
+               {key: value for key, value in case(1).items() if key != 'rationale'},
+               case(1, prior_user_requests='先查订单。'), case(1, prior_user_requests=[' ']),
+               case(1, prior_user_requests=['x' * 1001]), case(1, family='Upper'),
+               case(1, family='a' * 65), case(1, id='E1000'), case(1, id='E01'),
+               case(1, proposal={'tool': 'order_detail', 'args': {'order_id': 'o_acme_0001'}, 'extra': 1}),
+               case(1, proposal={'tool': 'order_detail', 'args': []}),
+               case(1, user_request='   '), case(1, user_request=5),
                {**case(1), 'extra': True}, ['not', 'a', 'case']]
         for value in bad:
-            with self.subTest(value=str(value)[:60]), self.assertRaises(jev_eval.JevEvalError) as caught:
-                jev_eval.check_case(value)
-            self.assertEqual(self.code(caught), 'jev_eval.case_invalid')
+            with self.subTest(value=str(value)[:60]):
+                with self.assertRaises(jev_eval.JevEvalError) as caught:
+                    jev_eval.check_case(value)
+                self.assertEqual(self.code(caught), 'jev_eval.case_invalid')
 
     def test_identity_matches_every_world_user(self):
         from sandbox.world import build_world
+        expected = {f'{tenant}_{suffix}' for tenant in ('acme', 'nova', 'orbit') for suffix in (
+            'customer1', 'customer2', 'support1', 'support2', 'sales', 'finance', 'manager', 'auditor')}
         db = build_world()
         try:
-            for row in db.execute('SELECT id, tenant, role FROM users'):
+            rows = list(db.execute('SELECT id, tenant, role FROM users'))
+            self.assertEqual({row['id'] for row in rows}, expected)
+            for row in rows:
                 self.assertIsNotNone(jev_eval.ACTOR.fullmatch(row['id']))
                 self.assertEqual(jev_eval.identity(row['id']),
                                  {'actor': row['id'], 'tenant': row['tenant'], 'role': row['role']})
         finally:
             db.close()
+        for name in ('acme_customer3', 'acme_support', 'ACME_manager', 'acme_manager '):
+            self.assertIsNone(jev_eval.ACTOR.fullmatch(name))
 
 
 if __name__ == '__main__':
@@ -205,7 +228,7 @@ import statistics
 from .agent import parse_json
 from .jev_shadow import (DISCLOSURE, LABELS, MODEL, RETURNED_MODEL, RUBRIC_DIGEST, _payload,
                          unavailable_assessment, validate_assessment)
-from .runtime import REQUIRED, TOOLS
+from .runtime import REQUIRED, TOOLS, Sandbox
 
 SPLITS = ('dev', 'selection', 'holdout')
 REPEATS = {'dev': 3, 'selection': 1, 'holdout': 1}
@@ -263,11 +286,12 @@ def _text(value, limit):
 
 
 def check_case(case):
-    """Reject anything the adapter would skip or the runtime tool schema would not accept."""
+    """Reject anything the adapter would skip or the runtime would refuse as input."""
     try:
+        if type(case) is not dict or case.keys() != CASE_KEYS:
+            raise ValueError()
         proposal = case['proposal']
-        valid = (type(case) is dict and case.keys() == CASE_KEYS
-                 and type(case['id']) is str and re.fullmatch(r'E[0-9]{3}', case['id']) is not None
+        valid = (type(case['id']) is str and re.fullmatch(r'E[0-9]{3}', case['id']) is not None
                  and type(case['family']) is str and len(case['family']) <= 64
                  and FAMILY.fullmatch(case['family']) is not None
                  and type(case['category']) is str and case['category'] in CATEGORIES
@@ -285,6 +309,8 @@ def check_case(case):
         if not valid:
             raise ValueError()
         _payload(case['user_request'], identity(case['actor']), proposal, history(case))
+        # The runtime's own value rules; _normalize reads no instance state.
+        Sandbox._normalize(None, proposal)
     except Exception:
         raise JevEvalError('jev_eval.case_invalid') from None
 ```
@@ -301,6 +327,8 @@ git add -- sandbox/jev_eval.py tests/test_jev_eval.py
 git diff --cached --name-only && git diff --cached --check
 git commit -m "feat: validate Jev evaluation cases"
 ```
+
+**Amendment after the Task 1 review (2026-10-15):** the quality review found that `check_case` validated argument names but not their values, so value forms the runtime rejects (non-integer or out-of-range numbers, unknown decisions, malformed IDs, blank text, invalid dates and nested values) passed. `check_case` now also runs the runtime's own input normalizer `Sandbox._normalize`, which reads no instance state, and checks the case type before reading fields. The case-validation test covers those values and further single-field rejections, and the identity test checks that `ACTOR` matches exactly the world's users. The implementer also found that loops placing the error-code assertion after a combined `with self.subTest(...), self.assertRaises(...)` stop at the first wrong acceptance and hide later ones; every such loop in this plan now nests `assertRaises` and the assertion inside `subTest`. The code blocks above already include these changes. The test count is unchanged; runtime and adapter code are unchanged.
 
 ---
 
@@ -346,9 +374,10 @@ Add these methods to `JevEvalTests`, above `if __name__ == '__main__':`:
         duplicate['dev'].append(dict(duplicate['dev'][0], id='E999'))
         for value, expected in ((moved, 'jev_eval.family_misplaced'),
                                 (duplicate, 'jev_eval.duplicate_case')):
-            with self.subTest(code=expected), self.assertRaises(jev_eval.JevEvalError) as caught:
-                jev_eval.validate_splits(value)
-            self.assertEqual(self.code(caught), expected)
+            with self.subTest(code=expected):
+                with self.assertRaises(jev_eval.JevEvalError) as caught:
+                    jev_eval.validate_splits(value)
+                self.assertEqual(self.code(caught), expected)
         with patch.dict(jev_eval.MINIMUMS['holdout'], {'unclear': 1000}), \
                 self.assertRaises(jev_eval.JevEvalError) as caught:
             jev_eval.validate_splits(splits)
@@ -693,9 +722,10 @@ Add these methods to `JevEvalTests`, above `if __name__ == '__main__':`:
             for split, report, expected in (('holdout', 'new.json', 'jev_eval.holdout_sealed'),
                                             ('dev', 'taken.json', 'jev_eval.output_exists'),
                                             ('other', 'new.json', 'jev_eval.split_invalid')):
-                with self.subTest(code=expected), self.assertRaises(jev_eval.JevEvalError) as caught:
-                    jev_eval.run(corpus, corpus / 'freeze.json', split, corpus / report, factory)
-                self.assertEqual(self.code(caught), expected)
+                with self.subTest(code=expected):
+                    with self.assertRaises(jev_eval.JevEvalError) as caught:
+                        jev_eval.run(corpus, corpus / 'freeze.json', split, corpus / report, factory)
+                    self.assertEqual(self.code(caught), expected)
             dev = json.loads((corpus / 'cases-dev.json').read_text(encoding='utf-8'))
             dev['cases'][0]['rationale'] = '冻结后改过的理由。'
             (corpus / 'cases-dev.json').write_text(json.dumps(dev, ensure_ascii=False), encoding='utf-8')
@@ -913,9 +943,10 @@ Add this method to `JevEvalTests`, above `if __name__ == '__main__':`:
                      'jev_eval.freeze_mismatch'),
                     ([report('h.json', 'holdout'), report('z.json', 'dev')], 'jev_eval.split_mix'),
                     ([report('i.json', 'dev', complete=False)], 'jev_eval.report_invalid')):
-                with self.subTest(code=expected), self.assertRaises(jev_eval.JevEvalError) as caught:
-                    jev_eval.summarize(paths)
-                self.assertEqual(self.code(caught), expected)
+                with self.subTest(code=expected):
+                    with self.assertRaises(jev_eval.JevEvalError) as caught:
+                        jev_eval.summarize(paths)
+                    self.assertEqual(self.code(caught), expected)
 ```
 
 - [ ] **Step 2: Run the test to verify it fails**

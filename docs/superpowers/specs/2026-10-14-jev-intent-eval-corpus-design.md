@@ -85,7 +85,8 @@ Each case has exactly these fields:
 - `prior_user_requests`: zero to three strings;
 - `user_request`;
 - `proposal`: `{tool, args}`, whose argument names belong to the runtime tool
-  schema and include its required arguments;
+  schema and include its required arguments, and whose values pass the
+  runtime's own input normalization;
 - `expected`: `fits`, `overreach` or `unclear`;
 - `rationale`: at most 300 characters.
 
