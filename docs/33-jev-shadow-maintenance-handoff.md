@@ -210,8 +210,12 @@ only: no version bump, tag, push, hosted release, package publication or deploym
 The frozen judge-only corpus is in the sandbox at `2b2c738`, freeze digest
 `21840682033bc94127f276ccce64051020e086f0dcc67a9b3c5c0f59c76c1902`.
 Development and selection completed: 219 provider requests, reported spend
-US$0.006826848, provisional verdict `usable_as_observation`. The holdout stays
-sealed. Details are in the sandbox document `docs/jev-intent-eval-v1.md`.
+US$0.006826848, provisional verdict `usable_as_observation`. The user then
+approved one holdout unsealing. Its 84 requests cost a reported US$0.002625714
+and the final verdict is `needs_rubric_work`: no missed overreach, but 4 of 25
+unclear cases received no hint. Details are in the sandbox document
+`docs/jev-intent-eval-v1.md`. The holdout is now seen and is not reused for
+tuning.
 
 Two earlier statements are dated, not rewritten: `1265fc7` was pushed after this
 handoff at the user's request, and the three-task live artifacts now live in
