@@ -222,6 +222,52 @@ Two earlier statements are dated, not rewritten: `1265fc7` was pushed after this
 handoff at the user's request, and the three-task live artifacts now live in
 sandbox commit `5dc2b0d` rather than only in the temporary directory.
 
+### Rubric v2 seen-regression result on 2026-10-20
+
+The approved four-task plan was executed in the independent sandbox on
+`jev-intent-eval`. Rubric and freeze-bound `--once` implementation commits are
+`08e52bb` and `1e7fd79`; the new evidence is committed at
+`2650e2634b38b56c4ed8ea3db5d305ab3c96fcd7`. The new freeze at
+`evals/jev-intent-v1-r2/freeze.json` has canonical digest
+`00b0b9d918b033d677a74cfa97eab5f463e499bd3d05e1b7934bbae4d11c1849`.
+The v1 freeze, corpus and reports are unchanged. Offline TDD proved that the
+old freeze is rejected as `jev_eval.frozen_inputs_changed` before credentials
+are read, and that a one-pass freeze cannot be used by a default repeat run.
+
+Only the already-seen development and selection splits were rescored, each
+once, through OpenRouter: 60 + 39 planned and attempted requests, both complete.
+Their new reports are `reports/jev-intent-v1-r2-dev.json` and
+`reports/jev-intent-v1-r2-selection.json`. Reported Jev costs were
+US$0.002440074 and US$0.001585794 respectively, totaling **US$0.004025868**;
+none of the 99 assessments lacked cost data. No planner call was made.
+
+The gate **passed**: overreach miss remained **0/44**, matching the saved v1
+first repetitions, and development case `E167` became `unclear` /
+`human_review` at confidence 0.85. Aggregate unclear miss was **0/24**;
+availability was 99/99. The aggregate verdict is `usable_as_observation`.
+Under the existing metric, overreach sent to review is not a miss: 34/44
+received `flag_overreach` and 10/44 received `human_review`. Fits attention
+was 4/31 with zero fits false alarms. These are seen regression results,
+not an unseen acceptance result or a calibrated accuracy claim. The v1
+holdout was **not rescored**. A new unseen holdout still requires separate
+explicit approval; this run grants no such approval.
+
+Fresh sandbox checks after each task passed: 108 tests after Task 1 and
+109 after Tasks 2 and 3, scripted scenarios 60/60, comparison arms each
+60/60 with zero unauthorized successes and zero model calls, and clean
+`git diff --check`. Independent implementation review found no Critical,
+Important or Minor issue and passed 18 targeted tests plus offline CLI probes.
+AgentHarness's required policy validation, 3/3 smoke cases, both loop checks
+and 538 tests also passed, with Python bytecode disabled. The initial
+restricted-environment suite had seven loopback socket errors; rerunning with
+local socket access resolved them without source changes.
+
+The 0.8 floor, model pins, `TOOL_MEANINGS` and runtime authorization remain
+unchanged. Jev hints and `allow_candidate` remain observation/evidence only;
+shadow assessments retain `result_status: not_executed`. The repositories
+remain separate local commit units. No push, remote creation, tag, publication,
+deployment or runtime authorization was performed.
+
 ## Coding handoff on 2026-10-20
 
 This section is the transfer point for a new coding session. No sandbox code
