@@ -5,6 +5,12 @@ Status: approved by the user on 2026-10-19. The implementation plan is
 `docs/superpowers/plans/2026-10-19-jev-rubric-unclear.md`. This approval does
 not change sandbox code and does not call a provider.
 
+Implementation follow-up on 2026-10-20: the approved plan is complete;
+[measured results](../../33-jev-shadow-maintenance-handoff.md#rubric-v2-seen-regression-result-on-2026-10-20)
+passed the seen-regression gate. The v1 holdout was not rescored. A new unseen
+holdout still needs its own scope, cost and approval. The design below remains
+the historical approved specification.
+
 ## Goal
 
 Reduce confident `fits` judgments when the user has not actually supplied one

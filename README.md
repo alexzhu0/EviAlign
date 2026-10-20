@@ -16,14 +16,15 @@ execution. Start with the [asset map](docs/00-asset-map.md) and
 The prior live DeepSeek shadow observation remains recorded in the
 [2026-09-09 milestone](release/2026.09.09.md).
 
-Latest local maintenance (2026-10-14): the separate business sandbox now has
-an opt-in Jev intent observer via OpenRouter. Offline integration passed 91
-sandbox tests; three frozen live DeepSeek/Jev tasks passed their synthetic
-read-only checks, including a runtime-denied cross-tenant read. Jev judgments
-never grant permission or alter execution. AgentHarness code is unchanged.
-See the [current handoff](docs/33-jev-shadow-maintenance-handoff.md) for results,
-limits, operator commands and the JevHarness assessment. This is not a new
-tagged release or a general model-accuracy claim.
+Latest local maintenance (2026-10-20): the separate business sandbox now uses
+Jev rubric projection version 2 and a freeze-bound `--once` evaluator. A single
+rescore of 99 seen development/selection cases kept overreach miss at 0/44 and
+reduced unclear-without-hint cases from 2/24 to 0/24. Fits review hints increased
+from 1/31 to 4/31. These are seen regression results; a new unseen holdout still
+needs a separately approved scope and cost. Jev never grants permission or
+changes execution. AgentHarness code is unchanged. See the
+[current handoff](docs/33-jev-shadow-maintenance-handoff.md) for evidence,
+limitations and operator commands. No new tagged release is implied.
 
 AgentHarness validates, binds, and exports evidence. Its finite methodology
 pilot emits one exact `permit_once` evidence decision; that value has no
@@ -224,7 +225,7 @@ Current AgentHarness-only local maintenance closure:
 Business-sandbox foundation handoff and real-data pilot boundary (2026-09-16):
 [`docs/32`](docs/32-business-sandbox-maintenance-handoff.md)
 
-Current optional Jev shadow maintenance handoff (coding transfer 2026-10-20):
+Current optional Jev shadow handoff (rubric v2 delivered 2026-10-20):
 [`docs/33`](docs/33-jev-shadow-maintenance-handoff.md)
 
 Latest local milestone record, dated 2026-10-14:
@@ -330,8 +331,9 @@ is implemented in the external sandbox, not in the AgentHarness CLI.
 
 The accepted synthetic result is a development checkpoint. It does not validate
 real SSO, production databases, real payments, production authorization or
-internal adoption. The immediate Jev follow-up is a broader frozen synthetic
-evaluation before changing its rubric. A low-risk, read-only shadow pilot
+internal adoption. The immediate Jev follow-up is a separately approved new
+unseen synthetic holdout with rubric v2 held fixed. The earlier v1 holdout is
+seen and is not rescored. A low-risk, read-only shadow pilot
 against one internal data source remains a separate future design and data
 approval decision, not an authorized consequence of these tests.
 

@@ -1,9 +1,46 @@
 # Jev Shadow Maintenance Handoff
 
-Updated: 2026-10-20. Local documentation maintenance for coding-session transfer;
-no new runtime behavior in this commit.
+Updated: 2026-10-20. Current continuation status is recorded first; older
+implementation and transfer checkpoints remain dated provenance.
 
-## Current decision and source checkpoints
+## Current continuation checkpoint on 2026-10-20
+
+Rubric v2 implementation and the authorized seen-regression run are complete.
+AgentHarness's result record is `5ab8a9a`; sandbox implementation/evidence is
+`2650e2634b38b56c4ed8ea3db5d305ab3c96fcd7` on `jev-intent-eval`.
+See [the measured result](#rubric-v2-seen-regression-result-on-2026-10-20).
+The older “Coding handoff” below is a historical pre-implementation transfer,
+not an instruction to execute those tasks again.
+
+Current maintenance synchronizes README, plan/spec completion status and the
+sandbox's `docs/jev-intent-eval-v2.md` plus operator commands. No rubric, code,
+freeze or paid report changes are part of this maintenance. The new sandbox
+summary names the review-load tradeoff as well as the passed gate. A new unseen
+holdout is the next proposed step; its concrete scope and cost are pending
+separate approval. No new paid call has been made by this maintenance.
+
+Fresh maintenance verification on 2026-10-20 used AgentHarness source
+`5ab8a9a` and sandbox source `2650e26` with documentation-only diffs. All six
+AgentHarness checks passed (538 tests); all four sandbox checks passed
+(109 tests, scripted 60/60, comparison arms each 60/60, zero unauthorized
+successes and model calls). Both diffs passed whitespace checks. Local link
+checks resolved 98 path targets across the eight maintained documents without
+missing paths; anchors were not exhaustively checked. These command outputs
+were captured in the maintenance session; no paid evaluation was repeated.
+Independent documentation review found no remaining Critical, Important or
+Minor issue. The sandbox documentation maintenance is committed separately as
+`b9d982b77f302f355ec8200fa7c94e4c4de24986`.
+
+Local pre-maintenance observation: AgentHarness `main` at `5ab8a9a` is ahead of
+local `origin/main` by 10 commits; `.cursor/` is untracked and out of scope.
+The sandbox has no remote. Unrelated runtime-authorization worktrees are
+untouched. Retain the existing branches, separate commits and no-push boundary.
+
+## Historical decision and source checkpoints — 2026-10-14
+
+This section and the implementation/research runbook below retain the original
+2026-10-14 maintenance record. Source checkpoints and “this maintenance”
+statements in that record refer to that date; current status is recorded above.
 
 Keep the existing optional Jev observer in the independent synthetic business
 sandbox. Borrow evaluation, trace review and freeze mechanisms from JevHarness
@@ -184,7 +221,11 @@ for this follow-up. See the sandbox's own `docs/jev-shadow.md` for the complete
 operator contract. Model suites are paid and previously seen cases are regression
 evidence only; a new live acceptance needs a new pre-call freeze/report.
 
-## Next concrete step and authority
+## Historical next step and authority — 2026-10-14
+
+This was the recommendation before the v1 corpus and rubric-v2 follow-ups below;
+it is not the current work queue. The current next step is a separately approved
+new unseen holdout with the delivered rubric held fixed.
 
 Prepare a broader synthetic corpus covering matched intent, overreach,
 unresolved references, follow-up context and misleading document content.
