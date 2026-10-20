@@ -224,7 +224,7 @@ Current AgentHarness-only local maintenance closure:
 Business-sandbox foundation handoff and real-data pilot boundary (2026-09-16):
 [`docs/32`](docs/32-business-sandbox-maintenance-handoff.md)
 
-Current optional Jev shadow maintenance handoff (2026-10-14):
+Current optional Jev shadow maintenance handoff (coding transfer 2026-10-20):
 [`docs/33`](docs/33-jev-shadow-maintenance-handoff.md)
 
 Latest local milestone record, dated 2026-10-14:

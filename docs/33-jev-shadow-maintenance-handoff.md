@@ -1,6 +1,7 @@
 # Jev Shadow Maintenance Handoff
 
-Updated: 2026-10-14. Local documentation maintenance; no new runtime behavior.
+Updated: 2026-10-20. Local documentation maintenance for coding-session transfer;
+no new runtime behavior in this commit.
 
 ## Current decision and source checkpoints
 
@@ -220,3 +221,107 @@ tuning.
 Two earlier statements are dated, not rewritten: `1265fc7` was pushed after this
 handoff at the user's request, and the three-task live artifacts now live in
 sandbox commit `5dc2b0d` rather than only in the temporary directory.
+
+## Coding handoff on 2026-10-20
+
+This section is the transfer point for a new coding session. No sandbox code
+changed in this maintenance commit. The sharper-rubric design and plan are
+approved; implementation has not started.
+
+### Repository checkpoints
+
+| Repository | Branch | HEAD | Notes |
+| --- | --- | --- | --- |
+| AgentHarness | `main` | `2411a8e55d092a30149fa210ee1bcaf913dd2874` | Local observation: ahead of local `origin/main` by 8 commits. Not pushed by this maintenance. Untracked `.cursor/` must stay out of Git. Unrelated worktrees `feature/runtime-authorization-v3` and `feature/runtime-authorization-v4-one-read` are out of scope. |
+| `agentharness-business-sandbox` | `jev-intent-eval` | `a1deab4e8560d1b011121a9f297a187e9e063f6f` | Clean tree. No remote. `main` is still `5dc2b0d` (live archive only). |
+
+Approved design:
+`docs/superpowers/specs/2026-10-19-jev-rubric-unclear-design.md` (`e2fb96a`,
+status updated when the plan landed).
+
+Approved plan (not executed):
+`docs/superpowers/plans/2026-10-19-jev-rubric-unclear.md` (`2411a8e`).
+
+Sandbox observer is still rubric `projection_version` 1 in
+`sandbox/jev_shadow.py`. The committed v1 freeze digest is still
+`21840682033bc94127f276ccce64051020e086f0dcc67a9b3c5c0f59c76c1902` at
+`evals/jev-intent-v1/freeze.json`. Holdout verdict `needs_rubric_work` is recorded
+in sandbox `a1deab4` / `reports/jev-intent-v1-holdout.json`.
+
+### Providers (do not confuse)
+
+| Role | Keys / endpoint | Notes |
+| --- | --- | --- |
+| Jev observer | `OPENROUTER_API_KEY`, `OPENROUTER_BASE_URL` (`https://openrouter.ai`) | Only provider used by `jev_shadow` / `jev-eval run`. Model request `typesafe/jev-1.13`; accept only `typesafe/jev-1.13-20260917`. |
+| Planner | `DEEPSEEK_API_KEY`, `DEEPSEEK_BASE_URL` | Used by sandbox ask/serve/test-model paths; not required for rubric Tasks 1–3. |
+| MiniMax | may exist in AgentHarness `.env` as `MINIMAX_API_KEY` | Present or absent does not matter: no current Jev or eval path reads it. Do not treat MiniMax as the Jev provider. |
+
+Never open, copy, or print `.env`.
+
+### Product boundaries that stay true
+
+- AgentHarness is a pre-execution evidence control-plane. `allow_candidate` is
+  evidence only. Keep `result_status: not_executed` on current evidence/shadow
+  surfaces.
+- Jev is observation-only and default-off (`--jev-shadow`). Hints never authorize
+  or execute tools.
+- The two repositories stay separate change, review, commit, and release units.
+- Do not start OMX / `ralplan` / team-runtime for this work. Superpowers only.
+
+### Next concrete coding action
+
+Execute the approved plan task-by-task with TDD:
+
+1. Sandbox Task 1: rewrite `QUESTION`, bump `projection_version` to 2, prove the
+   v1 freeze fails closed before credentials.
+2. Sandbox Task 2: add freeze-bound `--once` so development scores once.
+3. Sandbox Task 3 (paid, already authorized by the approved plan and prior user
+   spend approval for this rescope): rescore only first-pass v1 `dev` +
+   `selection` (~99 OpenRouter calls, ~US$0.003) into new files under
+   `evals/jev-intent-v1-r2/` and `reports/jev-intent-v1-r2-*.json`. Do not
+   overwrite v1 freeze/reports. Do not rescore the v1 holdout.
+4. AgentHarness Task 4: append measured numbers to this handoff.
+
+Gate after Task 3: overreach miss must stay at the saved v1 level (0 missed) and
+known development miss `E167` must become `human_review` or choice `unclear`.
+Worse overreach miss stops the rubric and needs a new design. A new unseen
+holdout still needs a separate explicit approval; the plan does not authorize it.
+
+### Authority already granted / not granted
+
+| Action | Status |
+| --- | --- |
+| Implement the approved plan Tasks 1–4 | Granted by approved design + plan; user asked to hand coding to the next session |
+| Paid one-pass rescore of seen `dev` + `selection` (~99 calls) | Granted by the approved plan (and earlier “钱不是问题” for this evaluation track) |
+| Rescore or retune on the v1 holdout | Not granted |
+| New unseen holdout call | Not granted |
+| Push AgentHarness, create sandbox remote, tag, publish, deploy | Not granted |
+| Change 0.8 threshold, model pins, `TOOL_MEANINGS`, or runtime authorization | Not granted |
+
+### Verification commands
+
+AgentHarness (from its root; docs-only edits may skip full suite if nothing else
+changed, but required checks still apply before claiming completion that touches
+behavior elsewhere):
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 ./agentharness validate examples/agent_policy.example.yaml
+PYTHONDONTWRITEBYTECODE=1 ./agentharness eval --cases PI-001,PD-001,SEC-001
+PYTHONDONTWRITEBYTECODE=1 ./agentharness loop check examples/agent_bus
+PYTHONDONTWRITEBYTECODE=1 ./agentharness loop check examples/agent_bus_adapter_registry
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -q
+git diff --check
+```
+
+Sandbox (from its root, after each code task):
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -q
+./run-sandbox test
+./run-sandbox compare
+git diff --check
+```
+
+Stage explicit paths only. Prefer both folders as Cursor workspace roots, or
+request write approval for the sibling sandbox. Shell writes to the sibling often
+need unrestricted permissions.
