@@ -1,9 +1,74 @@
 # Jev Shadow Maintenance Handoff
 
-Updated: 2026-10-20. Current continuation status is recorded first; older
+Updated: 2026-10-21. Current continuation status is recorded first; older
 implementation and transfer checkpoints remain dated provenance.
 
-## Current continuation checkpoint on 2026-10-20
+## Current continuation checkpoint on 2026-10-21
+
+The user separately approved the proposed new synthetic holdout: 84 cases,
+36 overreach / 24 fits / 24 unclear, independent labels before freeze, one
+OpenRouter request per case and estimated cost around US$0.004. The run is now
+complete. The fixed rubric was not tuned on this batch; the old v1 holdout was
+not rescored. The two seen dev/selection files were unscored compatibility
+anchors for the existing evaluator, not additional provider requests.
+
+The sandbox pre-call input commit is
+`62f738fb1de542b95974008dac2a19c3bb93674c`. New corpus, label audit and protocol
+are under `evals/jev-intent-v2/`. Freeze canonical content SHA-256:
+`f3e0a2d0ccc71b4c961806f430f486a1df171a2f4f1744d92cf7fa0e3bfa5887`.
+The raw report is `reports/jev-intent-v2-holdout.json`, file SHA-256
+`8ad1cdc3af7c97c42240b5cd98c2410e8b502da66aea2008876c8ba2e63b6879`;
+`reports/jev-intent-v2-holdout-review.json` binds both hashes and records the
+stricter predeclared acceptance gate. The sandbox explanation is
+`docs/jev-intent-eval-v2-holdout.md`. The sandbox result and documentation commit
+is `7626e06054a25d57e1ba2879e687faff213fdcc6`, separate from this AgentHarness
+handoff commit.
+
+Planned and actual requests were **84/84**, all available, complete without
+retry. Reported cost was **US$0.003486756**, with zero missing-cost records.
+The stricter gate **passed**: overreach miss **0/36**, all 36 explicitly flagged;
+unclear miss **0/24**, all 24 sent to review; fits attention **3/24 (12.5%)**,
+fits false alarm **0/24**. The unchanged evaluator verdict is
+`usable_as_observation`. Its built-in 4% overreach line is recorded separately
+from the approved zero-miss gate; neither was changed after results arrived.
+
+This is not 84 correct labels: 24/24 fits and 36/36 overreach labels were correct,
+but one of the 24 unclear cases was labeled low-confidence overreach and still
+received `human_review`; 23/24 unclear labels were correct. Case-level Wilson
+95% intervals for overreach/unclear miss are 0–9.64% / 0–13.8%. The 84 cases span
+33 correlated scenario families in known synthetic business categories. They
+were authored and independently blind-labeled by AI agents, not human ground
+truth or production proposals. Initial label agreement was 84/84, with two
+ambiguity findings resolved by editing only those test inputs before freeze;
+independent re-review found no remaining ambiguity. The entire audit is retained.
+
+Pre-call independent evidence review found no Critical, Important or Minor
+issue and checked raw blind-label records, freeze binding and no exact or
+identifier-only v1 input duplicates. Refusal probes confirmed missing unseal,
+missing once and changed frozen inputs fail before credentials. This execution
+session captured 109 sandbox tests, scripted 60/60 and comparison arms each
+60/60 with zero unauthorized successes and model calls. AgentHarness's six
+required checks also passed, including 538 tests. No evidence-contract or
+runtime code changed; the extra evidence-contract suite was not applicable.
+
+Final independent evidence review confirmed all 84 request/proposal bindings,
+the full metric table, exact reported cost, and both the raw and strict verdicts.
+Spec and Evidence passed with no Critical or Important finding. One Minor
+operator-document tense issue was corrected to distinguish the older r2 freeze
+from the new holdout freeze. Final sandbox checks again passed 109 tests,
+60/60 scripted cases and both comparison arms. Local path-link checks resolved
+103 references across the maintained documents, with none missing.
+
+All assessments retain `result_status: not_executed`; hints and
+`allow_candidate` remain observations/evidence, not execution permission.
+No DeepSeek planner or MiniMax call, business execution, old holdout rescore,
+push, remote creation, tag, publication or deployment occurred in this batch.
+The new holdout is now seen. Continue retaining the default-off observer and
+review burden as a measured limitation; another unseen batch, a real-data pilot
+or execution integration requires its own scope and approval. Older checkpoints
+below retain the status and authority that applied on their respective dates.
+
+## Continuation checkpoint on 2026-10-20 (historical)
 
 Rubric v2 implementation and the authorized seen-regression run are complete.
 AgentHarness's result record is `5ab8a9a`; sandbox implementation/evidence is
