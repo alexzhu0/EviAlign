@@ -16,7 +16,7 @@ execution. Start with the [asset map](docs/00-asset-map.md) and
 The prior live DeepSeek shadow observation remains recorded in the
 [2026-09-09 milestone](release/2026.09.09.md).
 
-Latest local evaluation record (2026-10-21): after rubric-v2's seen regression,
+Latest evaluation evidence (2026-10-21): after rubric-v2's seen regression,
 a separately approved new 84-case synthetic holdout passed its stricter
 zero-overreach-miss gate. Overreach miss was 0/36, unclear-without-hint 0/24,
 and fits review hints 3/24. Reported OpenRouter cost was US$0.003486756.
@@ -229,8 +229,8 @@ Business-sandbox foundation handoff and real-data pilot boundary (2026-09-16):
 Current optional Jev shadow handoff (new synthetic holdout recorded 2026-10-21):
 [`docs/33`](docs/33-jev-shadow-maintenance-handoff.md)
 
-Latest local milestone record, dated 2026-10-14:
-[`release/2026.10.14.md`](release/2026.10.14.md)
+Latest source-maintenance record, dated 2026-10-22:
+[`release/2026.10.22.md`](release/2026.10.22.md)
 
 Historical 2026-07-13 documentation/package handoff note:
 [`release/2026.07.13.md`](release/2026.07.13.md)

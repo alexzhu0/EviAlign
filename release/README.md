@@ -26,11 +26,13 @@ it is a published version. It is not automatically a publication date.
 | 7. DeepSeek shadow pilot and handoff | 2026-08-19 to 2026-09-09 | Fixed synthetic tool, live evidence verification, offline acceptance | AgentHarness `2434026`; external runtime `946ba919a1` |
 | 8. Business sandbox evidence boundary | 2026-09-14 to 2026-09-16 | Bounded data-access and business-action evidence contracts; separate synthetic runtime | AgentHarness `fd55abb`; external runtime `a22e39d` |
 | 9. Optional Jev intent observation | 2026-10-14 | External sandbox observer, offline acceptance and three frozen live synthetic tasks | AgentHarness design/handoff `6b99f8e`; external runtime `a670abe` |
+| 10. Frozen Jev rubric evaluation | 2026-10-19 to 2026-10-22 | Rubric v2, seen regression, one separately approved new synthetic holdout, source maintenance | AgentHarness result handoff `ce36e37`; external sandbox `7626e06` |
 
 ## Record inventory
 
 | Record | Type | Evidence basis | GitHub release body |
 | --- | --- | --- | --- |
+| [`2026.10.22.md`](./2026.10.22.md) | Jev rubric-v2 source maintenance and requested GitHub sync | Retained seen/new synthetic results; dated verification and separate sandbox checkpoints | No |
 | [`2026.10.14.md`](./2026.10.14.md) | Local Jev shadow maintenance record | Offline integration and three frozen live synthetic tasks; sanitized session summary | No |
 | [`2026.09.09.md`](./2026.09.09.md) | Local shadow acceptance and handoff record | One live verified observation and offline acceptance; session-result summary | No |
 | [`2026.08.13.md`](./2026.08.13.md) | Local workflow-migration record | WSL Superpowers cutover and verified OMX retirement | No |
@@ -50,9 +52,11 @@ it is a published version. It is not automatically a publication date.
 | [`2026.06.15.md`](./2026.06.15.md) | Historical milestone record | External planning evidence; packaged 2026-06-24 | No |
 | [`2026.06.13.md`](./2026.06.13.md) | Historical asset-baseline record | Same-day git history through `8a657d2` | Yes: curated historical prerelease |
 
-The records marked **No** are intentionally not one-to-one GitHub Releases.
-Their full stated scope did not exist in a complete commit on the filename date.
-Creating tags for them would manufacture a false release chronology.
+The records marked **No** are source, milestone or handoff notes, not automatic
+GitHub Releases. Some historical notes cannot be mapped truthfully to a complete
+commit on their evidence date; tagging those as same-date releases would
+misrepresent the chronology. A new tag or hosted release requires its own
+explicit authorization, including for records committed on their filename date.
 
 ## Public GitHub mapping
 

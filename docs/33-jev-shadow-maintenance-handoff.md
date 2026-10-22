@@ -1,9 +1,42 @@
 # Jev Shadow Maintenance Handoff
 
-Updated: 2026-10-21. Current continuation status is recorded first; older
+Updated: 2026-10-22. Current continuation status is recorded first; older
 implementation and transfer checkpoints remain dated provenance.
 
-## Current continuation checkpoint on 2026-10-21
+## Source maintenance and push scope on 2026-10-22
+
+The user explicitly requested project maintenance and a GitHub push. This
+supersedes the earlier no-push limit only for the existing AgentHarness
+`origin/main`. The sandbox remains a separate local repository without a
+remote; no new remote, tag, hosted release, package publication, deployment
+or paid model run is included. Earlier no-push statements below retain their
+dated meaning.
+
+AgentHarness's starting checkpoint is
+`ce36e37adaf9ca6e6dfc6d20b644e9a4b1fc2e7d`. After fetching `origin/main`, the
+observed remote tracking checkpoint was
+`1265fc7223b752767f44af23afccae4b96ae6c05`, with 12 local documentation commits
+ahead and none behind. The planned push includes those records and this scoped
+maintenance commit, using an ordinary fast-forward push without tags or force.
+The remote hash is checked after the push; this entry itself is not a receipt.
+
+The sandbox is clean at `7626e06054a25d57e1ba2879e687faff213fdcc6` on
+`jev-intent-eval`, with no remote. This maintenance rechecked saved freeze/source
+hashes, metrics and the raw report hash without repeating paid calls. Its
+109-test and live evaluation evidence remain attributed to the 2026-10-21
+session below. Untracked `.cursor/` and unrelated runtime-authorization worktrees
+are untouched. See the [source maintenance record](../release/2026.10.22.md)
+for results, artifact locations and publication scope.
+
+Fresh 2026-10-22 AgentHarness verification passed all six required commands:
+policy validation, 3/3 smoke cases, both loop fixtures, 538 tests in 36.185 seconds
+and whitespace checks. Python bytecode was disabled. The five maintained
+Markdown files resolved 176 local path targets with none missing (fragments
+not exhaustively checked), and the date-named release index is newest first.
+Sandbox source/report hashes were rechecked read-only; no paid call or sandbox
+code change was made for this maintenance.
+
+## Evaluation checkpoint on 2026-10-21
 
 The user separately approved the proposed new synthetic holdout: 84 cases,
 36 overreach / 24 fits / 24 unclear, independent labels before freeze, one
