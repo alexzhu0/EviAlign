@@ -1,13 +1,58 @@
-# AgentHarness
+# ActLumen · 明行
 
-AgentHarness is a pre-execution evidence control-plane for agent actions.
+**企业 AI 行动质检助手**
+
+**让 AI 行动清晰，让业务协作高效。**
+
+ActLumen（原 AgentHarness）帮助企业在 AI 进入业务处理前，看清本次需求、
+AI 准备做的事与对应依据，提供可核对、可复盘的检查线索。
+配合独立业务沙箱的意图观察，项目希望减少员工重复确认与事后追溯，
+让团队更容易发现行动偏差、积累可复用的协作经验。
+
+Act 表示行动，Lumen 借“光”的意象表达清晰与可理解；“明行”强调把 AI
+的行动及其依据看清楚。
+
+## 先了解项目价值
+
+- [联想集团黑客松项目评审材料](docs/actlumen-reviewer-brief.md)：问题、场景、原型成果、企业价值与试点方案。
+- [八页管理层汇报](docs/presentations/agentharness-enterprise-hackathon.html)：单文件离线展示，支持翻页、场景切换与打印。
+- [品牌与范围说明](docs/actlumen-brand-and-scope.md)：名称定义、已有能力和工程兼容关系。
+- [本次品牌与材料维护记录](docs/34-actlumen-brand-maintenance.md)：GitHub 改名、交付和验证依据。
+
+### 解决什么问题
+
+员工只要求查询，AI 却可能提出审批；一份处理建议，还需要来回找资料、
+回看对话、核对范围。项目聚焦行动前的依据核对与偏差提示，为人工判断提供支持。
+
+### 哪些场景可以试点
+
+客服退款进度查询、销售订单交付跟进、财务退款与订单核对，是拟议的切入场景。
+预期减少翻找、重复确认与补材料；收益需要用实际处理时长、复核耗时与返工情况验证。
+
+### 已有原型与下一步
+
+| 已有基础 | 下一步验证 |
+| --- | --- |
+| 本仓库的执行前行动依据核对与确定性检查记录。 | 建设面向员工的集中核对界面，接入一个获批的只读业务流程。 |
+| 独立业务沙箱的意图观察与留存合成案例评测。 | 核对业务结果、全流程时间及额外复核成本，判断是否值得推广。 |
+
+当前没有联想真实业务部署或已测得的企业 ROI。项目不授予业务权限、不直接执行业务工具；
+身份、审批与实际执行继续由企业现有流程和外部系统负责。
+
+## 工程与兼容说明
+
+ActLumen is a pre-execution evidence control-plane for agent actions.
+The public-facing project brand is **ActLumen · 明行**; the existing
+`agentharness` CLI, Python package, protocol identifiers and historical source
+records retain their compatibility names. The separate business sandbox keeps
+its own repository and runtime responsibilities.
 
 Current prerelease: **v0.2.0-alpha.1**. This GitHub source prerelease does not
 publish a PyPI or npm package.
 
 Core source milestone (2026-09-16): the repository adds bounded data-access
 and business-action evidence contracts, while keeping all execution in separate
-external runtimes. Fresh acceptance passed 538 AgentHarness tests, including
+external runtimes. Fresh acceptance passed 538 ActLumen tests, including
 150 targeted evidence-contract tests. The optional business sandbox is a
 separate local repository and is not distributed here. This source milestone
 is newer than the tagged prerelease and does not grant or perform business-tool
@@ -22,12 +67,12 @@ zero-overreach-miss gate. Overreach miss was 0/36, unclear-without-hint 0/24,
 and fits review hints 3/24. Reported OpenRouter cost was US$0.003486756.
 These are fixed-rubric, AI-authored and independently AI-labeled synthetic
 observations; this batch is now seen and does not establish production accuracy.
-Jev never grants permission or changes execution. AgentHarness code is unchanged.
+Jev never grants permission or changes execution. ActLumen code is unchanged.
 See the [current handoff](docs/33-jev-shadow-maintenance-handoff.md) for frozen
 evidence, metric limits and the separate runtime boundary. No new tagged release
 is implied.
 
-AgentHarness validates, binds, and exports evidence. Its finite methodology
+ActLumen validates, binds, and exports evidence. Its finite methodology
 pilot emits one exact `permit_once` evidence decision; that value has no
 in-repo execution effect and is not runtime approval. In the accepted
 cross-repository pilot, a trusted, version-pinned, admission-controlled Pi/Win9
@@ -61,7 +106,7 @@ Verifier / Eval Hooks
 Audited User-facing Response
 ```
 
-AgentHarness treats pre-execution evidence controls as **policy-as-code**:
+ActLumen treats pre-execution evidence controls as **policy-as-code**:
 
 ```text
 agent_policy.yaml
@@ -220,7 +265,7 @@ Pi V4 trusted-publication continuity record, deployment-integrity planning only
 and not runtime authorization:
 [`docs/28`](docs/28-pi-v4-publication-continuity.md)
 
-Current AgentHarness-only local maintenance closure:
+Current ActLumen-only local maintenance closure:
 [`docs/29`](docs/29-agentharness-maintenance-closure.md)
 
 Business-sandbox foundation handoff and real-data pilot boundary (2026-09-16):
@@ -255,7 +300,7 @@ End-to-end evidence-chain regression harness: [`tests/test_end_to_end_evidence_c
 
 ## Minimal Executable Loop
 
-AgentHarness includes a small local CLI for keeping the YAML assets honest:
+ActLumen includes a small local CLI for keeping the YAML assets honest:
 
 ```bash
 ./agentharness validate examples/agent_policy.example.yaml
@@ -299,7 +344,7 @@ or authorize a tool. It has no external runtime invocation or policy-allow
 decision surface.
 
 The separately maintained DeepSeek Harness shadow pilot completed one live
-model request and AgentHarness verification on 2026-09-09. This validates the
+model request and ActLumen verification on 2026-09-09. This validates the
 fixed `inspect_policy_summary` evidence path only. For the current checkpoints,
 credential-update procedure, failure interpretation, and next development step,
 see the [shadow handoff and runbook](docs/30-deepseek-shadow-handoff.md) and
@@ -308,7 +353,7 @@ see the [shadow handoff and runbook](docs/30-deepseek-shadow-handoff.md) and
 ### Synthetic Data Access Lab
 
 A separate local lab exercises synthetic customer/order queries across customer,
-support, and analyst identities. AgentHarness verifies bounded pre-execution
+support, and analyst identities. ActLumen verifies bounded pre-execution
 evidence; the external lab independently authorizes and performs fixture reads.
 The default Agent is a rule-based offline simulator, not a live model. See the
 [lab guide](docs/31-synthetic-data-access-lab.md) for launch and test instructions.
@@ -317,7 +362,7 @@ The default Agent is a rule-based offline simulator, not a live model. See the
 
 The separate `agentharness-business-sandbox` runtime expands the synthetic lab
 to correlated orders, payments, refunds, shipments, tickets, documents, events,
-role changes, approvals and reversible simulated writes. AgentHarness supplies
+role changes, approvals and reversible simulated writes. ActLumen supplies
 the bounded `business-action-evidence-v1` correlation check; the external
 runtime retains identity, authorization, transaction and execution ownership.
 See the [contract](docs/business-action-evidence-v1.md), the
@@ -328,7 +373,7 @@ The sandbox optionally scores planner proposals with Jev using `--jev-shadow`.
 It is default-off, consumes model credits when enabled and records intent
 hints separately from authorization and tool results. `human_review` is a
 recommendation, not an execution pause or a completed review. This observer
-is implemented in the external sandbox, not in the AgentHarness CLI.
+is implemented in the external sandbox, not in the ActLumen CLI.
 
 The accepted synthetic result is a development checkpoint. It does not validate
 real SSO, production databases, real payments, production authorization or
@@ -362,7 +407,7 @@ workloads.
 
 ## Continuous Integration
 
-[![CI](https://github.com/alexzhu0/AgentHarness/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alexzhu0/AgentHarness/actions/workflows/ci.yml)
+[![CI](https://github.com/alexzhu0/ActLumen/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alexzhu0/ActLumen/actions/workflows/ci.yml)
 
 The CI workflow runs on pull requests and pushes to `main`, using a Python 3.10,
 Python 3.11, and Python 3.12 matrix. Reproduce its local verification sequence
@@ -436,7 +481,7 @@ only when `ok:true`, and keeps `allow_candidate` as candidate evidence rather
 than runtime allow or safe-to-execute approval.
 
 The pi evidence-evaluate-v1 command reads one bounded observation request from
-stdin, binds it to one captured AgentHarness evidence snapshot, and emits one
+stdin, binds it to one captured ActLumen evidence snapshot, and emits one
 deterministic JSON response. It never executes the observed tool and preserves
 `result_status: not_executed`.
 
@@ -447,7 +492,7 @@ artifact, consume the permit, or execute a tool in this repository.
 
 ## File-Bus Loop MVP
 
-AgentHarness now includes a protocol-first file-bus loop MVP for two Codex terminals coordinating through repository files.
+ActLumen now includes a protocol-first file-bus loop MVP for two Codex terminals coordinating through repository files.
 
 - Protocol: [`docs/05-loop-file-bus.md`](docs/05-loop-file-bus.md)
 - Runtime architecture: [`docs/06-runtime-architecture.md`](docs/06-runtime-architecture.md)
@@ -576,7 +621,7 @@ pyproject.toml
 
 ## Design Thesis
 
-AgentHarness is based on one central thesis:
+ActLumen is based on one central thesis:
 
 > Agent reliability comes from harness-level control, not only from model-level instruction.
 

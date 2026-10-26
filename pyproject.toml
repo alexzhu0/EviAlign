@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "agentharness"
 version = "0.2.0a1"
-description = "Pre-execution evidence controls and verification assets for agent actions."
+description = "ActLumen: pre-execution evidence for reviewable AI actions in enterprise workflows."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
