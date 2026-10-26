@@ -1,8 +1,10 @@
-# AgentHarness Runtime Architecture
+# ActLumen Evidence Architecture and Runtime Boundary
+
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 ## Status
 
-This document defines the intended AgentHarness runtime architecture after the
+This document defines the intended ActLumen runtime architecture after the
 file-bus MVP. It is a design contract, not a daemon specification and not an
 implementation of autonomous task execution.
 
@@ -16,7 +18,7 @@ The current executable surface remains narrow:
 - digest-addressed handoff export manifests through `agentharness handoff manifest`
 - saved-manifest readback through `agentharness handoff verify-manifest`
 
-AgentHarness does not yet create tasks, mutate task state through public CLI
+ActLumen does not yet create tasks, mutate task state through public CLI
 commands, schedule work, run a daemon, bridge realtime agent chat, or execute
 tools automatically.
 
@@ -25,25 +27,25 @@ For the enterprise category boundary around this runtime architecture, see
 For a future Pi runtime-candidate boundary contract, see
 [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md); it is conceptual only and does not implement runtime integration.
 
-## Runtime Thesis
+## Evidence thesis and external execution
 
-AgentHarness is a policy-driven control layer around agents. The harness should
-make agent behavior governable by moving critical decisions into structured
-policy, state machines, validation, approval boundaries, and audit records.
+ActLumen checks structured evidence before a proposed action reaches an external
+runtime. Policy, request context, approval references, handoff records and
+verification results are supplied or validated as data; they are not in-repo
+permission to execute a tool.
 
-Prompt text is a projection of policy, not the primary enforcement layer. A
-compiled prompt can remind an agent how to behave, but the harness must still
-enforce what tools are allowed, which state transitions are valid, when approval
-is required, what evidence counts, and when a retry or escalation is legal.
+The file-bus architecture below describes evidence flow. Its execution boundary
+belongs to an external owner, which independently authenticates identities,
+authorizes business operations, enforces runtime policy and performs side effects.
 
-The central split is:
+The responsibility split is:
 
-- Policy defines allowed behavior.
-- Prompts communicate policy to a model.
-- State ledgers record authoritative transitions.
-- Evidence records observations and verification output.
-- Approval decides whether a transition is authorized.
-- Execution performs side effects only after policy and approval checks.
+- Policy describes the checks and evidence requirements.
+- Prompts communicate instructions but do not grant authority.
+- File-bus validation checks recorded task and evidence relationships.
+- Approval records preserve supplied decisions and their bindings.
+- Preflight and handoff describe evidence eligibility for external review.
+- Actual authorization, runtime enforcement and execution remain external.
 
 ## Layered Architecture
 
@@ -244,14 +246,14 @@ not implemented as an autonomous runtime yet.
 
 T008 splits this boundary into two concepts:
 
-- control-plane handoff: AgentHarness validates a side-effect-free
+- control-plane handoff: ActLumen validates a side-effect-free
   `execution_handoff_report` and proves whether a future adapter may receive a
   request;
 - future execution-plane adapter: a separate runtime, such as a future `/pi`
   `tool_call` hook/block integration, may execute side effects after consuming
   a validated handoff.
 
-AgentHarness does not modify, import, depend on, instantiate, or call `/pi` in
+ActLumen does not modify, import, depend on, instantiate, or call `/pi` in
 this architecture slice. `/pi` is only a future execution-plane adapter
 candidate.
 
@@ -502,8 +504,9 @@ This architecture does not introduce:
 Recommended default T004: implement the tool router contract as a pure,
 side-effect-free decision layer with tests. It should accept structured tool
 request metadata and policy, then return `allow`, `approval_required`, or
-`deny` with a reason and audit fields. This gives AgentHarness a concrete
-runtime enforcement primitive without adding daemon behavior or task mutation.
+`deny` with a reason and audit fields. This supplies an evidence-decision
+primitive for external runtime review. ActLumen does not enforce runtime
+execution or add daemon behavior or task mutation.
 
 ## Open Design Questions
 

@@ -46,7 +46,9 @@ AgentHarness 是本项目的历史技术名称。当前品牌更新保留以下�
 
 ## 阅读入口
 
+- [文档导航](README.md)
 - [项目评审材料](actlumen-reviewer-brief.md)
 - [八页管理层汇报](presentations/agentharness-enterprise-hackathon.html)
+- [完整工程参考](engineering-guide.md)
 - [资产地图](00-asset-map.md)
 - [术语与产品契约](08-glossary-and-product-contract.md)

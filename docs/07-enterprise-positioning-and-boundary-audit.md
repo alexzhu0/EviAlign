@@ -1,4 +1,4 @@
-# Enterprise Positioning and Boundary Audit
+# ActLumen Enterprise Positioning and Boundary Audit
 
 品牌更新（2026-10-26）：项目对外名称统一为 **ActLumen · 明行**（原 AgentHarness）。
 既有工程命令、包名、契约与历史记录保持兼容。

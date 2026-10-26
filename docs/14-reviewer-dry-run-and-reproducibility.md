@@ -1,10 +1,12 @@
-# AgentHarness Reviewer Dry-Run and Reproducibility
+# ActLumen Reviewer Dry-Run and Reproducibility
 
-AgentHarness is a pre-execution evidence control-plane for agent actions.
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+
+ActLumen is a pre-execution evidence control-plane for agent actions.
 
 This document records a local reviewer-style dry-run showing that the golden `examples/agent_bus_adapter_registry` evidence package can be reproduced from committed fixtures and checked against the external reviewer checklist.
 
-This is evidence acceptance, not runtime approval. AgentHarness does not execute tools, invoke runtime adapters, approve runtime action, write product artifacts, or decide whether anything is safe to execute. All current evidence/report outputs remain `result_status: not_executed`.
+This is evidence acceptance, not runtime approval. ActLumen does not execute tools, invoke runtime adapters, approve runtime action, write product artifacts, or decide whether anything is safe to execute. All current evidence/report outputs remain `result_status: not_executed`.
 
 ## Baseline and scope
 
@@ -14,14 +16,14 @@ This is evidence acceptance, not runtime approval. AgentHarness does not execute
 | fixture | `examples/agent_bus_adapter_registry` |
 | dry-run date | 2026-07-05 |
 | reviewer-owned saved artifacts | `/tmp/agentharness-t030-*.json` and `/tmp/agentharness-t030-*.txt` |
-| product output behavior | stdout-only; `/tmp` files are created by reviewer shell redirection, not by AgentHarness output-writer flags |
+| product output behavior | stdout-only; `/tmp` files are created by reviewer shell redirection, not by ActLumen output-writer flags |
 | decision documents | [`docs/11-reproducible-enterprise-demo.md`](./11-reproducible-enterprise-demo.md), [`docs/12-buyer-reviewer-decision-guide.md`](./12-buyer-reviewer-decision-guide.md), [`docs/13-external-reviewer-checklist.md`](./13-external-reviewer-checklist.md) |
 
 The observed counts in this document are for the current golden demo fixture. They are not universal requirements for every future evidence package.
 
 ## Reviewer copy-paste dry-run
 
-Run from the AgentHarness repository root. No network is required; the commands use committed fixtures and the local Python environment.
+Run from the ActLumen repository root. No network is required; the commands use committed fixtures and the local Python environment.
 
 ```bash
 set -euo pipefail
@@ -41,7 +43,7 @@ rm -f /tmp/agentharness-t030-*.json /tmp/agentharness-t030-*.txt
 python3 -m unittest -q tests.test_end_to_end_evidence_chain | tee /tmp/agentharness-t030-e2e.txt
 ```
 
-The `/tmp/agentharness-t030-*` files are reviewer-owned saved artifacts. They are useful for readback checks, but they are not written by AgentHarness product output flags.
+The `/tmp/agentharness-t030-*` files are reviewer-owned saved artifacts. They are useful for readback checks, but they are not written by ActLumen product output flags.
 
 ## Expected vs observed
 
@@ -111,18 +113,18 @@ Reject the evidence package if the same dry-run shows any of these conditions:
 - counts, request IDs, item order, or digests drift unexpectedly;
 - reviewer-facing output leaks raw local host paths;
 - any current output changes away from `result_status: not_executed`;
-- docs or artifacts claim AgentHarness executed, dispatched, submitted, approved, or made a runtime safety decision.
+- docs or artifacts claim ActLumen executed, dispatched, submitted, approved, or made a runtime safety decision.
 
 ### Escalate externally
 
-Escalate externally when the question is outside AgentHarness evidence ownership, including:
+Escalate externally when the question is outside ActLumen evidence ownership, including:
 
 - whether a downstream runtime should actually execute a ready request;
 - whether the action is safe in a production environment;
 - identity, authorization, approval authority, sandbox, deployment, operations, signing, timestamp, attestation, certificate, trust-root, or long-term evidence custody;
 - whether unsupported adapter coverage should be added in a future external runtime/adapter plan.
 
-External escalation does not create a new AgentHarness lifecycle state.
+External escalation does not create a new ActLumen lifecycle state.
 
 ## Failure triage
 
@@ -137,7 +139,7 @@ External escalation does not create a new AgentHarness lifecycle state.
 | Audit report failure | Audit report error JSON and schema validator errors | Reject evidence package if the report cannot be built or validated. |
 | Audit report readback failure | `/tmp/agentharness-t030-verify-report.json` errors | Reject saved report as stale/tampered/malformed until readback passes. |
 | Checklist fail or blocked | Failed/blocked checklist rows | Reject evidence package unless the row clearly points to an external-owner question. |
-| Checklist manual rows | Saved manifest/report paths supplied by reviewer | Continue manual readback; do not treat manual as AgentHarness execution. |
+| Checklist manual rows | Saved manifest/report paths supplied by reviewer | Continue manual readback; do not treat manual as ActLumen execution. |
 | T025 harness failure | `tests.test_end_to_end_evidence_chain` failure | Treat the evidence chain as not release-ready and open a separate repair task. |
 | Path leak | Raw `/home`, `/tmp`, Windows, or UNC path inside reviewer-facing payload | Reject reviewer artifact; fix sanitization in a separate task. |
 | Wrong `result_status` | Any `executed`, `completed`, or runtime-like status | Reject evidence package; current outputs must remain `not_executed`. |
@@ -145,7 +147,7 @@ External escalation does not create a new AgentHarness lifecycle state.
 ## Remaining gaps
 
 - The dry-run is based on the current golden fixture only; it does not certify future fixtures.
-- `/tmp` files are reviewer-owned saved artifacts; AgentHarness still has no product writer flag.
+- `/tmp` files are reviewer-owned saved artifacts; ActLumen still has no product writer flag.
 - Manual readback remains manual because reviewers must choose saved manifest/report paths.
 - Runtime execution, safety approval, authorization, sandboxing, signing, timestamping, attestation, trust-root, deployment, and operations remain external-owner responsibilities.
 - An independent external human reviewer trial has not happened yet unless separately recorded.
@@ -156,4 +158,4 @@ External escalation does not create a new AgentHarness lifecycle state.
 
 T030 hardens reproducibility documentation only. It does not add scripts, helpers, source code, tests, schemas, fixtures, CLI flags, runtime adapter invocation, daemon/scheduler/watcher/realtime chat, task mutation, lifecycle state, auth gateway, sandbox, signing, timestamp, attestation, trust-root, or governance enforcement.
 
-For the development-loop process used by future T0xx tasks, see [`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md).
+The [development-loop operating model](./15-agentharness-development-loop-operating-model.md) is a historical process reference. New ActLumen work follows the Superpowers workflow in [AGENTS.md](../AGENTS.md).

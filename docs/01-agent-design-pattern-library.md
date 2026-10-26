@@ -1,8 +1,10 @@
-# Agent Design Pattern Library
+# ActLumen Agent Design Pattern Library
+
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 ## 目的
 
-本文件把 CL4R1T4S 中暴露出的 agent scaffold 归纳成 AgentHarness 的设计模式库。这里的模式是工程抽象，不是 prompt 复制。
+本文件把 CL4R1T4S 中暴露出的 agent scaffold 归纳成 ActLumen 的设计模式库。这里的模式是工程抽象，不是 prompt 复制。
 
 这些模式覆盖：coding agent、autonomous software engineer、browser / research agent、web app builder、tool-using assistant。
 
@@ -42,7 +44,7 @@ Agent OS
 
 ### Harness 落地
 
-AgentHarness 不应该只生成一段 system prompt。它应该生成一组互相一致的 artefacts：
+ActLumen 不应该只生成一段 system prompt。它应该生成一组互相一致的 artefacts：
 
 - `system_prompt.md`
 - `runtime_policy.yaml`
@@ -556,7 +558,7 @@ agent_policy.yaml
 
 ## 设计结论
 
-AgentHarness 的核心理念应是：
+ActLumen 的核心理念应是：
 
 > Agent reliability comes from harness-level control, not only from model-level instruction.
 

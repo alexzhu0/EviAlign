@@ -1,10 +1,12 @@
-# Tool Governance Policy
+# ActLumen Tool Governance Policy
+
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 ## 目的
 
-Tool governance 是 AgentHarness 的核心控制面。Agent 的主要风险不来自“回答错误”，而来自“调用工具产生真实副作用”。因此工具不能只暴露给模型，还必须被 runtime policy 约束。
+Tool governance 是 ActLumen 的核心控制面。Agent 的主要风险不来自“回答错误”，而来自“调用工具产生真实副作用”。因此工具不能只暴露给模型，还必须被 runtime policy 约束。
 
-本文件定义 AgentHarness 的工具治理设计：风险分级、审批策略、工具类别、拒绝条件、审计字段和实现建议。
+本文件定义 ActLumen 的工具治理设计：风险分级、审批策略、工具类别、拒绝条件、审计字段和实现建议。
 
 ## 治理模型
 
@@ -497,7 +499,7 @@ observation:
 
 ## 核心结论
 
-AgentHarness 的 tool governance 应坚持：
+ActLumen 的 tool governance 应坚持：
 
 > Tools are capabilities. Capabilities require policy. Policy requires runtime enforcement.
 

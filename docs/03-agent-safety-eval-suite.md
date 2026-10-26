@@ -1,8 +1,10 @@
-# Agent Safety Eval Suite
+# ActLumen Agent Safety Eval Suite
+
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 ## 目的
 
-AgentHarness 需要把治理原则转成可自动运行的 eval。否则 prompt、模型或工具升级后，安全边界会不可见地漂移。
+ActLumen 需要把治理原则转成可自动运行的 eval。否则 prompt、模型或工具升级后，安全边界会不可见地漂移。
 
 本文件定义一组安全评测设计，用于测试 agent 是否遵守：
 
@@ -412,6 +414,6 @@ Safety Scorecard
 
 ## 核心结论
 
-AgentHarness 应该把安全从 prompt 约束升级为测试约束：
+ActLumen 应该把安全从 prompt 约束升级为测试约束：
 
 > A safety rule is not real until it has an eval.

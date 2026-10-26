@@ -1,16 +1,18 @@
-# AgentHarness Pi Tool-Call Mapping Fixture
+# ActLumen Pi Tool-Call Mapping Fixture
 
-AgentHarness is a pre-execution evidence control-plane for agent actions.
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
-This document describes a static Pi-like tool-call mapping fixture. The fixture lets AgentHarness reason about future Pi `beforeToolCall`-style observations without importing Pi, depending on Pi, calling Pi, modifying Pi, or implementing a live hook.
+ActLumen is a pre-execution evidence control-plane for agent actions.
+
+This document describes a static Pi-like tool-call mapping fixture. The fixture lets ActLumen reason about future Pi `beforeToolCall`-style observations without importing Pi, depending on Pi, calling Pi, modifying Pi, or implementing a live hook.
 
 ## Scope and non-goals
 
 Scope:
 
 - add static JSON observations that resemble future Pi tool-call boundary inputs;
-- add static expected AgentHarness mapping decisions;
-- document how the fixture relates to existing AgentHarness evidence concepts;
+- add static expected ActLumen mapping decisions;
+- document how the fixture relates to existing ActLumen evidence concepts;
 - preserve order and independent decisions for a mixed batch.
 
 T035 fixture non-goals at the time of fixture creation were:
@@ -30,16 +32,16 @@ T036 adds a library/test-only mock decision validator for these fixture files. T
 
 T034 established the contract boundary in [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md): contract design is ready, live runtime integration is not ready, Pi modification is not ready, and a mock/dry-run adapter mapping task is acceptable if separately planned.
 
-T035 is that mock/dry-run fixture step. It turns the conceptual Pi → AgentHarness request and AgentHarness → Pi decision shapes into static JSON examples.
+T035 is that mock/dry-run fixture step. It turns the conceptual Pi → ActLumen request and ActLumen → Pi decision shapes into static JSON examples.
 
-T036 adds a pure AgentHarness-side mock decision validator for these static files. T037 exposes that validator through `./agentharness pi contract-check` for static fixture inputs only. Neither calls Pi or implements `beforeToolCall`.
+T036 adds a pure ActLumen-side mock decision validator for these static files. T037 exposes that validator through `./agentharness pi contract-check` for static fixture inputs only. Neither calls Pi or implements `beforeToolCall`.
 
 ## Fixture files and purpose
 
 | File | Purpose |
 | --- | --- |
 | [`examples/pi_tool_call_mapping/pi_tool_call_observations.json`](../examples/pi_tool_call_mapping/pi_tool_call_observations.json) | Static Pi-like observation batch with ordered tool-call candidates. |
-| [`examples/pi_tool_call_mapping/expected_mapping.json`](../examples/pi_tool_call_mapping/expected_mapping.json) | Expected AgentHarness mapping outcome for each observation. |
+| [`examples/pi_tool_call_mapping/expected_mapping.json`](../examples/pi_tool_call_mapping/expected_mapping.json) | Expected ActLumen mapping outcome for each observation. |
 | [`examples/pi_tool_call_mapping/README.md`](../examples/pi_tool_call_mapping/README.md) | Fixture-local boundary summary. |
 
 The JSON files are deterministic, parse with `python3 -m json.tool`, and remain `result_status: not_executed`.
@@ -59,7 +61,7 @@ Each observation is static data with fields such as:
 - `target_scope_candidate`
 - `session_ref`
 - `task_ref`
-- optional existing AgentHarness fixture references
+- optional existing ActLumen fixture references
 
 The batch-level metadata uses:
 
@@ -78,11 +80,11 @@ Each expectation maps one observation to one static decision:
 - `unsupported`
 - `error`
 
-The expectation includes a deterministic reason and evidence references to existing AgentHarness fixture concepts only. `allow_candidate` means only "candidate match to existing AgentHarness evidence"; it is not execution approval, runtime approval, or safe-to-execute approval. T035 fixture review and any future T036 fixture validation must not emit, infer, or normalize `allow_candidate` into runtime allow.
+The expectation includes a deterministic reason and evidence references to existing ActLumen fixture concepts only. `allow_candidate` means only "candidate match to existing ActLumen evidence"; it is not execution approval, runtime approval, or safe-to-execute approval. T035 fixture review and any future T036 fixture validation must not emit, infer, or normalize `allow_candidate` into runtime allow.
 
 ## Mapping case table
 
-| Observation | Pi-like case | Expected decision | Existing AgentHarness concept |
+| Observation | Pi-like case | Expected decision | Existing ActLumen concept |
 | --- | --- | --- | --- |
 | `pi-obs-001-read-workspace` | read-like repository inspection | `allow_candidate` | `TR-read`, `file_read`, `inspect_workspace`, `repository`, `handoff_ready` |
 | `pi-obs-002-read-unsupported-intent` | read-like unsupported intent | `unsupported` | `TR-read-unsupported-intent`, unsupported `inspect_config` |
@@ -98,7 +100,7 @@ All six observations are in one mixed batch so a future validator can prove orde
 T036 validates the static fixture against current export/manifest evidence, but future tasks must still refine:
 
 - canonical argument normalization and digest generation;
-- exact mapping from Pi tool names to AgentHarness categories/intents/scopes;
+- exact mapping from Pi tool names to ActLumen categories/intents/scopes;
 - how malformed observations are reported;
 - how batch ordering is checked;
 - how evidence refs bind to export item and manifest digests;
@@ -130,7 +132,7 @@ T035 does not:
 - call Pi code;
 - implement `beforeToolCall`;
 - execute tools;
-- add AgentHarness source, schema, test, or CLI behavior.
+- add ActLumen source, schema, test, or CLI behavior.
 
 ## T036 mock decision validator
 

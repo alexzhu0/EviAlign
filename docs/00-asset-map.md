@@ -4,7 +4,11 @@
 既有工程命令、包名、契约与历史记录保持兼容。
 参赛说明见[项目评审材料](actlumen-reviewer-brief.md)，命名与边界见[品牌说明](actlumen-brand-and-scope.md)。
 
-当前维护入口（2026-10-22）：
+当前项目与 GitHub 维护入口（2026-10-26）：
+[`ActLumen 品牌与 GitHub 维护记录`](./34-actlumen-brand-maintenance.md)。
+按读者查找资料见[文档导航](README.md)。
+
+Jev 留存证据维护入口（2026-10-22）：
 [`Jev shadow 维护与交接`](./33-jev-shadow-maintenance-handoff.md)。
 独立业务沙盒已完成 Jev 标准 v2 的已见回归和另行批准的新合成验收，
 保持默认关闭、仅旁路观察；本仓库只保留设计和验收摘要，
@@ -51,7 +55,7 @@ T027 增加 [`docs/11-reproducible-enterprise-demo.md`](./11-reproducible-enterp
 T028 增加 [`docs/12-buyer-reviewer-decision-guide.md`](./12-buyer-reviewer-decision-guide.md)，用于说明 reviewer 如何 accept evidence for downstream review、reject evidence package 或 escalate externally；它不新增 lifecycle state 或产品面。
 T029 增加 [`docs/13-external-reviewer-checklist.md`](./13-external-reviewer-checklist.md)，用于给第三方 reviewer 提供 evidence acceptance checklist / rubric；它不新增 runtime approval、lifecycle state、CLI 或产品面。
 T030 增加 [`docs/14-reviewer-dry-run-and-reproducibility.md`](./14-reviewer-dry-run-and-reproducibility.md)，用于记录 reviewer dry-run、expected vs observed summaries 和 checklist decision mapping；它只强化复现文档，不新增脚本、CLI、runtime、schema 或产品面。
-T031 增加 [`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md)，用于规定未来 T0xx Loop Task Packet、maker/checker split、checks、failure probes、human gates 和 reviewer gates；它是开发流程文档，不新增产品/runtime 行为。
+T031 增加 [`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md)，记录当时的 T0xx Loop Task Packet、maker/checker split、checks、failure probes、human gates 和 reviewer gates；它是历史开发流程文档，新工作以 [AGENTS.md](../AGENTS.md) 的 Superpowers 规则为准。
 T032 增加 [`docs/16-phase-e-release-readiness-and-packaging-audit.md`](./16-phase-e-release-readiness-and-packaging-audit.md)，用于审计 Phase E 是否适合未来本地 milestone packaging；它不是 commit、push、public release、production readiness、runtime approval 或 safe-to-execute claim。
 T034 增加 [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md)，用于以 contract-first 方式界定未来 ActLumen ↔ Pi evidence gate 边界；它只使用 Pi 只读事实，不修改 Pi、不新增依赖、不实现 runtime hook。
 T035 增加 [`docs/18-pi-tool-call-mapping-fixture.md`](./18-pi-tool-call-mapping-fixture.md) 和 [`examples/pi_tool_call_mapping/`](../examples/pi_tool_call_mapping/)，用于提供静态 Pi-like tool-call observation 与 expected mapping fixture；它不调用、不导入、不依赖、不修改 Pi，也不执行工具。
@@ -265,7 +269,7 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 - 链接 T028 buyer/reviewer decision guide：[`docs/12-buyer-reviewer-decision-guide.md`](./12-buyer-reviewer-decision-guide.md)，作为 evidence acceptance、rejection 和 external escalation 的解释入口。
 - 链接 T029 external reviewer checklist：[`docs/13-external-reviewer-checklist.md`](./13-external-reviewer-checklist.md)，作为 third-party reviewer 接受、拒绝或外部升级 evidence package 的操作性 rubric。
 - 链接 T030 reviewer dry-run and reproducibility：[`docs/14-reviewer-dry-run-and-reproducibility.md`](./14-reviewer-dry-run-and-reproducibility.md)，作为 external reviewer 复现实测、对比 expected vs observed counts，并应用 checklist decision mapping 的入口。
-- 链接 T031 development loop operating model：[`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md)，作为后续 ActLumen T0xx 任务的 Loop Task Packet、reviewer gate 和 human gate 操作模型。
+- 链接 T031 development loop operating model：[`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md)，作为历史 Loop Task Packet、reviewer gate 和 human gate 模型的参考；当前 ActLumen 新工作以 [AGENTS.md](../AGENTS.md) 的 Superpowers 规则为准。
 - 链接 T032 Phase E release readiness and packaging audit：[`docs/16-phase-e-release-readiness-and-packaging-audit.md`](./16-phase-e-release-readiness-and-packaging-audit.md)，作为未来本地 milestone commit 前的 include/exclude、GO/COMMENT/NO-GO 和边界审计入口。
 - 链接 T034 Pi integration boundary and contract：[`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md)，作为未来 Pi runtime-candidate evidence gate 的 contract-first planning 入口，不代表 live integration。
 - 链接 T035 Pi tool-call mapping fixture：[`docs/18-pi-tool-call-mapping-fixture.md`](./18-pi-tool-call-mapping-fixture.md)，作为未来 mock decision validator 的静态 observation/expectation 入口，不代表 live Pi runtime 集成。

@@ -1,4 +1,6 @@
-# Agent Design Patterns Library
+# ActLumen Agent Design Patterns Library
+
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 This file is kept as a compatibility entry point.
 

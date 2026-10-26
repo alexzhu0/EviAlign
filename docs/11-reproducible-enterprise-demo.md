@@ -1,8 +1,10 @@
-# AgentHarness Reproducible Enterprise Demo
+# ActLumen Reproducible Enterprise Demo
 
-AgentHarness is a pre-execution evidence control-plane for agent actions.
+> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
-This document is a 5–10 minute copy-paste demo for showing the accepted AgentHarness evidence chain with the committed `examples/agent_bus_adapter_registry` fixture. It is factual demo guidance only; it does not add a command, script, fixture, schema, or product behavior.
+ActLumen is a pre-execution evidence control-plane for agent actions.
+
+This document is a 5–10 minute copy-paste demo for showing the accepted ActLumen evidence chain with the committed `examples/agent_bus_adapter_registry` fixture. It is factual demo guidance only; it does not add a command, script, fixture, schema, or product behavior.
 For how reviewers turn this evidence into accept/reject/escalate decisions, see [`docs/12-buyer-reviewer-decision-guide.md`](./12-buyer-reviewer-decision-guide.md).
 For a recorded reviewer dry-run with expected vs observed summaries, see [`docs/14-reviewer-dry-run-and-reproducibility.md`](./14-reviewer-dry-run-and-reproducibility.md).
 
@@ -11,11 +13,11 @@ For a recorded reviewer dry-run with expected vs observed summaries, see [`docs/
 - Security reviewers who need to inspect evidence before high-impact agent actions.
 - Platform reviewers who need to understand the boundary between evidence and downstream runtime ownership.
 - Compliance reviewers who need repeatable audit artifacts and readback checks.
-- Agent/runtime owners evaluating whether AgentHarness evidence is sufficient input for their own external controls.
+- Agent/runtime owners evaluating whether ActLumen evidence is sufficient input for their own external controls.
 
 ## What the demo proves
 
-The demo proves that AgentHarness can validate and export reviewable evidence before any downstream runtime owner acts:
+The demo proves that ActLumen can validate and export reviewable evidence before any downstream runtime owner acts:
 
 - policy and smoke checks can be run from the repository;
 - the file-bus fixture validates;
@@ -33,7 +35,7 @@ the [product contract](./08-glossary-and-product-contract.md#product-contract).
 
 ## Prerequisites
 
-- Run from the AgentHarness repository root.
+- Run from the ActLumen repository root.
 - Use the same Python environment used for the project tests.
 - No network is required for the demo commands.
 - The commands write temporary readback artifacts under `/tmp`; they do not write product artifacts into the repository.

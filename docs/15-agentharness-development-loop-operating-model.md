@@ -1,5 +1,7 @@
 # AgentHarness Development Loop Operating Model
 
+> 历史流程记录：本文件保留 AgentHarness 阶段的原始运行模式。ActLumen 当前开发工作流以 [AGENTS.md](../AGENTS.md) 中的 Superpowers 要求为准，本文件不再定义新工作的执行流程。
+
 AgentHarness is a pre-execution evidence control-plane for agent actions.
 
 This document governs the **development workflow** for future AgentHarness `T0xx` tasks. It does not add AgentHarness product behavior, runtime behavior, CLI behavior, schemas, fixtures, dependencies, or execution-plane integration.
