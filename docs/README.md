@@ -6,7 +6,7 @@ ActLumen 是企业 AI 行动质检助手，为 AI 行动提供执行前的依据
 
 | 文档 | 适合了解的内容 |
 | --- | --- |
-| [项目首页](../README.md) | 项目是什么、业务场景、已有成果和下一步。 |
+| [英文项目首页](../README.md) · [简体中文版](../README.zh-CN.md) | 项目是什么、业务场景、已有成果和下一步；GitHub 默认展示英文。 |
 | [联想集团黑客松评审材料](actlumen-reviewer-brief.md) | 命名、问题、方案特点、企业收益和试点建议。 |
 | [八页管理层汇报](presentations/agentharness-enterprise-hackathon.html) | 下载后可离线演示、切换场景、全屏和打印。 |
 | [品牌与能力范围](actlumen-brand-and-scope.md) | ActLumen · 明行的统一名称、产品化状态与兼容标识。 |
