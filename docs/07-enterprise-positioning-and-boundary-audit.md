@@ -1,16 +1,16 @@
-# ActLumen Enterprise Positioning and Boundary Audit
+# EviAlign Enterprise Positioning and Boundary Audit
 
-品牌更新（2026-10-26）：项目对外名称统一为 **ActLumen · 明行**（原 AgentHarness）。
+品牌沿革：2026-10-26 项目名称为 **ActLumen · 明行**；2026-10-28 更新为 **EviAlign**。历史技术名为 AgentHarness。
 既有工程命令、包名、契约与历史记录保持兼容。
 参赛说明见[项目评审材料](actlumen-reviewer-brief.md)，命名与边界见[品牌说明](actlumen-brand-and-scope.md)。
 
 last checked date: 2026-06-22
 
-ActLumen is a pre-execution evidence control-plane for agent actions.
+EviAlign is a pre-execution evidence control-plane for agent actions.
 
 ## Plain enterprise explanation
 
-ActLumen answers an enterprise platform/security question before an agent runtime executes a tool: does this proposed action have enough deterministic evidence to be eligible for a future execution boundary?
+EviAlign answers an enterprise platform/security question before an agent runtime executes a tool: does this proposed action have enough deterministic evidence to be eligible for a future execution boundary?
 
 It is a pre-runtime control-plane and audit-plane. It turns policy, ledger state, tool-gate decisions, approval records, preflight checks, handoff readiness, registry pinning, export packages, digest manifests, and manifest verification into reviewable artifacts. Those artifacts can be consumed by a runtime later, but the current project does not run tools, call runtime adapters, mutate task state through public execution commands, or act as an authorization gateway.
 
@@ -24,7 +24,7 @@ All current handoff, export, manifest, and manifest-verification outputs remain 
 
 ## Category boundary
 
-ActLumen sits before runtime execution. Its category is closer to a deterministic evidence control-plane than to a general agent framework. It is meant to complement agent runtimes, runtime governance middleware, authorization protocols, identity systems, sandboxes, and future execution-plane adapters.
+EviAlign sits before runtime execution. Its category is closer to a deterministic evidence control-plane than to a general agent framework. It is meant to complement agent runtimes, runtime governance middleware, authorization protocols, identity systems, sandboxes, and future execution-plane adapters.
 
 It should help enterprise teams answer:
 
@@ -37,7 +37,7 @@ It should help enterprise teams answer:
 
 ## Scope invariant
 
-ActLumen validates and exports evidence only; runtimes, governance systems, auth systems, identity systems, sandboxes, and execution planes are external consumers, not ActLumen in-repo responsibilities.
+EviAlign validates and exports evidence only; runtimes, governance systems, auth systems, identity systems, sandboxes, and execution planes are external consumers, not EviAlign in-repo responsibilities.
 
 ## Enterprise operating model
 
@@ -47,17 +47,17 @@ platform/security/compliance reviewers own evidence review and policy acceptance
 
 this is an adjacent-category comparison, not a feature-parity table
 
-| Adjacent project | What it is for | Boundary with ActLumen | Source |
+| Adjacent project | What it is for | Boundary with EviAlign | Source |
 | --- | --- | --- | --- |
-| LangGraph | Runtime orchestration for long-running, stateful agents with durable execution, persistence, streaming, and human-in-the-loop workflows. | ActLumen does not orchestrate agent execution. It can produce pre-execution evidence that a LangGraph-style runtime could inspect before running a tool. | [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview) |
-| OpenAI Agents SDK | Agent application/runtime layer for agent orchestration, tools, handoffs, guardrails, tracing, and server-side agent execution patterns. | ActLumen does not replace an Agents SDK runtime. It provides deterministic eligibility evidence and manifest readback before a runtime executes actions. | [Agents SDK guide](https://developers.openai.com/api/docs/guides/agents), [tracing docs](https://github.com/openai/openai-agents-python/blob/main/docs/tracing.md) |
-| CrewAI | Framework for collaborative agents, crews, flows, guardrails, memory/knowledge, observability, and resumable workflows. | ActLumen does not define agent teams or flows. It can export ready-only evidence packages for a separate workflow engine to consume later. | [CrewAI docs](https://docs.crewai.com/) |
-| AutoGen / Microsoft Agent Framework direction | Agent/application framework lineage for building multi-agent systems; the AutoGen repository points new users toward Microsoft Agent Framework direction while retaining maintenance context. | ActLumen does not build a multi-agent app framework. It defines pre-execution evidence and adapter-registry boundaries that can sit before such frameworks. | [AutoGen repository](https://github.com/microsoft/autogen) |
-| Microsoft Agent Governance Toolkit | Runtime governance layer for policy enforcement, identity, audit logging, denial handling, sandboxing, SRE, compliance, and framework integrations. | ActLumen currently stops before runtime governance wrappers and execution. AGT is a future integration candidate, not a dependency in T014. | [AGT docs](https://microsoft.github.io/agent-governance-toolkit/), [AGT GitHub](https://github.com/microsoft/agent-governance-toolkit), [Microsoft Open Source Blog](https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/) |
-| Open Agent Auth | Enterprise authorization framework focused on cryptographic identity binding, fine-grained authorization, request-level isolation, semantic audit trails, and standards integration for agent operations. | ActLumen does not implement identity or authorization protocols. It can preserve request evidence that an auth layer may later use as input. | [Open Agent Auth GitHub](https://github.com/alibaba/open-agent-auth) |
-| MCP Authorization | Model Context Protocol authorization specification for OAuth-style client/resource/server authorization boundaries. | ActLumen does not implement MCP transport authorization. It validates evidence-chain eligibility before any downstream MCP client/server action would be considered. | [MCP Authorization draft](https://modelcontextprotocol.io/specification/draft/basic/authorization) |
+| LangGraph | Runtime orchestration for long-running, stateful agents with durable execution, persistence, streaming, and human-in-the-loop workflows. | EviAlign does not orchestrate agent execution. It can produce pre-execution evidence that a LangGraph-style runtime could inspect before running a tool. | [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview) |
+| OpenAI Agents SDK | Agent application/runtime layer for agent orchestration, tools, handoffs, guardrails, tracing, and server-side agent execution patterns. | EviAlign does not replace an Agents SDK runtime. It provides deterministic eligibility evidence and manifest readback before a runtime executes actions. | [Agents SDK guide](https://developers.openai.com/api/docs/guides/agents), [tracing docs](https://github.com/openai/openai-agents-python/blob/main/docs/tracing.md) |
+| CrewAI | Framework for collaborative agents, crews, flows, guardrails, memory/knowledge, observability, and resumable workflows. | EviAlign does not define agent teams or flows. It can export ready-only evidence packages for a separate workflow engine to consume later. | [CrewAI docs](https://docs.crewai.com/) |
+| AutoGen / Microsoft Agent Framework direction | Agent/application framework lineage for building multi-agent systems; the AutoGen repository points new users toward Microsoft Agent Framework direction while retaining maintenance context. | EviAlign does not build a multi-agent app framework. It defines pre-execution evidence and adapter-registry boundaries that can sit before such frameworks. | [AutoGen repository](https://github.com/microsoft/autogen) |
+| Microsoft Agent Governance Toolkit | Runtime governance layer for policy enforcement, identity, audit logging, denial handling, sandboxing, SRE, compliance, and framework integrations. | EviAlign currently stops before runtime governance wrappers and execution. AGT is a future integration candidate, not a dependency in T014. | [AGT docs](https://microsoft.github.io/agent-governance-toolkit/), [AGT GitHub](https://github.com/microsoft/agent-governance-toolkit), [Microsoft Open Source Blog](https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/) |
+| Open Agent Auth | Enterprise authorization framework focused on cryptographic identity binding, fine-grained authorization, request-level isolation, semantic audit trails, and standards integration for agent operations. | EviAlign does not implement identity or authorization protocols. It can preserve request evidence that an auth layer may later use as input. | [Open Agent Auth GitHub](https://github.com/alibaba/open-agent-auth) |
+| MCP Authorization | Model Context Protocol authorization specification for OAuth-style client/resource/server authorization boundaries. | EviAlign does not implement MCP transport authorization. It validates evidence-chain eligibility before any downstream MCP client/server action would be considered. | [MCP Authorization draft](https://modelcontextprotocol.io/specification/draft/basic/authorization) |
 
-## What ActLumen owns
+## What EviAlign owns
 
 - Deterministic, file-based pre-execution evidence artifacts.
 - Policy-to-evidence checks that stay side-effect-free.
@@ -67,14 +67,14 @@ this is an adjacent-category comparison, not a feature-parity table
 - Bus-relative, stdout-only report surfaces for current handoff/export/manifest commands.
 - The invariant that current control-plane artifacts report `result_status: not_executed`.
 
-## What ActLumen integrates
+## What EviAlign integrates
 
 - Runtime/orchestration frameworks, including LangGraph, OpenAI Agents SDK, CrewAI, and the AutoGen / Microsoft Agent Framework direction, through future explicit adapter or consumer boundaries.
-- Runtime governance middleware such as Microsoft Agent Governance Toolkit, after ActLumen evidence contracts are stable enough to map into a governance layer.
-- Authorization and identity layers such as Open Agent Auth and MCP Authorization as separate systems that may consume or enrich evidence, not as code copied into ActLumen.
+- Runtime governance middleware such as Microsoft Agent Governance Toolkit, after EviAlign evidence contracts are stable enough to map into a governance layer.
+- Authorization and identity layers such as Open Agent Auth and MCP Authorization as separate systems that may consume or enrich evidence, not as code copied into EviAlign.
 - Future execution-plane projects through explicit versioned adapter specs, registry pins, and digest checks rather than implicit imports or live discovery.
 
-## What ActLumen does not build now
+## What EviAlign does not build now
 
 - Agent runtime orchestration, crew/graph scheduling, daemon loops, watchers, or realtime chat.
 - Runtime adapter invocation or real tool execution.
@@ -86,9 +86,9 @@ this is an adjacent-category comparison, not a feature-parity table
 
 ## Build / buy / integrate guidance
 
-- **Build in ActLumen:** deterministic file-bus validation, evidence records, tool-gate decision replay, approval binding, preflight eligibility, handoff readiness, adapter registry validation, ready-only export packages, digest-addressed manifests, and manifest readback.
-- **Buy or adopt outside ActLumen:** production runtime orchestration, hosted agent services, runtime governance wrappers, authorization gateways, identity infrastructure, sandboxing, signing, and trust-root systems.
-- **Integrate later:** connect the ActLumen evidence contract to selected runtime, governance, auth, or execution-plane systems through explicit adapter specs and registry-backed consumer payloads.
+- **Build in EviAlign:** deterministic file-bus validation, evidence records, tool-gate decision replay, approval binding, preflight eligibility, handoff readiness, adapter registry validation, ready-only export packages, digest-addressed manifests, and manifest readback.
+- **Buy or adopt outside EviAlign:** production runtime orchestration, hosted agent services, runtime governance wrappers, authorization gateways, identity infrastructure, sandboxing, signing, and trust-root systems.
+- **Integrate later:** connect the EviAlign evidence contract to selected runtime, governance, auth, or execution-plane systems through explicit adapter specs and registry-backed consumer payloads.
 - **Defer runtime spikes:** keep execution-plane experiments behind the current adapter boundary until the evidence contract, enterprise glossary, and integration criteria are accepted.
 
 The accepted T015 glossary and product contract is
@@ -98,7 +98,7 @@ new runtime-adjacent wording.
 
 The T016 source-backed integration strategy is
 [`docs/09-source-backed-integration-strategy.md`](./09-source-backed-integration-strategy.md).
-It maps ActLumen evidence artifacts to future external consumers without
+It maps EviAlign evidence artifacts to future external consumers without
 adopting SDKs, wrappers, runtime adapters, auth gateways, sandboxes, signing
 systems, or execution-plane responsibilities.
 

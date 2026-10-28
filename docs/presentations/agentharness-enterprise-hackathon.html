@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="ActLumen 联想集团黑客松管理层汇报：企业 AI 行动质检助手的业务场景、员工提效路径、企业价值与试点建议。">
-  <title>ActLumen · 明行｜联想集团黑客松项目汇报</title>
+  <meta name="description" content="EviAlign 联想集团黑客松管理层汇报：AI 行动请求与依据核对、现有机制对照和可验证的试点建议。">
+  <title>EviAlign｜联想集团黑客松项目汇报</title>
   <style>
     :root{--navy:#102535;--teal:#087f78;--muted:#5d6f7b;--line:#dce4e7;--faint:#f5f8f9;--teal-soft:#eaf5f2;--warm:#965421;--warm-soft:#faf2e9;--page-x:clamp(28px,3.6vw,90px);--header:90px;--footer:74px;--font:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Zen Hei",sans-serif}
     *{box-sizing:border-box}html{background:#fff;color:var(--navy);font-family:var(--font);scroll-behavior:smooth}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer}button:disabled{cursor:default;opacity:.3}button,a,summary{-webkit-user-select:none;user-select:none}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:5px}button{border:0;background:transparent}a{color:var(--teal);text-underline-offset:4px}p{margin:0}h1,h2,h3{font-weight:650;letter-spacing:-.045em;margin:0}h2{font-size:clamp(30px,3.25vw,52px);line-height:1.3;text-wrap:balance}h3{font-size:23px;line-height:1.5}svg{display:block;max-width:100%}.icon{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;top:0;left:0;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip-link{position:fixed;z-index:30;left:24px;top:-80px;background:white;padding:12px}.skip-link:focus{top:12px}
@@ -26,7 +26,7 @@
     @media(max-width:900px){:root{--page-x:30px;--header:76px;--footer:68px}h2{font-size:34px}.slide{gap:27px}.cover{flex-direction:column;align-items:flex-start;justify-content:center;gap:20px}.cover-copy{flex:none;width:100%;padding-top:25px;padding-bottom:0}.cover h1{font-size:clamp(35px,6.9vw,58px)}.cover-subtitle{font-size:18px;margin-top:25px}.cover .tagline{font-size:14px}.cover-art{width:min(450px,72%);flex:none;align-self:flex-end;margin-top:-10px;margin-right:0}.workflow{grid-template-columns:repeat(3,1fr)}.workflow-step:nth-child(4){padding-left:0}.questions{gap:25px}.question strong{font-size:18px}.example-grid{grid-template-columns:1fr 1fr;gap:25px}.example-col:last-child{grid-column:1/-1}.example-col:last-child p{max-width:680px}.architecture{grid-template-columns:1fr 1fr;gap:28px}.arch-node+.arch-node::before{display:none}.branch{grid-template-columns:1fr;gap:16px}.scenario-header{display:block}.demo-label{text-align:left;max-width:none;margin-top:15px}.scenario-body{gap:30px}.results-layout{grid-template-columns:1fr;gap:26px}.big-metric{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}.big-number{font-size:90px}.big-label{margin-top:0;font-size:21px}.eval-stats{gap:30px}.value-layout{grid-template-columns:1fr;gap:32px}.roadmap{gap:25px}.roadmap-stage h3{font-size:20px}.closing-bottom{flex-direction:column;gap:12px}.topbar .brand::after{display:none}.toolbar button{padding-left:10px;padding-right:10px}.toolbar .icon{width:17px;height:17px}}
     @media(max-width:560px){.deck .bottombar,.deck .progress-track{position:static}.bottombar>p,.bottombar .page-controls,.progress-track{transform:none}:root{--page-x:23px;--header:70px;--footer:62px}.topbar{gap:12px}.brand{font-size:20px;gap:7px;letter-spacing:-.8px}.brand::before{width:6px;height:6px}.toolbar button{width:37px;padding:7px!important;justify-content:center}.toolbar button span{display:none}.toolbar button+button{border-left:0}.toolbar{gap:0}.bottombar{font-size:10px;gap:8px;letter-spacing:0}.page-controls{gap:5px}.page-controls button{width:32px;height:38px}.page-count{font-size:12px;min-width:48px}.slide{padding-top:28px;padding-bottom:32px;justify-content:flex-start;gap:27px}h2{font-size:30px;letter-spacing:-.04em}.section-no{font-size:11px;margin-bottom:11px}.intro{font-size:14px;line-height:1.8}.cover{justify-content:center;gap:24px;padding-top:48px}.cover h1{font-size:clamp(28px,7.25vw,40px);-webkit-text-stroke:.3px currentColor;line-height:1.45;letter-spacing:-.06em}.cover-copy{padding-top:0}.cover-subtitle{font-size:15px;line-height:1.9;margin-top:25px;max-width:320px}.cover .tagline{font-size:12px;line-height:1.9;margin-top:10px}.cover-art{width:92%;margin-top:0;margin-right:-7px;max-height:310px}.workflow{grid-template-columns:1fr;gap:0;margin-top:0}.workflow-step,.workflow-step:not(:first-child){padding:15px 0;display:grid;grid-template-columns:28px 90px 1fr;gap:10px;align-items:baseline}.workflow-step.featured{padding-top:14px}.workflow-step:not(:last-child)::after{display:none}.workflow-step h3{font-size:17px;margin:0}.workflow-step p{font-size:12px}.questions{grid-template-columns:1fr;gap:18px;margin-top:0}.question{padding-top:16px}.question strong{font-size:18px;margin-bottom:4px}.question p{font-size:13px}.quote{font-size:23px;padding-left:17px;line-height:1.8}.example-grid{grid-template-columns:1fr;gap:22px}.example-col:last-child{grid-column:auto}.example-col{padding-top:17px}.example-col h3{font-size:21px}.example-col p{font-size:14px}.eyebrow{margin-bottom:9px}.code-block{font-size:12px;padding:15px}.note{font-size:12px;padding-left:13px}.architecture{grid-template-columns:1fr;gap:24px}.arch-node{padding-top:15px}.arch-node h3{font-size:22px;margin:5px 0 8px}.arch-node p{font-size:14px}.branch-observer{display:block;padding:16px}.branch-observer p{margin-top:7px}.branch-explain{font-size:13px}.boundary-band{align-items:flex-start;flex-direction:column;gap:12px;font-size:12px}.status-line{font-size:12px;flex-wrap:wrap;gap:7px}.status-line code{font-size:11px}.case-tabs{gap:0;justify-content:space-between}.case-tabs button{font-size:14px;min-height:49px}.scenario-body{grid-template-columns:1fr;gap:27px}.scenario-request{font-size:18px;min-height:0}.scenario-body .code-block{min-height:0}.observation{grid-template-columns:78px 1fr;gap:12px}.observation-label{font-size:12px}.observation strong{font-size:18px}.scenario-bottom{flex-direction:column;align-items:flex-start;gap:14px}.demo-label{font-size:11px}.big-metric{gap:22px}.big-number{font-size:79px}.big-label{font-size:19px}.big-caption{font-size:12px}.result-row{grid-template-columns:67px 1fr 86px;gap:12px;padding:17px 0}.result-row-label{font-size:15px}.result-row-label span{font-size:11px}.row-score{font-size:18px}.row-score small{font-size:11px}.bar-annotation{font-size:10px}.eval-stats{flex-wrap:wrap;gap:20px 28px}.eval-stat strong{font-size:21px}.eval-stat span{font-size:11px}.limitations{font-size:11px;line-height:1.9}.engineering{font-size:11px}.value-row{grid-template-columns:78px 1fr;gap:14px}.value-row strong{font-size:16px}.value-row p{font-size:14px}.measure-heading h3{font-size:20px}.measure-heading span{font-size:11px}.measure-list li{font-size:14px}.roadmap{grid-template-columns:1fr;gap:24px}.roadmap-stage{padding-top:17px}.stage-label{margin-bottom:10px}.roadmap-stage h3{font-size:22px;margin-bottom:9px}.closing-line{font-size:25px;line-height:1.65}.source-links{gap:8px 20px}.source-details{font-size:11px}dialog{padding:24px}.toc-list button{font-size:14px}.keyboard-hint{font-size:11px}}
     @page{size:13.333in 7.5in;margin:0}
-    @media print{html,body{margin:0!important;padding:0!important;background:#fff;scroll-behavior:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}.topbar,.bottombar,.progress-track,dialog,.skip-link,.nojs-note,.js-only,.source-details{display:none!important}.slide,.slide[hidden]{display:flex!important;visibility:visible!important;border:0!important;position:relative;page-break-after:always;break-after:page;width:13.333in;height:7.5in;min-height:0;max-height:none;padding:48px 64px 55px;gap:24px;animation:none!important;overflow:visible}.slide:last-child{page-break-after:auto;break-after:auto}.slide::after{content:"ActLumen   /   联想集团黑客松                                                " attr(data-page) " / 08";position:absolute;bottom:22px;left:64px;right:64px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;letter-spacing:.05em;color:var(--muted)}.cover{flex-direction:row;align-items:center;justify-content:space-between}.cover-copy{padding:0;flex:1 1 61%}.cover h1{font-size:56px}.cover-subtitle{font-size:18px;margin-top:26px}.cover .tagline{font-size:14px}.cover-art{width:40%;flex:0 1 40%;align-self:auto;max-height:none;margin:0 -15px 0 0}h2{font-size:38px}.intro{font-size:14px;margin-top:10px}.section-no{font-size:11px;margin-bottom:10px}.workflow{grid-template-columns:repeat(5,1fr)}.workflow-step,.workflow-step:not(:first-child){display:block;padding:20px 15px 10px 0}.workflow-step:not(:first-child){padding-left:15px}.workflow-step h3{font-size:18px;margin:13px 0 7px}.workflow-step p{font-size:12px}.questions{grid-template-columns:repeat(3,1fr);gap:30px}.question strong{font-size:18px}.question p{font-size:12px}.quote{font-size:27px}.example-grid{grid-template-columns:1.13fr 1fr 1fr;gap:30px}.example-col:last-child{grid-column:auto}.example-col h3{font-size:20px}.example-col p{font-size:13px}.code-block{font-size:12px;padding:15px}.architecture{grid-template-columns:.95fr 1.05fr 1.5fr 1.4fr;gap:24px}.arch-node h3{font-size:19px}.arch-node p{font-size:12px}.branch{grid-template-columns:2fr 2.9fr;gap:24px}.branch-observer{display:flex}.branch-observer p{font-size:12px}.branch-explain{font-size:12px}.boundary-band{flex-direction:row;font-size:12px}.scenario-header{display:flex}.demo-label{text-align:right;font-size:11px}.case-tabs{gap:30px;justify-content:flex-start}.case-tabs button{font-size:14px;min-height:42px;pointer-events:none}.scenario-body{grid-template-columns:1.1fr 1fr;gap:50px}.scenario-request{font-size:18px}.observation strong{font-size:17px}.observation p{font-size:12px}.results-layout{grid-template-columns:.76fr 1.5fr;gap:55px}.big-metric{display:block}.big-number{font-size:100px}.big-label{font-size:21px;margin-top:15px}.big-caption{font-size:12px}.result-row{grid-template-columns:90px 1fr 110px;gap:16px;padding:13px 0}.row-score{font-size:19px}.eval-stats{gap:32px;padding-top:14px;margin-top:0}.eval-stat strong{font-size:22px}.limitations,.engineering{font-size:11px}.value-layout{grid-template-columns:1fr 1fr;gap:55px}.value-row{padding:17px 0}.value-row p{font-size:13px}.measure-list li{font-size:14px;padding:10px 0}.roadmap{grid-template-columns:repeat(3,1fr);gap:32px}.roadmap-stage h3{font-size:21px}.roadmap-stage p{font-size:13px}.closing-line{font-size:29px}.closing-bottom{flex-direction:row}.project-link{font-size:12px}.note{font-size:12px}}
+    @media print{html,body{margin:0!important;padding:0!important;background:#fff;scroll-behavior:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}.topbar,.bottombar,.progress-track,dialog,.skip-link,.nojs-note,.js-only,.source-details{display:none!important}.slide,.slide[hidden]{display:flex!important;visibility:visible!important;border:0!important;position:relative;page-break-after:always;break-after:page;width:13.333in;height:7.5in;min-height:0;max-height:none;padding:48px 64px 55px;gap:24px;animation:none!important;overflow:visible}.slide:last-child{page-break-after:auto;break-after:auto}.slide::after{content:"EviAlign   /   联想集团黑客松                                                " attr(data-page) " / 08";position:absolute;bottom:22px;left:64px;right:64px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;letter-spacing:.05em;color:var(--muted)}.cover{flex-direction:row;align-items:center;justify-content:space-between}.cover-copy{padding:0;flex:1 1 61%}.cover h1{font-size:56px}.cover-subtitle{font-size:18px;margin-top:26px}.cover .tagline{font-size:14px}.cover-art{width:40%;flex:0 1 40%;align-self:auto;max-height:none;margin:0 -15px 0 0}h2{font-size:38px}.intro{font-size:14px;margin-top:10px}.section-no{font-size:11px;margin-bottom:10px}.workflow{grid-template-columns:repeat(5,1fr)}.workflow-step,.workflow-step:not(:first-child){display:block;padding:20px 15px 10px 0}.workflow-step:not(:first-child){padding-left:15px}.workflow-step h3{font-size:18px;margin:13px 0 7px}.workflow-step p{font-size:12px}.questions{grid-template-columns:repeat(3,1fr);gap:30px}.question strong{font-size:18px}.question p{font-size:12px}.quote{font-size:27px}.example-grid{grid-template-columns:1.13fr 1fr 1fr;gap:30px}.example-col:last-child{grid-column:auto}.example-col h3{font-size:20px}.example-col p{font-size:13px}.code-block{font-size:12px;padding:15px}.architecture{grid-template-columns:.95fr 1.05fr 1.5fr 1.4fr;gap:24px}.arch-node h3{font-size:19px}.arch-node p{font-size:12px}.branch{grid-template-columns:2fr 2.9fr;gap:24px}.branch-observer{display:flex}.branch-observer p{font-size:12px}.branch-explain{font-size:12px}.boundary-band{flex-direction:row;font-size:12px}.scenario-header{display:flex}.demo-label{text-align:right;font-size:11px}.case-tabs{gap:30px;justify-content:flex-start}.case-tabs button{font-size:14px;min-height:42px;pointer-events:none}.scenario-body{grid-template-columns:1.1fr 1fr;gap:50px}.scenario-request{font-size:18px}.observation strong{font-size:17px}.observation p{font-size:12px}.results-layout{grid-template-columns:.76fr 1.5fr;gap:55px}.big-metric{display:block}.big-number{font-size:100px}.big-label{font-size:21px;margin-top:15px}.big-caption{font-size:12px}.result-row{grid-template-columns:90px 1fr 110px;gap:16px;padding:13px 0}.row-score{font-size:19px}.eval-stats{gap:32px;padding-top:14px;margin-top:0}.eval-stat strong{font-size:22px}.limitations,.engineering{font-size:11px}.value-layout{grid-template-columns:1fr 1fr;gap:55px}.value-row{padding:17px 0}.value-row p{font-size:13px}.measure-list li{font-size:14px;padding:10px 0}.roadmap{grid-template-columns:repeat(3,1fr);gap:32px}.roadmap-stage h3{font-size:21px}.roadmap-stage p{font-size:13px}.closing-line{font-size:29px}.closing-bottom{flex-direction:row}.project-link{font-size:12px}.note{font-size:12px}}
     /* Leadership edition: business language and a more readable presentation hierarchy. */
     .executive h2{font-weight:800;word-break:keep-all;overflow-wrap:break-word}.executive .intro{font-size:clamp(16px,1.35vw,21px);line-height:1.85;max-width:1170px}.executive .cover-subtitle{font-size:clamp(18px,1.7vw,29px)}.executive .tagline{line-height:1.9}.point-number{font:13px/1.8 Arial,var(--font);letter-spacing:.08em;color:var(--teal)}.business-rows{border-top:1px solid var(--line)}.business-row{display:grid;grid-template-columns:45px .8fr 1.8fr;gap:26px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}.business-row h3{font-size:24px}.business-row p{font-size:17px;line-height:1.85;color:var(--muted)}.business-callout{font-size:23px;line-height:1.8;letter-spacing:-.025em}.executive .scenario-request{font-size:25px;line-height:1.7;min-height:0}.scenario-plan{font-size:19px;line-height:1.9;color:var(--muted);padding-left:18px;border-left:2px solid var(--line)}.executive .scenario-body{gap:70px}.executive .observation{grid-template-columns:82px 1fr}.executive .observation strong{font-size:22px}.executive .observation p{font-size:15px;line-height:1.85}.executive .request-label,.executive .observation-label{font-size:14px}.executive .demo-label{font-size:12px}.executive .note{font-size:15px}.business-workflow{grid-template-columns:repeat(4,1fr)}.executive .workflow-step h3{font-size:22px}.executive .workflow-step p{font-size:16px}.capability-line{border-top:1px solid var(--line);padding-top:22px;display:flex;gap:35px;align-items:baseline}.capability-label{font-size:14px;color:var(--muted);white-space:nowrap}.capability-line p{font-size:22px;line-height:1.8}.capability-line p span{color:#aab9bd;padding:0 16px}.comparison{display:grid;border-top:1px solid var(--line)}.comparison-head,.comparison-row{display:grid;grid-template-columns:.55fr 1.15fr 1.4fr;gap:35px;align-items:start;border-bottom:1px solid var(--line)}.comparison-head{padding:14px 0;font-size:13px;color:var(--muted)}.comparison-row{padding:22px 0}.comparison-row strong{font-size:21px;font-weight:550}.comparison-row p{font-size:17px;line-height:1.85;color:var(--muted)}.comparison-row p.future{color:var(--teal)}.measurement-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}.measurement-strip strong{display:block;font-size:22px;font-weight:550;margin-bottom:7px}.measurement-strip span{font-size:14px;color:var(--muted)}.enterprise-values{display:grid;grid-template-columns:repeat(3,1fr);gap:45px}.enterprise-value{border-top:2px solid var(--teal);padding-top:20px}.enterprise-value h3{font-size:27px;margin:14px 0 13px}.enterprise-value p{font-size:18px;color:var(--muted);line-height:1.9}.enterprise-value .value-measure{font-size:13px;margin-top:22px;color:var(--teal)}.enterprise-band{border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:150px 1fr;gap:35px;align-items:baseline}.enterprise-band strong{font-size:22px;font-weight:550}.enterprise-band p{font-size:20px;line-height:1.8;color:var(--muted)}.evidence-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:45px}.evidence-item{border-top:1px solid var(--line);padding-top:24px}.evidence-number{font:80px/1.1 Arial,sans-serif;letter-spacing:-.055em;color:var(--teal)}.evidence-number span{font-size:30px;letter-spacing:-.03em;color:var(--muted)}.evidence-number.attention{color:var(--navy)}.evidence-item h3{font-size:23px;margin:20px 0 13px}.evidence-item>p:last-child{font-size:16px;line-height:1.9;color:var(--muted)}.proof-conclusion{font-size:22px;line-height:1.8;border-top:1px solid var(--line);padding-top:21px}.proof-context{font-size:13px;line-height:1.9;color:var(--muted)}.executive .roadmap-stage p{font-size:16px;line-height:1.85}.executive .roadmap-stage .stage-label{font-size:12px}.pilot-success{font-size:20px;line-height:1.8}.executive .closing-line{font-size:clamp(22px,2vw,32px)}.executive .small{font-size:12px}.executive .source-details{font-size:13px}.executive .source-details p{margin:14px 0;line-height:1.9}.executive .source-details summary{font-size:12px}
     @media(max-height:800px) and (min-width:901px){.executive .slide{gap:22px}.executive h2{font-size:38px}.executive .intro{font-size:17px}.business-row{padding:18px 0}.business-row h3{font-size:22px}.business-row p{font-size:16px}.business-callout{font-size:21px}.executive .scenario-request{font-size:23px}.scenario-plan{font-size:17px}.executive .observation strong{font-size:20px}.executive .observation p{font-size:14px}.capability-line p{font-size:20px}.comparison-row{padding:16px 0}.comparison-row p{font-size:16px}.enterprise-value h3{font-size:25px}.enterprise-value p{font-size:16px}.enterprise-band p{font-size:18px}.evidence-number{font-size:70px}.evidence-item h3{font-size:21px}.evidence-item>p:last-child{font-size:15px}.proof-conclusion{font-size:20px}.executive .roadmap-stage p{font-size:15px}.executive .closing-line{font-size:27px}}
@@ -47,7 +47,7 @@
   </defs></svg>
   <a class="skip-link" href="#main">跳到汇报正文</a>
   <header class="topbar">
-    <a class="brand" href="#slide-1" aria-label="ActLumen，返回封面">ActLumen · 明行<span class="brand-mark" aria-hidden="true"></span></a>
+    <a class="brand" href="#slide-1" aria-label="EviAlign，返回封面">EviAlign<span class="brand-mark" aria-hidden="true"></span></a>
     <nav class="toolbar js-only" aria-label="汇报工具">
       <button id="open-toc" type="button" aria-haspopup="dialog" title="打开目录"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span>目录</span><span class="sr-only">打开汇报目录</span></button>
       <button id="fullscreen" type="button" aria-label="进入全屏" title="进入全屏"><svg class="icon" aria-hidden="true"><use href="#i-fullscreen"/></svg><span id="fullscreen-label">全屏</span></button>
@@ -56,105 +56,105 @@
   </header>
   <noscript><p class="nojs-note">当前为连续阅读模式。启用 JavaScript 后可翻页和切换示例；也可直接使用浏览器打印全部八页。</p></noscript>
   <main id="main">
-    <section class="slide cover" id="slide-1" data-page="01" data-title="让 AI 走进业务" aria-labelledby="cover-title">
+    <section class="slide cover" id="slide-1" data-page="01" data-title="行动之前，把依据对清楚" aria-labelledby="cover-title">
       <div class="cover-copy">
-        <h1 id="cover-title" tabindex="-1">让 AI 走进业务<br>让协作更有把握</h1>
-        <p class="cover-subtitle">ActLumen · 明行｜企业 AI 行动质检助手</p>
-        <p class="tagline">让员工看清 AI 准备做什么，<br>让企业把提效做得更可控。</p>
+        <h1 id="cover-title" tabindex="-1">行动之前<br>把依据对清楚</h1>
+        <p class="cover-subtitle">EviAlign｜AI 行动依据核对原型</p>
+        <p class="tagline">让确认内容和拟提交动作清楚可见，<br>让企业用对照结果判断是否值得投入。</p>
       </div>
       <svg class="cover-art" viewBox="0 0 640 570" role="img" aria-label="业务需求、AI 计划、行动核对与业务系统，四层相互关联的协作流程">
         <g fill="none" stroke-width="1.1"><path d="m116 130 295-104v528L116 450z" stroke="#dce7ee"/><path d="m255 162 289-104v494l-289-79z" stroke="#90c7c0" stroke-dasharray="6 7"/><path d="m379 194 160-55v390L379 475z" stroke="#e4edf2"/></g>
-        <g transform="translate(48 143) skewY(-20)"><rect class="plane" width="136" height="260" rx="4"/><g stroke="#087f78" fill="none" stroke-width="1.8"><circle cx="46" cy="55" r="9"/><path d="M30 87v-8c0-15 32-15 32 0v8z"/></g><text x="23" y="124">业务需求</text><path d="M24 152h73m-73 16h61m-61 16h45" stroke="#dce4e7" stroke-width="4" stroke-linecap="round"/></g>
-        <g transform="translate(190 180) skewY(-20)"><rect class="plane" width="136" height="260" rx="4"/><g fill="none" stroke="#087f78" stroke-width="1.8"><rect x="31" y="45" width="33" height="42" rx="2"/><path d="M38 57h18M38 65h18M38 73h11"/></g><text x="23" y="124">AI 计划</text><path d="M24 152h73m-73 16h61m-61 16h45" stroke="#dce4e7" stroke-width="4" stroke-linecap="round"/></g>
+        <g transform="translate(48 143) skewY(-20)"><rect class="plane" width="136" height="260" rx="4"/><g stroke="#087f78" fill="none" stroke-width="1.8"><circle cx="46" cy="55" r="9"/><path d="M30 87v-8c0-15 32-15 32 0v8z"/></g><text x="23" y="124">确认内容</text><path d="M24 152h73m-73 16h61m-61 16h45" stroke="#dce4e7" stroke-width="4" stroke-linecap="round"/></g>
+        <g transform="translate(190 180) skewY(-20)"><rect class="plane" width="136" height="260" rx="4"/><g fill="none" stroke="#087f78" stroke-width="1.8"><rect x="31" y="45" width="33" height="42" rx="2"/><path d="M38 57h18M38 65h18M38 73h11"/></g><text x="23" y="124">拟提交动作</text><path d="M24 152h73m-73 16h61m-61 16h45" stroke="#dce4e7" stroke-width="4" stroke-linecap="round"/></g>
         <g transform="translate(326 205) skewY(-20)"><rect class="teal-plane" width="136" height="260" rx="4"/><g stroke="#087f78" stroke-width="1.8" fill="none"><path d="M30 83V44h32v25M38 55h16M38 63h14M38 71h8"/><circle cx="61" cy="80" r="10"/><path d="m69 88 8 8"/></g><text x="23" y="124" style="fill:#087f78">行动核对</text><path d="M24 152h73m-73 16h61m-61 16h45" stroke="#c2e2dc" stroke-width="4" stroke-linecap="round"/></g>
         <g transform="translate(480 192) skewY(-20)"><rect class="plane" width="136" height="260" rx="4"/><g stroke="#087f78" stroke-width="1.8" fill="none"><path d="m46 43-18 11v23l18 11 18-11V54zm0 22 18-11M46 65 28 54m18 11v23"/></g><text class="art-label" x="18" y="124">业务系统</text><path d="M24 152h73m-73 16h61m-61 16h45" stroke="#dce4e7" stroke-width="4" stroke-linecap="round"/></g>
         <g fill="none" stroke="#43aaa0" stroke-width="1.8"><path d="M116 352c0 35 55 38 117 46s49-36 93-35 100 39 154 3"/><path d="m617 273 23-14m-23 47h23m-23 30 23 14" stroke-dasharray="4 6" stroke-width="1"/><circle cx="326" cy="363" r="24" fill="#fff" stroke="#c3e3dd" stroke-width="5"/><circle cx="326" cy="363" r="16" fill="#087f78" stroke="none"/><circle cx="326" cy="363" r="6" fill="#fff" stroke="none"/></g><g fill="#43aaa0"><circle cx="116" cy="352" r="4"/><circle cx="233" cy="398" r="4"/><circle cx="480" cy="366" r="4"/></g>
       </svg>
     </section>
 
-    <section class="slide" id="slide-2" data-page="02" data-title="企业面对什么问题" aria-labelledby="title-2">
-      <div class="slide-heading"><span class="section-no">01 / 业务问题</span><h2 id="title-2" tabindex="-1">AI 走进业务，行动需要看得清。</h2><p class="intro">当 AI 开始协助处理订单、客户与费用，员工既要看结果，也要核对它准备做的事。这一步，决定了协作能否顺畅进入业务流程。</p></div>
+    <section class="slide" id="slide-2" data-page="02" data-title="先看现有机制" aria-labelledby="title-2">
+      <div class="slide-heading"><span class="section-no">01 / 业务问题</span><h2 id="title-2" tabindex="-1">让 AI 办事，先看确认与行动是否对应。</h2><p class="intro">企业已有 API、权限和审批；当智能体参与流程，我们需要核实每次行动所依据的内容是否仍然对应。</p></div>
       <div class="business-rows">
-        <div class="business-row"><span class="point-number">01</span><h3>需求容易走样</h3><p>员工只想“查一下退款进度”，AI 却可能提出“审批退款”。<br>理解上的偏差，可能变成业务上的返工。</p></div>
-        <div class="business-row"><span class="point-number">02</span><h3>核对依然费时</h3><p>为了确认一次处理建议，员工还要回看对话、比对计划、查找材料。<br>AI 节省的准备时间，可能被重复核对消耗。</p></div>
-        <div class="business-row"><span class="point-number">03</span><h3>复盘缺少线索</h3><p>需求、计划和依据分散在不同位置。出了偏差，团队需要重新拼接经过；<br>一个试点的经验，也不容易被下一个团队复用。</p></div>
+        <div class="business-row"><span class="point-number">01</span><h3>企业已有基础</h3><p>现有接口、权限和审批可能已限制对象、金额或处理范围。<br>先弄清今天已经覆盖到哪里。</p></div>
+        <div class="business-row"><span class="point-number">02</span><h3>确认具体缺口</h3><p>当计划或材料发生变化，现有流程能否保留本次确认与行动的对应关系？<br>这一问题需要在真实流程中核实。</p></div>
+        <div class="business-row"><span class="point-number">03</span><h3>计算新增价值</h3><p>多个智能体是否重复做同样的接入和核对？<br>额外的复核与维护是否值得？</p></div>
       </div>
-      <p class="business-callout">项目切入点：<span class="accent">把行动说清楚，把依据对上，把关注点提前呈现。</span></p>
+      <p class="business-callout">本次切口：<span class="accent">把确认记录与拟提交动作放在一起看清楚。</span></p>
     </section>
 
-    <section class="slide" id="slide-3" data-page="03" data-title="三个业务应用场景" aria-labelledby="title-3">
-      <div class="scenario-header"><div class="slide-heading"><span class="section-no">02 / 应用场景</span><h2 id="title-3" tabindex="-1">从一线高频任务，找到提效切口。</h2></div><p class="demo-label">以下为拟议业务场景与静态示意。<br>尚未接入联想业务系统，不执行真实操作。</p></div>
-      <div class="case-tabs js-only" role="tablist" aria-label="选择业务应用场景">
-        <button type="button" id="case-service" data-case="service" role="tab" aria-selected="true" aria-controls="scenario-panel">客户服务</button>
-        <button type="button" id="case-sales" data-case="sales" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">销售运营</button>
-        <button type="button" id="case-finance" data-case="finance" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">财务协同</button>
+    <section class="slide" id="slide-3" data-page="03" data-title="一个退款示例" aria-labelledby="title-3">
+      <div class="scenario-header"><div class="slide-heading"><span class="section-no">02 / 拟议示例</span><h2 id="title-3" tabindex="-1">同一笔退款，看清三种情况。</h2></div><p class="demo-label">合成示例与静态演示。<br>未接入联想业务系统，不执行退款。</p></div>
+      <div class="case-tabs js-only" role="tablist" aria-label="选择退款对照示例">
+        <button type="button" id="case-service" data-case="service" role="tab" aria-selected="true" aria-controls="scenario-panel">内容一致</button>
+        <button type="button" id="case-sales" data-case="sales" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">对象变化</button>
+        <button type="button" id="case-finance" data-case="finance" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">金额变化</button>
       </div>
       <div id="scenario-panel" role="tabpanel" aria-labelledby="case-service" tabindex="0">
         <div class="scenario-body">
-          <div><p class="request-label">员工交给 AI 的任务</p><p class="scenario-request" id="scenario-request">查一下客户的退款进度，整理回复建议，不要审批退款。</p><p class="request-label" style="margin-top:24px">拟议协作方式</p><p class="scenario-plan" id="scenario-proposal">AI 整理退款状态与回复建议；项目核对建议对应的任务与依据，并提示需要关注的行动偏差。</p></div>
+          <div><p class="request-label">原流程确认记录（示意）</p><p class="scenario-request" id="scenario-request">订单 A · 退款 100 元</p><p class="request-label" style="margin-top:24px">AI 拟提交的动作（示意）</p><p class="scenario-plan" id="scenario-proposal">订单 A · 退款 100 元</p></div>
           <div class="observations" aria-live="polite" aria-atomic="true">
-            <div class="observation"><span class="observation-label">预期提效</span><div><strong id="intent-result" class="accent">少翻找，快核对</strong><p id="intent-detail">把本次需求、处理建议和关注点集中呈现，帮助客服减少来回查找与确认。</p></div></div>
-            <div class="observation"><span class="observation-label">关注重点</span><div><strong id="evidence-result">查询不变成审批</strong><p id="evidence-detail">如果 AI 准备改变退款状态，提示与原需求存在偏差，供员工关注。</p></div></div>
-            <div class="observation"><span class="observation-label">业务规则</span><div><strong>沿用原有审批与权限</strong><p>是否批准、是否执行，仍由企业原有流程和系统决定。</p></div></div>
+            <div class="observation"><span class="observation-label">核对对象</span><div><strong id="intent-result" class="accent">对象一致</strong><p id="intent-detail">确认记录和拟提交动作均为订单 A。</p></div></div>
+            <div class="observation"><span class="observation-label">核对金额</span><div><strong id="evidence-result">金额一致</strong><p id="evidence-detail">确认记录和拟提交动作均为 100 元。</p></div></div>
+            <div class="observation"><span class="observation-label">后续处理</span><div><strong>交回企业原有流程</strong><p>身份、权限、审批有效性和执行仍由原系统负责。</p></div></div>
           </div>
         </div>
       </div>
-      <p class="note" id="scenario-description">面向员工的集中核对页属于后续产品化设想。当前已实现的是行动依据核对与意图观察原型，效率收益需试点测量。</p>
+      <p class="note" id="scenario-description">示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。</p>
     </section>
 
-    <section class="slide" id="slide-4" data-page="04" data-title="这个项目到底是什么" aria-labelledby="title-4">
-      <div class="slide-heading"><span class="section-no">03 / 项目定位</span><h2 id="title-4" tabindex="-1">给 AI 的行动，多一份清楚的依据。</h2><p class="intro">ActLumen 是企业 AI 行动质检原型：在 AI 的计划进入业务处理前，核对这次需求、拟做的事与所用依据是否对应，并提供意图偏差提示。</p></div>
-      <div class="workflow business-workflow" aria-label="员工、AI、项目和业务流程的分工">
-        <div class="workflow-step"><span class="step-index">01</span><h3>员工说清需求</h3><p>要达成什么目标<br>有哪些范围与限制</p></div>
-        <div class="workflow-step"><span class="step-index">02</span><h3>AI 拟出计划</h3><p>准备处理哪些事项<br>使用哪些信息与依据</p></div>
-        <div class="workflow-step featured"><span class="step-index">03</span><h3>项目提供核对与提示</h3><p>行动与材料是否对应<br>哪些地方可能偏离原意</p></div>
-        <div class="workflow-step"><span class="step-index">04</span><h3>企业按规则处理</h3><p>员工保留业务判断<br>系统按既有权限执行</p></div>
+    <section class="slide" id="slide-4" data-page="04" data-title="拟议的流程分工" aria-labelledby="title-4">
+      <div class="slide-heading"><span class="section-no">03 / 项目定位</span><h2 id="title-4" tabindex="-1">已有依据核对，探索业务对照。</h2><p class="intro">EviAlign 是执行前依据核对原型。下图是拟议接入流程，真实审批来源和业务字段对照仍待设计与验证。</p></div>
+      <div class="workflow business-workflow" aria-label="企业原系统、AI、项目和业务流程的拟议分工">
+        <div class="workflow-step"><span class="step-index">01</span><h3>原系统确认</h3><p>原有流程提供<br>可信确认记录</p></div>
+        <div class="workflow-step"><span class="step-index">02</span><h3>AI 提出动作</h3><p>形成拟提交的<br>对象、金额与内容</p></div>
+        <div class="workflow-step featured"><span class="step-index">03</span><h3>拟议依据核对</h3><p>呈现对应关系<br>供后续判断</p></div>
+        <div class="workflow-step"><span class="step-index">04</span><h3>原系统处理</h3><p>核验权限与审批<br>按既有规则执行</p></div>
       </div>
-      <div class="capability-line"><span class="capability-label">已完成的原型能力</span><p>行动依据匹配检查<span> / </span>意图偏差提示<span> / </span>可复查的检查记录</p></div>
-      <p class="note">面向员工的业务界面、与联想业务系统的接入，属于后续建设。项目不代替企业审批，也不直接执行业务操作。</p>
+      <div class="capability-line"><span class="capability-label">当前原型</span><p>请求与证据对应检查<span> / </span>确定性结果<span> / </span>可复查记录</p></div>
+      <p class="note">独立沙箱另有可选意图观察；本项目不代替企业身份、授权、审批或真实执行。</p>
     </section>
 
-    <section class="slide" id="slide-5" data-page="05" data-title="员工怎样获得效率提升" aria-labelledby="title-5">
-      <div class="slide-heading"><span class="section-no">04 / 员工提效</span><h2 id="title-5" tabindex="-1">减少重复核对，让精力回到业务判断。</h2><p class="intro">接入业务流程后，预期把分散的核对工作变成一条清楚的检查线索。以下是拟议使用体验，实际提效需要通过试点验证。</p></div>
-      <div class="comparison" role="table" aria-label="拟议使用前后对比">
-        <div class="comparison-head" role="row"><span role="columnheader">处理环节</span><span role="columnheader">原有工作方式示意</span><span role="columnheader">接入后的预期变化</span></div>
-        <div class="comparison-row" role="row"><strong role="rowheader">确认需求</strong><p role="cell">回看长对话，重新找出目标和限制。</p><p class="future" role="cell">集中看清本次要做什么、哪些不能做，减少反复确认。</p></div>
-        <div class="comparison-row" role="row"><strong role="rowheader">核对计划</strong><p role="cell">逐项比对 AI 的建议与对应材料。</p><p class="future" role="cell">结合匹配检查和偏差提示，把注意力放到需判断的事项。</p></div>
-        <div class="comparison-row" role="row"><strong role="rowheader">跟进复盘</strong><p role="cell">事后再查记录，重新拼接处理经过。</p><p class="future" role="cell">沿着本次需求、行动与依据核对，减少补材料和来回追问。</p></div>
+    <section class="slide" id="slide-5" data-page="05" data-title="与现有系统怎样分工" aria-labelledby="title-5">
+      <div class="slide-heading"><span class="section-no">04 / 现有能力</span><h2 id="title-5" tabindex="-1">先复用已有能力，再验证增量。</h2><p class="intro">现有 API 和审批系统可能已覆盖所需控制。先核实真实流程，再判断是否需要额外组件。</p></div>
+      <div class="comparison" role="table" aria-label="现有机制与拟议项目分工">
+        <div class="comparison-head" role="row"><span role="columnheader">处理环节</span><span role="columnheader">企业原有机制</span><span role="columnheader">项目范围与拟议工作</span></div>
+        <div class="comparison-row" role="row"><strong role="rowheader">身份与权限</strong><p role="cell">由现有身份、授权和接口规则负责。</p><p class="future" role="cell">项目接收受信输入，不验证身份或授予权限。</p></div>
+        <div class="comparison-row" role="row"><strong role="rowheader">确认与对照</strong><p role="cell">原流程可能已校验审批对象与金额。</p><p class="future" role="cell">探索是否需要可复用的业务字段对照；当前尚未实现。</p></div>
+        <div class="comparison-row" role="row"><strong role="rowheader">执行与记录</strong><p role="cell">业务系统负责审批有效性、事务与执行。</p><p class="future" role="cell">原型提供执行前请求与证据核对记录。</p></div>
       </div>
-      <div class="measurement-strip"><p><strong>处理时长</strong><span>一件事是否更快正确完成</span></p><p><strong>复核耗时</strong><span>核对是否更集中、更省力</span></p><p><strong>返工次数</strong><span>是否减少重复确认与补材料</span></p></div>
-      <p class="small">以上为试点待验证指标；目前尚未测得节省工时、成本或企业 ROI。</p>
+      <div class="measurement-strip"><p><strong>先核实</strong><span>现有流程覆盖哪些情况</span></p><p><strong>再比较</strong><span>补强原系统的成本</span></p><p><strong>看增量</strong><span>额外组件是否值得</span></p></div>
+      <p class="small">如现有机制已满足需要，继续复用；是否接入由业务对照结果决定。</p>
     </section>
 
-    <section class="slide" id="slide-6" data-page="06" data-title="企业可以获得什么价值" aria-labelledby="title-6">
-      <div class="slide-heading"><span class="section-no">05 / 企业价值</span><h2 id="title-6" tabindex="-1">一线提效，管理提质，经验可以复用。</h2><p class="intro">项目的预期价值，是让 AI 协作更容易被业务接住、被管理看清、被更多场景借鉴。</p></div>
+    <section class="slide" id="slide-6" data-page="06" data-title="假设中的企业价值" aria-labelledby="title-6">
+      <div class="slide-heading"><span class="section-no">05 / 待验证价值</span><h2 id="title-6" tabindex="-1">让一次核对更清楚，也算清投入。</h2><p class="intro">以下是需要业务试点验证的价值方向，尚未证明节省时间、减少返工或降低成本。</p></div>
       <div class="enterprise-values">
-        <div class="enterprise-value"><span class="point-number">效率</span><h3>减少协作往返</h3><p>把需求、拟处理事项与关注点放在一起，帮助一线员工减少翻找、核对和重复解释。</p><p class="value-measure">看整体处理时间与复核耗时</p></div>
-        <div class="enterprise-value"><span class="point-number">质量</span><h3>提前看见偏差</h3><p>让“只查询却准备审批”、行动材料不对应等问题，更早进入业务人员的视野。</p><p class="value-measure">看偏差发现与返工情况</p></div>
-        <div class="enterprise-value"><span class="point-number">管理</span><h3>让复盘有据可循</h3><p>保留与同一次行动对应的检查线索，帮助团队说明经过、定位问题、积累改进经验。</p><p class="value-measure">看记录完整性与追溯耗时</p></div>
+        <div class="enterprise-value"><span class="point-number">业务</span><h3>减少来回核对</h3><p>把本次确认、拟提交动作和关注点集中呈现，观察是否减少翻找与重复确认。</p><p class="value-measure">看整体处理时间与人工复核耗时</p></div>
+        <div class="enterprise-value"><span class="point-number">质量</span><h3>看清发生了什么</h3><p>探索是否更早发现对象、金额或版本变化，供原流程判断。</p><p class="value-measure">看变化发现、误提示与返工</p></div>
+        <div class="enterprise-value"><span class="point-number">复用</span><h3>减少重复接入</h3><p>如果多个智能体有同类需要，比较统一核对能力与分别补强原系统的工作量。</p><p class="value-measure">看接入、维护与跨场景复用成本</p></div>
       </div>
-      <div class="enterprise-band"><strong>对集团的意义</strong><p>让一个流程积累的核对方法，能够为客服、销售运营、财务等更多 AI 试点提供参考，减少重复摸索。</p></div>
-      <p class="small">企业收益为拟议价值路径，尚未在联想真实流程中验证；推广范围应由试点结果决定。</p>
+      <div class="enterprise-band"><strong>企业关注</strong><p>把新增复核负担和建设成本一起计算，结果决定是否扩展。</p></div>
+      <p class="small">以上为拟议价值，尚未在联想真实业务中实测。</p>
     </section>
 
-    <section class="slide" id="slide-7" data-page="07" data-title="已经验证了什么" aria-labelledby="title-7">
-      <div class="slide-heading"><span class="section-no">06 / 原型成果</span><h2 id="title-7" tabindex="-1">原型已有证据，业务收益交给试点验证。</h2><p class="intro">2026-10-21，在预先冻结的 84 个合成案例中，观察原型给出了以下结果。</p></div>
+    <section class="slide" id="slide-7" data-page="07" data-title="已有基础与待验证部分" aria-labelledby="title-7">
+      <div class="slide-heading"><span class="section-no">06 / 原型基础</span><h2 id="title-7" tabindex="-1">清楚区分：已有基础与待验证能力。</h2><p class="intro">执行前依据核对已有原型；真实审批内容与拟提交动作的业务对照仍需建设。</p></div>
       <div class="evidence-trio">
-        <div class="evidence-item"><p class="evidence-number">36<span> / 36</span></p><h3>越界案例全部被标记</h3><p>例如用户要求查询，AI 却准备审批。<br>本组越界案例没有观察到漏检。</p></div>
-        <div class="evidence-item"><p class="evidence-number">24<span> / 24</span></p><h3>意图不清时建议复核</h3><p>当需求不够明确，给出人工复核提示，<br>供后续业务判断参考。</p></div>
-        <div class="evidence-item"><p class="evidence-number attention">3<span> / 24</span></p><h3>正常请求仍有复核负担</h3><p>24 个符合意图的案例中，3 个仍被建议复核；<br>这部分额外工作也需要纳入试点评估。</p></div>
+        <div class="evidence-item"><p class="evidence-number">01</p><h3>已有请求与证据核对</h3><p>在受信输入与保留证据的前提下，检查两者是否对应；输出可复查记录。</p></div>
+        <div class="evidence-item"><p class="evidence-number">02</p><h3>独立沙箱意图观察</h3><p>Jev 对可能偏离原意的计划给出观察提示；不授权执行。</p></div>
+        <div class="evidence-item"><p class="evidence-number attention">03</p><h3>业务字段对照待验证</h3><p>真实审批来源、对象与金额比较、业务界面和系统接入尚未实现。</p></div>
       </div>
-      <p class="proof-conclusion">已经有了发现问题的原型基础。<span class="accent">下一步要回答：真实工作里，是否更省时、更少返工？</span></p>
-      <p class="proof-context">这些是 AI 编写并由另一 AI 独立盲标的合成案例，非人工真值、非联想业务数据；覆盖 33 个相关场景族，并非完全独立样本。零观察漏检不证明生产准确率。复核提示不代表已完成复核或执行审批。意图观察及合成评测来自独立业务沙箱，来源见末页所列 2026-10-22 维护记录。</p>
+      <p class="proof-conclusion">原型提供核对基础。<span class="accent">真实流程中的增量和成本，需要对照验证。</span></p>
+      <p class="proof-context">2026-10-21 独立沙箱单次评测：84 个 AI 编写、另一 AI 盲标的合成案例，36/36 越界标记、24/24 意图不清提示、3/24 正常案例提示；覆盖 33 个相关场景族。非人工真值、非联想业务数据，不证明生产准确率或审批字段对照能力；提示不代表已完成复核或审批。</p>
     </section>
 
-    <section class="slide" id="slide-8" data-page="08" data-title="建议怎样启动业务试点" aria-labelledby="title-8">
-      <div class="slide-heading"><span class="section-no">07 / 落地建议</span><h2 id="title-8" tabindex="-1">从一个流程开始，做出可衡量的业务样板。</h2><p class="intro">建议从“客服退款进度查询”这样的高频、只读、易对照任务切入，小范围观察，再由数据决定是否扩展。</p></div>
-      <div class="roadmap"><div class="roadmap-stage"><p class="stage-label">建议步骤 01</p><h3>选流程，建立基线</h3><p>由业务团队明确任务范围，记录现有处理时长、复核耗时与返工情况，先知道今天的成本在哪里。</p></div><div class="roadmap-stage"><p class="stage-label">建议步骤 02</p><h3>小范围，只读观察</h3><p>经独立批准后，建设业务核对页，在一个流程里观察 AI 的计划与提示；继续沿用原有业务审批与权限。</p></div><div class="roadmap-stage"><p class="stage-label">建议步骤 03</p><h3>看效果，再谈推广</h3><p>将试点结果与基线对照，同时计入接入、维护和额外复核成本，决定是否值得复制到更多场景。</p></div></div>
-      <p class="pilot-success">试点要证明：<span class="accent">结果正确、整体处理更快、额外复核负担可接受。</span></p>
-      <p class="closing-line">让每一个 AI 试点，<span class="accent">更接近可复制的业务价值。</span></p>
-      <div class="closing-bottom"><details class="source-details"><summary>评审补充：已实现范围、评测来源与技术说明</summary><p><strong>能力范围：</strong>ActLumen 核对受信请求与行动依据的对应关系；独立沙箱中的 Jev 提供意图观察。面向员工的汇总核对页、联想系统接入与真实业务提效尚未实现或实测。场景切换仅为静态示意。</p><p><strong>执行边界：</strong>本原型不授予业务权限、不直接执行工具。<code>allow_candidate</code> 只是候选证据，当前输出保持 <code>result_status: not_executed</code>。审批语义、身份权限、事务与实际执行由外部运行时负责。真实执行接入需要独立设计、测试与批准。</p><p><strong>留存评测：</strong>84 次请求均可用；标签判断与盲标一致 83/84。1 个意图不清案例被判为低置信度越界，仍建议人工复核；正常案例复核提示率 12.5%，无越界误报。本批所记 OpenRouter 费用为 US$0.003486756。Jev 固定模型 typesafe/jev-1.13，置信阈值 0.8。样本现已见，不继续用于调参。</p><p><strong>来源版本：</strong>汇报编制 2026-10-23，品牌更新 2026-10-26；评测 2026-10-21；来源维护记录 2026-10-22。历史技术名 AgentHarness，来源版本 <code>5c6c72e</code>。原始评测在独立本地业务沙箱中，未包含在本仓库的 GitHub 源码树里。</p><div class="source-links"><a href="https://github.com/alexzhu0/ActLumen/blob/5c6c72e33048b70087228b3bc0f42417c8adac6c/release/2026.10.22.md" target="_blank" rel="noopener noreferrer">维护与评测记录</a><a href="https://github.com/alexzhu0/ActLumen/blob/5c6c72e33048b70087228b3bc0f42417c8adac6c/docs/33-jev-shadow-maintenance-handoff.md" target="_blank" rel="noopener noreferrer">完整评测说明</a><a href="https://github.com/alexzhu0/ActLumen/blob/5c6c72e33048b70087228b3bc0f42417c8adac6c/docs/business-action-evidence-v1.md" target="_blank" rel="noopener noreferrer">已实现能力说明</a></div></details><a class="project-link" href="https://github.com/alexzhu0/ActLumen" target="_blank" rel="noopener noreferrer">项目源码与留存记录（按仓库权限访问）</a></div>
-      <p class="small">业务应用方案与试点建议 · 未在联想真实业务中部署 · 来源：2026-10-22 维护记录</p>
+    <section class="slide" id="slide-8" data-page="08" data-title="怎样验证是否值得" aria-labelledby="title-8">
+      <div class="slide-heading"><span class="section-no">07 / 试点建议</span><h2 id="title-8" tabindex="-1">同一流程，比较三种做法。</h2><p class="intro">选择业务负责人愿意参与的一个流程，用获批的历史或合成记录只读回放，先弄清现有能力。</p></div>
+      <div class="roadmap"><div class="roadmap-stage"><p class="stage-label">对照 01</p><h3>现有机制</h3><p>梳理现有 API、权限、审批和记录已覆盖的情况，记录处理与复核成本。</p></div><div class="roadmap-stage"><p class="stage-label">对照 02</p><h3>补强原系统</h3><p>评估在原有流程补足字段核对或记录关联的效果与投入。</p></div><div class="roadmap-stage"><p class="stage-label">对照 03</p><h3>拟议项目接入</h3><p>另行设计可信接入和业务字段对照，比较增量、复核负担与维护成本。</p></div></div>
+      <p class="pilot-success">评估结果：<span class="accent">差异发现、整体时长、人工负担与总投入。</span></p>
+      <p class="closing-line">现有机制足够，就继续复用；<span class="accent">有可验证增量，再讨论扩展。</span></p>
+      <div class="closing-bottom"><details class="source-details"><summary>评审补充：能力边界与留存评测</summary><p><strong>当前能力：</strong>EviAlign 核对受信请求与证据的对应关系；审批字段仅被绑定，不解释业务含义或验证审批有效性。真实审批接入和业务字段对照尚未实现。</p><p><strong>执行边界：</strong>本原型不授予权限、不签字、不执行工具。<code>allow_candidate</code> 仅是候选证据，当前输出保持 <code>result_status: not_executed</code>。外部系统负责身份、审批、事务与执行。</p><p><strong>留存评测：</strong>独立沙箱 84 个合成意图观察案例，AI 编写并由另一 AI 盲标，33 个相关场景族；36/36 越界标记、24/24 意图不清提示、3/24 正常案例提示。结果不证明生产准确率或本次审批字段对照能力。</p><p><strong>来源：</strong>评测 2026-10-21，留存维护记录 2026-10-22；历史项目名 AgentHarness、ActLumen。独立沙箱不包含在本仓库中。</p><div class="source-links"><a href="https://github.com/alexzhu0/EviAlign/blob/5c6c72e33048b70087228b3bc0f42417c8adac6c/release/2026.10.22.md" target="_blank" rel="noopener noreferrer">维护与评测记录</a><a href="https://github.com/alexzhu0/EviAlign/blob/5c6c72e33048b70087228b3bc0f42417c8adac6c/docs/33-jev-shadow-maintenance-handoff.md" target="_blank" rel="noopener noreferrer">完整评测说明</a><a href="https://github.com/alexzhu0/EviAlign/blob/5c6c72e33048b70087228b3bc0f42417c8adac6c/docs/business-action-evidence-v1.md" target="_blank" rel="noopener noreferrer">已实现能力说明</a></div></details><a class="project-link" href="https://github.com/alexzhu0/EviAlign" target="_blank" rel="noopener noreferrer">项目源码与留存记录（按仓库权限访问）</a></div>
+      <p class="small">业务对照为拟议方案 · 未在联想真实业务中部署 · 来源：2026-10-22 维护记录</p>
     </section>
   </main>
   <footer class="bottombar"><p>联想集团黑客松 · 项目汇报</p><div class="page-controls js-only"><button id="previous-slide" type="button" aria-label="上一页" title="上一页"><svg class="icon" aria-hidden="true"><use href="#i-left"/></svg></button><span class="page-count" id="slide-count" aria-hidden="true">01 / 08</span><button id="next-slide" type="button" aria-label="下一页" title="下一页"><svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button></div></footer>
@@ -221,10 +221,34 @@
       });
       document.querySelector('#print-report').addEventListener('click', () => window.print());
       const cases = {
-        service: {request:'查一下客户的退款进度，整理回复建议，不要审批退款。', proposal:'AI 整理退款状态与回复建议；项目核对建议对应的任务与依据，并提示需要关注的行动偏差。', intent:'少翻找，快核对', intentDetail:'把本次需求、处理建议和关注点集中呈现，帮助客服减少来回查找与确认。', evidence:'查询不变成审批', evidenceDetail:'如果 AI 准备改变退款状态，提示与原需求存在偏差，供员工关注。', description:'面向员工的集中核对页属于后续产品化设想。当前已实现的是行动依据核对与意图观察原型，效率收益需试点测量。'},
-        sales: {request:'整理客户订单的交付进度及待跟进事项，只查询，不改交期。', proposal:'AI 汇总订单和物流信息，拟出跟进清单；项目核对本次计划与依据是否对应，提示超出查询范围的建议。', intent:'少来回确认', intentDetail:'预期让销售运营更集中地核对交付情况和拟跟进事项，把时间留给客户沟通。', evidence:'查进度，不改交期', evidenceDetail:'涉及修改交期、订单状态等动作时，提示员工关注是否超出了原有需求。', description:'订单进度整理为拟议场景。尚未接入联想订单或物流系统；集中展示能力与效率收益需要后续建设、验证。'},
-        finance: {request:'汇总本周退款与对应订单，标出待核对项，不发起付款。', proposal:'AI 整理退款与订单的核对清单；项目核对计划及对应材料，提示金额变化、依据错配等需要关注的问题。', intent:'少重复核对', intentDetail:'预期帮助财务协同人员集中查看待核对事项，减少补材料与来回解释。', evidence:'核对不变成付款', evidenceDetail:'材料是否对应由项目检查；金额是否合理、是否付款，仍由财务人员和既有流程判断。', description:'财务核对为拟议业务用法，不代表已接入财务系统或具备付款能力。是否节省工时与减少返工，需通过试点测量。'}
-      };
+  "service": {
+    "request": "订单 A · 退款 100 元",
+    "proposal": "订单 A · 退款 100 元",
+    "intent": "对象一致",
+    "intentDetail": "确认记录和拟提交动作均为订单 A。",
+    "evidence": "金额一致",
+    "evidenceDetail": "确认记录和拟提交动作均为 100 元。",
+    "description": "示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。"
+  },
+  "sales": {
+    "request": "订单 A · 退款 100 元",
+    "proposal": "订单 B · 退款 100 元",
+    "intent": "对象发生变化",
+    "intentDetail": "原确认记录为订单 A，拟提交动作变为订单 B。",
+    "evidence": "金额一致",
+    "evidenceDetail": "两项示意金额均为 100 元；对象仍需原流程核验。",
+    "description": "示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。"
+  },
+  "finance": {
+    "request": "订单 A · 退款 100 元",
+    "proposal": "订单 A · 退款 500 元",
+    "intent": "对象一致",
+    "intentDetail": "确认记录和拟提交动作均为订单 A。",
+    "evidence": "金额发生变化",
+    "evidenceDetail": "原确认记录为 100 元，拟提交动作变为 500 元。",
+    "description": "示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。"
+  }
+};
       const tabs = Array.from(document.querySelectorAll('[data-case]'));
       function setCase(key, focus = false) {
         const example = cases[key];

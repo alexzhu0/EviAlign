@@ -1,8 +1,8 @@
-# ActLumen Buyer/Reviewer Decision Guide
+# EviAlign Buyer/Reviewer Decision Guide
 
-> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
-ActLumen is a pre-execution evidence control-plane for agent actions.
+EviAlign is a pre-execution evidence control-plane for agent actions.
 
 ## Audience and decision frame
 
@@ -11,13 +11,13 @@ This guide is for:
 - security reviewers deciding whether evidence is complete enough for downstream review;
 - platform reviewers checking whether the file-bus, handoff, export, manifest, audit report, and checklist are coherent;
 - compliance reviewers checking reproducible evidence before a downstream owner acts;
-- runtime, governance, auth, sandbox, or signing owners acting as external consumers of ActLumen evidence.
+- runtime, governance, auth, sandbox, or signing owners acting as external consumers of EviAlign evidence.
 
-The decision in this guide is evidence acceptance for downstream review, not execution approval. A reviewer may accept an evidence package for an external owner to review, reject the evidence package, or escalate externally. ActLumen does not approve runtime action.
+The decision in this guide is evidence acceptance for downstream review, not execution approval. A reviewer may accept an evidence package for an external owner to review, reject the evidence package, or escalate externally. EviAlign does not approve runtime action.
 
 ## One-sentence product value
 
-ActLumen produces deterministic pre-execution evidence so reviewers can accept for downstream review, reject, or escalate proposed agent actions before a runtime acts.
+EviAlign produces deterministic pre-execution evidence so reviewers can accept for downstream review, reject, or escalate proposed agent actions before a runtime acts.
 
 ## Reviewer questions to evidence map
 
@@ -30,8 +30,8 @@ ActLumen produces deterministic pre-execution evidence so reviewers can accept f
 | Is adapter/spec support bound and digest-checked? | Registry-backed handoff export, digest manifest, adapter registry validation | Adapter reference and spec digest evidence are pinned for review. | It does not load or invoke a runtime adapter. |
 | Which items are ready, blocked, or unsupported? | Handoff inspection summary, export package summary, audit report summary | Ready/exported `2`, blocked `2`, unsupported `1` are separated. | It does not make blocked or unsupported items ready. |
 | Can export, manifest, and report be regenerated and compared? | `handoff verify-manifest`, `audit verify-report`, T025 harness | Saved evidence can be compared with regenerated current evidence. | It does not provide signing, timestamping, attestation, or trust-root proof. |
-| What remains manual? | `./agentharness audit checklist examples/agent_bus_adapter_registry` | Saved manifest readback and saved audit report readback require reviewer-provided paths. | Manual does not mean ActLumen approves or performs runtime action. |
-| Who owns actual execution? | Product contract in `docs/08-glossary-and-product-contract.md` | External runtime/governance/auth/sandbox/signing owners keep operational responsibility. | ActLumen does not become that owner. |
+| What remains manual? | `./agentharness audit checklist examples/agent_bus_adapter_registry` | Saved manifest readback and saved audit report readback require reviewer-provided paths. | Manual does not mean EviAlign approves or performs runtime action. |
+| Who owns actual execution? | Product contract in `docs/08-glossary-and-product-contract.md` | External runtime/governance/auth/sandbox/signing owners keep operational responsibility. | EviAlign does not become that owner. |
 
 ## Decision outcomes
 
@@ -39,7 +39,7 @@ ActLumen produces deterministic pre-execution evidence so reviewers can accept f
 
 Use this outcome when the evidence package is complete, deterministic, and consistent enough to hand to an external runtime or governance owner for their own review. The reviewer can point to validated policy, bus integrity, handoff inspection, registry-backed export, digest manifest, readback verification, audit report, audit report readback, checklist status, and the T025 harness.
 
-Accepting evidence for downstream review does not approve or perform the action. It only says the ActLumen evidence package is coherent enough for external-owner review.
+Accepting evidence for downstream review does not approve or perform the action. It only says the EviAlign evidence package is coherent enough for external-owner review.
 
 ### Reject evidence package
 
@@ -49,9 +49,9 @@ Rejecting the evidence package is not a runtime failure; it is a control-plane e
 
 ### Escalate externally
 
-Use this outcome when the question is outside ActLumen ownership. Escalate questions about identity, authorization, sandbox policy, signing, timestamping, attestation, trust-root material, deployment policy, production operations, or actual runtime execution to the responsible external owner.
+Use this outcome when the question is outside EviAlign ownership. Escalate questions about identity, authorization, sandbox policy, signing, timestamping, attestation, trust-root material, deployment policy, production operations, or actual runtime execution to the responsible external owner.
 
-Escalation is external-owner routing. It is not an ActLumen lifecycle state.
+Escalation is external-owner routing. It is not an EviAlign lifecycle state.
 
 ## Case walkthrough
 
@@ -67,9 +67,9 @@ The enterprise audit checklist includes two manual checks:
 - saved manifest readback;
 - saved audit report readback.
 
-Manual means the reviewer must provide or inspect saved paths and any needed external context. It does not mean ActLumen executes, approves, schedules, dispatches, submits, or mutates anything.
+Manual means the reviewer must provide or inspect saved paths and any needed external context. It does not mean EviAlign executes, approves, schedules, dispatches, submits, or mutates anything.
 
-ActLumen can validate, inspect, export, digest, and verify evidence. It cannot answer external-owner questions about production identity, authorization, sandbox controls, signing material, timestamping, attestation, trust roots, deployment policy, or operational approval.
+EviAlign can validate, inspect, export, digest, and verify evidence. It cannot answer external-owner questions about production identity, authorization, sandbox controls, signing material, timestamping, attestation, trust roots, deployment policy, or operational approval.
 
 ## Boundary red lines
 

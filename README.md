@@ -1,70 +1,53 @@
-# ActLumen · 明行
+# EviAlign
 
 **English** | [简体中文](README.zh-CN.md)
 
-**AI action review for enterprise workflows**
+**Evidence checks for AI action requests**
 
-Make AI actions clear. Make business collaboration more effective.
+EviAlign is a pre-execution evidence prototype. With a trusted request and retained evidence, it checks whether the evidence still corresponds to the current structured request and produces reviewable records. An optional intent observer lives in a separate local business sandbox.
 
-ActLumen helps enterprise teams review proposed AI actions before execution: **what was requested, what AI plans to do, and whether the supporting evidence matches the current action**. This repository provides evidence checks and reviewable records. An optional intent observer in a separate business sandbox can highlight potential deviations for human review.
-
-**Act** stands for action; **Lumen** evokes light and clarity. The Chinese name, **明行**, expresses the same idea: make AI actions understandable and give teams a clear basis for review.
+**EviAlign** combines *evidence* and *align*: keeping an action request and its supporting evidence connected. Identity, authorization, approvals, and execution remain the responsibility of existing enterprise systems.
 
 [Reviewer brief (中文)](docs/actlumen-reviewer-brief.md) · [Leadership presentation (中文)](docs/presentations/agentharness-enterprise-hackathon.html) · [Documentation index (中文)](docs/README.md) · [Engineering guide](docs/engineering-guide.md)
 
-## Why teams need ActLumen
+## The business question
 
-As AI starts helping with orders, customers, and expenses, employees still need to check whether a proposal matches the request, whether its supporting material belongs to the current action, and what needs attention.
+As enterprises consider letting AI agents carry out more work, a useful question is whether a proposed action still corresponds to the evidence retained for that request. Existing APIs, fine-grained authorization, and approval systems may already cover the necessary controls. The case for an additional component depends on a real gap or a measurable reduction in repeated integration and review effort.
 
-- **Less repeated checking:** reduce the need to retrace long conversations and search for supporting material.
-- **Earlier visibility of deviations:** highlight plans that go beyond the request, such as preparing an approval when only a status lookup was requested.
-- **A clearer record for review:** retain checks tied to the current action so teams can explain what happened and learn from it.
+## A proposed example
 
-These are intended benefits. Time savings and reduced rework still need to be measured in a real business pilot.
+Suppose an existing process confirms a refund of **100** for **order A**. A proposed comparison could show whether the AI's pending action still refers to order A and 100, or has changed the order or amount. This is a synthetic illustration: business-level comparison of actual approval fields with proposed action fields is future work, not an implemented refund check. No real refund is executed.
 
-## Where to start
-
-| Workflow | Proposed task | What to watch for | Intended benefit |
-| --- | --- | --- | --- |
-| Customer service | Look up a refund's progress and draft a reply. | A status lookup must not turn into an approval. | Spend less time searching records and more time helping customers. |
-| Sales operations | Summarize order delivery progress and follow-up items. | Checking progress must not turn into changing a delivery date. | Reduce repeated confirmations and explanations. |
-| Finance coordination | Match refunds to orders and flag items to reconcile. | Reconciliation must not turn into initiating payment. | Focus attention on items that need business judgment. |
-
-These are proposed applications. They have not been connected to Lenovo's business systems. A consolidated review interface for employees is planned product work.
-
-## How it fits into a workflow
-
-```text
-Employee request → AI proposal → ActLumen evidence checks and intent hints → Existing enterprise process
-```
-
-Evidence checks establish whether supporting material is bound to the current action. Intent observation highlights possible departures from the request. Both support human judgment. Approval and execution remain the responsibility of existing enterprise processes and external systems.
-
-## What exists today
-
-| Current foundation | Next validation step |
+| Responsibility | Current status |
 | --- | --- |
-| This repository implements pre-execution evidence checks, deterministic validation, and reviewable records. | Build a business review interface and pilot one approved, read-only workflow. |
-| A separate local business sandbox implements optional Jev intent observation. | Compare task outcomes, total handling time, added review burden, and maintenance effort. |
-| A synthetic evaluation with frozen inputs has been retained. | Use real business comparisons to decide whether to expand. |
+| Identity, authorization, approval validity, and execution | Existing external systems remain responsible. |
+| Structured request and evidence correspondence | Implemented in this repository, subject to trusted inputs and retained evidence. |
+| User intent versus AI proposal | Optional observation in a separate local business sandbox; its hints do not authorize execution. |
+| Real approval records versus proposed business fields | Requires a separate design, trusted integration, and validation. |
 
-In a single evaluation run in that separate sandbox on **2026-10-21**, all 36 overreach cases were flagged, all 24 unclear-intent cases received review hints, and 3 of the 24 fitting cases also received review hints: **84 synthetic cases** in total.
+The current business evidence contract binds approval fields as supplied but does not interpret them. A receipt for one request will not match a changed request; matching digests alone do not authenticate the source, validate an approval, establish business correctness, or authorize execution. [Business evidence contract](docs/business-action-evidence-v1.md)
 
-The cases were AI-authored and independently blind-labeled by another AI. They span 33 correlated scenario families and are neither human ground truth nor Lenovo business data. Zero observed misses do not establish production accuracy; the review burden on fitting requests also matters. [Full evaluation record](docs/33-jev-shadow-maintenance-handoff.md)
+## What evidence exists
 
-Time savings, cost savings, and ROI in Lenovo workflows have not been measured. A useful pilot should assess correct outcomes, faster overall handling, and an acceptable added review burden.
+A single run on **2026-10-21** in the separate sandbox used 84 synthetic intent-observation cases: all 36 overreach cases were flagged; all 24 unclear cases received review hints; and 3 of the 24 fitting cases also received hints.
+
+The cases were AI-authored and independently blind-labeled by another AI, across 33 correlated scenario families. They are not human ground truth or Lenovo business data. These results do not establish production accuracy, real approval-to-action comparison, time savings, or ROI. [Full evaluation record](docs/33-jev-shadow-maintenance-handoff.md)
+
+## How to assess the value
+
+Compare three approaches on one approved, read-only replay of a business workflow: the existing controls; practical improvements to those controls; and a proposed EviAlign integration. Measure discrepancies found, total handling time, extra review burden, integration and maintenance costs, and actual reuse across agents. If existing controls already suffice or costs exceed demonstrated benefits, retain the existing approach.
 
 ## Find the right material
 
 | Reader | Start here |
 | --- | --- |
-| Leaders and hackathon judges | [Four-page reviewer brief (中文)](docs/actlumen-reviewer-brief.md), [eight-slide offline presentation (中文)](docs/presentations/agentharness-enterprise-hackathon.html) |
-| Business pilot owners | [Brand and capability scope (中文)](docs/actlumen-brand-and-scope.md), plus scenarios, expected benefits, and the pilot proposal in the reviewer brief |
+| Leaders and hackathon judges | [Reviewer brief (中文)](docs/actlumen-reviewer-brief.md), [offline presentation (中文)](docs/presentations/agentharness-enterprise-hackathon.html) |
+| Business pilot owners | [Brand and capability scope (中文)](docs/actlumen-brand-and-scope.md), including the proposed comparison and pilot |
 | Developers and platform teams | [Engineering guide](docs/engineering-guide.md), [asset map](docs/00-asset-map.md) |
-| Security and evidence reviewers | [Product contract](docs/08-glossary-and-product-contract.md), [reproducible engineering demo](docs/11-reproducible-enterprise-demo.md), [review checklist](docs/13-external-reviewer-checklist.md) |
+| Security and evidence reviewers | [Product contract](docs/08-glossary-and-product-contract.md), [reproducible demo](docs/11-reproducible-enterprise-demo.md), [review checklist](docs/13-external-reviewer-checklist.md) |
 | Maintainers | [Maintenance record (中文)](docs/34-actlumen-brand-maintenance.md), [repository guidance](AGENTS.md) |
 
-GitHub shows the presentation's HTML source. Download the single HTML file to present it offline in a browser, navigate slides, switch scenarios, or print. Source links remain subject to repository access permissions.
+Download the single HTML presentation to open it offline in a browser, navigate slides, switch examples, or print. Source links remain subject to repository access permissions.
 
 ## Developer quick start
 
@@ -77,14 +60,14 @@ PYTHONDONTWRITEBYTECODE=1 ./agentharness eval --cases PI-001,PD-001,SEC-001
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -q
 ```
 
-See the [engineering guide](docs/engineering-guide.md) for installation requirements, the full command reference, CI, evidence contracts, external runtime responsibilities, and historical milestones.
+See the [engineering guide](docs/engineering-guide.md) for the complete command reference, contracts, runtime responsibilities, and historical milestones.
 
 ## Continuous Integration
 
 <details>
 <summary>Verification details and complete local commands</summary>
 
-[![CI](https://github.com/alexzhu0/ActLumen/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alexzhu0/ActLumen/actions/workflows/ci.yml)
+[![CI](https://github.com/alexzhu0/EviAlign/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alexzhu0/EviAlign/actions/workflows/ci.yml)
 
 The CI workflow runs on pull requests and pushes to `main`, using a Python 3.10,
 Python 3.11, and Python 3.12 matrix. Reproduce its local verification sequence
@@ -113,8 +96,8 @@ CI is not runtime authorization and does not execute Agent Runtime tools.
 
 ## Brand, compatibility, and scope
 
-ActLumen · 明行 is the new project brand for AgentHarness. The existing `agentharness` command, Python package name, protocols, and file paths remain compatible. Historical release and handoff records retain their original names. The source prerelease remains `v0.2.0-alpha.1`; the branding update is not a new version or package publication.
+EviAlign is the current project name; AgentHarness and ActLumen · 明行 are historical names. The existing `agentharness` command, Python package, protocols, and file paths remain compatible. Historical records retain the names used at the time. The source prerelease remains `v0.2.0-alpha.1`; this update is not a new version or package publication.
 
-This repository is a pre-execution evidence control plane. `allow_candidate` denotes candidate evidence only; current evidence and shadow outputs retain `result_status: not_executed`. Identity, authorization, approval semantics, transactions, and actual execution belong to external systems. [Full scope statement (中文)](docs/actlumen-brand-and-scope.md)
+`allow_candidate` denotes candidate evidence only; current evidence and shadow outputs retain `result_status: not_executed`. This repository does not provide identity verification, trusted signatures, runtime authorization, approval semantics, transactions, or tool execution. [Full scope statement (中文)](docs/actlumen-brand-and-scope.md)
 
 Licensed under the [MIT License](LICENSE).

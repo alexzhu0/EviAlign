@@ -1,11 +1,11 @@
-# ActLumen 四类资产地图
+# EviAlign 四类资产地图
 
-品牌更新（2026-10-26）：项目对外名称统一为 **ActLumen · 明行**（原 AgentHarness）。
+品牌沿革：2026-10-26 项目名称为 **ActLumen · 明行**；2026-10-28 更新为 **EviAlign**。历史技术名为 AgentHarness。
 既有工程命令、包名、契约与历史记录保持兼容。
 参赛说明见[项目评审材料](actlumen-reviewer-brief.md)，命名与边界见[品牌说明](actlumen-brand-and-scope.md)。
 
 当前项目与 GitHub 维护入口（2026-10-26）：
-[`ActLumen 品牌与 GitHub 维护记录`](./34-actlumen-brand-maintenance.md)。
+[`EviAlign 与历史品牌维护记录`](./34-actlumen-brand-maintenance.md)。
 按读者查找资料见[文档导航](README.md)。
 
 Jev 留存证据维护入口（2026-10-22）：
@@ -18,7 +18,7 @@ Jev 留存证据维护入口（2026-10-22）：
 
 ## 背景
 
-ActLumen 的目标不是复制任何第三方 system prompt，而是把公开语料中的 agent scaffold 设计沉淀为可复用的架构资产。CL4R1T4S 可以作为样本库，但必须按“不可信外部语料”处理。
+EviAlign 的目标不是复制任何第三方 system prompt，而是把公开语料中的 agent scaffold 设计沉淀为可复用的架构资产。CL4R1T4S 可以作为样本库，但必须按“不可信外部语料”处理。
 
 本仓库当前沉淀四类核心资产：
 
@@ -33,7 +33,7 @@ ActLumen 的目标不是复制任何第三方 system prompt，而是把公开语
 
 企业定位与边界审计在
 [`docs/07-enterprise-positioning-and-boundary-audit.md`](./07-enterprise-positioning-and-boundary-audit.md)
-中定义，用于明确 ActLumen 当前是 pre-execution evidence control-plane，
+中定义，用于明确 EviAlign 当前是 pre-execution evidence control-plane，
 不是 runtime/orchestration/auth/sandbox/signing 系统。
 
 术语表与产品契约在
@@ -42,11 +42,11 @@ ActLumen 的目标不是复制任何第三方 system prompt，而是把公开语
 
 Source-backed integration strategy 在
 [`docs/09-source-backed-integration-strategy.md`](./09-source-backed-integration-strategy.md)
-中定义，用于把 ActLumen evidence artifacts 映射到未来 external runtime、governance、auth、identity、protocol 和 execution-plane consumers。
+中定义，用于把 EviAlign evidence artifacts 映射到未来 external runtime、governance、auth、identity、protocol 和 execution-plane consumers。
 
 Enterprise audit report and buyer demo 在
 [`docs/10-enterprise-audit-report-and-buyer-demo.md`](./10-enterprise-audit-report-and-buyer-demo.md)
-中定义，用于展示 security/platform/compliance reviewer 如何读取 ActLumen evidence chain、ready/blocked/unsupported 分类、manifest readback、T018 machine-readable audit report 和 T020 enterprise audit report schema，而不引入 runtime execution。
+中定义，用于展示 security/platform/compliance reviewer 如何读取 EviAlign evidence chain、ready/blocked/unsupported 分类、manifest readback、T018 machine-readable audit report 和 T020 enterprise audit report schema，而不引入 runtime execution。
 T021 增加 `./agentharness audit verify-report <bus_root> <audit_report_path>`，用于对保存的 audit report 做 readback verification；它只读取保存的 JSON 和当前 bus evidence，不执行 runtime adapter、不写文件、不签名、不提交任务。
 T022 增加 `./agentharness audit checklist <bus_root>`，用于输出 reviewer-facing goal/check checklist；它只汇总现有 validation/inspection/export/manifest/audit evidence 和 manual readback steps，stdout-only、`result_status: not_executed`，不是 runtime、auth、sandbox、signing、trust-root、governance enforcement 或 task mutation。
 T024 增加 [`schemas/enterprise_audit_checklist.schema.yaml`](../schemas/enterprise_audit_checklist.schema.yaml) 和 pure in-memory checklist validator，用于固定 accepted checklist payload contract；它不是 runtime authorization、execution、file writer、signing/trust bundle 或 governance enforcement。
@@ -57,11 +57,11 @@ T029 增加 [`docs/13-external-reviewer-checklist.md`](./13-external-reviewer-ch
 T030 增加 [`docs/14-reviewer-dry-run-and-reproducibility.md`](./14-reviewer-dry-run-and-reproducibility.md)，用于记录 reviewer dry-run、expected vs observed summaries 和 checklist decision mapping；它只强化复现文档，不新增脚本、CLI、runtime、schema 或产品面。
 T031 增加 [`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md)，记录当时的 T0xx Loop Task Packet、maker/checker split、checks、failure probes、human gates 和 reviewer gates；它是历史开发流程文档，新工作以 [AGENTS.md](../AGENTS.md) 的 Superpowers 规则为准。
 T032 增加 [`docs/16-phase-e-release-readiness-and-packaging-audit.md`](./16-phase-e-release-readiness-and-packaging-audit.md)，用于审计 Phase E 是否适合未来本地 milestone packaging；它不是 commit、push、public release、production readiness、runtime approval 或 safe-to-execute claim。
-T034 增加 [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md)，用于以 contract-first 方式界定未来 ActLumen ↔ Pi evidence gate 边界；它只使用 Pi 只读事实，不修改 Pi、不新增依赖、不实现 runtime hook。
+T034 增加 [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md)，用于以 contract-first 方式界定未来 EviAlign ↔ Pi evidence gate 边界；它只使用 Pi 只读事实，不修改 Pi、不新增依赖、不实现 runtime hook。
 T035 增加 [`docs/18-pi-tool-call-mapping-fixture.md`](./18-pi-tool-call-mapping-fixture.md) 和 [`examples/pi_tool_call_mapping/`](../examples/pi_tool_call_mapping/)，用于提供静态 Pi-like tool-call observation 与 expected mapping fixture；它不调用、不导入、不依赖、不修改 Pi，也不执行工具。
-T036 增加 [`src/agentharness/pi_tool_call_mapping.py`](../src/agentharness/pi_tool_call_mapping.py) 和 [`tests/test_pi_tool_call_mapping.py`](../tests/test_pi_tool_call_mapping.py)，用于对 T035 静态 fixture 做 pure ActLumen-side mock decision validation；它不调用 Pi、不实现 live hook，也不把 `allow_candidate` 归一化为 runtime allow。
+T036 增加 [`src/agentharness/pi_tool_call_mapping.py`](../src/agentharness/pi_tool_call_mapping.py) 和 [`tests/test_pi_tool_call_mapping.py`](../tests/test_pi_tool_call_mapping.py)，用于对 T035 静态 fixture 做 pure EviAlign-side mock decision validation；它不调用 Pi、不实现 live hook，也不把 `allow_candidate` 归一化为 runtime allow。
 T037 增加 [`docs/19-pi-contract-check-cli.md`](./19-pi-contract-check-cli.md) 和 `./agentharness pi contract-check`，作为 T036 validator 的 stdout-only CLI wrapper；它只检查静态 fixture 与 registry-backed evidence，不修改 Pi、不执行工具、不输出 runtime allow、不新增 writer flags。
-T039 增加 [`docs/20-pi-dual-repo-dry-run-e2e.md`](./20-pi-dual-repo-dry-run-e2e.md)，用于记录 Pi opt-in dry-run gate 调用本地 ActLumen CLI 的 dual-repo E2E；它证明 wiring 与 fail-closed block，不授权 runtime allow 或真实工具执行。
+T039 增加 [`docs/20-pi-dual-repo-dry-run-e2e.md`](./20-pi-dual-repo-dry-run-e2e.md)，用于记录 Pi opt-in dry-run gate 调用本地 EviAlign CLI 的 dual-repo E2E；它证明 wiring 与 fail-closed block，不授权 runtime allow 或真实工具执行。
 T040 增加 [`docs/21-pi-controlled-read-only-poc.md`](./21-pi-controlled-read-only-poc.md)，用于记录 test-only controlled read-only allow/block PoC；它只允许 exact fake `read_workspace` + `{path: "README.md"}` 在显式 env 下执行，其他情况仍 block，不代表 production runtime allow。
 T041 增加
 [`docs/22-pi-integration-readiness-pause-review.md`](./22-pi-integration-readiness-pause-review.md)，
@@ -70,7 +70,7 @@ T041 增加
 不授权真实 Pi 执行。
 T042 增加
 [`docs/23-pi-milestone-packaging-audit.md`](./23-pi-milestone-packaging-audit.md)，
-用于分类 T034-T041/T042 ActLumen include/exclude set、Pi companion
+用于分类 T034-T041/T042 EviAlign include/exclude set、Pi companion
 status 和未来 staging strategy；决策为 COMMENT，不做 commit 或 push。
 
 T056-T060 的当前里程碑入口如下：
@@ -96,14 +96,14 @@ T056-T060 的当前里程碑入口如下：
   [`release/2026.07.13.md`](../release/2026.07.13.md)。
 - v0.2.0-alpha.1 GitHub prerelease 见
   [`release/2026.07.20.md`](../release/2026.07.20.md)。该版本发布
-  ActLumen evidence/control-plane 源码，不包含 Pi companion，也不发布
+  EviAlign evidence/control-plane 源码，不包含 Pi companion，也不发布
   PyPI 或 npm package。
-- 2026-08-11 ActLumen-only 本地收尾记录见
+- 2026-08-11 EviAlign-only 本地收尾记录见
   [`docs/29`](./29-agentharness-maintenance-closure.md)，对应 release note
   见 [`release/2026.08.11.md`](../release/2026.08.11.md)。它只关闭本仓库
   的脏变更和维护证据，不修改 Pi，也不授权 runtime execution。
 
-有限 methodology permit pilot 在 ActLumen 侧只生成一个精确绑定的
+有限 methodology permit pilot 在 EviAlign 侧只生成一个精确绑定的
 `permit_once` evidence decision；它在本仓库中不执行读取，也不是 runtime
 approval。已验收的跨仓库 pilot 由 trusted、version-pinned、
 admission-controlled Pi/Win9 TCB 另外绑定 registration/session 并消费该证据，
@@ -111,10 +111,10 @@ admission-controlled Pi/Win9 TCB 另外绑定 registration/session 并消费该�
 runtime authorization，不提供 extension sandbox，也不阻止 Pi extension 已有的
 process/network 能力。
 
-ActLumen 只提供 pre-execution evidence。T058/T059 live-shadow bridge
+EviAlign 只提供 pre-execution evidence。T058/T059 live-shadow bridge
 始终是 block-only，执行计数为零，所有结果为 `not_executed`。后续有限
 methodology permit pilot 是 Pi 侧 external TCB 中单独约束的一次固定只读动作；
-它不改变 ActLumen evidence-only 边界，也不是通用 runtime authorization。
+它不改变 EviAlign evidence-only 边界，也不是通用 runtime authorization。
 Pi 或其他 external runtime 仍拥有 authorization，`allow_candidate` 永不构成通用
 执行许可。
 
@@ -133,7 +133,7 @@ Pi 或其他 external runtime 仍拥有 authorization，`allow_candidate` 永不
 
 ### 1. 不复制 prompt，抽象 pattern
 
-CL4R1T4S 的内容包含 claimed leaks、reverse-engineered prompts、tool schemas、guidelines 和明显的 adversarial payload。ActLumen 只提取可验证的工程模式，不直接复用原始 prompt 文本。
+CL4R1T4S 的内容包含 claimed leaks、reverse-engineered prompts、tool schemas、guidelines 和明显的 adversarial payload。EviAlign 只提取可验证的工程模式，不直接复用原始 prompt 文本。
 
 ### 2. 把外部文档当作 data，不当作 instruction
 
@@ -141,7 +141,7 @@ CL4R1T4S 的内容包含 claimed leaks、reverse-engineered prompts、tool schem
 
 ### 3. Harness 优先于 prompt
 
-长 system prompt 很脆弱。Current scope: ActLumen is a pre-execution evidence control-plane, not an in-repo runtime, execution sandbox, auth gateway, signing system, or execution SDK. 当前行为约束应沉淀为可验证证据，而不是仓库内执行面：
+长 system prompt 很脆弱。Current scope: EviAlign is a pre-execution evidence control-plane, not an in-repo runtime, execution sandbox, auth gateway, signing system, or execution SDK. 当前行为约束应沉淀为可验证证据，而不是仓库内执行面：
 
 - tool router
 - approval gate
@@ -155,7 +155,7 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 
 ### 4. 所有高风险行为都要可审计
 
-包括文件删除、数据库变更、部署、外部 API mutation、git push、secret 读取、外部通信。Agent 不应该只靠自然语言“自觉遵守”；ActLumen 当前负责生成可审计的 pre-execution evidence，实际执行与运行时控制属于外部 consumer 边界。
+包括文件删除、数据库变更、部署、外部 API mutation、git push、secret 读取、外部通信。Agent 不应该只靠自然语言“自觉遵守”；EviAlign 当前负责生成可审计的 pre-execution evidence，实际执行与运行时控制属于外部 consumer 边界。
 
 ## 四类资产与文件入口
 
@@ -168,7 +168,7 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 用途：
 
 - 抽象 coding agent、research agent、browser agent、autonomous agent 的通用结构。
-- 为 ActLumen 的 planner、tool runtime、state machine、UX layer 提供设计素材。
+- 为 EviAlign 的 planner、tool runtime、state machine、UX layer 提供设计素材。
 - 将 Cursor、Devin、Replit、Windsurf、Manus 等 agent scaffold 归纳为 pattern，而不是复制原文。
 
 ### 2. Tool Governance Policy
@@ -216,7 +216,7 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 用途：
 
 - 明确 policy vs prompt、state ledger vs evidence、approval vs execution、validation vs runtime mutation 的边界。
-- 定义 ActLumen 的 policy layer、loop/state layer、execution boundary、verification layer 和 operator interface。
+- 定义 EviAlign 的 policy layer、loop/state layer、execution boundary、verification layer 和 operator interface。
 - 记录 file-bus MVP、tool gate report、approval record、execution preflight 之后的扩展点，但不引入 daemon、实时聊天或任务变更 CLI。
 
 ### Enterprise Positioning and Boundary Audit
@@ -225,9 +225,9 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 
 用途：
 
-- 固化企业定位：ActLumen is a pre-execution evidence control-plane for agent actions.
+- 固化企业定位：EviAlign is a pre-execution evidence control-plane for agent actions.
 - 明确当前证据链：file-bus、tool gate、approval、preflight、handoff、adapter registry、export package、digest manifest、manifest verification。
-- 区分 ActLumen 与 runtime/orchestration framework、runtime governance middleware、authorization/identity protocol、sandbox/signing/trust-root system 的边界。
+- 区分 EviAlign 与 runtime/orchestration framework、runtime governance middleware、authorization/identity protocol、sandbox/signing/trust-root system 的边界。
 - 给 T015+ 提供 build / buy / integrate 决策入口。
 
 ### Glossary and Product Contract
@@ -237,7 +237,7 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 用途：
 
 - 固定 control-plane、audit-plane、execution-plane、runtime boundary、evidence、eligibility、handoff、export package、digest manifest、manifest verification 等术语。
-- 明确 ActLumen 只 validate/export evidence；runtime、governance、auth、identity、sandbox、execution-plane 都是 external consumer。
+- 明确 EviAlign 只 validate/export evidence；runtime、governance、auth、identity、sandbox、execution-plane 都是 external consumer。
 - 把 `result_status: not_executed` 固化为当前 handoff/export/manifest/verification 输出的不变式。
 - 为 T016 integration strategy、T017 buyer-demo narrative 和未来 runtime spike 提供 product contract guardrails。
 
@@ -248,7 +248,7 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 用途：
 
 - 用 source-backed matrix 区分 runtime/orchestration、governance middleware、auth/identity/protocol 和 deferred execution-plane external consumers。
-- 明确 ActLumen may export evidence，但不 adopt SDK/package、不实现 wrapper、不调用 runtime adapter。
+- 明确 EviAlign may export evidence，但不 adopt SDK/package、不实现 wrapper、不调用 runtime adapter。
 - 固化 Build / Buy / Integrate / Defer 规则，给 T017 buyer-demo narrative 和后续 integration readiness checklist 提供依据。
 
 ### Enterprise Audit Report and Buyer Demo
@@ -269,13 +269,13 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
 - 链接 T028 buyer/reviewer decision guide：[`docs/12-buyer-reviewer-decision-guide.md`](./12-buyer-reviewer-decision-guide.md)，作为 evidence acceptance、rejection 和 external escalation 的解释入口。
 - 链接 T029 external reviewer checklist：[`docs/13-external-reviewer-checklist.md`](./13-external-reviewer-checklist.md)，作为 third-party reviewer 接受、拒绝或外部升级 evidence package 的操作性 rubric。
 - 链接 T030 reviewer dry-run and reproducibility：[`docs/14-reviewer-dry-run-and-reproducibility.md`](./14-reviewer-dry-run-and-reproducibility.md)，作为 external reviewer 复现实测、对比 expected vs observed counts，并应用 checklist decision mapping 的入口。
-- 链接 T031 development loop operating model：[`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md)，作为历史 Loop Task Packet、reviewer gate 和 human gate 模型的参考；当前 ActLumen 新工作以 [AGENTS.md](../AGENTS.md) 的 Superpowers 规则为准。
+- 链接 T031 development loop operating model：[`docs/15-agentharness-development-loop-operating-model.md`](./15-agentharness-development-loop-operating-model.md)，作为历史 Loop Task Packet、reviewer gate 和 human gate 模型的参考；当前 EviAlign 新工作以 [AGENTS.md](../AGENTS.md) 的 Superpowers 规则为准。
 - 链接 T032 Phase E release readiness and packaging audit：[`docs/16-phase-e-release-readiness-and-packaging-audit.md`](./16-phase-e-release-readiness-and-packaging-audit.md)，作为未来本地 milestone commit 前的 include/exclude、GO/COMMENT/NO-GO 和边界审计入口。
 - 链接 T034 Pi integration boundary and contract：[`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md)，作为未来 Pi runtime-candidate evidence gate 的 contract-first planning 入口，不代表 live integration。
 - 链接 T035 Pi tool-call mapping fixture：[`docs/18-pi-tool-call-mapping-fixture.md`](./18-pi-tool-call-mapping-fixture.md)，作为未来 mock decision validator 的静态 observation/expectation 入口，不代表 live Pi runtime 集成。
 - 记录 T036 Pi mock decision validator：[`src/agentharness/pi_tool_call_mapping.py`](../src/agentharness/pi_tool_call_mapping.py) 只读取静态 fixture 与既有 export/manifest evidence，输出 deterministic `pi_tool_call_mapping_validation_report`，不是 runtime surface。
 - 记录 T037 Pi contract-check CLI：[`docs/19-pi-contract-check-cli.md`](./19-pi-contract-check-cli.md) 和 `./agentharness pi contract-check` 复用 T036 validator，stdout-only 输出 deterministic JSON；`allow_candidate` 仍只是 candidate evidence，不是 runtime allow、runtime approval 或 safe-to-execute approval。
-- 记录 T039 Pi dual-repo dry-run E2E：[`docs/20-pi-dual-repo-dry-run-e2e.md`](./20-pi-dual-repo-dry-run-e2e.md) 说明 Pi opt-in gate 如何调用本地 ActLumen CLI，并且即使 `ok:true` / `allow_candidate` 也仍然 block before execution。
+- 记录 T039 Pi dual-repo dry-run E2E：[`docs/20-pi-dual-repo-dry-run-e2e.md`](./20-pi-dual-repo-dry-run-e2e.md) 说明 Pi opt-in gate 如何调用本地 EviAlign CLI，并且即使 `ok:true` / `allow_candidate` 也仍然 block before execution。
 - 记录 T040 Pi controlled read-only PoC：[`docs/21-pi-controlled-read-only-poc.md`](./21-pi-controlled-read-only-poc.md) 说明显式 `PI_AGENTHARNESS_READ_ONLY_POC=1` 下 exact fake read-only test tool 可执行一次，但不是 generic runtime allow、safe-to-execute approval 或真实 Pi 工具授权。
 - 记录 T041 Pi integration readiness pause review：
   [`docs/22-pi-integration-readiness-pause-review.md`](./22-pi-integration-readiness-pause-review.md)
@@ -284,12 +284,12 @@ Prompt 只是 policy 的一个投影，不是唯一控制面。
   precondition planning loop。
 - 记录 T042 Pi milestone packaging audit：
   [`docs/23-pi-milestone-packaging-audit.md`](./23-pi-milestone-packaging-audit.md)
-  将 ActLumen T034-T041/T042 包装候选、排除项、Pi companion
+  将 EviAlign T034-T041/T042 包装候选、排除项、Pi companion
   状态和禁止 `git add .` 的未来 staging 策略分开说明。
 
 ## Source Posture
 
-CL4R1T4S 的价值在于暴露 agent scaffold 的结构，而不是提供可信规范。ActLumen 对其采用如下姿态：
+CL4R1T4S 的价值在于暴露 agent scaffold 的结构，而不是提供可信规范。EviAlign 对其采用如下姿态：
 
 ```yaml
 source_posture:
@@ -317,7 +317,7 @@ source_posture:
 ```text
 User Task
   ↓
-ActLumen Controller
+EviAlign Controller
   ↓
 Instruction Hierarchy Resolver
   ↓
@@ -345,7 +345,7 @@ User Response / Artifact
 
 中期目标：实现 prompt/policy compiler，把 `schemas/agent_policy.schema.yaml` 编译成 system prompt、tool policy、eval config。
 
-长期目标：形成一组可治理、可测试、可导出的 ActLumen evidence/control-plane artifacts：
+长期目标：形成一组可治理、可测试、可导出的 EviAlign evidence/control-plane artifacts：
 
 ```text
 agent_policy.yaml

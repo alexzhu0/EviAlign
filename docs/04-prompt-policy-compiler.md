@@ -1,10 +1,10 @@
-# ActLumen Prompt / Policy Compiler
+# EviAlign Prompt / Policy Compiler
 
-> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 ## 目的
 
-ActLumen 不应该把 agent 行为硬编码在一大段 system prompt 中。更稳健的做法是把 agent 行为定义成结构化 policy，然后编译成不同运行时需要的 artefacts。
+EviAlign 不应该把 agent 行为硬编码在一大段 system prompt 中。更稳健的做法是把 agent 行为定义成结构化 policy，然后编译成不同运行时需要的 artefacts。
 
 核心思想：
 
@@ -531,4 +531,4 @@ Prompt / Policy Compiler 的目标不是“生成更长的 prompt”，而是：
 
 > Make agent behavior reviewable, testable, enforceable, and portable.
 
-当所有行为规则都能从同一份 policy 编译出来，ActLumen 才能避免 prompt drift、tool drift 和 safety drift。
+当所有行为规则都能从同一份 policy 编译出来，EviAlign 才能避免 prompt drift、tool drift 和 safety drift。

@@ -1,11 +1,11 @@
-# ActLumen 工程参考
+# EviAlign 工程参考
 
 面向开发、平台和证据评审团队。命令均从仓库根目录执行；业务介绍见[项目首页](../README.md)，材料入口见[文档导航](README.md)。
 
 ## 工程与兼容说明
 
-ActLumen is a pre-execution evidence control-plane for agent actions.
-The public-facing project brand is **ActLumen · 明行**; the existing
+EviAlign is a pre-execution evidence control-plane for agent actions.
+The public-facing project brand is **EviAlign**; the existing
 `agentharness` CLI, Python package, protocol identifiers and historical source
 records retain their compatibility names. The separate business sandbox keeps
 its own repository and runtime responsibilities.
@@ -15,7 +15,7 @@ publish a PyPI or npm package.
 
 Core source milestone (2026-09-16): the repository adds bounded data-access
 and business-action evidence contracts, while keeping all execution in separate
-external runtimes. Fresh acceptance passed 538 ActLumen tests, including
+external runtimes. Fresh acceptance passed 538 EviAlign tests, including
 150 targeted evidence-contract tests. The optional business sandbox is a
 separate local repository and is not distributed here. This source milestone
 is newer than the tagged prerelease and does not grant or perform business-tool
@@ -30,12 +30,12 @@ zero-overreach-miss gate. Overreach miss was 0/36, unclear-without-hint 0/24,
 and fits review hints 3/24. Reported OpenRouter cost was US$0.003486756.
 These are fixed-rubric, AI-authored and independently AI-labeled synthetic
 observations; this batch is now seen and does not establish production accuracy.
-Jev never grants permission or changes execution. ActLumen code is unchanged.
+Jev never grants permission or changes execution. EviAlign code is unchanged.
 See the [current handoff](33-jev-shadow-maintenance-handoff.md) for frozen
 evidence, metric limits and the separate runtime boundary. No new tagged release
 is implied.
 
-ActLumen validates, binds, and exports evidence. Its finite methodology
+EviAlign validates, binds, and exports evidence. Its finite methodology
 pilot emits one exact `permit_once` evidence decision; that value has no
 in-repo execution effect and is not runtime approval. In the accepted
 cross-repository pilot, a trusted, version-pinned, admission-controlled Pi/Win9
@@ -69,7 +69,7 @@ Verifier / Eval Hooks
 Audited User-facing Response
 ```
 
-ActLumen treats pre-execution evidence controls as **policy-as-code**:
+EviAlign treats pre-execution evidence controls as **policy-as-code**:
 
 ```text
 agent_policy.yaml
@@ -228,7 +228,7 @@ Pi V4 trusted-publication continuity record, deployment-integrity planning only
 and not runtime authorization:
 [`docs/28`](28-pi-v4-publication-continuity.md)
 
-Current ActLumen-only local maintenance closure:
+Current EviAlign-only local maintenance closure:
 [`docs/29`](29-agentharness-maintenance-closure.md)
 
 Business-sandbox foundation handoff and real-data pilot boundary (2026-09-16):
@@ -263,7 +263,7 @@ End-to-end evidence-chain regression harness: [`tests/test_end_to_end_evidence_c
 
 ## Minimal Executable Loop
 
-ActLumen includes a small local CLI for keeping the YAML assets honest:
+EviAlign includes a small local CLI for keeping the YAML assets honest:
 
 ```bash
 ./agentharness validate examples/agent_policy.example.yaml
@@ -307,7 +307,7 @@ or authorize a tool. It has no external runtime invocation or policy-allow
 decision surface.
 
 The separately maintained DeepSeek Harness shadow pilot completed one live
-model request and ActLumen verification on 2026-09-09. This validates the
+model request and EviAlign verification on 2026-09-09. This validates the
 fixed `inspect_policy_summary` evidence path only. For the current checkpoints,
 credential-update procedure, failure interpretation, and next development step,
 see the [shadow handoff and runbook](30-deepseek-shadow-handoff.md) and
@@ -316,7 +316,7 @@ see the [shadow handoff and runbook](30-deepseek-shadow-handoff.md) and
 ### Synthetic Data Access Lab
 
 A separate local lab exercises synthetic customer/order queries across customer,
-support, and analyst identities. ActLumen verifies bounded pre-execution
+support, and analyst identities. EviAlign verifies bounded pre-execution
 evidence; the external lab independently authorizes and performs fixture reads.
 The default Agent is a rule-based offline simulator, not a live model. See the
 [lab guide](31-synthetic-data-access-lab.md) for launch and test instructions.
@@ -325,7 +325,7 @@ The default Agent is a rule-based offline simulator, not a live model. See the
 
 The separate `agentharness-business-sandbox` runtime expands the synthetic lab
 to correlated orders, payments, refunds, shipments, tickets, documents, events,
-role changes, approvals and reversible simulated writes. ActLumen supplies
+role changes, approvals and reversible simulated writes. EviAlign supplies
 the bounded `business-action-evidence-v1` correlation check; the external
 runtime retains identity, authorization, transaction and execution ownership.
 See the [contract](business-action-evidence-v1.md), the
@@ -336,7 +336,7 @@ The sandbox optionally scores planner proposals with Jev using `--jev-shadow`.
 It is default-off, consumes model credits when enabled and records intent
 hints separately from authorization and tool results. `human_review` is a
 recommendation, not an execution pause or a completed review. This observer
-is implemented in the external sandbox, not in the ActLumen CLI.
+is implemented in the external sandbox, not in the EviAlign CLI.
 
 The accepted synthetic result is a development checkpoint. It does not validate
 real SSO, production databases, real payments, production authorization or
@@ -370,7 +370,7 @@ workloads.
 
 ## Continuous Integration
 
-[![CI](https://github.com/alexzhu0/ActLumen/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alexzhu0/ActLumen/actions/workflows/ci.yml)
+[![CI](https://github.com/alexzhu0/EviAlign/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alexzhu0/EviAlign/actions/workflows/ci.yml)
 
 The CI workflow runs on pull requests and pushes to `main`, using a Python 3.10,
 Python 3.11, and Python 3.12 matrix. Reproduce its local verification sequence
@@ -444,7 +444,7 @@ only when `ok:true`, and keeps `allow_candidate` as candidate evidence rather
 than runtime allow or safe-to-execute approval.
 
 The pi evidence-evaluate-v1 command reads one bounded observation request from
-stdin, binds it to one captured ActLumen evidence snapshot, and emits one
+stdin, binds it to one captured EviAlign evidence snapshot, and emits one
 deterministic JSON response. It never executes the observed tool and preserves
 `result_status: not_executed`.
 
@@ -455,7 +455,7 @@ artifact, consume the permit, or execute a tool in this repository.
 
 ## File-Bus Loop MVP
 
-ActLumen now includes a protocol-first file-bus loop MVP for two Codex terminals coordinating through repository files.
+EviAlign now includes a protocol-first file-bus loop MVP for two Codex terminals coordinating through repository files.
 
 - Protocol: [`docs/05-loop-file-bus.md`](05-loop-file-bus.md)
 - Runtime architecture: [`docs/06-runtime-architecture.md`](06-runtime-architecture.md)
@@ -584,7 +584,7 @@ pyproject.toml
 
 ## Design Thesis
 
-ActLumen is based on one central thesis:
+EviAlign is based on one central thesis:
 
 > Agent reliability comes from harness-level control, not only from model-level instruction.
 

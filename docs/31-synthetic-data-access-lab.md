@@ -1,8 +1,8 @@
-# ActLumen Synthetic Data Access Lab
+# EviAlign Synthetic Data Access Lab
 
-> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
-ActLumen supplies pre-execution evidence correlation for a separate local
+EviAlign supplies pre-execution evidence correlation for a separate local
 customer/order test lab. The external lab owns simulated identity,
 authorization and actual reads of its synthetic in-memory SQLite database.
 
@@ -37,5 +37,5 @@ this acceptance does not evaluate a real LLM.
 
 Fixture-read mode only permits reads from a newly generated in-memory database
 after independent fresh runtime authorization. Its execution records remain
-external to ActLumen. Production identity, real databases and real-model
+external to EviAlign. Production identity, real databases and real-model
 calls remain separate work.

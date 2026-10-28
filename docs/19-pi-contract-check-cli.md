@@ -1,10 +1,10 @@
-# ActLumen Pi Contract-Check CLI
+# EviAlign Pi Contract-Check CLI
 
-> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 T037 adds a command wrapper around the T036 mock decision validator for static Pi-like fixture files.
 
-This is a pre-execution contract check over committed ActLumen fixtures. It is not live Pi integration, not a `beforeToolCall` implementation, not tool execution, not runtime approval, and not a safe-to-execute claim.
+This is a pre-execution contract check over committed EviAlign fixtures. It is not live Pi integration, not a `beforeToolCall` implementation, not tool execution, not runtime approval, and not a safe-to-execute claim.
 
 ## Scope and non-goals
 
@@ -12,7 +12,7 @@ The command exists so reviewers and future runtime owners can run one determinis
 
 - the T035 static Pi-like observation batch;
 - the T035 expected mapping file;
-- the registry-backed ActLumen file bus fixture.
+- the registry-backed EviAlign file bus fixture.
 
 It does not:
 
@@ -36,9 +36,9 @@ The command accepts exactly three positional inputs:
 
 1. `observations_path` — static Pi-like observation JSON.
 2. `expectations_path` — static expected mapping JSON.
-3. `bus_root` — registry-backed ActLumen file-bus root.
+3. `bus_root` — registry-backed EviAlign file-bus root.
 
-It prints deterministic JSON to stdout only. Reviewers who want a saved artifact may use shell redirection outside ActLumen.
+It prints deterministic JSON to stdout only. Reviewers who want a saved artifact may use shell redirection outside EviAlign.
 
 ## Output shape
 
@@ -59,7 +59,7 @@ The command reuses `build_pi_tool_call_mapping_report()` and preserves the T036 
 }
 ```
 
-The actual `summary`, `decisions`, and `checks` are populated from the fixture and current ActLumen evidence. All current outputs remain `result_status: not_executed`.
+The actual `summary`, `decisions`, and `checks` are populated from the fixture and current EviAlign evidence. All current outputs remain `result_status: not_executed`.
 
 ## Exit-code contract
 
@@ -78,7 +78,7 @@ T037 preserves the T036 decision vocabulary exactly:
 - `unsupported`
 - `error`
 
-`allow_candidate` means only candidate evidence matching: the observation matched current ActLumen export/manifest evidence and the expected mapping. It is not runtime allow, not runtime approval, and not safe-to-execute approval. Future code must not normalize `allow_candidate` into runtime `allow`.
+`allow_candidate` means only candidate evidence matching: the observation matched current EviAlign export/manifest evidence and the expected mapping. It is not runtime allow, not runtime approval, and not safe-to-execute approval. Future code must not normalize `allow_candidate` into runtime `allow`.
 
 ## Evidence binding and safety posture
 
@@ -95,9 +95,9 @@ Unknown, malformed, unsupported, shell-like, tampered, stale, or semantically mi
 
 ## Relationship to T034-T036
 
-- T034 defines the ActLumen ↔ Pi boundary contract as planning only.
+- T034 defines the EviAlign ↔ Pi boundary contract as planning only.
 - T035 adds static Pi-like observations and expected mappings.
-- T036 adds the pure ActLumen-side mock decision validator.
+- T036 adds the pure EviAlign-side mock decision validator.
 - T037 exposes that validator through a stdout-only CLI contract check.
 
 This sequence still does not modify Pi or implement a live hook.

@@ -1,10 +1,10 @@
-# ActLumen Source-Backed Integration Strategy
+# EviAlign Source-Backed Integration Strategy
 
-> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 last checked date: 2026-06-24
 
-ActLumen is a pre-execution evidence control-plane for agent actions.
+EviAlign is a pre-execution evidence control-plane for agent actions.
 
 ## Normative vocabulary and product contract
 
@@ -12,41 +12,41 @@ This strategy uses [`docs/08-glossary-and-product-contract.md`](./08-glossary-an
 
 ## Integration invariant
 
-- ActLumen validates and exports evidence only.
-- Runtimes, governance systems, auth systems, identity systems, sandbox systems, signing systems, trust-root systems, and execution-plane systems are external consumers, not ActLumen in-repo responsibilities.
+- EviAlign validates and exports evidence only.
+- Runtimes, governance systems, auth systems, identity systems, sandbox systems, signing systems, trust-root systems, and execution-plane systems are external consumers, not EviAlign in-repo responsibilities.
 - Current handoff/export/manifest/verification outputs remain `result_status: not_executed`.
 - Integration work must preserve the current evidence chain: file-bus → tool gate → approval → preflight → handoff → adapter registry → export package → digest manifest → manifest verification.
 
 ## Source inventory matrix
 
-| Source | Source link | Source-backed role | What ActLumen may export to it | What ActLumen must not own or build | Maturity recommendation | Boundary rationale |
+| Source | Source link | Source-backed role | What EviAlign may export to it | What EviAlign must not own or build | Maturity recommendation | Boundary rationale |
 | --- | --- | --- | --- | --- | --- | --- |
-| LangGraph | https://docs.langchain.com/oss/python/langgraph/overview | Runtime/orchestration consumer for long-running, stateful agents with durable execution, streaming, human-in-the-loop, memory, and persistence. | Verified export package and digest manifest proving which handoff-ready requests passed ActLumen evidence checks. | LangGraph graphs, nodes, state machines, runtime invocation, deployment, persistence, streaming, or human-in-the-loop mutation. | integrate later | LangGraph owns orchestration/runtime execution; ActLumen should only provide pre-execution evidence that a LangGraph owner may inspect under its own controls. |
-| OpenAI Agents SDK | https://developers.openai.com/api/docs/guides/agents | Code-first agent application SDK where the application owns orchestration, tool execution, approvals, state, guardrails/human review, and observability. | Registry-backed handoff export items, manifest digest/readback status, request ids, adapter refs, and evidence summaries. | SDK adoption, package installation, agent run loops, tool execution, approvals runtime, sandbox agents, tracing implementation, or framework-specific adapter code. | integrate later | The SDK is an external runtime/application surface; ActLumen can inform an application owner before execution but must not become that runtime. |
-| CrewAI | https://docs.crewai.com/ | Multi-agent crew/flow orchestration consumer with agents, crews, flows, guardrails, memory, knowledge, observability, persistence, and resumable workflow concepts. | Evidence eligibility summaries and verified manifests that a CrewAI workflow owner could read before invoking a crew or flow action. | Crew definitions, flow orchestration, task/process execution, memory/knowledge stores, enterprise console operations, triggers, or integration tools. | integrate later | CrewAI owns collaborative agent/flow execution; ActLumen remains a control-plane evidence producer. |
-| AutoGen / Microsoft Agent Framework | https://github.com/microsoft/autogen, https://learn.microsoft.com/en-us/agent-framework/overview/, https://github.com/microsoft/agent-framework | AutoGen is maintenance/migration context; Microsoft Agent Framework is the newer production multi-agent/workflow runtime direction with agents, tools/MCP, workflows, checkpointing, state, middleware, telemetry, and human-in-the-loop support. | Export package and digest manifest metadata that a Microsoft Agent Framework owner may map into middleware or workflow preconditions later. | AutoGen/MAF package adoption, agent/workflow implementation, tools/MCP clients, checkpointing, middleware, telemetry, state management, or migration tooling. | integrate later | Microsoft Agent Framework owns runtime orchestration and application execution; ActLumen should not wrap or reimplement it in T016. |
-| Microsoft Agent Governance Toolkit | https://microsoft.github.io/agent-governance-toolkit/, https://github.com/microsoft/agent-governance-toolkit | Runtime governance middleware candidate for policy enforcement, identity, audit logging, denial handling, sandboxing, reliability/SRE, compliance, and framework integrations. | Evidence chain records, request digests, approval/preflight/handoff readiness, and manifest verification results as governance decision evidence. | AGT package adoption, policy engine replacement, identity, sandboxing, kill switch, framework adapters, compliance engine, or governance wrapper implementation. | integrate later | AGT is runtime governance middleware; ActLumen should provide pre-execution evidence but not become the middleware. |
-| Open Agent Auth | https://github.com/alibaba/open-agent-auth | External auth/identity system focused on cryptographic identity binding, fine-grained authorization, request-level isolation, semantic audit trails, standards integration, and MCP-aware authorization. | Request digest evidence, approval binding context, handoff metadata, and manifest readback results for possible authorization/audit correlation. | Authorization server, identity provider, token issuance, cryptographic binding, request isolation, policy registration, semantic audit infrastructure, or MCP adapter implementation. | integrate later | Open Agent Auth owns identity and authorization; ActLumen may supply evidence inputs but must not act as auth gateway or identity system. |
-| MCP Authorization | https://modelcontextprotocol.io/specification/draft/basic/authorization, https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization | External protocol boundary for HTTP-based MCP authorization using OAuth-style client/resource-server/authorization-server roles and protected resource metadata. | Bus-relative export and manifest evidence that an MCP client/server owner may consider before protected operations. | MCP server/client implementation, authorization server discovery, client registration, OAuth flow, scope challenge handling, token handling, or transport security. | never in ActLumen | MCP Authorization is a protocol/auth transport concern; ActLumen is not an MCP authorization implementation. |
+| LangGraph | https://docs.langchain.com/oss/python/langgraph/overview | Runtime/orchestration consumer for long-running, stateful agents with durable execution, streaming, human-in-the-loop, memory, and persistence. | Verified export package and digest manifest proving which handoff-ready requests passed EviAlign evidence checks. | LangGraph graphs, nodes, state machines, runtime invocation, deployment, persistence, streaming, or human-in-the-loop mutation. | integrate later | LangGraph owns orchestration/runtime execution; EviAlign should only provide pre-execution evidence that a LangGraph owner may inspect under its own controls. |
+| OpenAI Agents SDK | https://developers.openai.com/api/docs/guides/agents | Code-first agent application SDK where the application owns orchestration, tool execution, approvals, state, guardrails/human review, and observability. | Registry-backed handoff export items, manifest digest/readback status, request ids, adapter refs, and evidence summaries. | SDK adoption, package installation, agent run loops, tool execution, approvals runtime, sandbox agents, tracing implementation, or framework-specific adapter code. | integrate later | The SDK is an external runtime/application surface; EviAlign can inform an application owner before execution but must not become that runtime. |
+| CrewAI | https://docs.crewai.com/ | Multi-agent crew/flow orchestration consumer with agents, crews, flows, guardrails, memory, knowledge, observability, persistence, and resumable workflow concepts. | Evidence eligibility summaries and verified manifests that a CrewAI workflow owner could read before invoking a crew or flow action. | Crew definitions, flow orchestration, task/process execution, memory/knowledge stores, enterprise console operations, triggers, or integration tools. | integrate later | CrewAI owns collaborative agent/flow execution; EviAlign remains a control-plane evidence producer. |
+| AutoGen / Microsoft Agent Framework | https://github.com/microsoft/autogen, https://learn.microsoft.com/en-us/agent-framework/overview/, https://github.com/microsoft/agent-framework | AutoGen is maintenance/migration context; Microsoft Agent Framework is the newer production multi-agent/workflow runtime direction with agents, tools/MCP, workflows, checkpointing, state, middleware, telemetry, and human-in-the-loop support. | Export package and digest manifest metadata that a Microsoft Agent Framework owner may map into middleware or workflow preconditions later. | AutoGen/MAF package adoption, agent/workflow implementation, tools/MCP clients, checkpointing, middleware, telemetry, state management, or migration tooling. | integrate later | Microsoft Agent Framework owns runtime orchestration and application execution; EviAlign should not wrap or reimplement it in T016. |
+| Microsoft Agent Governance Toolkit | https://microsoft.github.io/agent-governance-toolkit/, https://github.com/microsoft/agent-governance-toolkit | Runtime governance middleware candidate for policy enforcement, identity, audit logging, denial handling, sandboxing, reliability/SRE, compliance, and framework integrations. | Evidence chain records, request digests, approval/preflight/handoff readiness, and manifest verification results as governance decision evidence. | AGT package adoption, policy engine replacement, identity, sandboxing, kill switch, framework adapters, compliance engine, or governance wrapper implementation. | integrate later | AGT is runtime governance middleware; EviAlign should provide pre-execution evidence but not become the middleware. |
+| Open Agent Auth | https://github.com/alibaba/open-agent-auth | External auth/identity system focused on cryptographic identity binding, fine-grained authorization, request-level isolation, semantic audit trails, standards integration, and MCP-aware authorization. | Request digest evidence, approval binding context, handoff metadata, and manifest readback results for possible authorization/audit correlation. | Authorization server, identity provider, token issuance, cryptographic binding, request isolation, policy registration, semantic audit infrastructure, or MCP adapter implementation. | integrate later | Open Agent Auth owns identity and authorization; EviAlign may supply evidence inputs but must not act as auth gateway or identity system. |
+| MCP Authorization | https://modelcontextprotocol.io/specification/draft/basic/authorization, https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization | External protocol boundary for HTTP-based MCP authorization using OAuth-style client/resource-server/authorization-server roles and protected resource metadata. | Bus-relative export and manifest evidence that an MCP client/server owner may consider before protected operations. | MCP server/client implementation, authorization server discovery, client registration, OAuth flow, scope challenge handling, token handling, or transport security. | never in EviAlign | MCP Authorization is a protocol/auth transport concern; EviAlign is not an MCP authorization implementation. |
 | deferred future execution-plane candidate | N/A by design; internal boundary anchor: [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md). No external source, repo dependency, import, test, or call is introduced in T016. | Deferred execution-plane consumer that may someday read registry-backed handoff exports after a separate approved plan. | Stable export package, digest manifest, manifest verification report, adapter registry/spec/ref metadata, and `result_status: not_executed` evidence. | Any concrete execution-plane repository modification, import, dependency, test, call, adapter invocation, run/execute/dispatch/submit command, daemon, queue, scheduler, watcher, or realtime chat. | defer | The candidate is intentionally unnamed as an implementation dependency; T016 records only the future boundary shape. |
 
 ## Runtime/orchestration consumers
 
 LangGraph, OpenAI Agents SDK, CrewAI, and AutoGen / Microsoft Agent Framework are runtime/orchestration consumers. Source-backed facts place them in the execution or application layer: they own agent graphs, workflows, tools, run loops, state, streaming, persistence, middleware, human-in-the-loop controls, and production deployment choices.
 
-ActLumen may later provide those owners with a ready-only export package and digest manifest. The runtime owner decides whether, when, and how to execute. ActLumen must not import these frameworks, install packages, instantiate agents, run graphs, call tools, manage runtime state, or mutate task lifecycle through public execution commands.
+EviAlign may later provide those owners with a ready-only export package and digest manifest. The runtime owner decides whether, when, and how to execute. EviAlign must not import these frameworks, install packages, instantiate agents, run graphs, call tools, manage runtime state, or mutate task lifecycle through public execution commands.
 
 ## Governance middleware consumers
 
 Microsoft Agent Governance Toolkit is a governance middleware consumer. Its source material positions it around policy enforcement, identity, sandboxing, audit/compliance, SRE/reliability, and framework integrations.
 
-ActLumen may later provide AGT-like middleware owners with evidence records: tool-gate decisions, approval bindings, preflight status, handoff readiness, adapter registry pins, export package digests, and manifest verification outcomes. ActLumen must not adopt AGT, replace its policy engine, wrap tools with AGT code, provide sandboxing, become a kill switch, or implement runtime governance.
+EviAlign may later provide AGT-like middleware owners with evidence records: tool-gate decisions, approval bindings, preflight status, handoff readiness, adapter registry pins, export package digests, and manifest verification outcomes. EviAlign must not adopt AGT, replace its policy engine, wrap tools with AGT code, provide sandboxing, become a kill switch, or implement runtime governance.
 
 ## Auth/identity/protocol consumers
 
 Open Agent Auth and MCP Authorization are auth/identity/protocol consumers. Open Agent Auth focuses on identity binding, fine-grained authorization, request isolation, semantic audit, and standards integration. MCP Authorization defines an external protocol boundary for HTTP-based MCP authorization using OAuth-style roles and metadata.
 
-ActLumen may later expose request digests, approval evidence, and manifest readback status to an auth or protocol owner. ActLumen must not issue tokens, host authorization servers, implement identity providers, perform OAuth/MCP flows, manage scopes, create cryptographic credentials, or act as an auth gateway.
+EviAlign may later expose request digests, approval evidence, and manifest readback status to an auth or protocol owner. EviAlign must not issue tokens, host authorization servers, implement identity providers, perform OAuth/MCP flows, manage scopes, create cryptographic credentials, or act as an auth gateway.
 
 ## Deferred future execution-plane candidate
 
@@ -59,7 +59,7 @@ A later contract-first Pi boundary note is captured in [`docs/17-pi-integration-
 
 ### Build
 
-Build in ActLumen:
+Build in EviAlign:
 
 - evidence envelope/export/manifest/verification wording and examples after docs acceptance;
 - adapter registry/spec/ref evidence bindings;
@@ -69,7 +69,7 @@ Build in ActLumen:
 
 ### Buy
 
-Buy or adopt outside ActLumen:
+Buy or adopt outside EviAlign:
 
 - runtime orchestration;
 - runtime policy enforcement;

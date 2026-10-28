@@ -1,10 +1,10 @@
-# ActLumen File-Bus Loop MVP
+# EviAlign File-Bus Loop MVP
 
-> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 ## Purpose
 
-The file-bus loop is the first ActLumen coordination protocol for two
+The file-bus loop is the first EviAlign coordination protocol for two
 Codex terminals working in one repository. It keeps coordination in files, not
 direct agent chat.
 

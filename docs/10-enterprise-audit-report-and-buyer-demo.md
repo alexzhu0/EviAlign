@@ -1,14 +1,14 @@
-# ActLumen Enterprise Audit Report and Buyer Demo
+# EviAlign Enterprise Audit Report and Buyer Demo
 
-> 项目品牌：ActLumen · 明行。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
 
 Guidance consolidated: 2026-09-14. Historical T017–T025 references are retained below.
 
-ActLumen is a pre-execution evidence control-plane for agent actions.
+EviAlign is a pre-execution evidence control-plane for agent actions.
 
 This document uses [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md) as the normative glossary and product contract. It also follows the source-backed external-consumer boundaries in [`docs/09-source-backed-integration-strategy.md`](./09-source-backed-integration-strategy.md).
 
-Current scope invariant: ActLumen validates and exports evidence only. Runtime, governance, auth, identity, sandbox, signing, trust-root, and execution-plane systems are external consumers, not ActLumen in-repo responsibilities. All handoff, export, manifest, and verification outputs remain `result_status: not_executed`.
+Current scope invariant: EviAlign validates and exports evidence only. Runtime, governance, auth, identity, sandbox, signing, trust-root, and execution-plane systems are external consumers, not EviAlign in-repo responsibilities. All handoff, export, manifest, and verification outputs remain `result_status: not_executed`.
 
 ## Audience
 
@@ -17,17 +17,17 @@ This narrative is for enterprise reviewers who need to understand an agent actio
 - **Security reviewers** decide whether the proposed action has enough policy, approval, and digest evidence to be considered by a downstream owner.
 - **Platform reviewers** decide whether the file-bus, handoff, export, and manifest surfaces are deterministic enough for platform intake.
 - **Compliance reviewers** decide whether the evidence is replayable, reviewable, and bounded before operational systems act.
-- **Runtime/governance/auth owners** decide, outside ActLumen, whether their own runtime, governance, identity, authorization, sandbox, and operational controls will consume the evidence.
+- **Runtime/governance/auth owners** decide, outside EviAlign, whether their own runtime, governance, identity, authorization, sandbox, and operational controls will consume the evidence.
 
 ## One-page buyer-demo narrative
 
 An agent wants to perform a tool action. In a normal runtime-first story, the buyer has to ask after the fact: what was requested, which policy applied, who approved it, whether the target runtime supported it, and whether the record can be replayed.
 
-ActLumen moves that discussion before execution. It reads a file-bus ledger, validates tool-gate reports, checks approval records, recomputes preflight eligibility, reads handoff reports, validates adapter registry bindings, exports only ready evidence, builds a digest manifest, and verifies manifest readback. The reviewer can see which requests are ready, blocked, or unsupported without any tool being executed.
+EviAlign moves that discussion before execution. It reads a file-bus ledger, validates tool-gate reports, checks approval records, recomputes preflight eligibility, reads handoff reports, validates adapter registry bindings, exports only ready evidence, builds a digest manifest, and verifies manifest readback. The reviewer can see which requests are ready, blocked, or unsupported without any tool being executed.
 
 For the current registry-backed fixture, the reviewer sees five proposed handoffs. Two are ready and exported, two are blocked, and one is unsupported. The exported items are the read-only request `TR-read` and the approval-backed delete request `TR-approve-delete`. The blocked and unsupported requests do not enter the export package.
 
-The downstream runtime, governance, or auth owner remains external. ActLumen does not replace LangGraph, OpenAI Agents SDK, CrewAI, Microsoft Agent Framework, Microsoft Agent Governance Toolkit, Open Agent Auth, MCP Authorization, or a future execution-plane system. It supplies deterministic pre-execution evidence that those owners may review under their own controls.
+The downstream runtime, governance, or auth owner remains external. EviAlign does not replace LangGraph, OpenAI Agents SDK, CrewAI, Microsoft Agent Framework, Microsoft Agent Governance Toolkit, Open Agent Auth, MCP Authorization, or a future execution-plane system. It supplies deterministic pre-execution evidence that those owners may review under their own controls.
 
 No execution has occurred. The current package, manifest, and verification report all keep `result_status: not_executed`.
 
@@ -37,7 +37,7 @@ Use the [reproducible command flow](./11-reproducible-enterprise-demo.md#copy-pa
 to generate and verify the evidence, then apply the
 [decision guide](./12-buyer-reviewer-decision-guide.md#decision-outcomes) and
 [reviewer rubric](./13-external-reviewer-checklist.md#reviewer-checklist-table).
-ActLumen reports evidence; the external runtime owns execution and authorization.
+EviAlign reports evidence; the external runtime owns execution and authorization.
 
 ## Evidence-chain walkthrough
 
@@ -121,7 +121,7 @@ The checklist emits `enterprise_audit_checklist_report` JSON to stdout only.
 It orders the reviewer goals as file-bus validation, handoff inspection,
 registry-backed export, digest manifest, enterprise audit report self-check,
 and two manual saved-artifact readback checks. Manual means the readback needs a
-reviewer-provided saved manifest or audit report path; ActLumen does not
+reviewer-provided saved manifest or audit report path; EviAlign does not
 create that file through a product output flag. Checklist statuses are limited
 to `pass`, `fail`, `blocked`, and `manual`, and every check keeps
 `result_status: not_executed`. T024 adds the repo-native checklist schema at
@@ -144,8 +144,8 @@ readback, then identify the external owner responsible for any execution decisio
 
 | Objection | Answer |
 | --- | --- |
-| Is this a runtime? | No. ActLumen validates and exports pre-execution evidence only. |
-| Does it replace LangGraph/OpenAI Agents SDK/CrewAI/MAF? | No. Those are external runtime/orchestration consumers; ActLumen can supply evidence before their owners act. |
+| Is this a runtime? | No. EviAlign validates and exports pre-execution evidence only. |
+| Does it replace LangGraph/OpenAI Agents SDK/CrewAI/MAF? | No. Those are external runtime/orchestration consumers; EviAlign can supply evidence before their owners act. |
 | Does it enforce auth/governance/sandboxing? | No. It supplies evidence to external governance, auth, identity, sandbox, and runtime owners. |
 | Can it execute tools? | No. Current handoff/export/manifest/verification output remains `result_status: not_executed`. |
 | Why is it valuable? | It gives deterministic pre-execution evidence, ready-only exclusion, approval binding, and replayable manifests that reviewers can inspect before downstream systems decide anything. |

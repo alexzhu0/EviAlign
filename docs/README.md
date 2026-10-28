@@ -1,6 +1,6 @@
-# ActLumen · 明行文档导航
+# EviAlign 文档导航
 
-ActLumen 是企业 AI 行动质检助手，为 AI 行动提供执行前的依据核对与可复查记录，并可配合独立业务沙箱中的意图观察。按阅读目的选择入口：
+EviAlign 是面向 AI 行动请求的执行前依据核对原型。真实审批内容与拟提交动作的业务对照属于待验证方向；独立业务沙箱另有可选意图观察。按阅读目的选择入口：
 
 ## 项目与业务价值
 
@@ -9,7 +9,7 @@ ActLumen 是企业 AI 行动质检助手，为 AI 行动提供执行前的依据
 | [英文项目首页](../README.md) · [简体中文版](../README.zh-CN.md) | 项目是什么、业务场景、已有成果和下一步；GitHub 默认展示英文。 |
 | [联想集团黑客松评审材料](actlumen-reviewer-brief.md) | 命名、问题、方案特点、企业收益和试点建议。 |
 | [八页管理层汇报](presentations/agentharness-enterprise-hackathon.html) | 下载后可离线演示、切换场景、全屏和打印。 |
-| [品牌与能力范围](actlumen-brand-and-scope.md) | ActLumen · 明行的统一名称、产品化状态与兼容标识。 |
+| [品牌与能力范围](actlumen-brand-and-scope.md) | EviAlign 的统一名称、产品化状态与兼容标识。 |
 
 ## 工程与资产
 
@@ -42,7 +42,7 @@ ActLumen 是企业 AI 行动质检助手，为 AI 行动提供执行前的依据
 
 ## 维护与历史追溯
 
-- [ActLumen 品牌与 GitHub 维护记录](34-actlumen-brand-maintenance.md)
+- [EviAlign 品牌与 GitHub 维护记录](34-actlumen-brand-maintenance.md)
 - [独立沙箱交接](32-business-sandbox-maintenance-handoff.md)
 - [Jev 留存评测与交接](33-jev-shadow-maintenance-handoff.md)
 - [历史发布记录索引](../release/README.md)
