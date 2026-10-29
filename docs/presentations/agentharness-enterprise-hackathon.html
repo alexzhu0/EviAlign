@@ -72,41 +72,42 @@
       </svg>
     </section>
 
-    <section class="slide" id="slide-2" data-page="02" data-title="先看现有机制" aria-labelledby="title-2">
-      <div class="slide-heading"><span class="section-no">01 / 业务问题</span><h2 id="title-2" tabindex="-1">让 AI 办事，先看确认与行动是否对应。</h2><p class="intro">企业已有 API、权限和审批；当智能体参与流程，我们需要核实每次行动所依据的内容是否仍然对应。</p></div>
+    <section class="slide" id="slide-2" data-page="02" data-title="为什么重要与业界进展" aria-labelledby="title-2">
+      <div class="slide-heading"><span class="section-no">01 / 行业背景</span><h2 id="title-2" tabindex="-1">AI 开始办事，行动依据更重要。</h2><p class="intro">从问答走向参与采购等流程，企业需要看清：AI 拟提交的内容，是否与业务确认的依据对应。</p></div>
       <div class="business-rows">
-        <div class="business-row"><span class="point-number">01</span><h3>企业已有基础</h3><p>现有接口、权限和审批可能已限制对象、金额或处理范围。<br>先弄清今天已经覆盖到哪里。</p></div>
-        <div class="business-row"><span class="point-number">02</span><h3>确认具体缺口</h3><p>当计划或材料发生变化，现有流程能否保留本次确认与行动的对应关系？<br>这一问题需要在真实流程中核实。</p></div>
-        <div class="business-row"><span class="point-number">03</span><h3>计算新增价值</h3><p>多个智能体是否重复做同样的接入和核对？<br>额外的复核与维护是否值得？</p></div>
+        <div class="business-row"><span class="point-number">01</span><h3>NIST</h3><p>AI 智能体标准计划关注互操作、安全与身份研究。 <a href="https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative" target="_blank" rel="noopener noreferrer">研究计划 ↗</a></p></div>
+        <div class="business-row"><span class="point-number">02</span><h3>世界经济论坛</h3><p>与凯捷提出智能体能力与授权档案框架，讨论能力、授权和治理。 <a href="https://www.weforum.org/publications/ai-agents-in-action-a-playbook-for-trusted-adoption-authorization-and-scaling" target="_blank" rel="noopener noreferrer">白皮书 ↗</a></p></div>
+        <div class="business-row"><span class="point-number">03</span><h3>Microsoft</h3><p>Copilot Studio 的智能体流程支持人工介入，例如审批请求。 <a href="https://learn.microsoft.com/microsoft-copilot-studio/flows-overview" target="_blank" rel="noopener noreferrer">产品说明 ↗</a></p></div>
       </div>
-      <p class="business-callout">本次切口：<span class="accent">把确认记录与拟提交动作放在一起看清楚。</span></p>
+      <p class="business-callout">我们的切口：<span class="accent">探索行动请求与确认依据的对应。</span></p>
+      <p class="small">研究计划、治理框架与产品功能各有侧重；不表示与本项目合作或集成。</p>
     </section>
 
-    <section class="slide" id="slide-3" data-page="03" data-title="一个退款示例" aria-labelledby="title-3">
-      <div class="scenario-header"><div class="slide-heading"><span class="section-no">02 / 拟议示例</span><h2 id="title-3" tabindex="-1">同一笔退款，看清三种情况。</h2></div><p class="demo-label">合成示例与静态演示。<br>未接入联想业务系统，不执行退款。</p></div>
-      <div class="case-tabs js-only" role="tablist" aria-label="选择退款对照示例">
+    <section class="slide" id="slide-3" data-page="03" data-title="一笔采购的三种情况" aria-labelledby="title-3">
+      <div class="scenario-header"><div class="slide-heading"><span class="section-no">02 / 供应链拟议示例</span><h2 id="title-3" tabindex="-1">一笔采购，看清数量与交期。</h2></div><p class="demo-label">合成示例与静态演示。<br>未接入联想业务系统，不提交采购。</p></div>
+      <div class="case-tabs js-only" role="tablist" aria-label="选择采购对照示例">
         <button type="button" id="case-service" data-case="service" role="tab" aria-selected="true" aria-controls="scenario-panel">内容一致</button>
-        <button type="button" id="case-sales" data-case="sales" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">对象变化</button>
-        <button type="button" id="case-finance" data-case="finance" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">金额变化</button>
+        <button type="button" id="case-sales" data-case="sales" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">数量变化</button>
+        <button type="button" id="case-finance" data-case="finance" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1">交期变化</button>
       </div>
       <div id="scenario-panel" role="tabpanel" aria-labelledby="case-service" tabindex="0">
         <div class="scenario-body">
-          <div><p class="request-label">原流程确认记录（示意）</p><p class="scenario-request" id="scenario-request">订单 A · 退款 100 元</p><p class="request-label" style="margin-top:24px">AI 拟提交的动作（示意）</p><p class="scenario-plan" id="scenario-proposal">订单 A · 退款 100 元</p></div>
+          <div><p class="request-label">原流程确认记录（示意）</p><p class="scenario-request" id="scenario-request">供应商甲 · 1,000 台 · 12 月 15 日</p><p class="request-label" style="margin-top:24px">AI 拟提交的采购内容（示意）</p><p class="scenario-plan" id="scenario-proposal">供应商甲 · 1,000 台 · 12 月 15 日</p></div>
           <div class="observations" aria-live="polite" aria-atomic="true">
-            <div class="observation"><span class="observation-label">核对对象</span><div><strong id="intent-result" class="accent">对象一致</strong><p id="intent-detail">确认记录和拟提交动作均为订单 A。</p></div></div>
-            <div class="observation"><span class="observation-label">核对金额</span><div><strong id="evidence-result">金额一致</strong><p id="evidence-detail">确认记录和拟提交动作均为 100 元。</p></div></div>
-            <div class="observation"><span class="observation-label">后续处理</span><div><strong>交回企业原有流程</strong><p>身份、权限、审批有效性和执行仍由原系统负责。</p></div></div>
+            <div class="observation"><span class="observation-label">核对数量</span><div><strong id="intent-result" class="accent">数量一致</strong><p id="intent-detail">确认记录与拟提交内容均为 1,000 台。</p></div></div>
+            <div class="observation"><span class="observation-label">核对交期</span><div><strong id="evidence-result">交期一致</strong><p id="evidence-detail">确认记录与拟提交内容均为 12 月 15 日。</p></div></div>
+            <div class="observation"><span class="observation-label">后续处理</span><div><strong>交回企业原有流程</strong><p>变化可能合理，身份、审批和执行由原流程负责。</p></div></div>
           </div>
         </div>
       </div>
-      <p class="note" id="scenario-description">示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。</p>
+      <p class="note" id="scenario-description">示意：原确认 1,000 台、12 月 15 日；数量变化为 1,500 台；交期变化为 12 月 20 日。真实业务字段对照尚未实现。</p>
     </section>
 
     <section class="slide" id="slide-4" data-page="04" data-title="拟议的流程分工" aria-labelledby="title-4">
       <div class="slide-heading"><span class="section-no">03 / 项目定位</span><h2 id="title-4" tabindex="-1">已有依据核对，探索业务对照。</h2><p class="intro">EviAlign 是执行前依据核对原型。下图是拟议接入流程，真实审批来源和业务字段对照仍待设计与验证。</p></div>
       <div class="workflow business-workflow" aria-label="企业原系统、AI、项目和业务流程的拟议分工">
         <div class="workflow-step"><span class="step-index">01</span><h3>原系统确认</h3><p>原有流程提供<br>可信确认记录</p></div>
-        <div class="workflow-step"><span class="step-index">02</span><h3>AI 提出动作</h3><p>形成拟提交的<br>对象、金额与内容</p></div>
+        <div class="workflow-step"><span class="step-index">02</span><h3>AI 提出动作</h3><p>形成拟提交的<br>供应商、数量与交期</p></div>
         <div class="workflow-step featured"><span class="step-index">03</span><h3>拟议依据核对</h3><p>呈现对应关系<br>供后续判断</p></div>
         <div class="workflow-step"><span class="step-index">04</span><h3>原系统处理</h3><p>核验权限与审批<br>按既有规则执行</p></div>
       </div>
@@ -119,7 +120,7 @@
       <div class="comparison" role="table" aria-label="现有机制与拟议项目分工">
         <div class="comparison-head" role="row"><span role="columnheader">处理环节</span><span role="columnheader">企业原有机制</span><span role="columnheader">项目范围与拟议工作</span></div>
         <div class="comparison-row" role="row"><strong role="rowheader">身份与权限</strong><p role="cell">由现有身份、授权和接口规则负责。</p><p class="future" role="cell">项目接收受信输入，不验证身份或授予权限。</p></div>
-        <div class="comparison-row" role="row"><strong role="rowheader">确认与对照</strong><p role="cell">原流程可能已校验审批对象与金额。</p><p class="future" role="cell">探索是否需要可复用的业务字段对照；当前尚未实现。</p></div>
+        <div class="comparison-row" role="row"><strong role="rowheader">确认与对照</strong><p role="cell">原采购流程可能已校验数量与交期。</p><p class="future" role="cell">探索是否需要可复用的数量、交期对照；当前尚未实现。</p></div>
         <div class="comparison-row" role="row"><strong role="rowheader">执行与记录</strong><p role="cell">业务系统负责审批有效性、事务与执行。</p><p class="future" role="cell">原型提供执行前请求与证据核对记录。</p></div>
       </div>
       <div class="measurement-strip"><p><strong>先核实</strong><span>现有流程覆盖哪些情况</span></p><p><strong>再比较</strong><span>补强原系统的成本</span></p><p><strong>看增量</strong><span>额外组件是否值得</span></p></div>
@@ -130,11 +131,11 @@
       <div class="slide-heading"><span class="section-no">05 / 待验证价值</span><h2 id="title-6" tabindex="-1">让一次核对更清楚，也算清投入。</h2><p class="intro">以下是需要业务试点验证的价值方向，尚未证明节省时间、减少返工或降低成本。</p></div>
       <div class="enterprise-values">
         <div class="enterprise-value"><span class="point-number">业务</span><h3>减少来回核对</h3><p>把本次确认、拟提交动作和关注点集中呈现，观察是否减少翻找与重复确认。</p><p class="value-measure">看整体处理时间与人工复核耗时</p></div>
-        <div class="enterprise-value"><span class="point-number">质量</span><h3>看清发生了什么</h3><p>探索是否更早发现对象、金额或版本变化，供原流程判断。</p><p class="value-measure">看变化发现、误提示与返工</p></div>
+        <div class="enterprise-value"><span class="point-number">质量</span><h3>看清发生了什么</h3><p>探索是否更早发现采购数量、交期或版本变化，供原流程判断。</p><p class="value-measure">看变化发现、误提示与返工</p></div>
         <div class="enterprise-value"><span class="point-number">复用</span><h3>减少重复接入</h3><p>如果多个智能体有同类需要，比较统一核对能力与分别补强原系统的工作量。</p><p class="value-measure">看接入、维护与跨场景复用成本</p></div>
       </div>
-      <div class="enterprise-band"><strong>企业关注</strong><p>把新增复核负担和建设成本一起计算，结果决定是否扩展。</p></div>
-      <p class="small">以上为拟议价值，尚未在联想真实业务中实测。</p>
+      <div class="enterprise-band"><strong>其他部门</strong><p>HR：入职权限申请与岗位确认；销售：拟发送报价或折扣与确认记录。均为拟议用法。</p></div>
+      <p class="small">以上为拟议价值，尚未在联想真实业务中实测；复核负担与建设成本也需计算。</p>
     </section>
 
     <section class="slide" id="slide-7" data-page="07" data-title="已有基础与待验证部分" aria-labelledby="title-7">
@@ -142,14 +143,14 @@
       <div class="evidence-trio">
         <div class="evidence-item"><p class="evidence-number">01</p><h3>已有请求与证据核对</h3><p>在受信输入与保留证据的前提下，检查两者是否对应；输出可复查记录。</p></div>
         <div class="evidence-item"><p class="evidence-number">02</p><h3>独立沙箱意图观察</h3><p>Jev 对可能偏离原意的计划给出观察提示；不授权执行。</p></div>
-        <div class="evidence-item"><p class="evidence-number attention">03</p><h3>业务字段对照待验证</h3><p>真实审批来源、对象与金额比较、业务界面和系统接入尚未实现。</p></div>
+        <div class="evidence-item"><p class="evidence-number attention">03</p><h3>业务字段对照待验证</h3><p>真实审批来源、数量与交期比较、业务界面和系统接入尚未实现。</p></div>
       </div>
       <p class="proof-conclusion">原型提供核对基础。<span class="accent">真实流程中的增量和成本，需要对照验证。</span></p>
       <p class="proof-context">2026-10-21 独立沙箱单次评测：84 个 AI 编写、另一 AI 盲标的合成案例，36/36 越界标记、24/24 意图不清提示、3/24 正常案例提示；覆盖 33 个相关场景族。非人工真值、非联想业务数据，不证明生产准确率或审批字段对照能力；提示不代表已完成复核或审批。</p>
     </section>
 
     <section class="slide" id="slide-8" data-page="08" data-title="怎样验证是否值得" aria-labelledby="title-8">
-      <div class="slide-heading"><span class="section-no">07 / 试点建议</span><h2 id="title-8" tabindex="-1">同一流程，比较三种做法。</h2><p class="intro">选择业务负责人愿意参与的一个流程，用获批的历史或合成记录只读回放，先弄清现有能力。</p></div>
+      <div class="slide-heading"><span class="section-no">07 / 试点建议</span><h2 id="title-8" tabindex="-1">同一流程，比较三种做法。</h2><p class="intro">选择业务负责人愿意参与的采购流程，用获批的历史或合成记录只读回放，先弄清现有能力。</p></div>
       <div class="roadmap"><div class="roadmap-stage"><p class="stage-label">对照 01</p><h3>现有机制</h3><p>梳理现有 API、权限、审批和记录已覆盖的情况，记录处理与复核成本。</p></div><div class="roadmap-stage"><p class="stage-label">对照 02</p><h3>补强原系统</h3><p>评估在原有流程补足字段核对或记录关联的效果与投入。</p></div><div class="roadmap-stage"><p class="stage-label">对照 03</p><h3>拟议项目接入</h3><p>另行设计可信接入和业务字段对照，比较增量、复核负担与维护成本。</p></div></div>
       <p class="pilot-success">评估结果：<span class="accent">差异发现、整体时长、人工负担与总投入。</span></p>
       <p class="closing-line">现有机制足够，就继续复用；<span class="accent">有可验证增量，再讨论扩展。</span></p>
@@ -222,31 +223,31 @@
       document.querySelector('#print-report').addEventListener('click', () => window.print());
       const cases = {
   "service": {
-    "request": "订单 A · 退款 100 元",
-    "proposal": "订单 A · 退款 100 元",
-    "intent": "对象一致",
-    "intentDetail": "确认记录和拟提交动作均为订单 A。",
-    "evidence": "金额一致",
-    "evidenceDetail": "确认记录和拟提交动作均为 100 元。",
-    "description": "示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。"
+    "request": "供应商甲 · 1,000 台 · 12 月 15 日",
+    "proposal": "供应商甲 · 1,000 台 · 12 月 15 日",
+    "intent": "数量一致",
+    "intentDetail": "确认记录与拟提交内容均为 1,000 台。",
+    "evidence": "交期一致",
+    "evidenceDetail": "确认记录与拟提交内容均为 12 月 15 日。",
+    "description": "示意：原确认 1,000 台、12 月 15 日；数量变化为 1,500 台；交期变化为 12 月 20 日。真实业务字段对照尚未实现。"
   },
   "sales": {
-    "request": "订单 A · 退款 100 元",
-    "proposal": "订单 B · 退款 100 元",
-    "intent": "对象发生变化",
-    "intentDetail": "原确认记录为订单 A，拟提交动作变为订单 B。",
-    "evidence": "金额一致",
-    "evidenceDetail": "两项示意金额均为 100 元；对象仍需原流程核验。",
-    "description": "示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。"
+    "request": "供应商甲 · 1,000 台 · 12 月 15 日",
+    "proposal": "供应商甲 · 1,500 台 · 12 月 15 日",
+    "intent": "数量发生变化",
+    "intentDetail": "原确认记录为 1,000 台，拟提交内容变为 1,500 台。",
+    "evidence": "交期一致",
+    "evidenceDetail": "确认记录与拟提交内容均为 12 月 15 日。",
+    "description": "示意：原确认 1,000 台、12 月 15 日；数量变化为 1,500 台；交期变化为 12 月 20 日。真实业务字段对照尚未实现。"
   },
   "finance": {
-    "request": "订单 A · 退款 100 元",
-    "proposal": "订单 A · 退款 500 元",
-    "intent": "对象一致",
-    "intentDetail": "确认记录和拟提交动作均为订单 A。",
-    "evidence": "金额发生变化",
-    "evidenceDetail": "原确认记录为 100 元，拟提交动作变为 500 元。",
-    "description": "示意：一致为 A／100 元；对象变化为 B／100 元；金额变化为 A／500 元。真实审批字段对照尚未实现。"
+    "request": "供应商甲 · 1,000 台 · 12 月 15 日",
+    "proposal": "供应商甲 · 1,000 台 · 12 月 20 日",
+    "intent": "数量一致",
+    "intentDetail": "确认记录与拟提交内容均为 1,000 台。",
+    "evidence": "交期发生变化",
+    "evidenceDetail": "原确认记录为 12 月 15 日，拟提交内容变为 12 月 20 日。",
+    "description": "示意：原确认 1,000 台、12 月 15 日；数量变化为 1,500 台；交期变化为 12 月 20 日。真实业务字段对照尚未实现。"
   }
 };
       const tabs = Array.from(document.querySelectorAll('[data-case]'));

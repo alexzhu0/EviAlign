@@ -16,7 +16,7 @@ As enterprises consider letting AI agents carry out more work, a useful question
 
 ## A proposed example
 
-Suppose an existing process confirms a refund of **100** for **order A**. A proposed comparison could show whether the AI's pending action still refers to order A and 100, or has changed the order or amount. This is a synthetic illustration: business-level comparison of actual approval fields with proposed action fields is future work, not an implemented refund check. No real refund is executed.
+Suppose an existing process confirms a purchase from **supplier A**, for **1,000 devices** delivered on **December 15**. A proposed comparison could show whether an AI's pending purchase changes the quantity to 1,500 or delivery to December 20. Such changes may be legitimate and would return to the existing process for review. This is a synthetic illustration: comparing real approval fields with proposed business fields is future work. No purchase is submitted or executed.
 
 | Responsibility | Current status |
 | --- | --- |
