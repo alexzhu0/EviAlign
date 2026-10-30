@@ -1,5 +1,7 @@
 # EviAlign PowerPoint and PoC film delivery — 2026-10-29
 
+The original files below are preserved. The user-requested [2026-10-30 content-enhanced deck](evialign-ppt-expanded-delivery.md) is delivered separately with 16 main pages and four appendices, reusing the unchanged movie.
+
 The user approved the [design](../superpowers/specs/2026-10-29-evialign-ppt-poc-film-design.md) and requested editable PowerPoint with an embedded mock-data demonstration. The local Windows destination is now `D:\Sayitout\小强创新`, where the earlier files were found after the former `小强` directory ceased to exist.
 
 ## Delivered files
