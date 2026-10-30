@@ -8,8 +8,9 @@ EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判�
 | --- | --- |
 | [英文项目首页](../README.md) · [简体中文版](../README.zh-CN.md) | 项目是什么、业务场景、已有成果和下一步；GitHub 默认展示英文。 |
 | [项目目的与当前进展（English）](project-purpose-and-progress.md) · [中文版](project-purpose-and-progress.zh-CN.md) | 主仓库为何存在、长期研究目标、现在做到哪一步及下一阶段验证路径。 |
+| [中英文参赛简介与 Jev 分工](hackathon-entry.md) | 可用于报名的跨流程项目简介，以及已有 Jev 决策模型实验的作用与边界。 |
 | [联想集团黑客松评审材料](actlumen-reviewer-brief.md) | 命名、问题、方案特点、企业收益和试点建议。 |
-| [最新版 PPT 与 PoC 交付记录](presentations/evialign-ppt-expanded-delivery.md) | 16 页主讲、4 页附录、内嵌影片的本地交付位置、来源与验证。 |
+| [最新版 PPT 与 PoC 交付记录](presentations/evialign-ppt-expanded-delivery.md) | Jev 版为 17 页主讲、4 页附录；本地交付位置、影片来源与验证。 |
 | [早期八页 HTML 汇报（历史示意）](presentations/agentharness-enterprise-hackathon.html) | 保留的早期材料，可离线演示；当前定位与场景以目的说明及最新版 PPT 为准。 |
 | [品牌与能力范围](actlumen-brand-and-scope.md) | EviAlign 的统一名称、产品化状态与兼容标识。 |
 

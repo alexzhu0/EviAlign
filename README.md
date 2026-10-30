@@ -22,11 +22,13 @@ That cycle is a research goal. A high approval rate alone does not establish saf
 
 **Partial foundation prototype and separate synthetic observation experiments.** With a trusted request and retained evidence, this repository checks whether the evidence still corresponds to the current structured request and emits a bounded, deterministic result. It does not yet collect a complete business history of human judgments and outcomes or adjust oversight rules.
 
+The separate sandbox has evaluated **Jev, TypeSafe's structured decision model**, to observe whether AI proposals align with user intent. Jev supplies an observation signal, while existing enterprise controls retain approval and execution authority. [Bilingual competition description and Jev's role](docs/hackathon-entry.md)
+
 | Responsibility | Current status |
 | --- | --- |
 | Identity, authorization, approval validity, and execution | Existing external systems remain responsible. |
 | Structured request and evidence correspondence | Implemented in this repository, subject to trusted inputs and retained evidence. |
-| User intent versus AI proposal | Optional observation in a separate local business sandbox; its hints do not authorize execution. |
+| User intent versus AI proposal | Optional Jev decision-model observation in a separate local business sandbox; its hints do not authorize execution. |
 | Real approval records versus proposed business fields | Requires a separate design, trusted integration, and validation. |
 | Human judgments, business outcomes, and changes to human involvement | Research goal; no complete collection-and-validation cycle or automatic adjustment is implemented. |
 

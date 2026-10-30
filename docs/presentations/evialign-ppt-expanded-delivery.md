@@ -2,7 +2,26 @@
 
 The user requested another huashu skill and a more substantive PowerPoint. This is an iteration of the [approved presentation design](../superpowers/specs/2026-10-29-evialign-ppt-poc-film-design.md), following the [content-expansion plan](../superpowers/plans/2026-10-30-evialign-ppt-content-expansion.md). The original eight-slide deck and independent movie were preserved.
 
-## Current reviewer edition: links and click-to-play — 2026-10-30
+## Current Jev edition and bilingual competition copy — 2026-10-30
+
+The user requested Jev decision-model coverage in the PPT and introduction, a cross-workflow project description, and a 16:9 cover-image prompt for use with an external image model. The new edition is delivered separately under `D:\Sayitout\小强创新`, preserving the earlier reviewer and content-enhanced files:
+
+- `EviAlign-黑客松汇报-Jev版.pptx` and matching `.pdf`: 21 slides, comprising 17 main pages and four appendices, with 328 native text shapes and speaker notes. Jev's role is explicit on page 12; the unchanged movie is on page 13; the retained Jev evaluation is named on page 14. Project links are on pages 17 and 21.
+- `EviAlign-参赛简介-中英文.txt`: registration copy, also maintained in [the bilingual repository entry](../hackathon-entry.md). The project is framed across enterprise workflows; supply chain remains an illustrative scenario.
+- `EviAlign-16比9头图提示词.txt`: a [copyable cover-image prompt](evialign-cover-prompt.zh-CN.txt), with EviAlign as the main title and a small Jev research reference. No image-generation request was made.
+- `EviAlign-Jev版讲稿.md` and `EviAlign-Jev版制作源文件.zip`: updated notes and local production source with native PowerPoint configuration/check scripts.
+
+Jev-edition PPTX SHA-256: `3c5e353db4342a894ef63fa99c01a6252e825699f1512ec5480f9728290c697d`.
+
+Jev-edition PDF SHA-256: `81e05a66e28b45d946b7940fcdfc70d68f270190b5f1c6a252f71d4c606dfbb3`.
+
+[TypeSafe's official introduction](https://docs.typesafe.ai/introduction) was reopened to verify Jev's structured decision-model description. The PPT describes the actual Choice experiment: request/context and proposed action, a typed observation, and local review-hint routing. Jev remains an optional, default-off observer in the independent sandbox; it is not a main-repository CLI feature and does not pause, approve, authorize or execute actions. The retained model pin `typesafe/jev-1.13-20260917`, 0.8 threshold and rubric were not changed; no new model call or sandbox modification was made. No unsupported claim of model popularity, latest-version use or enterprise performance was added.
+
+Native PowerPoint opened and exported all 21 pages; the final PDF preserves the Jev-source hyperlink and three project links, with no out-of-page text. The movie bytes match the prior delivery. Native first-click media configuration was applied in PowerPoint; `SlideShowView.GotoClick(1)` kept page 13 displayed and changed the player from state 3 to state 0 (Playing), with position 3276 ms. Background window-message tests did not reliably enter the click sequence in this session, so this edition's acceptance is explicitly the native click-sequence test, not a physical-mouse test. The source archive documents native configuration as the final generation step.
+
+Independent review found no Critical or Important finding. Its two Minor copy findings were fixed: the navigation now says 17+4 pages, and the standalone English registration paragraph explicitly says synthetic evaluation. All six repository checks passed, including 538 tests in 41.655 seconds; bilingual command blocks and local links were checked. Runtime behavior, enterprise execution boundaries and the earlier evaluation limitations remain unchanged.
+
+## Earlier reviewer edition: links and click-to-play — 2026-10-30
 
 The user requested a clickable repository address and a prominent central movie-play button. The existing content-enhanced PPTX was locked by another Windows process, confirmed by an exclusive-file-open check. It was preserved, and a separate reviewer edition was delivered in the same `D:\Sayitout\小强创新` directory:
 
