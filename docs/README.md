@@ -1,14 +1,16 @@
 # EviAlign 文档导航
 
-EviAlign 是面向 AI 行动请求的执行前依据核对原型。真实审批内容与拟提交动作的业务对照属于待验证方向；独立业务沙箱另有可选意图观察。按阅读目的选择入口：
+EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判断与结果积累研究人机分工。当前已完成执行前依据核对的部分基础原型，独立沙箱已有合成意图观察；完整业务审核与经验积累闭环仍待建设。按阅读目的选择入口：
 
 ## 项目与业务价值
 
 | 文档 | 适合了解的内容 |
 | --- | --- |
 | [英文项目首页](../README.md) · [简体中文版](../README.zh-CN.md) | 项目是什么、业务场景、已有成果和下一步；GitHub 默认展示英文。 |
+| [项目目的与当前进展（English）](project-purpose-and-progress.md) · [中文版](project-purpose-and-progress.zh-CN.md) | 主仓库为何存在、长期研究目标、现在做到哪一步及下一阶段验证路径。 |
 | [联想集团黑客松评审材料](actlumen-reviewer-brief.md) | 命名、问题、方案特点、企业收益和试点建议。 |
-| [八页管理层汇报](presentations/agentharness-enterprise-hackathon.html) | 下载后可离线演示、切换场景、全屏和打印。 |
+| [最新版 PPT 与 PoC 交付记录](presentations/evialign-ppt-expanded-delivery.md) | 16 页主讲、4 页附录、内嵌影片的本地交付位置、来源与验证。 |
+| [早期八页 HTML 汇报（历史示意）](presentations/agentharness-enterprise-hackathon.html) | 保留的早期材料，可离线演示；当前定位与场景以目的说明及最新版 PPT 为准。 |
 | [品牌与能力范围](actlumen-brand-and-scope.md) | EviAlign 的统一名称、产品化状态与兼容标识。 |
 
 ## 工程与资产

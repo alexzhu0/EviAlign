@@ -2,21 +2,25 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-**Evidence checks for AI action requests**
+**Reviewable AI actions. Evidence for human oversight.**
 
-EviAlign is a pre-execution evidence prototype. With a trusted request and retained evidence, it checks whether the evidence still corresponds to the current structured request and produces reviewable records. An optional intent observer lives in a separate local business sandbox.
+EviAlign is a forward-looking research project on how enterprises can review AI-proposed business actions and use accumulated decisions and outcomes to study where human involvement is needed. Its current foundation is a pre-execution evidence-checking prototype; the complete business review-and-learning cycle is still future work.
 
 **EviAlign** combines *evidence* and *align*: keeping an action request and its supporting evidence connected. Identity, authorization, approvals, and execution remain the responsibility of existing enterprise systems.
 
-[Reviewer brief (中文)](docs/actlumen-reviewer-brief.md) · [Leadership presentation (中文)](docs/presentations/agentharness-enterprise-hackathon.html) · [Documentation index (中文)](docs/README.md) · [Engineering guide](docs/engineering-guide.md)
+[Purpose and progress](docs/project-purpose-and-progress.md) · [Reviewer brief (中文)](docs/actlumen-reviewer-brief.md) · [Current PowerPoint delivery record](docs/presentations/evialign-ppt-expanded-delivery.md) · [Documentation index (中文)](docs/README.md) · [Engineering guide](docs/engineering-guide.md)
 
-## The business question
+## Why this repository exists
 
-As enterprises consider letting AI agents carry out more work, a useful question is whether a proposed action still corresponds to the evidence retained for that request. Existing APIs, fine-grained authorization, and approval systems may already cover the necessary controls. The case for an additional component depends on a real gap or a measurable reduction in repeated integration and review effort.
+Many enterprise agents still support questions, queries and analysis. EviAlign anticipates a possible next stage: agents helping redesign workflows, propose decisions and advance business processes. We want to investigate the basis for reviewing those actions before that stage becomes widespread.
 
-## A proposed example
+The ambition is business sign-off before consequential AI actions: understand what an agent proposes, its supporting basis, and what needs a person's confirmation. In a future integration, records of proposals, human confirmations or modifications, and eventual outcomes could help identify which specific situations require human judgment and which might justify less intervention.
 
-Suppose an existing process confirms a purchase from **supplier A**, for **1,000 devices** delivered on **December 15**. A proposed comparison could show whether an AI's pending purchase changes the quantity to 1,500 or delivery to December 20. Such changes may be legitimate and would return to the existing process for review. This is a synthetic illustration: comparing real approval fields with proposed business fields is future work. No purchase is submitted or executed.
+That cycle is a research goal. A high approval rate alone does not establish safety; outcomes, exceptions and changing conditions need validation. Any reduction in human intervention remains a scoped enterprise decision. [Full purpose and research path](docs/project-purpose-and-progress.md)
+
+## Where we are today
+
+**Partial foundation prototype and separate synthetic observation experiments.** With a trusted request and retained evidence, this repository checks whether the evidence still corresponds to the current structured request and emits a bounded, deterministic result. It does not yet collect a complete business history of human judgments and outcomes or adjust oversight rules.
 
 | Responsibility | Current status |
 | --- | --- |
@@ -24,8 +28,15 @@ Suppose an existing process confirms a purchase from **supplier A**, for **1,000
 | Structured request and evidence correspondence | Implemented in this repository, subject to trusted inputs and retained evidence. |
 | User intent versus AI proposal | Optional observation in a separate local business sandbox; its hints do not authorize execution. |
 | Real approval records versus proposed business fields | Requires a separate design, trusted integration, and validation. |
+| Human judgments, business outcomes, and changes to human involvement | Research goal; no complete collection-and-validation cycle or automatic adjustment is implemented. |
 
 The current business evidence contract binds approval fields as supplied but does not interpret them. A receipt for one request will not match a changed request; matching digests alone do not authenticate the source, validate an approval, establish business correctness, or authorize execution. [Business evidence contract](docs/business-action-evidence-v1.md)
+
+## A business question to investigate
+
+In a fictional delivery exception, sales, logistics and service teams need to coordinate. An AI could gather information, prepare follow-up suggestions and propose transferring a ticket; the responsible person may require confirmation before ownership changes. We want to study how to connect that proposed action, the relevant confirmation and its conditions, and the eventual outcome.
+
+This is a future workflow illustration. Historical synthetic case E173 covers only a pending-confirmation ticket transfer, not a delivery exception or a connected approval workflow. [PoC provenance](docs/presentations/evialign-ppt-poc-delivery.md)
 
 ## What evidence exists
 
@@ -35,19 +46,23 @@ The cases were AI-authored and independently blind-labeled by another AI, across
 
 ## How to assess the value
 
+Existing APIs, fine-grained authorization, approvals and audit systems may already cover the necessary controls. An additional component must demonstrate a real gap or a measurable reduction in repeated integration and review effort.
+
 Compare three approaches on one approved, read-only replay of a business workflow: the existing controls; practical improvements to those controls; and a proposed EviAlign integration. Measure discrepancies found, total handling time, extra review burden, integration and maintenance costs, and actual reuse across agents. If existing controls already suffice or costs exceed demonstrated benefits, retain the existing approach.
+
+If the comparison justifies further work, separately design trusted business-record access and an observation study that accumulates human judgments and outcomes while existing controls remain in force. Researching changes to human involvement comes after validation and enterprise approval; the current prototype grants no execution authority.
 
 ## Find the right material
 
 | Reader | Start here |
 | --- | --- |
-| Leaders and hackathon judges | [Reviewer brief (中文)](docs/actlumen-reviewer-brief.md), [offline presentation (中文)](docs/presentations/agentharness-enterprise-hackathon.html) |
+| Leaders and hackathon judges | [Purpose and progress](docs/project-purpose-and-progress.md), [reviewer brief (中文)](docs/actlumen-reviewer-brief.md), [current PowerPoint delivery record](docs/presentations/evialign-ppt-expanded-delivery.md) |
 | Business pilot owners | [Brand and capability scope (中文)](docs/actlumen-brand-and-scope.md), including the proposed comparison and pilot |
 | Developers and platform teams | [Engineering guide](docs/engineering-guide.md), [asset map](docs/00-asset-map.md) |
 | Security and evidence reviewers | [Product contract](docs/08-glossary-and-product-contract.md), [reproducible demo](docs/11-reproducible-enterprise-demo.md), [review checklist](docs/13-external-reviewer-checklist.md) |
 | Maintainers | [Maintenance record (中文)](docs/34-actlumen-brand-maintenance.md), [repository guidance](AGENTS.md) |
 
-Download the single HTML presentation to open it offline in a browser, navigate slides, switch examples, or print. Source links remain subject to repository access permissions.
+The current PowerPoint and movie were delivered locally; their binaries are not stored in Git. The [earlier HTML presentation](docs/presentations/agentharness-enterprise-hackathon.html) remains a historical illustration. Source links remain subject to repository access permissions.
 
 ## Developer quick start
 
