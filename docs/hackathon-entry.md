@@ -1,6 +1,6 @@
 # EviAlign hackathon entry
 
-Updated: 2026-10-30. Registration copy for the research project; business examples do not limit its intended scope. Suggested team name: **Evidence in Action / 有据行动队**.
+Updated: 2026-11-03. Registration copy for the research project; business examples do not limit its intended scope. Suggested team name: **Evidence in Action / 有据行动队**.
 
 ## English project description
 
@@ -18,7 +18,7 @@ TypeSafe describes Jev as a structured decision model: it evaluates focused ques
 
 The retained experiment requests `typesafe/jev-1.13` through OpenRouter and accepts only the pinned returned model `typesafe/jev-1.13-20260917`. Mentioning Jev does not change that pin, the 0.8 threshold or the rubric, and does not claim use of the latest release. This copy makes no unsupported popularity, performance or production-accuracy claim. [Retained experiment and limitations](33-jev-shadow-maintenance-handoff.md)
 
-Jev supplies an intent-observation signal. The main repository's correspondence checks, the independent sandbox experiments and future business judgment/outcome collection remain distinct; they have not been integrated into a complete enterprise approval workflow. Cross-workflow reuse is a research goal, with individual scenarios requiring trusted integration and validation. [Purpose and current progress](project-purpose-and-progress.md) · [中文说明](project-purpose-and-progress.zh-CN.md)
+Jev supplies an intent-observation signal. A local research-review workbench now links synthetic cases, initial judgments, historical Jev observations, final reasons and JSON export. These are research annotations, without a business-reviewer trial or observed business outcomes. The main correspondence checks, sandbox experiments and trusted business approval integration remain distinct. [Workbench / 复核台](research-review-workbench.md) · [Purpose and current progress](project-purpose-and-progress.md) · [中文说明](project-purpose-and-progress.zh-CN.md)
 
 ## Presentation and cover material
 

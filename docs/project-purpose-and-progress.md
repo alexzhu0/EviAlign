@@ -2,7 +2,7 @@
 
 **English** | [简体中文](project-purpose-and-progress.zh-CN.md)
 
-Updated: 2026-10-30. This is the main repository's research purpose and status statement. It separates the long-term goal from the capabilities implemented today.
+Updated: 2026-11-03. This is the main repository's research purpose and status statement. It separates the long-term goal from the capabilities implemented today.
 
 ## Why this project exists
 
@@ -30,14 +30,14 @@ EviAlign's proposed contribution is to investigate whether reusable action-to-ev
 
 ## Where we are today
 
-**Current stage: partial foundation prototype plus separate synthetic observation experiments. The complete business review-and-learning cycle is still future work.**
+**Current stage: evidence-checking foundation, separate synthetic observation experiments and a usable research-review PoC. The complete business review-and-learning cycle is still future work.**
 
 | Area | What exists | What it does not establish |
 | --- | --- | --- |
 | Main-repository evidence checks | Check a structured current request against retained evidence and emit a bounded, deterministic result. A changed request does not match its old receipt. | No real approval-source integration, business-field interpretation or execution permission. The receipt is unsigned; if both inputs can be replaced, matching digests do not establish authenticity. |
 | Separate local business sandbox | Synthetic business environment and optional Jev intent observations, with retained evaluations. | Not part of this repository's CLI; a review hint does not pause a workflow, approve an action or execute a tool. |
 | Demonstration | An editable presentation and mock-data film show an actual read-only result capture, independent correspondence checks and a historical E173 observation. | These are separate demonstrations, not a connected enterprise approval transaction. |
-| Human judgments and business outcomes | Defined as the next research direction. | No complete collection of business confirmations, reasons and outcomes, or validated method for reducing human intervention. |
+| Research-review workbench | The separate local sandbox now connects an original synthetic case, initial judgment, historical Jev observation, final judgment/reason and downloadable JSON. Suggested changes remain unassessed drafts. [Runbook](research-review-workbench.md) | Engineering checks used automated demo annotations. No business-reviewer trial, authenticated business approval or observed business outcome; outcomes are explicitly unavailable or simulated. No validated reduction in human intervention. |
 | Enterprise value | Proposed comparison of existing controls, improvements to them, and a future EviAlign integration. | No measured enterprise time savings, ROI or production-safety claim. |
 
 Current evidence and shadow results retain `result_status: not_executed`. `allow_candidate` means candidate evidence only. A successful check does not authorize a real action. See the [business evidence contract](business-action-evidence-v1.md).

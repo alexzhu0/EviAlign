@@ -1,6 +1,6 @@
 # EviAlign 文档导航
 
-EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判断与结果积累研究人机分工。当前已完成执行前依据核对的部分基础原型，独立沙箱已有合成意图观察；完整业务审核与经验积累闭环仍待建设。按阅读目的选择入口：
+EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判断与结果积累研究人机分工。当前已有依据核对基础、独立合成意图观察和可操作的研究复核台；完整业务审核与经验积累闭环仍待建设。按阅读目的选择入口：
 
 ## 项目与业务价值
 
@@ -9,6 +9,7 @@ EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判�
 | [英文项目首页](../README.md) · [简体中文版](../README.zh-CN.md) | 项目是什么、业务场景、已有成果和下一步；GitHub 默认展示英文。 |
 | [项目目的与当前进展（English）](project-purpose-and-progress.md) · [中文版](project-purpose-and-progress.zh-CN.md) | 主仓库为何存在、长期研究目标、现在做到哪一步及下一阶段验证路径。 |
 | [中英文参赛简介与 Jev 分工](hackathon-entry.md) | 可用于报名的跨流程项目简介，以及已有 Jev 决策模型实验的作用与边界。 |
+| [行动复核台 / Research-review workbench](research-review-workbench.md) | 本地可操作原型：初审、Jev 历史回放、复核、独立草案和 JSON 导出；尚无业务同事试审。 |
 | [联想集团黑客松评审材料](actlumen-reviewer-brief.md) | 命名、问题、方案特点、企业收益和试点建议。 |
 | [最新版 PPT 与 PoC 交付记录](presentations/evialign-ppt-expanded-delivery.md) | Jev 版为 17 页主讲、4 页附录；本地交付位置、影片来源与验证。 |
 | [早期八页 HTML 汇报（历史示意）](presentations/agentharness-enterprise-hackathon.html) | 保留的早期材料，可离线演示；当前定位与场景以目的说明及最新版 PPT 为准。 |
