@@ -20,7 +20,7 @@ That cycle is a research goal. A high approval rate alone does not establish saf
 
 ## Where we are today
 
-**Evidence-checking foundation, separate synthetic experiments, and a local research-review workbench.** With a trusted request and retained evidence, this repository checks whether the evidence still corresponds to the current structured request and emits a bounded, deterministic result. The separate sandbox now supports initial judgments, historical Jev replay, final research annotations and JSON export. It does not collect a complete business history or adjust oversight rules.
+**Evidence-checking foundation, separate synthetic experiments, and a local research-review workbench.** With a trusted request and retained evidence, this repository checks whether the evidence still corresponds to the current structured request and emits a bounded, deterministic result. The separate sandbox supports historical replay and an explicit live mode with DeepSeek proposals, independent initial judgments, Jev observations, final annotations and JSON export. It does not collect a complete business history or adjust oversight rules.
 
 The separate sandbox has evaluated **Jev, TypeSafe's structured decision model**, to observe whether AI proposals align with user intent. Jev supplies an observation signal, while existing enterprise controls retain approval and execution authority. [Bilingual competition description and Jev's role](docs/hackathon-entry.md)
 
@@ -30,7 +30,7 @@ The separate sandbox has evaluated **Jev, TypeSafe's structured decision model**
 | Structured request and evidence correspondence | Implemented in this repository, subject to trusted inputs and retained evidence. |
 | User intent versus AI proposal | Optional Jev decision-model observation in a separate local business sandbox; its hints do not authorize execution. |
 | Real approval records versus proposed business fields | Requires a separate design, trusted integration, and validation. |
-| Research-review records | Implemented in the separate local sandbox: initial/final judgments and reasons, unchanged historical Jev observations, separate unassessed drafts and JSON export. |
+| Research-review records | Separate local sandbox: initial/final judgments, historical replay or opt-in live DeepSeek/Jev calls, unassessed drafts and JSON export. |
 | Observed business outcomes and changes to human involvement | Research goal; no trusted outcome integration, business-reviewer study or automatic adjustment is implemented. |
 
 The current business evidence contract binds approval fields as supplied but does not interpret them. A receipt for one request will not match a changed request; matching digests alone do not authenticate the source, validate an approval, establish business correctness, or authorize execution. [Business evidence contract](docs/business-action-evidence-v1.md)
@@ -44,6 +44,13 @@ then record a final judgment and export. Six seen synthetic cases are available;
 no new model call or business action occurs. Records stay in memory until restart.
 This is an engineering PoC; business colleagues have not yet trialed it.
 [Launch, demonstration and scope](docs/research-review-workbench.md)
+
+For live calls, use `./run-sandbox review --live --port 8770` with the existing
+provider configuration. On 2026-11-04, three DeepSeek and three OpenRouter/Jev
+requests returned valid responses through the browser workflow. An actual
+operation video and normalized trace were retained. Each service permits at most
+three attempts per provider; synthetic inputs are sent externally and incur API
+usage. [Actual results and limits](docs/research-review-workbench.md#live-acceptance-on-2026-11-04)
 
 ## A business question to investigate
 

@@ -1,7 +1,28 @@
 # Jev Shadow Maintenance Handoff
 
-Updated: 2026-10-22. Current continuation status is recorded first; older
+Updated: 2026-11-04. Current continuation status is recorded first; older
 implementation and transfer checkpoints remain dated provenance.
+
+## Live review PoC on 2026-11-04
+
+The separate sandbox added an opt-in, proposal-only review workflow and completed
+three real DeepSeek requests plus three real OpenRouter/Jev requests, all valid
+responses, without retries or business execution. This was explicitly authorized
+after the user distinguished historical replay from real-time model integration.
+Models, v2 rubric, 0.8 threshold and tool meanings were unchanged.
+
+E120: create_ticket → fits/0.88/no_flag; E122: assign_ticket → fits/0.79/human_review;
+E173: list_tickets → unclear/0.46/human_review. The latter is a read proposal,
+not evidence of blocking an unauthorized transfer. These generated proposals
+need not match the historical fixtures, and this run is not a blind rescore.
+Jev reported US$0.000121842; DeepSeek reported 1,971 tokens and no cost, so total
+cost is unknown. Source tested: `b7064afe4926d2ddf28bdbfcc216df686b2adea3`.
+
+The sandbox retains `reports/live-review-2026-11-04.json` and an actual-operation
+video was delivered locally. Automated annotations are not business-reviewer
+evidence. `result_status: not_executed` remains. See the
+[current workbench handoff](research-review-workbench.md#live-acceptance-on-2026-11-04).
+Earlier evaluation results below retain their original inputs and dates.
 
 ## Source maintenance and push scope on 2026-10-22
 
