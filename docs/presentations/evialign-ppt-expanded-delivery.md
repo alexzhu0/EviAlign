@@ -1,8 +1,97 @@
-# EviAlign expanded PowerPoint delivery — 2026-10-30
+# EviAlign PowerPoint delivery
+
+## Current live-PoC submission materials — 2026-11-04
+
+The user requested an update of the earlier competition materials. The
+[maintenance plan](../superpowers/plans/2026-11-04-live-submission-materials.md)
+preserves the approved navy/teal executive presentation and updates the
+[bilingual entry](../hackathon-entry.md) and
+[reviewer brief](../actlumen-reviewer-brief.md) to the working live-model PoC.
+Files are ready for the user's competition upload; no competition portal was
+provided and no competition submission was performed.
+
+Windows delivery directory:
+`D:\Sayitout\小强创新\EviAlign-参赛提交包-20261104`.
+
+- `EviAlign-黑客松汇报-实测提交版.pptx` and matching `.pdf`: 21 pages,
+  comprising 17 main pages and four appendices, 325 nonempty native text shapes,
+  speaker notes, three project links and one TypeSafe-source link. Page 12
+  explains Jev; page 13 contains the actual live recording; page 14 separates
+  historical synthetic evaluation from the new connectivity acceptance.
+- `EviAlign-Live-Demo.mp4`: the retained 22.64-second, silent, 1600×900 H.264
+  recording of the actual E120 browser workflow. Model waits are retained. This
+  is one of the three live cases, not a film of all three.
+- `EviAlign-项目评审材料-实测提交版.pdf` and `.docx`: a four-page reader PDF
+  and corresponding editable reviewer copy. `EviAlign-参赛简介-中英文.txt`
+  includes English-first long and short registration copy and Chinese versions;
+  suggested team names must match the user's existing registration.
+- `EviAlign-汇报讲稿.md` and `EviAlign-提交说明.txt`: page-by-page speaking
+  guidance and upload/playback instructions.
+
+The eight visible files are also in
+`D:\Sayitout\小强创新\EviAlign-参赛提交包-20261104.zip` (2,164,102 bytes).
+ZIP CRC checks and each enclosed file's digest match the checked deliverables.
+Hidden production checks are excluded. The separate
+`EviAlign-实测提交版制作源文件.zip` preserves current HTML, generators, fonts,
+licenses, media, actual huashu scripts and check results; it is a local source
+archive, not an additional competition upload requirement. Earlier deliveries
+and their source archive were preserved.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Submission ZIP | `c79235c54805f8e2670f1f7b52877300dd054097a815b72540cb5551a7a05333` |
+| Source ZIP | `8af821e3c6cd2df014d5f921a7531b703e3591d47caa56c98e4345d6156039b3` |
+| PPTX | `5a5f82656ee037f318beab199568ea48a9cfd9028bf66625ed51f15682d11125` |
+| Presentation PDF | `e8a4fb736fb38f105a6b9ad760dbf8dd7d9758ca07ad493fc8972eabdfbe744f` |
+| Reviewer PDF | `c999222c90979010580ec419d5f2dd9d2004d02359a4c3650821cc065d1087ae` |
+| Actual movie | `7e46c57e67340006013dd79998378e2f243b8549bf6245bfd2741927e5261555` |
+
+The [2026-11-04 live acceptance](../research-review-workbench.md#live-acceptance-on-2026-11-04)
+records three DeepSeek and three OpenRouter/Jev requests, all with valid
+responses: E120 `create_ticket` → `fits/.88/no_flag`; E122 `assign_ticket` →
+`fits/.79/human_review`; E173 `list_tickets` → `unclear/.46/human_review`.
+The new E173 is a query, not a blocked unauthorized transfer. These are seen
+synthetic tasks with automated demonstration annotations, not business-colleague
+reviews or accuracy evidence. The 84-case historical experiment remains a
+separate source, with AI-authored cases and independent AI blind labels. Neither
+source proves enterprise ROI, approval validity or business execution.
+
+Native PowerPoint reopened all pages, exported the presentation PDF and 21
+previews, and verified the first-click Media Play effect on page 13:
+`GotoClick(1)` retained page 13 with player state 0 (Playing), position 3836 ms,
+effect 83 and trigger 1. This is a native click-sequence test, not a claim of a
+physical-mouse test. All rendered source text survives the saved PPTX; the one
+embedded movie matches the standalone movie's digest. PDF checks retain all
+three project links and the TypeSafe link, with no out-of-page text. The
+all-page overview and key native/PDF pages were visually inspected.
+
+The reviewer PDF was exported from controlled HTML with Chrome and inspected
+on all four pages. DOCX structure/content reopening passed (55 paragraphs and
+three tables); Word automation did not complete, so native Word rendering is
+not claimed. Only this task's stalled hidden Word export process was closed.
+
+Independent review found two Important readability issues on pages 12 and 16;
+both were corrected by shortening text. Page 17 link contrast and page 14's
+independent-AI-label wording were also corrected. Targeted final review confirmed
+the fixes in native and PDF previews and found no new Critical or Important
+issue. The actual [huashu-design](https://github.com/alchaincyf/huashu-design)
+3.0.0 exporter, text comparison and design lint were used under the same-project
+iteration exception. Final lint has zero red findings and one expected advisory
+for the packaged HTML poster's relative path; PPTX embeds the poster and movie.
+The three industry sources listed below were reopened on 2026-11-04.
+
+All six repository commands passed, including 538 unit tests in 36.156 seconds;
+local documentation links and staged whitespace were checked. This update
+changes presentation/registration documentation only: no new model request,
+credential-file access, sandbox change, runtime change, tag or release.
+Enterprise identity, permissions, approvals and execution remain external;
+demonstrated outputs retain `result_status: not_executed`.
+
+## Expanded presentation origin — 2026-10-30
 
 The user requested another huashu skill and a more substantive PowerPoint. This is an iteration of the [approved presentation design](../superpowers/specs/2026-10-29-evialign-ppt-poc-film-design.md), following the [content-expansion plan](../superpowers/plans/2026-10-30-evialign-ppt-content-expansion.md). The original eight-slide deck and independent movie were preserved.
 
-## Current Jev edition and bilingual competition copy — 2026-10-30
+## Earlier Jev edition and bilingual competition copy — 2026-10-30
 
 The user requested Jev decision-model coverage in the PPT and introduction, a cross-workflow project description, and a 16:9 cover-image prompt for use with an external image model. The new edition is delivered separately under `D:\Sayitout\小强创新`, preserving the earlier reviewer and content-enhanced files:
 

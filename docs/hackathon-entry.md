@@ -4,11 +4,11 @@ Updated: 2026-11-04. Registration copy for the research project; business exampl
 
 ## English project description
 
-EviAlign is a forward-looking research project on reviewing AI actions across enterprise workflows. It explores linking action requests with business evidence, human judgments and subsequent outcomes to support traceability and evidence-based human–AI collaboration. A partial evidence-checking prototype is implemented, and a separate sandbox has conducted a synthetic evaluation of TypeSafe's Jev decision model to observe whether AI proposals align with user intent. The long-term goal is to study when human confirmation remains necessary and when intervention could be reduced under validated conditions. Existing enterprise systems retain responsibility for identity, permissions, approvals and execution.
+EviAlign is a forward-looking research project on making AI-proposed enterprise actions reviewable. It connects proposed actions with their supporting context, decision-model observations and review records, helping people examine the basis for a proposal and study where human involvement matters. The project has built an evidence-checking foundation and a working PoC with live DeepSeek proposals, TypeSafe's Jev decision-model observations, research review and export. It has been demonstrated with synthetic tasks and real model APIs. The ambition is to give enterprises a basis for improving workflows and carefully expanding AI participation; existing systems retain identity, permissions, approvals and execution.
 
 ## 中文项目简介
 
-EviAlign 是面向企业各类业务流程的智能体行动审核前沿研究项目，探索关联 AI 行动请求、业务依据、人工判断与后续结果，为审核追溯和人机分工优化积累证据。项目已完成部分依据核对原型，并在独立沙箱中采用 Jev 决策模型开展合成实验，观察 AI 提议是否符合用户意图。长期目标是研究哪些环节需要人确认、哪些特定情形可以减少人工介入，为企业有依据地扩大 AI 的业务参与范围提供支持。身份、权限、审批和实际执行继续由企业原有系统负责。
+EviAlign 是面向企业各类流程的 AI 行动审核前沿研究项目，将拟议行动、相关依据、决策模型观察与复核记录关联起来，帮助人们看清 AI 为什么提出这项动作，并为研究人机分工积累证据。项目已具备依据核对基础和可操作 PoC，接通 DeepSeek 实时提案、Jev 决策模型观察、研究复核与导出，并使用合成任务完成真实模型 API 联调。项目希望为流程优化及有依据地扩大 AI 业务参与范围提供支持；身份、权限、审批和实际执行继续由企业原有系统负责。
 
 ## Jev's role / Jev 在项目中的作用
 
