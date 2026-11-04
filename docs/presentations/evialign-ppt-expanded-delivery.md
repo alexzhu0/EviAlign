@@ -1,6 +1,85 @@
 # EviAlign PowerPoint delivery
 
-## Current live-PoC submission materials — 2026-11-04
+## Current formal presentation edition — 2026-11-04
+
+After the previous delivery, the user reported completing the competition
+upload. This is user-reported status, not a submission performed or independently
+verified by the assistant. The user then requested a more attractive, formal
+PPT and inspection of public presentation skills. The
+[polish plan](../superpowers/plans/2026-11-04-formal-presentation-polish.md)
+refines the approved navy/teal executive design.
+
+The current Windows PPTX had 20 pages: its first 20 pages and notes matched the
+retained submission archive, while the final FAQ appendix had been removed.
+That current file was captured before editing and used as the baseline. The
+new edition retains 17 main pages and three appendices and is saved separately
+under `D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104`:
+
+- `EviAlign-黑客松汇报-正式答辩版.pptx` and matching `.pdf`: 20 pages,
+  332 nonempty native text shapes, native editable diagrams and one native
+  editable chart. The cover pairs action and evidence documents; the supply-chain
+  case shows cross-team constraints; the PoC/Jev pages show the actual stages
+  and model role; the evidence and value pages distinguish observations,
+  connectivity and future business validation.
+- `EviAlign-Live-Demo.mp4`: the unchanged 22.64-second actual silent recording,
+  also embedded on page 13 with a prominent central play poster.
+- `EviAlign-20页总览.png`, `EviAlign-正式答辩版讲稿.md` and
+  `EviAlign-正式版说明.txt`: all-page preview, speaking guidance and playback
+  instructions. The six files are also in
+  `D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104.zip`.
+- `D:\Sayitout\小强创新\EviAlign-正式答辩版制作源文件.zip`: captured baseline,
+  editable-deck generator, native finalization/check scripts, reference-use
+  record and actual checks. No global skill installation or new project runtime
+  dependency was added. The earlier materials and submission ZIP are preserved.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Formal-edition ZIP | `2378e47372d29e66691c35ad2d77196463338f9c7397881f91a560900f64c821` |
+| Source ZIP | `4d489d23fe6189ca7e6b21ab7778438f134a59eb0171f1276eb888c5dbba1847` |
+| Final native-saved PPTX | `2113f1a81d247811eb07216d19ae93ac38313b2243dff1ae06540dec1e5b5c09` |
+| Native presentation PDF | `50f0eaf711253ae396edec9b7820d3b0a39a54d7915d2d1f28b610057d363ed9` |
+| Actual movie | `7e46c57e67340006013dd79998378e2f243b8549bf6245bfd2741927e5261555` |
+
+The actual public [Anthropic pptx skill](https://github.com/anthropics/skills/tree/main/skills/pptx),
+[huashu-design](https://github.com/alchaincyf/huashu-design) and
+[huashu-slide-codex](https://github.com/alchaincyf/huashu-slide-codex) were
+compared. This edition uses their design/reference guidance, especially clear
+hierarchy, varied page roles and native editable charts. Production uses a
+project-local `python-pptx` generator and native PowerPoint. It does not claim
+execution of Anthropic's vendor validator, the huashu HTML exporter or huashu
+lint for this edition, and no proprietary skill source is redistributed.
+
+Native PowerPoint reopened the final 20 pages, exported the PDF and every
+preview, and measured zero text-frame overflow candidates. Template-inherited
+shadows were removed and Chinese chart fonts set explicitly. First-click native
+playback remained on page 13 with player state 0 (Playing), position 3914 ms,
+Media Play effect 83 and trigger 1. This used the native click-sequence interface
+in the task's own slideshow window; it is not a physical-mouse or venue-projection
+test. The embedded movie digest matches the standalone MP4. All original notes
+remain, with original page text retained in the new notes for traceability.
+
+The final package has valid internal relationships, no out-of-page PDF text,
+three project links, one TypeSafe-source link and three industry-source links.
+ZIP CRC and per-file byte checks passed. The final Windows PPTX intentionally
+differs from the intermediate generated PPTX because native PowerPoint saves the
+movie's click effect; the recorded digest is for the delivered Windows file.
+
+A fresh independent reviewer inspected all 20 rendered pages, compared the old
+overview and five old pages, and confirmed substantive visual improvement with
+no Critical or Important finding. Its one Minor finding concerned the chart's
+units and grey segment: the author added an explicit case-count/remaining-case
+caption, rebuilt the final deck, and verified that caption and layout in the
+new PDF and native bounds check. The reviewer did not independently run Windows
+playback or test physical projection. No second full review is claimed.
+
+All six repository checks passed, including 538 tests in 37.726 seconds; local
+documentation links and staged whitespace were checked. The historical 84-case
+evaluation and new three-task live acceptance remain separate. This design
+iteration adds no model call, credential-file access, business-review evidence,
+ROI claim, sandbox/runtime change, tag or release; it does not submit the new
+edition to the competition. Demonstrated actions remain `not_executed`.
+
+## Earlier live-PoC submission materials — 2026-11-04
 
 The user requested an update of the earlier competition materials. The
 [maintenance plan](../superpowers/plans/2026-11-04-live-submission-materials.md)
