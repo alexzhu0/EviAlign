@@ -80,6 +80,81 @@ EviAlign 是一项前沿研究：探索企业如何审核 AI 拟采取的业务�
 
 当前正式 PPT 为 20 页，附真实操作影片及 PDF，已在本地交付；文件和来源见[汇报交付记录](docs/presentations/evialign-ppt-expanded-delivery.md)。已被替代的制作草稿通过[固定历史版本](docs/maintenance.md#archived-production-materials)查阅。
 
+## 目录结构
+
+纳入版本控制的文件夹按用途划分：
+
+| 文件夹 | 内容 |
+| --- | --- |
+| [src/](src/) | Python 实现代码，包括命令行入口、证据核对、本地评测和报告生成。 |
+| [tests/](tests/) | 单元测试、命令行测试、异常输入测试和端到端证据回归测试。 |
+| [docs/](docs/) | 项目目的、当前进展、契约、工程指南、留存结果和汇报文件位置。 |
+| [examples/](examples/) | 用于本地演示与测试的示例策略、合成证据记录和固定样例。 |
+| [schemas/](schemas/) | 策略、任务、请求/响应、审计文档的结构定义，以及参数规范化测试向量。 |
+| [policies/](policies/) | 工具风险分类和治理策略数据。 |
+| [patterns/](patterns/) | 机器可读的智能体架构与设计模式。 |
+| [evals/](evals/) | 本地安全评测数据，包括冒烟案例与声明式断言。 |
+| [release/](release/) | 按日期留存的源码发布、里程碑和交接记录；存在记录不代表已对外发布。 |
+| [.github/](.github/) | GitHub 配置，目前用于自动化 CI 验证。 |
+
+<details>
+<summary>展开查看子目录和示例内容</summary>
+
+| 子目录 | 内容 |
+| --- | --- |
+| [src/agentharness/](src/agentharness/) | Python 包：命令分发、校验器、证据绑定、本地评测与审计报告构建。 |
+| [.github/workflows/](.github/workflows/) | CI 任务，负责策略校验、本地案例评测和测试。 |
+| [docs/presentations/](docs/presentations/) | 汇报交付索引、文件摘要和录屏来源；PPT、视频二进制文件另行交付。 |
+| [docs/superpowers/](docs/superpowers/) | 工程设计索引及历史实施计划链接。 |
+| [docs/superpowers/specs/](docs/superpowers/specs/) | 留存的工程规格与限定范围的设计决策。 |
+
+以下每个文件夹都是独立的合成样例，不是真实业务流程：
+
+| 示例目录 | 演示内容 |
+| --- | --- |
+| [examples/agent_bus/](examples/agent_bus/) | 基础任务、证据、评审与事件台账结构。 |
+| [examples/agent_bus_tool_gate/](examples/agent_bus_tool_gate/) | 工具策略门的证据记录。 |
+| [examples/agent_bus_approval/](examples/agent_bus_approval/) | 对留存审批记录的对应检查。 |
+| [examples/agent_bus_preflight/](examples/agent_bus_preflight/) | 执行前准备状态报告的校验。 |
+| [examples/agent_bus_handoff/](examples/agent_bus_handoff/) | 交接报告检查。 |
+| [examples/agent_bus_adapter_registry/](examples/agent_bus_adapter_registry/) | 基于注册表的适配器声明；也是导出、摘要清单和审计的主要样例。 |
+| [examples/pi_tool_call_mapping/](examples/pi_tool_call_mapping/) | 合成的 Pi 风格观察及预期映射结果。 |
+
+文件总线样例按需要复用以下子目录名：
+
+| 样例子目录 | 内容 |
+| --- | --- |
+| `tasks/` | 结构化的示例任务请求。 |
+| `evidence/` | 事件台账引用的每次尝试证据。 |
+| `reviews/` | 对这些尝试的评审记录。 |
+| `tool_gates/` | 工具策略门报告。 |
+| `approvals/` | 示例审批记录，不代表经过认证的企业审批。 |
+| `preflight/` | 已保存的执行前检查报告。 |
+| `handoffs/` | 已保存的交接报告。 |
+| `adapters/` | 适配器规格，以及使用注册表时对应的注册表。 |
+
+</details>
+
+<details>
+<summary>展开查看本地可能出现、未纳入版本控制的目录</summary>
+
+| 目录 | 用途 |
+| --- | --- |
+| `.git/` | Git 历史和仓库元数据。 |
+| `.superpowers/` | 临时任务进度和审查草稿，与受版本控制的 `docs/superpowers/` 不同。 |
+| `.cursor/` | 本地 Cursor 编辑器设置。 |
+| `.worktrees/` | 其他任务使用的本地独立 Git 工作区。 |
+| `.understand-anything/` | 自动生成的代码分析索引和本地分析设置。 |
+| `.venv/` | 本地 Python 虚拟环境。 |
+| `__pycache__/`、`.pytest_cache/` | 自动生成的 Python 或测试缓存。 |
+| `artifacts/` | 自动生成的本地评测报告。 |
+| `build/`、`dist/`、`*.egg-info/` | 自动生成的打包、构建产物。 |
+
+技能需要时会重建 `.superpowers/`，但重建目录不会恢复已删除的进度和审查草稿。
+`agentharness-business-sandbox` 是独立仓库，不是当前仓库中的一个文件夹。
+
+</details>
+
 ## 开发者快速开始
 
 在仓库根目录执行，使用 Python 3.10 或以上版本：

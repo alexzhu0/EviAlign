@@ -84,6 +84,82 @@ If the comparison justifies further work, separately design trusted business-rec
 
 The current formal PowerPoint has 20 pages, an embedded real-operation movie and a PDF copy, delivered locally. Its files and provenance are indexed in the [presentation record](docs/presentations/evialign-ppt-expanded-delivery.md). Superseded production drafts are available through the [fixed history links](docs/maintenance.md#archived-production-materials).
 
+## Repository structure
+
+The version-controlled folders are organized by purpose:
+
+| Folder | Contents |
+| --- | --- |
+| [src/](src/) | Python implementation of the CLI, evidence checks and local evaluation/reporting logic. |
+| [tests/](tests/) | Unit, CLI, adversarial-input and end-to-end evidence regression tests. |
+| [docs/](docs/) | Project purpose, current progress, contracts, engineering guides, retained results and presentation-file locations. |
+| [examples/](examples/) | Sample policies, synthetic evidence records and fixtures for local demonstrations and tests. |
+| [schemas/](schemas/) | Policy, task, request/response and audit-document definitions, plus argument-canonicalization test vectors. |
+| [policies/](policies/) | Tool-risk classifications and governance-policy data. |
+| [patterns/](patterns/) | Machine-readable agent architecture and design patterns. |
+| [evals/](evals/) | Local safety-case data, including smoke cases and declarative assertions. |
+| [release/](release/) | Dated source-release, milestone and handoff records; an entry does not automatically mean a published release. |
+| [.github/](.github/) | GitHub configuration, currently the automated CI verification workflow. |
+
+<details>
+<summary>Subfolders and example-fixture contents</summary>
+
+| Subfolder | Contents |
+| --- | --- |
+| [src/agentharness/](src/agentharness/) | The Python package: command dispatch, validators, evidence binding, local evaluators and audit builders. |
+| [.github/workflows/](.github/workflows/) | CI jobs that validate policies, evaluate local cases and run tests. |
+| [docs/presentations/](docs/presentations/) | Presentation delivery index, artifact digests and recording provenance. PPT/video binaries are delivered separately. |
+| [docs/superpowers/](docs/superpowers/) | Engineering-design index and links to historical implementation plans. |
+| [docs/superpowers/specs/](docs/superpowers/specs/) | Retained engineering specifications and scoped design decisions. |
+
+Each folder below is a self-contained synthetic fixture, not a live business workflow:
+
+| Example folder | Demonstrates |
+| --- | --- |
+| [examples/agent_bus/](examples/agent_bus/) | Basic task, evidence, review and ledger structure. |
+| [examples/agent_bus_tool_gate/](examples/agent_bus_tool_gate/) | Tool-policy gate evidence. |
+| [examples/agent_bus_approval/](examples/agent_bus_approval/) | Correspondence checks for retained approval records. |
+| [examples/agent_bus_preflight/](examples/agent_bus_preflight/) | Pre-execution readiness-report validation. |
+| [examples/agent_bus_handoff/](examples/agent_bus_handoff/) | Handoff-report inspection. |
+| [examples/agent_bus_adapter_registry/](examples/agent_bus_adapter_registry/) | Registry-backed adapter declarations; the main export, manifest and audit example. |
+| [examples/pi_tool_call_mapping/](examples/pi_tool_call_mapping/) | Synthetic Pi-like observations and their expected mappings. |
+
+The file-bus fixtures reuse these subfolder names where needed:
+
+| Fixture subfolder | Contents |
+| --- | --- |
+| `tasks/` | Structured sample task requests. |
+| `evidence/` | Retained attempt evidence referenced by the ledger. |
+| `reviews/` | Review records for those attempts. |
+| `tool_gates/` | Tool-policy gate reports. |
+| `approvals/` | Sample approval records; not authenticated enterprise approvals. |
+| `preflight/` | Saved preflight reports. |
+| `handoffs/` | Saved handoff reports. |
+| `adapters/` | Adapter specifications and, where present, their registry. |
+
+</details>
+
+<details>
+<summary>Local folders that may appear outside the version-controlled tree</summary>
+
+| Folder | Purpose |
+| --- | --- |
+| `.git/` | Git history and repository metadata. |
+| `.superpowers/` | Temporary task progress and review drafts; separate from tracked `docs/superpowers/`. |
+| `.cursor/` | Local Cursor editor settings. |
+| `.worktrees/` | Isolated local Git checkouts used by other tasks. |
+| `.understand-anything/` | Generated code-analysis index and local analysis settings. |
+| `.venv/` | Local Python virtual environment. |
+| `__pycache__/`, `.pytest_cache/` | Generated Python/test caches. |
+| `artifacts/` | Generated local evaluation reports. |
+| `build/`, `dist/`, `*.egg-info/` | Generated package/build output. |
+
+Skills can recreate `.superpowers/` when needed, but recreating the directory
+does not restore deleted progress records or review drafts. The independent
+`agentharness-business-sandbox` lives in a separate repository, not in a folder here.
+
+</details>
+
 ## Developer quick start
 
 Run from the repository root with Python 3.10 or later:
