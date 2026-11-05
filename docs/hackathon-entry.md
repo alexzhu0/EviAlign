@@ -1,6 +1,8 @@
-# EviAlign hackathon entry
+# EviAlign project descriptions / 项目简介
 
-Updated: 2026-11-04. Registration copy for the research project; business examples do not limit its intended scope. Suggested team name: **Evidence in Action / 有据行动队**.
+Updated: 2026-11-05. Retained project descriptions from the competition entry;
+the user reports that registration has closed. Business examples do not limit
+the project's intended scope.
 
 ## English project description
 
@@ -20,9 +22,7 @@ The retained experiment requests `typesafe/jev-1.13` through OpenRouter and acce
 
 Jev supplies an intent-observation signal. The local workbench supports historical replay and opt-in live DeepSeek proposals, initial judgments, live Jev observations, final reasons and JSON export. Three real requests to each provider completed on 2026-11-04, with actual video and normalized traces. Annotations are automated demo records, without a business-reviewer trial or observed business outcomes. [Workbench / 复核台](research-review-workbench.md) · [Purpose and current progress](project-purpose-and-progress.md) · [中文说明](project-purpose-and-progress.zh-CN.md)
 
-## Presentation and cover material
+## Presentation material
 
 - [Current PowerPoint delivery record](presentations/evialign-ppt-expanded-delivery.md)
-- [16:9 cover-image prompt](presentations/evialign-cover-prompt.zh-CN.txt)
-
-The cover is a research concept illustration. It must not depict a real product interface, certified approval or measured business outcome as already delivered.
+- [Production history and archived materials](maintenance.md#archived-production-materials)

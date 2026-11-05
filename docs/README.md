@@ -8,11 +8,10 @@ EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判�
 | --- | --- |
 | [英文项目首页](../README.md) · [简体中文版](../README.zh-CN.md) | 项目是什么、业务场景、已有成果和下一步；GitHub 默认展示英文。 |
 | [项目目的与当前进展（English）](project-purpose-and-progress.md) · [中文版](project-purpose-and-progress.zh-CN.md) | 主仓库为何存在、长期研究目标、现在做到哪一步及下一阶段验证路径。 |
-| [中英文参赛简介与 Jev 分工](hackathon-entry.md) | 可用于报名的跨流程项目简介，以及已有 Jev 决策模型实验的作用与边界。 |
-| [行动复核台 / Research-review workbench](research-review-workbench.md) | 本地可操作原型：初审、Jev 历史回放、复核、独立草案和 JSON 导出；尚无业务同事试审。 |
+| [中英文项目简介与 Jev 分工](hackathon-entry.md) | 留存的跨流程项目介绍，以及已有 Jev 决策模型实验的作用与边界；本轮报名已截止。 |
+| [行动复核台 / Research-review workbench](research-review-workbench.md) | 本地可操作原型：历史回放或显式实时调用、初审/复核、独立草案和 JSON 导出；尚无业务同事试审。 |
 | [联想集团黑客松评审材料](actlumen-reviewer-brief.md) | 命名、问题、方案特点、企业收益和试点建议。 |
-| [最新版 PPT 与 PoC 交付记录](presentations/evialign-ppt-expanded-delivery.md) | Jev 版为 17 页主讲、4 页附录；本地交付位置、影片来源与验证。 |
-| [早期八页 HTML 汇报（历史示意）](presentations/agentharness-enterprise-hackathon.html) | 保留的早期材料，可离线演示；当前定位与场景以目的说明及最新版 PPT 为准。 |
+| [最新版 PPT 与 PoC 交付记录](presentations/evialign-ppt-expanded-delivery.md) | 正式答辩版为 17 页主讲、3 页附录；最终文件、制作源文件、影片来源和验收结果。 |
 | [品牌与能力范围](actlumen-brand-and-scope.md) | EviAlign 的统一名称、产品化状态与兼容标识。 |
 
 ## 工程与资产
@@ -46,6 +45,7 @@ EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判�
 
 ## 维护与历史追溯
 
+- [当前维护与清理记录](maintenance.md)
 - [EviAlign 品牌与 GitHub 维护记录](34-actlumen-brand-maintenance.md)
 - [独立沙箱交接](32-business-sandbox-maintenance-handoff.md)
 - [Jev 留存评测与交接](33-jev-shadow-maintenance-handoff.md)
@@ -53,3 +53,5 @@ EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判�
 - [仓库工作规则](../AGENTS.md)
 
 历史发布、验收和交接记录保留 AgentHarness 名称、当时版本与证据。现有 `agentharness` 命令、包名、协议和兼容路径继续可用。历史开发循环文档不定义当前工作流程；新工作以 AGENTS.md 的 Superpowers 规则为准。
+
+已被最终材料替代的竞赛制作计划和早期汇报不再放在当前目录；固定版本的追溯入口见[维护记录](maintenance.md#archived-production-materials)。

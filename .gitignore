@@ -10,3 +10,6 @@ dist/
 htmlcov/
 .env
 .understand-anything/
+.cursor/
+.superpowers/
+/artifacts/

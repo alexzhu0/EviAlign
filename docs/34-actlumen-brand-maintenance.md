@@ -1,6 +1,6 @@
 # ActLumen · 明行品牌与评审材料维护记录
 
-当前品牌为 EviAlign。最新研究目的与阶段以[项目目的与当前进展](project-purpose-and-progress.zh-CN.md)为准；本文件按日期保留原始维护记录，最新同步说明见文末 2026-10-30 小节。
+当前品牌为 EviAlign。最新研究目的与阶段以[项目目的与当前进展](project-purpose-and-progress.zh-CN.md)为准；本文件按日期保留品牌沿革。当前仓库整理与验证见[项目维护记录](maintenance.md)。
 
 维护日期：2026-10-26。此次工作统一项目名称与业务介绍，并提供面向联想集团黑客松评审的材料；不新增产品执行能力或版本发布。
 
@@ -11,7 +11,7 @@
 当前入口包括：
 
 - [项目评审材料源文](actlumen-reviewer-brief.md)：摘要、命名、问题与场景、方案特点、原型证据、预期收益和试点建议。
-- [八页管理层汇报](presentations/agentharness-enterprise-hackathon.html)：已更新显示名称，文件路径保留兼容。
+- [八页管理层汇报](https://github.com/alexzhu0/EviAlign/blob/306b85ff30bdf479875f1d546283884456f2b026/docs/presentations/agentharness-enterprise-hackathon.html)：已更新显示名称，文件路径保留兼容。
 - [README](../README.md)、[资产地图](00-asset-map.md)、[企业定位](07-enterprise-positioning-and-boundary-audit.md)和[产品契约](08-glossary-and-product-contract.md)：当前介绍使用新品牌，并说明历史名称。
 
 原始发布、计划和交接记录按发生时的名称保留。CLI `agentharness`、Python 包/安装名、源码目录、版本和证据协议未改动；`pyproject.toml` 只更新描述。独立业务沙箱与无关 worktree 未修改。
@@ -84,7 +84,7 @@ DOCX 通过 ZIP、XML、分页符和全文一致性核验；本环境未提供 O
 
 ## EviAlign 行动依据核对材料（2026-10-28）
 
-用户在知悉同名 AI 研究论文后选定 **EviAlign**，并确认[改稿方案](superpowers/specs/2026-10-27-action-consistency-materials-design.md)。本轮保留英文优先及中文版 README，以一笔拟议退款的对象和金额变化为切口，说明现有 API、授权和审批可能已有相应控制，并用三组对照判断项目增量。
+用户在知悉同名 AI 研究论文后选定 **EviAlign**，并确认[改稿方案](https://github.com/alexzhu0/EviAlign/blob/306b85ff30bdf479875f1d546283884456f2b026/docs/superpowers/specs/2026-10-27-action-consistency-materials-design.md)。本轮保留英文优先及中文版 README，以一笔拟议退款的对象和金额变化为切口，说明现有 API、授权和审批可能已有相应控制，并用三组对照判断项目增量。
 
 主仓库已有结构化请求与证据对应核对；独立业务沙箱中的 Jev 提供可选意图观察。真实审批记录接入、审批字段与行动字段的业务对照、企业界面与收益仍待设计和验证。84 例为 2026-10-21 沙箱合成意图观察记录，不能用于证明新切口已实现或真实业务收益。`allow_candidate` 和 `result_status: not_executed` 的边界保持不变。
 
@@ -94,7 +94,7 @@ DOCX 通过 ZIP、XML、分页符和全文一致性核验；本环境未提供 O
 
 ## 供应链主线与行业背景（2026-10-29）
 
-用户确认以供应链采购为主线，补充 HR 和销售场景，并在开头交代行业研究与现有实践。设计见[供应链主线改稿方案](superpowers/specs/2026-10-29-supply-chain-narrative-design.md)。采购案例为合成示意；数量和交期业务字段的比较、真实系统接入和企业收益均属待建设或验证范围。现有权限、审批与执行仍由原系统负责。
+用户确认以供应链采购为主线，补充 HR 和销售场景，并在开头交代行业研究与现有实践。设计见[供应链主线改稿方案](https://github.com/alexzhu0/EviAlign/blob/306b85ff30bdf479875f1d546283884456f2b026/docs/superpowers/specs/2026-10-29-supply-chain-narrative-design.md)。采购案例为合成示意；数量和交期业务字段的比较、真实系统接入和企业收益均属待建设或验证范围。现有权限、审批与执行仍由原系统负责。
 
 ## 主仓库研究目的与阶段同步（2026-10-30）
 

@@ -52,7 +52,7 @@ The cases were AI-authored and independently blind-labeled by another AI across 
 
 A fictional delivery exception involves sales, logistics and service teams. An AI could gather information, prepare follow-up suggestions and propose transferring a ticket. The responsible person may want to confirm a change of ownership before it happens.
 
-The research question is how to distinguish preparation from a business commitment, relate the proposed action to the relevant confirmation and conditions, and retain the eventual result for review. The full scenario is a future workflow illustration. Historical synthetic case E173 covers only a pending-confirmation ticket transfer; it does not establish a delivery exception or a working approval integration. [PoC provenance](presentations/evialign-ppt-poc-delivery.md)
+The research question is how to distinguish preparation from a business commitment, relate the proposed action to the relevant confirmation and conditions, and retain the eventual result for review. The full scenario is a future workflow illustration. Historical synthetic case E173 covers only a pending-confirmation ticket transfer; it does not establish a delivery exception or a working approval integration. [PoC provenance](https://github.com/alexzhu0/EviAlign/blob/306b85ff30bdf479875f1d546283884456f2b026/docs/presentations/evialign-ppt-poc-delivery.md)
 
 ## What comes next
 

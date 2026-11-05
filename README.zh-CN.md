@@ -22,7 +22,7 @@ EviAlign 是一项前沿研究：探索企业如何审核 AI 拟采取的业务�
 
 **已有依据核对基础、独立合成观察实验和本地研究复核台。** 本仓库在受信请求和保留原有证据的前提下，核对当前结构化请求与证据是否对应，输出有界、确定性的结果。独立沙箱支持历史回放，以及显式开启的 DeepSeek 实时提案、独立初审、Jev 实时观察、复核和 JSON 导出；尚未采集完整真实业务历史，也不会调整审核规则。
 
-独立沙箱已有采用 **Jev 决策模型**的合成评测，用于观察 AI 提议是否符合用户意图。Jev 提供判断信号，企业原有控制仍负责审批与执行。[中英文参赛简介及 Jev 分工](docs/hackathon-entry.md)
+独立沙箱已有采用 **Jev 决策模型**的合成评测，用于观察 AI 提议是否符合用户意图。Jev 提供判断信号，企业原有控制仍负责审批与执行。[中英文项目简介及 Jev 分工](docs/hackathon-entry.md)
 
 | 职责 | 当前状态 |
 | --- | --- |
@@ -52,7 +52,7 @@ EviAlign 是一项前沿研究：探索企业如何审核 AI 拟采取的业务�
 
 在虚构的交付异常中，销售、物流和服务团队需要协同。AI 可以设想承担汇总信息、准备跟进建议和提出工单转派方案；负责人可能要求在改变责任归属前先确认。我们希望研究如何关联这次提议、相关确认及其条件，并留存最终结果用于复盘。
 
-完整场景是未来流程示意。已有 E173 合成案例只涉及待确认的工单转派，不证明交付异常背景或已有完整审批流程。[PoC 来源说明](docs/presentations/evialign-ppt-poc-delivery.md)
+完整场景是未来流程示意。已有 E173 合成案例只涉及待确认的工单转派，不证明交付异常背景或已有完整审批流程。[PoC 来源说明](docs/presentations/evialign-ppt-expanded-delivery.md#evidence-and-provenance)
 
 ## 已有证据
 
@@ -76,9 +76,9 @@ EviAlign 是一项前沿研究：探索企业如何审核 AI 拟采取的业务�
 | 业务试点负责人 | [品牌与能力范围](docs/actlumen-brand-and-scope.md)、评审材料中的拟议对照与试点 |
 | 开发与平台团队 | [完整工程参考](docs/engineering-guide.md)、[资产地图](docs/00-asset-map.md) |
 | 安全与证据评审 | [产品契约](docs/08-glossary-and-product-contract.md)、[可复现演示](docs/11-reproducible-enterprise-demo.md)、[检查清单](docs/13-external-reviewer-checklist.md) |
-| 后续维护者 | [维护记录](docs/34-actlumen-brand-maintenance.md)、[仓库工作规则](AGENTS.md) |
+| 后续维护者 | [当前维护记录](docs/maintenance.md)、[仓库工作规则](AGENTS.md) |
 
-最新版 PPT 与影片已在本地交付，二进制文件不存入 Git。[早期 HTML 汇报](docs/presentations/agentharness-enterprise-hackathon.html)保留为历史示意；来源链接按仓库访问权限查阅。
+当前正式 PPT 为 20 页，附真实操作影片及 PDF，已在本地交付；文件和来源见[汇报交付记录](docs/presentations/evialign-ppt-expanded-delivery.md)。已被替代的制作草稿通过[固定历史版本](docs/maintenance.md#archived-production-materials)查阅。
 
 ## 开发者快速开始
 
@@ -123,7 +123,7 @@ CI 不授予运行时授权，也不执行 Agent Runtime 工具。
 
 ## 品牌与兼容
 
-EviAlign 是当前项目名称；AgentHarness 和 ActLumen · 明行是历史名称。现有 `agentharness` 命令、Python 包名、协议与文件路径保留兼容，历史记录保留发生时的名称。当前源码预发布版本仍为 `v0.2.0-alpha.1`，本次更新不构成新版本或包发布。
+EviAlign 是当前项目名称；AgentHarness 和 ActLumen · 明行是历史名称。现有 `agentharness` 命令、Python 包名、协议与源码路径保留兼容，历史记录保留发生时的名称。当前源码预发布版本仍为 `v0.2.0-alpha.1`，本次更新不构成新版本或包发布。
 
 `allow_candidate` 仅表示候选证据，当前证据与观察输出保留 `result_status: not_executed`。本仓库不提供身份认证、可信签字、运行时授权、审批语义、事务或工具执行。[完整范围说明](docs/actlumen-brand-and-scope.md)
 

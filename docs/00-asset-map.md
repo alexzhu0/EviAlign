@@ -4,8 +4,8 @@
 既有工程命令、包名、契约与历史记录保持兼容。
 参赛说明见[项目评审材料](actlumen-reviewer-brief.md)，命名与边界见[品牌说明](actlumen-brand-and-scope.md)。
 
-当前项目与 GitHub 维护入口（2026-10-26）：
-[`EviAlign 与历史品牌维护记录`](./34-actlumen-brand-maintenance.md)。
+当前维护入口（2026-11-05）：[项目维护与清理记录](maintenance.md)。
+品牌与 GitHub 沿革见[历史品牌维护记录](34-actlumen-brand-maintenance.md)。
 按读者查找资料见[文档导航](README.md)。
 
 Jev 留存证据维护入口（2026-10-22）：

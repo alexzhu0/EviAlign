@@ -1,249 +1,103 @@
-# EviAlign PowerPoint delivery
+# EviAlign presentation materials
 
-## Current formal presentation edition — 2026-11-04
+Updated: 2026-11-05. The user reports that the earlier materials were uploaded
+and hackathon registration has closed. The formal edition below was delivered
+separately; no assistant-operated competition submission is claimed.
 
-After the previous delivery, the user reported completing the competition
-upload. This is user-reported status, not a submission performed or independently
-verified by the assistant. The user then requested a more attractive, formal
-PPT and inspection of public presentation skills. The
-[polish plan](../superpowers/plans/2026-11-04-formal-presentation-polish.md)
-refines the approved navy/teal executive design.
+## Current formal edition
 
-The current Windows PPTX had 20 pages: its first 20 pages and notes matched the
-retained submission archive, while the final FAQ appendix had been removed.
-That current file was captured before editing and used as the baseline. The
-new edition retains 17 main pages and three appendices and is saved separately
-under `D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104`:
+Delivered on 2026-11-04 to
+`D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104`:
 
 - `EviAlign-黑客松汇报-正式答辩版.pptx` and matching `.pdf`: 20 pages,
-  332 nonempty native text shapes, native editable diagrams and one native
-  editable chart. The cover pairs action and evidence documents; the supply-chain
-  case shows cross-team constraints; the PoC/Jev pages show the actual stages
-  and model role; the evidence and value pages distinguish observations,
-  connectivity and future business validation.
-- `EviAlign-Live-Demo.mp4`: the unchanged 22.64-second actual silent recording,
-  also embedded on page 13 with a prominent central play poster.
+  comprising 17 main pages and three appendices, 332 nonempty native text
+  shapes, editable diagrams and one native editable chart. Original notes and
+  original page copy are retained in the notes.
+- `EviAlign-Live-Demo.mp4`: the actual 22.64-second silent H.264 browser
+  recording, also embedded on page 13 with a central play poster.
 - `EviAlign-20页总览.png`, `EviAlign-正式答辩版讲稿.md` and
-  `EviAlign-正式版说明.txt`: all-page preview, speaking guidance and playback
-  instructions. The six files are also in
-  `D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104.zip`.
-- `D:\Sayitout\小强创新\EviAlign-正式答辩版制作源文件.zip`: captured baseline,
-  editable-deck generator, native finalization/check scripts, reference-use
-  record and actual checks. No global skill installation or new project runtime
-  dependency was added. The earlier materials and submission ZIP are preserved.
+  `EviAlign-正式版说明.txt`: all-page preview, speaking notes and instructions.
+
+The six visible files are packaged in
+`D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104.zip`.
+Maintainable production source is in the separate
+`D:\Sayitout\小强创新\EviAlign-正式答辩版制作源文件.zip`.
+PPTX/MP4 binaries are local deliverables, not repository runtime assets.
+
+These digests identify the files checked on 2026-11-04:
 
 | Artifact | SHA-256 |
 | --- | --- |
 | Formal-edition ZIP | `2378e47372d29e66691c35ad2d77196463338f9c7397881f91a560900f64c821` |
 | Source ZIP | `4d489d23fe6189ca7e6b21ab7778438f134a59eb0171f1276eb888c5dbba1847` |
-| Final native-saved PPTX | `2113f1a81d247811eb07216d19ae93ac38313b2243dff1ae06540dec1e5b5c09` |
-| Native presentation PDF | `50f0eaf711253ae396edec9b7820d3b0a39a54d7915d2d1f28b610057d363ed9` |
+| Native-saved PPTX | `2113f1a81d247811eb07216d19ae93ac38313b2243dff1ae06540dec1e5b5c09` |
+| Native PDF | `50f0eaf711253ae396edec9b7820d3b0a39a54d7915d2d1f28b610057d363ed9` |
 | Actual movie | `7e46c57e67340006013dd79998378e2f243b8549bf6245bfd2741927e5261555` |
 
-The actual public [Anthropic pptx skill](https://github.com/anthropics/skills/tree/main/skills/pptx),
-[huashu-design](https://github.com/alchaincyf/huashu-design) and
-[huashu-slide-codex](https://github.com/alchaincyf/huashu-slide-codex) were
-compared. This edition uses their design/reference guidance, especially clear
-hierarchy, varied page roles and native editable charts. Production uses a
-project-local `python-pptx` generator and native PowerPoint. It does not claim
-execution of Anthropic's vendor validator, the huashu HTML exporter or huashu
-lint for this edition, and no proprietary skill source is redistributed.
+The preceding submission bundle, including bilingual entry copy and reviewer
+DOCX/PDF, was delivered to
+`D:\Sayitout\小强创新\EviAlign-参赛提交包-20261104` and matching `.zip`.
+The current reusable sources are the [bilingual description](../hackathon-entry.md)
+and [reviewer brief](../actlumen-reviewer-brief.md).
 
-Native PowerPoint reopened the final 20 pages, exported the PDF and every
-preview, and measured zero text-frame overflow candidates. Template-inherited
-shadows were removed and Chinese chart fonts set explicitly. First-click native
-playback remained on page 13 with player state 0 (Playing), position 3914 ms,
-Media Play effect 83 and trigger 1. This used the native click-sequence interface
-in the task's own slideshow window; it is not a physical-mouse or venue-projection
-test. The embedded movie digest matches the standalone MP4. All original notes
-remain, with original page text retained in the new notes for traceability.
+## Evidence and provenance
 
-The final package has valid internal relationships, no out-of-page PDF text,
-three project links, one TypeSafe-source link and three industry-source links.
-ZIP CRC and per-file byte checks passed. The final Windows PPTX intentionally
-differs from the intermediate generated PPTX because native PowerPoint saves the
-movie's click effect; the recorded digest is for the delivered Windows file.
-
-A fresh independent reviewer inspected all 20 rendered pages, compared the old
-overview and five old pages, and confirmed substantive visual improvement with
-no Critical or Important finding. Its one Minor finding concerned the chart's
-units and grey segment: the author added an explicit case-count/remaining-case
-caption, rebuilt the final deck, and verified that caption and layout in the
-new PDF and native bounds check. The reviewer did not independently run Windows
-playback or test physical projection. No second full review is claimed.
-
-All six repository checks passed, including 538 tests in 37.726 seconds; local
-documentation links and staged whitespace were checked. The historical 84-case
-evaluation and new three-task live acceptance remain separate. This design
-iteration adds no model call, credential-file access, business-review evidence,
-ROI claim, sandbox/runtime change, tag or release; it does not submit the new
-edition to the competition. Demonstrated actions remain `not_executed`.
-
-## Earlier live-PoC submission materials — 2026-11-04
-
-The user requested an update of the earlier competition materials. The
-[maintenance plan](../superpowers/plans/2026-11-04-live-submission-materials.md)
-preserves the approved navy/teal executive presentation and updates the
-[bilingual entry](../hackathon-entry.md) and
-[reviewer brief](../actlumen-reviewer-brief.md) to the working live-model PoC.
-Files are ready for the user's competition upload; no competition portal was
-provided and no competition submission was performed.
-
-Windows delivery directory:
-`D:\Sayitout\小强创新\EviAlign-参赛提交包-20261104`.
-
-- `EviAlign-黑客松汇报-实测提交版.pptx` and matching `.pdf`: 21 pages,
-  comprising 17 main pages and four appendices, 325 nonempty native text shapes,
-  speaker notes, three project links and one TypeSafe-source link. Page 12
-  explains Jev; page 13 contains the actual live recording; page 14 separates
-  historical synthetic evaluation from the new connectivity acceptance.
-- `EviAlign-Live-Demo.mp4`: the retained 22.64-second, silent, 1600×900 H.264
-  recording of the actual E120 browser workflow. Model waits are retained. This
-  is one of the three live cases, not a film of all three.
-- `EviAlign-项目评审材料-实测提交版.pdf` and `.docx`: a four-page reader PDF
-  and corresponding editable reviewer copy. `EviAlign-参赛简介-中英文.txt`
-  includes English-first long and short registration copy and Chinese versions;
-  suggested team names must match the user's existing registration.
-- `EviAlign-汇报讲稿.md` and `EviAlign-提交说明.txt`: page-by-page speaking
-  guidance and upload/playback instructions.
-
-The eight visible files are also in
-`D:\Sayitout\小强创新\EviAlign-参赛提交包-20261104.zip` (2,164,102 bytes).
-ZIP CRC checks and each enclosed file's digest match the checked deliverables.
-Hidden production checks are excluded. The separate
-`EviAlign-实测提交版制作源文件.zip` preserves current HTML, generators, fonts,
-licenses, media, actual huashu scripts and check results; it is a local source
-archive, not an additional competition upload requirement. Earlier deliveries
-and their source archive were preserved.
-
-| Artifact | SHA-256 |
-| --- | --- |
-| Submission ZIP | `c79235c54805f8e2670f1f7b52877300dd054097a815b72540cb5551a7a05333` |
-| Source ZIP | `8af821e3c6cd2df014d5f921a7531b703e3591d47caa56c98e4345d6156039b3` |
-| PPTX | `5a5f82656ee037f318beab199568ea48a9cfd9028bf66625ed51f15682d11125` |
-| Presentation PDF | `e8a4fb736fb38f105a6b9ad760dbf8dd7d9758ca07ad493fc8972eabdfbe744f` |
-| Reviewer PDF | `c999222c90979010580ec419d5f2dd9d2004d02359a4c3650821cc065d1087ae` |
-| Actual movie | `7e46c57e67340006013dd79998378e2f243b8549bf6245bfd2741927e5261555` |
-
-The [2026-11-04 live acceptance](../research-review-workbench.md#live-acceptance-on-2026-11-04)
+The supply-chain process is a fictional research illustration. Historical E173
+covers a pending-confirmation ticket transfer, not that complete process. The
+actual new video demonstrates E120. The
+[2026-11-04 live acceptance](../research-review-workbench.md#live-acceptance-on-2026-11-04)
 records three DeepSeek and three OpenRouter/Jev requests, all with valid
-responses: E120 `create_ticket` → `fits/.88/no_flag`; E122 `assign_ticket` →
-`fits/.79/human_review`; E173 `list_tickets` → `unclear/.46/human_review`.
-The new E173 is a query, not a blocked unauthorized transfer. These are seen
+responses:
+
+| Case | Actual proposal | Jev observation |
+| --- | --- | --- |
+| E120 | `create_ticket` | `fits / .88 / no_flag` |
+| E122 | `assign_ticket` | `fits / .79 / human_review` |
+| E173 | `list_tickets` | `unclear / .46 / human_review` |
+
+The live E173 is a query, not a blocked unauthorized transfer. These are seen
 synthetic tasks with automated demonstration annotations, not business-colleague
-reviews or accuracy evidence. The 84-case historical experiment remains a
-separate source, with AI-authored cases and independent AI blind labels. Neither
-source proves enterprise ROI, approval validity or business execution.
+reviews or an accuracy study. The
+[historical 84-case evaluation](../33-jev-shadow-maintenance-handoff.md) is
+separate: AI-authored cases and independent AI blind labels, not human ground
+truth or Lenovo business data. Neither source demonstrates enterprise ROI,
+approval validity or business execution. Outputs retain `not_executed`.
 
-Native PowerPoint reopened all pages, exported the presentation PDF and 21
-previews, and verified the first-click Media Play effect on page 13:
-`GotoClick(1)` retained page 13 with player state 0 (Playing), position 3836 ms,
-effect 83 and trigger 1. This is a native click-sequence test, not a claim of a
-physical-mouse test. All rendered source text survives the saved PPTX; the one
-embedded movie matches the standalone movie's digest. PDF checks retain all
-three project links and the TypeSafe link, with no out-of-page text. The
-all-page overview and key native/PDF pages were visually inspected.
+## Retained presentation verification
 
-The reviewer PDF was exported from controlled HTML with Chrome and inspected
-on all four pages. DOCX structure/content reopening passed (55 paragraphs and
-three tables); Word automation did not complete, so native Word rendering is
-not claimed. Only this task's stalled hidden Word export process was closed.
+The following checks were performed on 2026-11-04, not rerun by the later
+repository cleanup:
 
-Independent review found two Important readability issues on pages 12 and 16;
-both were corrected by shortening text. Page 17 link contrast and page 14's
-independent-AI-label wording were also corrected. Targeted final review confirmed
-the fixes in native and PDF previews and found no new Critical or Important
-issue. The actual [huashu-design](https://github.com/alchaincyf/huashu-design)
-3.0.0 exporter, text comparison and design lint were used under the same-project
-iteration exception. Final lint has zero red findings and one expected advisory
-for the packaged HTML poster's relative path; PPTX embeds the poster and movie.
-The three industry sources listed below were reopened on 2026-11-04.
+- Native PowerPoint opened all 20 pages, exported every preview/PDF page and
+  measured zero text-frame overflow candidates. PDF checks retained three
+  project links, one TypeSafe link and three industry links, with no out-of-page
+  text. Embedded movie bytes match the standalone MP4; ZIP checks passed.
+- Native first-click playback stayed on page 13, player state 0 (Playing),
+  position 3914 ms, Media Play effect 83 and trigger 1. This used the native
+  click-sequence interface in the task's own slideshow, not a physical-mouse
+  or venue-projection test.
+- Independent review inspected all pages and confirmed a substantive visual
+  improvement with no Critical or Important issue. The author corrected its
+  chart-caption Minor and checked the final PDF and native bounds. The reviewer
+  did not independently run Windows playback.
+- All six repository checks passed, including 538 tests in 37.726 seconds.
 
-All six repository commands passed, including 538 unit tests in 36.156 seconds;
-local documentation links and staged whitespace were checked. This update
-changes presentation/registration documentation only: no new model request,
-credential-file access, sandbox change, runtime change, tag or release.
-Enterprise identity, permissions, approvals and execution remain external;
-demonstrated outputs retain `result_status: not_executed`.
+Design guidance came from the public
+[Anthropic pptx skill](https://github.com/anthropics/skills/tree/main/skills/pptx),
+[huashu-design](https://github.com/alchaincyf/huashu-design) and comparison of
+[huashu-slide-codex](https://github.com/alchaincyf/huashu-slide-codex).
+This edition's production engine was project-local `python-pptx` plus native
+PowerPoint. It does not claim execution of the vendor validators or the huashu
+HTML exporter/lint for this edition. No global skill was installed.
 
-## Expanded presentation origin — 2026-10-30
+## Earlier production history
 
-The user requested another huashu skill and a more substantive PowerPoint. This is an iteration of the [approved presentation design](../superpowers/specs/2026-10-29-evialign-ppt-poc-film-design.md), following the [content-expansion plan](../superpowers/plans/2026-10-30-evialign-ppt-content-expansion.md). The original eight-slide deck and independent movie were preserved.
+The [full pre-cleanup delivery record](https://github.com/alexzhu0/EviAlign/blob/306b85ff30bdf479875f1d546283884456f2b026/docs/presentations/evialign-ppt-expanded-delivery.md)
+retains the preceding Jev/reviewer/expanded editions, all historical artifact
+digests and design approvals. The
+[original mock-film record](https://github.com/alexzhu0/EviAlign/blob/306b85ff30bdf479875f1d546283884456f2b026/docs/presentations/evialign-ppt-poc-delivery.md)
+is preserved at the same immutable revision. These are historical records, not
+new verification or current runtime authorization.
 
-## Earlier Jev edition and bilingual competition copy — 2026-10-30
-
-The user requested Jev decision-model coverage in the PPT and introduction, a cross-workflow project description, and a 16:9 cover-image prompt for use with an external image model. The new edition is delivered separately under `D:\Sayitout\小强创新`, preserving the earlier reviewer and content-enhanced files:
-
-- `EviAlign-黑客松汇报-Jev版.pptx` and matching `.pdf`: 21 slides, comprising 17 main pages and four appendices, with 328 native text shapes and speaker notes. Jev's role is explicit on page 12; the unchanged movie is on page 13; the retained Jev evaluation is named on page 14. Project links are on pages 17 and 21.
-- `EviAlign-参赛简介-中英文.txt`: registration copy, also maintained in [the bilingual repository entry](../hackathon-entry.md). The project is framed across enterprise workflows; supply chain remains an illustrative scenario.
-- `EviAlign-16比9头图提示词.txt`: a [copyable cover-image prompt](evialign-cover-prompt.zh-CN.txt), with EviAlign as the main title and a small Jev research reference. No image-generation request was made.
-- `EviAlign-Jev版讲稿.md` and `EviAlign-Jev版制作源文件.zip`: updated notes and local production source with native PowerPoint configuration/check scripts.
-
-Jev-edition PPTX SHA-256: `3c5e353db4342a894ef63fa99c01a6252e825699f1512ec5480f9728290c697d`.
-
-Jev-edition PDF SHA-256: `81e05a66e28b45d946b7940fcdfc70d68f270190b5f1c6a252f71d4c606dfbb3`.
-
-[TypeSafe's official introduction](https://docs.typesafe.ai/introduction) was reopened to verify Jev's structured decision-model description. The PPT describes the actual Choice experiment: request/context and proposed action, a typed observation, and local review-hint routing. Jev remains an optional, default-off observer in the independent sandbox; it is not a main-repository CLI feature and does not pause, approve, authorize or execute actions. The retained model pin `typesafe/jev-1.13-20260917`, 0.8 threshold and rubric were not changed; no new model call or sandbox modification was made. No unsupported claim of model popularity, latest-version use or enterprise performance was added.
-
-Native PowerPoint opened and exported all 21 pages; the final PDF preserves the Jev-source hyperlink and three project links, with no out-of-page text. The movie bytes match the prior delivery. Native first-click media configuration was applied in PowerPoint; `SlideShowView.GotoClick(1)` kept page 13 displayed and changed the player from state 3 to state 0 (Playing), with position 3276 ms. Background window-message tests did not reliably enter the click sequence in this session, so this edition's acceptance is explicitly the native click-sequence test, not a physical-mouse test. The source archive documents native configuration as the final generation step.
-
-Independent review found no Critical or Important finding. Its two Minor copy findings were fixed: the navigation now says 17+4 pages, and the standalone English registration paragraph explicitly says synthetic evaluation. All six repository checks passed, including 538 tests in 41.655 seconds; bilingual command blocks and local links were checked. Runtime behavior, enterprise execution boundaries and the earlier evaluation limitations remain unchanged.
-
-## Earlier reviewer edition: links and click-to-play — 2026-10-30
-
-The user requested a clickable repository address and a prominent central movie-play button. The existing content-enhanced PPTX was locked by another Windows process, confirmed by an exclusive-file-open check. It was preserved, and a separate reviewer edition was delivered in the same `D:\Sayitout\小强创新` directory:
-
-- `EviAlign-黑客松汇报-审稿版.pptx`: 20 slides and 309 native text shapes. Slide 16 has clickable project-home labels and URL; slide 20 links directly to the Chinese purpose-and-progress document. Slide 12 has a prominent play poster and an explicit native PowerPoint first-click Media Play effect.
-- `EviAlign-黑客松汇报-审稿版.pdf`: matching native PowerPoint export, with all three project hyperlinks retained. The video poster is static in PDF.
-- `EviAlign-审稿版讲稿.md` and `EviAlign-审稿版制作源文件.zip`: updated notes and maintainable production source, including the PowerPoint-authored playback timing.
-
-Reviewer PPTX SHA-256: `7fd00f9645415cac22d6b32c5e7af7d3382ed0447c162d4a13aa948ced7dcac5`.
-
-Reviewer PDF SHA-256: `4bc8bf92a0cb1bfcadebb3a0be2433985c1052c778569a7b92e54880a2df0a86`.
-
-The project links are [the GitHub homepage](https://github.com/alexzhu0/EviAlign) and [the Chinese purpose-and-progress statement](https://github.com/alexzhu0/EviAlign/blob/main/docs/project-purpose-and-progress.zh-CN.md). The repository was private at the original reviewer-edition check. The user subsequently made it public on 2026-10-30. An unauthenticated GitHub API request then confirmed `private: false` and `visibility: public`; an unauthenticated request to the Chinese document returned HTTP 200. Reviewers can read these public links without a repository invitation. The PPTX/PDF URLs need no change. The visibility change was made by the user; the assistant only verified it and updated this record.
-
-Native PowerPoint opened and exported all 20 final pages. A click-message test targeted only the newly created fullscreen `screenClass` window: before the click, slide 12 / player state 3; afterward, still slide 12 / state 0 (Playing) / position 3451 ms. Initial default-media click handling advanced the slide in this automation, so an explicit [native Media Play effect](https://learn.microsoft.com/en-us/office/vba/api/PowerPoint.Sequence.AddEffect) was added; it starts on the first slide click, including the central play area, without macros, external programs or autoplay. Direct physical-cursor testing was refused when Windows did not allow foreground focus; the successful final test used messages to the owned slideshow window without moving the cursor or clicking another application.
-
-The final PPTX and PDF links, media relationships, native timing and unchanged movie bytes were checked. Browser and native previews were inspected; the 20-page PDF contains no out-of-page text. A fresh independent reviewer found no Critical, Important or Minor issue and rechecked the final native timing and links, but did not personally run the Windows click test. The source generation script inherits that timing. The final layout check has zero red findings and the same expected advisory for a bundled relative HTML poster.
-
-All six repository checks passed, including 538 unit tests in 42.232 seconds. Only this delivery record changes in the repository; runtime code, business behavior, the separate sandbox and the movie itself are unchanged. Previous local files were retained, with pre-edit enhanced-file backups under `.evialign-production-expanded/backup-641a502b`.
-
-## Earlier content-enhanced delivery
-
-Directory: `D:\Sayitout\小强创新`.
-
-- `EviAlign-黑客松汇报-内容增强版.pptx`: 20 editable slides, comprising 16 main pages and four appendices; 306 native text shapes, speaker notes, primary-source links and the unchanged embedded PoC movie.
-- `EviAlign-黑客松汇报-内容增强版.pdf`: all 20 pages exported by native Windows PowerPoint.
-- `EviAlign-内容增强版讲稿.md`: slide text and speaking guidance.
-- `EviAlign-内容增强版制作源文件.zip`: HTML pages, source generators, fonts and licenses, existing-template derivative, movie, checks and relevant third-party script/license provenance. This local production archive is not a runtime dependency or a Git binary artifact.
-
-PPTX SHA-256: `641a502b2ccfac9edcb5301fb620c83b69adb54184435857737e0ad5c378ec4f`.
-
-PDF SHA-256: `f66468992c98bfe1d59a8a8bf4b1f37dc9eb09c004ea739bc36c8ec4e2e02e8f`.
-
-The embedded movie SHA-256 remains `08e27db4761198c998166e99b21626018b4ba0bc4c181c2e844bd207263d3c0b`, matching the original standalone movie. Its provenance and remaining limitations are recorded in the [original delivery](evialign-ppt-poc-delivery.md).
-
-## What became more substantive
-
-The deck now explains the research timing, three types of existing industry work, the relationship with API permissions and approvals, a richer cross-team supply-chain exception, proposed human/AI responsibilities, action categories, the proposed decision record, the evidence needed before reducing human involvement, implemented versus future capabilities, the PoC, historical evaluation signals, enterprise value measures, and a staged validation proposal. Appendices cover existing mechanisms, the unsigned correspondence contract, evaluation details and executive questions.
-
-The new material explicitly permits a conclusion that existing systems already suffice or that improving them is cheaper. Enterprise benefits remain hypotheses, with proposed measures rather than invented ROI. The supply-chain background and complete workflow are research illustrations; E173 remains only the historical pending-confirmation transfer example. A review suggestion is not described as actual entry into an approval workflow. Evidence/observations remain `not_executed` and do not grant runtime authorization.
-
-## Skill and source verification
-
-[huashu-design 3.0.0](https://github.com/alchaincyf/huashu-design) was read and used for its deck workflow, actual overview shell, actual rendered-DOM-to-editable-PPTX builder and text-completeness comparison, and actual design-lint script. The existing PPTX supplied the template. Its documented same-project iteration exception applied to the previously approved direction; no new visual direction was presented as user-approved. Browser launch was adapted to the installed Chrome; local production records were stored under the task's temporary directory rather than installing a global skill.
-
-Primary sources were reopened on 2026-10-30: [NIST's initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative), [WEF and Capgemini's ACAP white paper](https://www.weforum.org/publications/ai-agents-in-action-a-playbook-for-trusted-adoption-authorization-and-scaling), and [Microsoft's agent-flows documentation](https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-overview). These are distinct research, framework and product outputs, not project partners or proof of a completed universal standard.
-
-## Checks and review
-
-- The final browser-to-PPTX comparison found no missing text across 20 pages. All pages have speaker notes, and exactly one embedded movie appears on page 12.
-- huashu-design's final check found zero red findings. One yellow advisory concerns the HTML source's relative poster path; this is intentionally packaged inside its multi-file source directory. The delivered PPTX contains the actual media and requires no external poster file.
-- A fresh independent reviewer read all page text/notes, checked project evidence and inspected seven browser renders. No Critical issue was found. The Important wording about review hints and the two Minor wording issues were corrected and checked in the final output.
-- Native Windows PowerPoint opened the final deck, exported every page, and played the embedded movie with `Player.State = 0` (Playing). The initial full native-render contact sheet and the final corrected pages were visually inspected. The final PDF has 20 pages, the corrected review wording and no out-of-page text blocks. The delivered PPTX hash matches the checked source file.
-- All six AGENTS.md commands passed: policy validation; 3/3 smoke cases; both loop fixtures; 538 unit tests in 42.038 seconds; and whitespace checks. No evidence-contract or runtime code changed.
-
-No paid model request, credential-file access, new evaluation batch, sandbox modification, real business approval or execution, tag, release or deployment was part of this presentation task. This expansion does not revalidate the unchanged movie's narration or remove the original synthetic-evaluation limits.
-
-Temporary source: `/tmp/evialign-ppt-expanded`. Native PowerPoint previews: the destination's `.evialign-production-expanded` directory. Delivery and source-archive checks are retained there and in the source archive.
+Current repository cleanup and its checks are recorded in
+[project maintenance](../maintenance.md).
