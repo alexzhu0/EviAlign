@@ -18,10 +18,10 @@ Delivered on 2026-11-04 to
 - `EviAlign-20页总览.png`, `EviAlign-正式答辩版讲稿.md` and
   `EviAlign-正式版说明.txt`: all-page preview, speaking notes and instructions.
 
-The six visible files are packaged in
-`D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104.zip`.
+The presentation files above are packaged in
+`D:\Sayitout\小强创新\EviAlign-正式答辩版-20261104\EviAlign-正式答辩版-20261104.zip`.
 Maintainable production source is in the separate
-`D:\Sayitout\小强创新\EviAlign-正式答辩版制作源文件.zip`.
+`D:\Sayitout\小强创新\制作源文件\EviAlign-正式答辩版制作源文件.zip`.
 PPTX/MP4 binaries are local deliverables, not repository runtime assets.
 
 These digests identify the files checked on 2026-11-04:
@@ -34,9 +34,12 @@ These digests identify the files checked on 2026-11-04:
 | Native PDF | `50f0eaf711253ae396edec9b7820d3b0a39a54d7915d2d1f28b610057d363ed9` |
 | Actual movie | `7e46c57e67340006013dd79998378e2f243b8549bf6245bfd2741927e5261555` |
 
-The preceding submission bundle, including bilingual entry copy and reviewer
-DOCX/PDF, was delivered to
-`D:\Sayitout\小强创新\EviAlign-参赛提交包-20261104` and matching `.zip`.
+The original prepared submission ZIP is now retained unchanged at
+`D:\Sayitout\小强创新\提交留档\EviAlign-参赛提交包-20261104.zip`.
+On 2026-11-05, the latest bilingual description and reviewer DOCX/PDF were copied
+into the formal-edition directory before the old unpacked submission directory
+was removed. All package/artifact digests recorded here remain those of the checked
+2026-11-04 files; relocation did not regenerate their content.
 The current reusable sources are the [bilingual description](../hackathon-entry.md)
 and [reviewer brief](../actlumen-reviewer-brief.md).
 

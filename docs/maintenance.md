@@ -14,10 +14,11 @@ This does not independently verify a competition submission or submit a new one.
 
 ## Cleanup on 2026-11-05
 
-Scope: the main repository. Windows deliverables, the separate business sandbox,
-unrelated runtime worktrees, credentials and local editor settings were not
-deleted. Runtime code, schemas, policies, tests, fixtures, release records,
-engineering designs and retained evaluation evidence remain in place.
+The initial pass covered the main repository; the separately authorized Windows
+pass is recorded below. The business sandbox, unrelated runtime worktrees,
+credentials and local editor settings were not deleted. Runtime code, schemas,
+policies, tests, fixtures, release records, engineering designs and retained
+evaluation evidence remain in place.
 
 - Remove 17 superseded competition-production files: nine material-production
   plans, five presentation/branding designs, the old eight-page HTML, its cover
@@ -37,6 +38,41 @@ engineering designs and retained evaluation evidence remain in place.
 
 The removed tracked files total 141,036 bytes. The full historical presentation
 record is also condensed; no Git history is rewritten.
+
+## Windows materials cleanup
+
+The user additionally authorized: “也整理 Windows 历版材料，保留最终版和制作源文件”.
+`D:\Sayitout\小强创新` now has five project directories and a directory guide:
+
+| Entry | Retained content |
+| --- | --- |
+| `EviAlign-正式答辩版-20261104` | Final 20-page PPTX/PDF, original movie, overview, notes and presentation ZIP; latest reviewer DOCX/PDF and bilingual description copied here. |
+| `制作源文件` | Six distinct existing source ZIPs, including the unique pre-publication source backup; historical code/text archive and the preserved `EviAlign1030.pptx` edit. |
+| `提交留档` | The original prepared submission ZIP, unchanged. |
+| `EviAlign-实时联调` | Live launcher, normalized actual records and screenshots, unchanged. |
+| `EviAlign-行动复核台` | Offline-review launcher and demonstration records, unchanged. |
+| `EviAlign-目录说明.txt` | Current local navigation and playback instructions. |
+
+Nine entries were moved, three latest documents copied, 161 obsolete files
+removed (82,217,948 bytes), and six empty directories removed. No file was
+skipped. Moves/copies preserve their original bytes; 22 existing final/demo files
+were checked before and after, and all retained ZIPs passed CRC checks. The
+current 20-page edited submission PPT was also verified against the baseline
+inside the formal-edition source ZIP before its unpacked duplicate was removed.
+
+Independent review found that two original narration inputs were not in the
+existing source ZIPs. The correction permanently archived all 38 historical
+script/JSON/HTML/Markdown/text sources, including `voice.ps1` and `voice.json`,
+to `制作源文件\历史版本\EviAlign-历史制作脚本与文本源文件.zip` before deleting
+their old paths. Every archived member was checked against its original digest
+again after cleanup. This archive's SHA-256 is
+`971f32539505a1ec08d2c0e108c970110682a1e3daa59a021d25178dda0ccd7a`.
+
+A verified task-local recovery ZIP was created before deletion. A durable
+operation receipt is in `制作源文件\整理记录-20261105.json`. The reviewer did
+not perform the Windows operations; the implementer verified the corrected
+source archive, moves, final files and absence of planned obsolete paths. No
+Office document was closed and no model, runtime or presentation was rerun.
 
 ## Archived production materials
 
