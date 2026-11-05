@@ -155,6 +155,6 @@ No remote, tag, hosted release or deployment is recorded by this handoff.
 The relevant source records are:
 
 - [Business sandbox design](superpowers/specs/2026-09-15-business-sandbox-design.md)
-- [Business sandbox implementation plan](superpowers/plans/2026-09-15-business-sandbox.md)
-- [Comprehensive sandbox test plan](superpowers/plans/2026-09-15-comprehensive-sandbox-testing.md)
+- [Business sandbox implementation plan](https://github.com/alexzhu0/EviAlign/blob/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs/superpowers/plans/2026-09-15-business-sandbox.md)
+- [Comprehensive sandbox test plan](https://github.com/alexzhu0/EviAlign/blob/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs/superpowers/plans/2026-09-15-comprehensive-sandbox-testing.md)
 - [Business action evidence contract](business-action-evidence-v1.md)

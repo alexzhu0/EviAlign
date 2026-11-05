@@ -38,7 +38,6 @@ EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判�
 - [可复现演示步骤](11-reproducible-enterprise-demo.md)
 - [评审决策指南](12-buyer-reviewer-decision-guide.md)
 - [检查清单](13-external-reviewer-checklist.md)
-- [评审复现记录](14-reviewer-dry-run-and-reproducibility.md)
 - [Pi 边界方案](17-pi-integration-boundary-and-contract.md)、[静态映射](18-pi-tool-call-mapping-fixture.md)、[契约检查命令](19-pi-contract-check-cli.md)、[双仓 dry-run 说明](20-pi-dual-repo-dry-run-e2e.md)
 
 工程演示检查的是证据与契约，不会自动授权或执行真实业务操作。
@@ -46,7 +45,7 @@ EviAlign 研究企业如何审核 AI 拟采取的行动，以及如何通过判�
 ## 维护与历史追溯
 
 - [当前维护与清理记录](maintenance.md)
-- [EviAlign 品牌与 GitHub 维护记录](34-actlumen-brand-maintenance.md)
+- [工程设计索引](superpowers/README.md) · [历史阶段与实施清单](maintenance.md#engineering-history)
 - [独立沙箱交接](32-business-sandbox-maintenance-handoff.md)
 - [Jev 留存评测与交接](33-jev-shadow-maintenance-handoff.md)
 - [历史发布记录索引](../release/README.md)

@@ -13,7 +13,7 @@ Ready does not mean executed. Ready does not mean safe to execute. All current r
 ## Scope and audience
 
 Use this checklist when reviewing the evidence generated from an EviAlign file-bus fixture, especially the `examples/agent_bus_adapter_registry` demo flow.
-For a concrete reviewer dry-run that applies this checklist to the golden fixture, see [`docs/14-reviewer-dry-run-and-reproducibility.md`](./14-reviewer-dry-run-and-reproducibility.md).
+For a concrete reviewer dry-run that applies this checklist to the golden fixture, see [`docs/14-reviewer-dry-run-and-reproducibility.md`](https://github.com/alexzhu0/EviAlign/blob/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs/14-reviewer-dry-run-and-reproducibility.md).
 
 The reviewer is checking whether the evidence package is complete, deterministic, internally consistent, traceable, and boundary-safe enough for an external owner to review. The checklist is not a runtime authorization process, not a governance decision engine, not an auth or identity system, not a sandbox policy, and not a signing, timestamp, attestation, certificate, or trust-root flow.
 
@@ -54,7 +54,7 @@ The [demo summary table](./11-reproducible-enterprise-demo.md#expected-summary-c
 is the maintained source of expected counts for
 `examples/agent_bus_adapter_registry`. These are fixture expectations, not
 universal requirements for other evidence packages. The
-[recorded dry-run](./14-reviewer-dry-run-and-reproducibility.md#expected-vs-observed)
+[recorded dry-run](https://github.com/alexzhu0/EviAlign/blob/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs/14-reviewer-dry-run-and-reproducibility.md#expected-vs-observed)
 retains the historical observed results.
 
 ## Reject triggers

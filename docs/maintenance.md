@@ -108,3 +108,37 @@ targets/anchors and retained provenance; it did not independently run the test
 suite, Windows presentation, external sandbox or historical paid requests.
 No new paid/live call, PowerPoint rendering, runtime authorization or release
 is part of this cleanup.
+
+## Engineering history
+
+A further repository-only pass removed 23 historical documents: 15 old
+implementation checklists and eight superseded workflow, phase-packaging,
+fake-read, brand-history or compatibility notes. The asset map and engineering
+guide now describe current assets/commands rather than repeat the T0xx
+chronology. Original content remains at the
+[pre-pruning revision](https://github.com/alexzhu0/EviAlign/tree/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs),
+including the [old implementation plans](https://github.com/alexzhu0/EviAlign/tree/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs/superpowers/plans).
+Archiving an old checklist does not assert that all its steps were completed.
+
+The 12 retained [design specifications](superpowers/README.md) and eight key
+Pi contract/readiness/verification documents were protected byte-for-byte.
+In particular, the runtime-readiness ADR and Phase-0 preflight remain available
+with their existing source bindings and **NO-GO / NOT IMPLEMENTED** decision.
+Source, tests, schemas, policies, fixtures and CI are unchanged.
+
+The user separately deleted the ignored root `.superpowers/` scratch directory.
+It contained no tracked files; installed skills and `docs/superpowers/specs/`
+remain present. This loses local historical task state, not committed code or
+designs. The installed workspace helper recreates scratch directories when
+needed. Current housekeeping uses Git and temporary receipts rather than an
+old ledger; no progress state was fabricated or marked complete.
+
+This pass passed all six repository checks, including 538 tests in 37.484
+seconds with root scratch state absent. The link check covered 88 Markdown
+files, 402 local targets and 18 fixed-revision targets without a missing target.
+The 23-file deletion manifest and all 20 protected document digests match.
+Independent read-only review found no Critical, Important or Minor issue. It
+verified the deletion scope, preserved documents, command semantics, fixed Git
+targets and scratch-directory explanation. It did not independently rerun the
+test suite, query GitHub, recover deleted local state or inspect external
+runtimes/paid evaluations.

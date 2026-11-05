@@ -179,7 +179,7 @@ Both trees were clean before this maintenance. Only AgentHarness documentation
 is edited here; the sandbox remains a separate source, review and release unit.
 The [September foundation handoff](32-business-sandbox-maintenance-handoff.md),
 [approved design](superpowers/specs/2026-10-14-jev-sandbox-shadow-design.md) and
-[completed implementation plan](superpowers/plans/2026-10-14-jev-sandbox-shadow.md)
+[completed implementation plan](https://github.com/alexzhu0/EviAlign/blob/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs/superpowers/plans/2026-10-14-jev-sandbox-shadow.md)
 retain their dated evidence and decisions.
 
 ## Delivered behavior and limits
