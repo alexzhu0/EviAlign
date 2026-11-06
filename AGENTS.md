@@ -62,7 +62,7 @@ git diff --check
 ```
 
 For evidence-contract changes, also run the six-module targeted suite recorded
-in `docs/29-agentharness-maintenance-closure.md`.
+in `docs/contracts/29-agentharness-maintenance-closure.md`.
 
 ## Maintenance and release truth
 

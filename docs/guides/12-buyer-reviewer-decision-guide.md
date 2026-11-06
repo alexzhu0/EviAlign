@@ -1,6 +1,6 @@
 # EviAlign Buyer/Reviewer Decision Guide
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 EviAlign is a pre-execution evidence control-plane for agent actions.
 
@@ -76,16 +76,16 @@ EviAlign can validate, inspect, export, digest, and verify evidence. It cannot a
 All current handoff, export, manifest, verification, audit, checklist, and demo
 outputs remain `result_status: not_executed`. The T028 decision guide introduced
 no execution or enforcement capability. See the normative
-[product contract](./08-glossary-and-product-contract.md#product-contract).
+[product contract](../contracts/08-glossary-and-product-contract.md#product-contract).
 
 ## Traceability links
 
-- Product contract and vocabulary: [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md)
+- Product contract and vocabulary: [`docs/08-glossary-and-product-contract.md`](../contracts/08-glossary-and-product-contract.md)
 - Audit report and buyer-demo narrative: [`docs/10-enterprise-audit-report-and-buyer-demo.md`](./10-enterprise-audit-report-and-buyer-demo.md)
 - Reproducible command demo: [`docs/11-reproducible-enterprise-demo.md`](./11-reproducible-enterprise-demo.md)
 - External reviewer checklist: [`docs/13-external-reviewer-checklist.md`](./13-external-reviewer-checklist.md)
-- End-to-end regression harness: [`tests/test_end_to_end_evidence_chain.py`](../tests/test_end_to_end_evidence_chain.py)
-- Golden fixture: [`examples/agent_bus_adapter_registry/`](../examples/agent_bus_adapter_registry/)
+- End-to-end regression harness: [`tests/test_end_to_end_evidence_chain.py`](../../tests/test_end_to_end_evidence_chain.py)
+- Golden fixture: [`examples/agent_bus_adapter_registry/`](../../examples/agent_bus_adapter_registry/)
 - Existing commands: `handoff inspect`, `handoff export`, `handoff manifest`, `handoff verify-manifest`, `audit report`, `audit verify-report`, and `audit checklist`
 
 ## Anti-claims / wording guardrail

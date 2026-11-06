@@ -2,7 +2,7 @@
 
 品牌沿革：2026-10-26 项目名称为 **ActLumen · 明行**；2026-10-28 更新为 **EviAlign**。历史技术名为 AgentHarness。
 既有工程命令、包名、契约与历史记录保持兼容。
-参赛说明见[项目评审材料](actlumen-reviewer-brief.md)，命名与边界见[品牌说明](actlumen-brand-and-scope.md)。
+参赛说明见[项目评审材料](evialign-reviewer-brief.md)，命名与边界见[品牌说明](evialign-brand-and-scope.md)。
 
 last checked date: 2026-06-22
 
@@ -92,18 +92,18 @@ this is an adjacent-category comparison, not a feature-parity table
 - **Defer runtime spikes:** keep execution-plane experiments behind the current adapter boundary until the evidence contract, enterprise glossary, and integration criteria are accepted.
 
 The accepted T015 glossary and product contract is
-[`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md).
+[`docs/08-glossary-and-product-contract.md`](../contracts/08-glossary-and-product-contract.md).
 Future integration and buyer-demo work should cite that glossary before adding
 new runtime-adjacent wording.
 
 The T016 source-backed integration strategy is
-[`docs/09-source-backed-integration-strategy.md`](./09-source-backed-integration-strategy.md).
+[`docs/09-source-backed-integration-strategy.md`](../research/09-source-backed-integration-strategy.md).
 It maps EviAlign evidence artifacts to future external consumers without
 adopting SDKs, wrappers, runtime adapters, auth gateways, sandboxes, signing
 systems, or execution-plane responsibilities.
 
 The T017 enterprise audit report and buyer-demo narrative is
-[`docs/10-enterprise-audit-report-and-buyer-demo.md`](./10-enterprise-audit-report-and-buyer-demo.md).
+[`docs/10-enterprise-audit-report-and-buyer-demo.md`](../guides/10-enterprise-audit-report-and-buyer-demo.md).
 It shows how reviewers read the evidence chain, ready/blocked/unsupported
 outcomes, ready-only exports, and manifest readback before any external runtime
 owner decides whether evidence is acceptable.
@@ -111,11 +111,11 @@ owner decides whether evidence is acceptable.
 ## T015+ recommended next task options
 
 - **T015:** accepted docs-backed glossary/ontology and product contract:
-  [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md).
+  [`docs/08-glossary-and-product-contract.md`](../contracts/08-glossary-and-product-contract.md).
 - **T016:** source-backed integration strategy for downstream runtime, governance, authorization, and identity layers:
-  [`docs/09-source-backed-integration-strategy.md`](./09-source-backed-integration-strategy.md).
+  [`docs/09-source-backed-integration-strategy.md`](../research/09-source-backed-integration-strategy.md).
 - **T017:** enterprise audit report examples and buyer-demo narrative showing how a security/platform reviewer reads the evidence chain:
-  [`docs/10-enterprise-audit-report-and-buyer-demo.md`](./10-enterprise-audit-report-and-buyer-demo.md).
+  [`docs/10-enterprise-audit-report-and-buyer-demo.md`](../guides/10-enterprise-audit-report-and-buyer-demo.md).
 - **Deferred:** runtime spike only after boundary acceptance and with explicit adapter contracts that preserve the no-execution default.
 
 ## Source links included

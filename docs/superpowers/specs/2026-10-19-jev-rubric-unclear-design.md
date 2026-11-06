@@ -6,7 +6,7 @@ Status: approved by the user on 2026-10-19. The implementation plan is
 not change sandbox code and does not call a provider.
 
 Implementation follow-up on 2026-10-20: the approved plan is complete;
-[measured results](../../33-jev-shadow-maintenance-handoff.md#rubric-v2-seen-regression-result-on-2026-10-20)
+[measured results](../../research/33-jev-shadow-maintenance-handoff.md#rubric-v2-seen-regression-result-on-2026-10-20)
 passed the seen-regression gate. The v1 holdout was not rescored. A new unseen
 holdout still needs its own scope, cost and approval. The design below remains
 the historical approved specification.

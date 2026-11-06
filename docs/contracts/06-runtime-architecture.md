@@ -1,6 +1,6 @@
 # EviAlign Evidence Architecture and Runtime Boundary
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 ## Status
 
@@ -23,7 +23,7 @@ commands, schedule work, run a daemon, bridge realtime agent chat, or execute
 tools automatically.
 
 For the enterprise category boundary around this runtime architecture, see
-[`docs/07-enterprise-positioning-and-boundary-audit.md`](./07-enterprise-positioning-and-boundary-audit.md).
+[`docs/07-enterprise-positioning-and-boundary-audit.md`](../product/07-enterprise-positioning-and-boundary-audit.md).
 For a future Pi runtime-candidate boundary contract, see
 [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md); it is conceptual only and does not implement runtime integration.
 

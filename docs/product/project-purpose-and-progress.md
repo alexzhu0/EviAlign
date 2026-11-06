@@ -37,16 +37,16 @@ EviAlign's proposed contribution is to investigate whether reusable action-to-ev
 | Main-repository evidence checks | Check a structured current request against retained evidence and emit a bounded, deterministic result. A changed request does not match its old receipt. | No real approval-source integration, business-field interpretation or execution permission. The receipt is unsigned; if both inputs can be replaced, matching digests do not establish authenticity. |
 | Separate local business sandbox | Synthetic business environment and optional Jev intent observations, with retained evaluations. | Not part of this repository's CLI; a review hint does not pause a workflow, approve an action or execute a tool. |
 | Demonstration | An editable presentation and mock-data film show an actual read-only result capture, independent correspondence checks and a historical E173 observation. | These are separate demonstrations, not a connected enterprise approval transaction. |
-| Research-review workbench | Separate local sandbox: historical replay or live DeepSeek proposal → initial judgment → live Jev observation → final reason/export. Three real calls to each provider completed on 2026-11-04; actual video and normalized records retained. Suggested changes stay unassessed. [Runbook](research-review-workbench.md) | Automated demo annotations, not a business-reviewer study or accuracy evaluation. No authenticated business approval or observed business outcome; outcomes remain unavailable or simulated. No validated reduction in human intervention. |
+| Research-review workbench | Separate local sandbox: historical replay or live DeepSeek proposal → initial judgment → live Jev observation → final reason/export. Three real calls to each provider completed on 2026-11-04; actual video and normalized records retained. Suggested changes stay unassessed. [Runbook](../guides/research-review-workbench.md) | Automated demo annotations, not a business-reviewer study or accuracy evaluation. No authenticated business approval or observed business outcome; outcomes remain unavailable or simulated. No validated reduction in human intervention. |
 | Enterprise value | Proposed comparison of existing controls, improvements to them, and a future EviAlign integration. | No measured enterprise time savings, ROI or production-safety claim. |
 
-Current evidence and shadow results retain `result_status: not_executed`. `allow_candidate` means candidate evidence only. A successful check does not authorize a real action. See the [business evidence contract](business-action-evidence-v1.md).
+Current evidence and shadow results retain `result_status: not_executed`. `allow_candidate` means candidate evidence only. A successful check does not authorize a real action. See the [business evidence contract](../contracts/business-action-evidence-v1.md).
 
 ## What the retained experiments tell us
 
 On 2026-10-21, a single frozen-rubric run in the separate sandbox tested 84 then-unseen synthetic cases. All 36 overreach cases were flagged; all 24 unclear cases received review suggestions; 3 of 24 fitting cases also received attention. One unclear case received a different class label but still a review suggestion, so this is not 84 correct classifications.
 
-The cases were AI-authored and independently blind-labeled by another AI across 33 correlated scenario families, not human ground truth or Lenovo production data. Zero observed misses does not imply zero future risk. The results support further study of observation hints under those conditions; they do not validate a full approval workflow, business-outcome learning, production accuracy or ROI. [Evaluation record](33-jev-shadow-maintenance-handoff.md)
+The cases were AI-authored and independently blind-labeled by another AI across 33 correlated scenario families, not human ground truth or Lenovo production data. Zero observed misses does not imply zero future risk. The results support further study of observation hints under those conditions; they do not validate a full approval workflow, business-outcome learning, production accuracy or ROI. [Evaluation record](../research/33-jev-shadow-maintenance-handoff.md)
 
 ## A business question to investigate
 
@@ -68,8 +68,8 @@ The aim is to make each action's basis reviewable and each future change in over
 
 ## Reading onward
 
-- [English project homepage](../README.md) and [Chinese homepage](../README.zh-CN.md)
-- [Brand and capability scope](actlumen-brand-and-scope.md)
-- [Reviewer brief](actlumen-reviewer-brief.md)
-- [Current PowerPoint delivery record](presentations/evialign-ppt-expanded-delivery.md)
-- [Engineering guide](engineering-guide.md)
+- [English project homepage](../../README.md) and [Chinese homepage](../../README.zh-CN.md)
+- [Brand and capability scope](evialign-brand-and-scope.md)
+- [Reviewer brief](evialign-reviewer-brief.md)
+- [Current PowerPoint delivery record](../presentations/evialign-ppt-expanded-delivery.md)
+- [Engineering guide](../guides/engineering-guide.md)

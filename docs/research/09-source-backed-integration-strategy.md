@@ -1,6 +1,6 @@
 # EviAlign Source-Backed Integration Strategy
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 last checked date: 2026-06-24
 
@@ -8,7 +8,7 @@ EviAlign is a pre-execution evidence control-plane for agent actions.
 
 ## Normative vocabulary and product contract
 
-This strategy uses [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md) as the normative vocabulary and product contract. Terms such as control-plane, audit-plane, execution-plane, runtime boundary, eligibility, evidence, handoff, export package, digest manifest, manifest verification, external consumer, and `result_status: not_executed` should keep the meanings defined there.
+This strategy uses [`docs/08-glossary-and-product-contract.md`](../contracts/08-glossary-and-product-contract.md) as the normative vocabulary and product contract. Terms such as control-plane, audit-plane, execution-plane, runtime boundary, eligibility, evidence, handoff, export package, digest manifest, manifest verification, external consumer, and `result_status: not_executed` should keep the meanings defined there.
 
 ## Integration invariant
 
@@ -28,7 +28,7 @@ This strategy uses [`docs/08-glossary-and-product-contract.md`](./08-glossary-an
 | Microsoft Agent Governance Toolkit | https://microsoft.github.io/agent-governance-toolkit/, https://github.com/microsoft/agent-governance-toolkit | Runtime governance middleware candidate for policy enforcement, identity, audit logging, denial handling, sandboxing, reliability/SRE, compliance, and framework integrations. | Evidence chain records, request digests, approval/preflight/handoff readiness, and manifest verification results as governance decision evidence. | AGT package adoption, policy engine replacement, identity, sandboxing, kill switch, framework adapters, compliance engine, or governance wrapper implementation. | integrate later | AGT is runtime governance middleware; EviAlign should provide pre-execution evidence but not become the middleware. |
 | Open Agent Auth | https://github.com/alibaba/open-agent-auth | External auth/identity system focused on cryptographic identity binding, fine-grained authorization, request-level isolation, semantic audit trails, standards integration, and MCP-aware authorization. | Request digest evidence, approval binding context, handoff metadata, and manifest readback results for possible authorization/audit correlation. | Authorization server, identity provider, token issuance, cryptographic binding, request isolation, policy registration, semantic audit infrastructure, or MCP adapter implementation. | integrate later | Open Agent Auth owns identity and authorization; EviAlign may supply evidence inputs but must not act as auth gateway or identity system. |
 | MCP Authorization | https://modelcontextprotocol.io/specification/draft/basic/authorization, https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization | External protocol boundary for HTTP-based MCP authorization using OAuth-style client/resource-server/authorization-server roles and protected resource metadata. | Bus-relative export and manifest evidence that an MCP client/server owner may consider before protected operations. | MCP server/client implementation, authorization server discovery, client registration, OAuth flow, scope challenge handling, token handling, or transport security. | never in EviAlign | MCP Authorization is a protocol/auth transport concern; EviAlign is not an MCP authorization implementation. |
-| deferred future execution-plane candidate | N/A by design; internal boundary anchor: [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md). No external source, repo dependency, import, test, or call is introduced in T016. | Deferred execution-plane consumer that may someday read registry-backed handoff exports after a separate approved plan. | Stable export package, digest manifest, manifest verification report, adapter registry/spec/ref metadata, and `result_status: not_executed` evidence. | Any concrete execution-plane repository modification, import, dependency, test, call, adapter invocation, run/execute/dispatch/submit command, daemon, queue, scheduler, watcher, or realtime chat. | defer | The candidate is intentionally unnamed as an implementation dependency; T016 records only the future boundary shape. |
+| deferred future execution-plane candidate | N/A by design; internal boundary anchor: [`docs/08-glossary-and-product-contract.md`](../contracts/08-glossary-and-product-contract.md). No external source, repo dependency, import, test, or call is introduced in T016. | Deferred execution-plane consumer that may someday read registry-backed handoff exports after a separate approved plan. | Stable export package, digest manifest, manifest verification report, adapter registry/spec/ref metadata, and `result_status: not_executed` evidence. | Any concrete execution-plane repository modification, import, dependency, test, call, adapter invocation, run/execute/dispatch/submit command, daemon, queue, scheduler, watcher, or realtime chat. | defer | The candidate is intentionally unnamed as an implementation dependency; T016 records only the future boundary shape. |
 
 ## Runtime/orchestration consumers
 
@@ -53,7 +53,7 @@ EviAlign may later expose request digests, approval evidence, and manifest readb
 A future execution-plane candidate remains deferred. T016 does not name a concrete repository, dependency, package, import, test, call, or adapter invocation. Any future spike must preserve the T015 product contract, keep adapter references as versioned evidence bindings, and start from registry-backed handoff exports plus manifest verification.
 
 Until separately planned and accepted, this candidate is an external consumer placeholder only.
-A later contract-first Pi boundary note is captured in [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md); it remains conceptual and does not modify or depend on Pi.
+A later contract-first Pi boundary note is captured in [`docs/17-pi-integration-boundary-and-contract.md`](../contracts/17-pi-integration-boundary-and-contract.md); it remains conceptual and does not modify or depend on Pi.
 
 ## Build / Buy / Integrate / Defer rules
 
@@ -109,7 +109,7 @@ T016 adds no SDK/package, makes no dependency recommendation, implements no wrap
 
 Before any future integration task starts, confirm:
 
-- [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md) is cited and still accepted.
+- [`docs/08-glossary-and-product-contract.md`](../contracts/08-glossary-and-product-contract.md) is cited and still accepted.
 - The evidence package shape is accepted.
 - The handoff is registry-backed with explicit adapter spec/ref provenance.
 - Current outputs remain `result_status: not_executed`.
@@ -120,7 +120,7 @@ Before any future integration task starts, confirm:
 ## T017+ follow-up suggestions
 
 - T017: enterprise audit report examples and buyer-demo narrative:
-  [`docs/10-enterprise-audit-report-and-buyer-demo.md`](./10-enterprise-audit-report-and-buyer-demo.md).
+  [`docs/10-enterprise-audit-report-and-buyer-demo.md`](../guides/10-enterprise-audit-report-and-buyer-demo.md).
 - T018 machine-readable enterprise audit report composes existing inspect/export/manifest evidence into stdout-only JSON; later formal schema work remains deferred until that shape is accepted.
 - Later evidence-envelope schema only after docs are accepted.
 - Runtime spike remains deferred until the product contract, source-backed integration map, buyer-demo narrative, and external owner responsibilities are accepted.

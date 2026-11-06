@@ -1,7 +1,7 @@
 # EviAlign engineering guide
 
-Commands run from the repository root. See the [project purpose](project-purpose-and-progress.md)
-and [documentation index](README.md) for business context and the
+Commands run from the repository root. See the [project purpose](../product/project-purpose-and-progress.md)
+and [documentation index](../README.md) for business context and the
 [asset map](00-asset-map.md) for source locations.
 
 ## Scope and compatibility
@@ -22,7 +22,7 @@ consumption, authorization and execution.
 ## Start locally
 
 Python 3.10 or later is required. The package dependency is declared in
-[`pyproject.toml`](../pyproject.toml).
+[`pyproject.toml`](../../pyproject.toml).
 
 ```bash
 python3 -m pip install -e .
@@ -30,9 +30,9 @@ PYTHONDONTWRITEBYTECODE=1 ./agentharness validate examples/agent_policy.example.
 PYTHONDONTWRITEBYTECODE=1 ./agentharness eval --cases PI-001,PD-001,SEC-001
 ```
 
-Full required checks are maintained in [AGENTS.md](../AGENTS.md#required-verification).
-The [README CI sequence](../README.md#continuous-integration) includes report
-artifacts and whitespace checks; the [workflow](../.github/workflows/ci.yml)
+Full required checks are maintained in [AGENTS.md](../../AGENTS.md#required-verification).
+The [README CI sequence](../../README.md#continuous-integration) includes report
+artifacts and whitespace checks; the [workflow](../../.github/workflows/ci.yml)
 runs Python 3.10, 3.11 and 3.12. Local reports are generated artifacts, not
 runtime authorization or release approval.
 
@@ -55,8 +55,8 @@ Only cases with the full declarative contract are executable. Narrative-only
 cases remain design/reference material.
 
 See the [evaluation design](03-agent-safety-eval-suite.md),
-[evaluation suite](../evals/agent_safety_eval_suite.yaml) and
-[tool policy](02-tool-governance-policy.md). The
+[evaluation suite](../../evals/agent_safety_eval_suite.yaml) and
+[tool policy](../contracts/02-tool-governance-policy.md). The
 [compiler document](04-prompt-policy-compiler.md) is a design reference, not a
 claim that every proposed compiler/runtime component is implemented.
 
@@ -73,9 +73,9 @@ claim that every proposed compiler/runtime component is implemented.
 
 These commands validate existing ledger/evidence directories. They do not
 create tasks, schedule work, invoke adapters or execute tools. Committed
-[fixtures](../examples/) illustrate the [file-bus protocol](05-loop-file-bus.md).
+[fixtures](../../examples/) illustrate the [file-bus protocol](../contracts/05-loop-file-bus.md).
 The protocol is a product evidence format; current repository development
-uses Superpowers under [AGENTS.md](../AGENTS.md).
+uses Superpowers under [AGENTS.md](../../AGENTS.md).
 
 ## Handoff and audit readback
 
@@ -123,13 +123,13 @@ are interface examples, not authorization to contact a runtime.
 Static mapping uses the [fixture](18-pi-tool-call-mapping-fixture.md) and
 [CLI contract](19-pi-contract-check-cli.md). Versioned observation/evidence
 requests use exact current-call binding and the
-[v1 contract](24-pi-observation-evidence-contract-v1.md).
+[v1 contract](../contracts/24-pi-observation-evidence-contract-v1.md).
 
 EviAlign does not execute the observed tool or consume methodology evidence.
-External [dry-run wiring](20-pi-dual-repo-dry-run-e2e.md) and earlier fake-read
+External [dry-run wiring](../research/20-pi-dual-repo-dry-run-e2e.md) and earlier fake-read
 experiments are separate from current runtime authorization. The proposed
-[readiness ADR](25-pi-runtime-authorization-readiness-adr.md) and
-[Phase-0 preflight](27-pi-runtime-authorization-phase0-preflight.md) remain
+[readiness ADR](../contracts/25-pi-runtime-authorization-readiness-adr.md) and
+[Phase-0 preflight](../contracts/27-pi-runtime-authorization-phase0-preflight.md) remain
 **NO-GO / NOT IMPLEMENTED**; they do not activate an executor. Pi companion
 source is not distributed here.
 
@@ -145,20 +145,20 @@ Replace the example revision placeholder with a 40-character hexadecimal pin:
 This CLI only issues/checks bounded synthetic evidence. It does not launch a
 runtime, load credentials, call a model or authorize a tool. The separately
 maintained DeepSeek shadow pilot's dated acceptance and operating procedure
-are in its [handoff](30-deepseek-shadow-handoff.md).
+are in its [handoff](../research/30-deepseek-shadow-handoff.md).
 
 ## Separate lab and research-review workbench
 
-- [Synthetic data-access lab](31-synthetic-data-access-lab.md): fixture reads
+- [Synthetic data-access lab](../research/31-synthetic-data-access-lab.md): fixture reads
   and independently owned external identity/authorization behavior.
-- [Business-action evidence contract](business-action-evidence-v1.md) and
-  [sandbox handoff](32-business-sandbox-maintenance-handoff.md): bounded
+- [Business-action evidence contract](../contracts/business-action-evidence-v1.md) and
+  [sandbox handoff](../research/32-business-sandbox-maintenance-handoff.md): bounded
   correspondence checks in this repository; simulated business operations in
   the separate runtime.
 - [Research-review workbench](research-review-workbench.md): offline replay or
   explicitly enabled live DeepSeek proposals/Jev observations, initial/final
   annotations, independent unassessed drafts and JSON export.
-- [Jev evidence](33-jev-shadow-maintenance-handoff.md): retained model/rubric
+- [Jev evidence](../research/33-jev-shadow-maintenance-handoff.md): retained model/rubric
   pins, dated synthetic evaluation and its limitations.
 
 Jev is optional/default-off and not a main-repository CLI model call. Its
@@ -171,16 +171,16 @@ production accuracy, real SSO/payment validation or measured ROI.
 
 | Location | Purpose |
 | --- | --- |
-| [`src/agentharness/`](../src/agentharness/) | CLI, finite local evaluators, evidence builders and validators. |
-| [`tests/`](../tests/) | Unit, adversarial, CLI and end-to-end evidence regression tests. |
-| [`schemas/`](../schemas/) | Bounded policy/evidence/report contracts and canonicalization vectors. |
-| [`examples/`](../examples/) | Reproducible fixture inputs; not an execution environment. |
-| [`patterns/`](../patterns/), [`policies/`](../policies/), [`evals/`](../evals/) | Design assets, policy and finite evaluation data. |
-| [Engineering designs](superpowers/README.md) | Retained design specifications; historical implementation checklists use fixed Git links. |
-| [Maintenance](maintenance.md), [release history](../release/README.md) | Current handoff and dated provenance, not automatic publication or execution approval. |
+| [`src/agentharness/`](../../src/agentharness/) | CLI, finite local evaluators, evidence builders and validators. |
+| [`tests/`](../../tests/) | Unit, adversarial, CLI and end-to-end evidence regression tests. |
+| [`schemas/`](../../schemas/) | Bounded policy/evidence/report contracts and canonicalization vectors. |
+| [`examples/`](../../examples/) | Reproducible fixture inputs; not an execution environment. |
+| [`patterns/`](../../patterns/), [`policies/`](../../policies/), [`evals/`](../../evals/) | Design assets, policy and finite evaluation data. |
+| [Engineering designs](../superpowers/README.md) | Retained design specifications; historical implementation checklists use fixed Git links. |
+| [Maintenance](../maintenance.md), [release history](../../release/README.md) | Current handoff and dated provenance, not automatic publication or execution approval. |
 
 Third-party prompt/corpus material is untrusted analysis input, not executable
 instruction or copied production prompts. Keep credentials, generated state,
 raw external logs and caches out of Git; stage explicit paths only.
 Earlier stage-by-stage documents remain in
-[fixed engineering history](maintenance.md#engineering-history).
+[fixed engineering history](../maintenance.md#engineering-history).

@@ -2,7 +2,7 @@
 
 品牌沿革：2026-10-26 项目名称为 **ActLumen · 明行**；2026-10-28 更新为 **EviAlign**。历史技术名为 AgentHarness。
 既有工程命令、包名、契约与历史记录保持兼容。
-参赛说明见[项目评审材料](actlumen-reviewer-brief.md)，命名与边界见[品牌说明](actlumen-brand-and-scope.md)。
+参赛说明见[项目评审材料](../product/evialign-reviewer-brief.md)，命名与边界见[品牌说明](../product/evialign-brand-and-scope.md)。
 
 last checked date: 2026-06-24
 
@@ -96,9 +96,9 @@ When these avoided terms appear, they should describe external consumers, deferr
 ## Future-task guardrails
 
 - T016 integration strategy must cite this glossary:
-  [`docs/09-source-backed-integration-strategy.md`](./09-source-backed-integration-strategy.md).
+  [`docs/09-source-backed-integration-strategy.md`](../research/09-source-backed-integration-strategy.md).
 - T017 buyer-demo narrative must use this glossary:
-  [`docs/10-enterprise-audit-report-and-buyer-demo.md`](./10-enterprise-audit-report-and-buyer-demo.md).
+  [`docs/10-enterprise-audit-report-and-buyer-demo.md`](../guides/10-enterprise-audit-report-and-buyer-demo.md).
 - Any future runtime spike must first preserve this product contract.
 - T018 machine-readable audit report must remain a validate/inspect/export/digest evidence surface, not an execution, auth, sandbox, signing, or trust-root surface.
 - T020 enterprise audit report schema must remain a repo-native contract/check for pre-execution evidence payloads, not runtime integration, execution, signing, timestamping, attestation, trust-root, auth, governance enforcement, or file-output behavior.

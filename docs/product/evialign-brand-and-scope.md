@@ -37,7 +37,7 @@ EviAlign 是面向企业行动型智能体的前沿研究：探索 AI 做事前�
 
 `allow_candidate` 仅表示候选证据；当前证据与观察输出保留 `result_status: not_executed`。请求和证据若均被替换并重新计算，本仓库的无密钥摘要不能独立证明其来源真实。
 
-2026-10-21 的 84 例评测来自独立沙箱的合成意图观察，非人工真值或联想业务数据，不能证明真实审批字段对照或生产准确率。[完整评测记录](33-jev-shadow-maintenance-handoff.md)
+2026-10-21 的 84 例评测来自独立沙箱的合成意图观察，非人工真值或联想业务数据，不能证明真实审批字段对照或生产准确率。[完整评测记录](../research/33-jev-shadow-maintenance-handoff.md)
 
 ## 兼容与来源
 
@@ -45,8 +45,8 @@ EviAlign 是面向企业行动型智能体的前沿研究：探索 AI 做事前�
 
 公开 AI 研究中已有同名 EviAlign 论文，用户知悉后仍选择本项目名称；这不代表商标或域名已通过核验。[同名论文](https://arxiv.org/abs/2609.33659)
 
-- [文档导航](README.md)
-- [项目评审材料](actlumen-reviewer-brief.md)
-- [最新版 PPT 交付记录](presentations/evialign-ppt-expanded-delivery.md)
-- [完整工程参考](engineering-guide.md)
-- [业务行动证据契约](business-action-evidence-v1.md)
+- [文档导航](../README.md)
+- [项目评审材料](evialign-reviewer-brief.md)
+- [最新版 PPT 交付记录](../presentations/evialign-ppt-expanded-delivery.md)
+- [完整工程参考](../guides/engineering-guide.md)
+- [业务行动证据契约](../contracts/business-action-evidence-v1.md)

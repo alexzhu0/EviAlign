@@ -2,8 +2,8 @@
 
 Design specifications remain in `specs/`. They record scoped decisions, not
 permission to activate a runtime or repeat a model evaluation. Current behavior
-and evidence are described in the [engineering guide](../engineering-guide.md)
-and [project status](../project-purpose-and-progress.md).
+and evidence are described in the [engineering guide](../guides/engineering-guide.md)
+and [project status](../product/project-purpose-and-progress.md).
 
 | Area | Design references |
 | --- | --- |

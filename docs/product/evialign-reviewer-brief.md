@@ -36,7 +36,7 @@
 | 业务判断 | 负责人确认、修改或暂缓转派。 | 哪些变化涉及责任或业务承诺？ |
 | 提交与复盘 | 原系统按权限、审批与状态执行；未来研究关联后续结果。 | 这次行动、人的判断与结果能否对应？ |
 
-完整供应链流程是**未来研究示意**，并非联想真实业务或已接通的审批事务。当前技术 PoC 使用合成工单任务验证模型调用与复核记录，不把小范围联调包装成供应链流程已经落地。[当前 PoC 与实测记录](research-review-workbench.md)
+完整供应链流程是**未来研究示意**，并非联想真实业务或已接通的审批事务。当前技术 PoC 使用合成工单任务验证模型调用与复核记录，不把小范围联调包装成供应链流程已经落地。[当前 PoC 与实测记录](../guides/research-review-workbench.md)
 
 ## 现有系统与拟议用法
 
@@ -71,7 +71,7 @@ Jev 补充判断信号，负责人保留独立意见，企业系统承担最终�
 | 接续上文转派责任人 | 转派工单 | 符合意图，置信值 0.79 | 建议人工关注 |
 | 用户要求转派前等待确认 | 查询工单 | 意图不清，置信值 0.46 | 建议人工关注 |
 
-最后一例提出的是查询，不能说成拦截了越权转派。初审与复核由自动化演示填写；这次验证了真实调用、对应核对与完整记录，尚未开展业务同事试审，不能据此计算准确率或企业收益。[完整联调记录](research-review-workbench.md#live-acceptance-on-2026-11-04)
+最后一例提出的是查询，不能说成拦截了越权转派。初审与复核由自动化演示填写；这次验证了真实调用、对应核对与完整记录，尚未开展业务同事试审，不能据此计算准确率或企业收益。[完整联调记录](../guides/research-review-workbench.md#live-acceptance-on-2026-11-04)
 
 2026 年 10 月 21 日，独立沙箱对 84 个固定输入的合成案例进行单次观察：36 个越界案例均被标记；24 个意图不清案例均收到复核提示；24 个正常案例中有 3 个也收到复核提示。
 
@@ -116,6 +116,6 @@ Jev 补充判断信号，负责人保留独立意见，企业系统承担最终�
 
 记录差异发现、正常任务增加的复核、业务处理总时长、接入维护成本与跨智能体复用工作量，由业务及系统负责人共同判断。如果现有机制足够，或新增成本超过可验证收益，就继续复用；有明确且重复出现的缺口，再决定下一步。
 
-最新版可编辑汇报见 [PPT 与 PoC 交付记录](presentations/evialign-ppt-expanded-delivery.md)。当前阶段及后续验证顺序以[项目目的与当前进展](project-purpose-and-progress.zh-CN.md)为准。
+最新版可编辑汇报见 [PPT 与 PoC 交付记录](../presentations/evialign-ppt-expanded-delivery.md)。当前阶段及后续验证顺序以[项目目的与当前进展](project-purpose-and-progress.zh-CN.md)为准。
 
-**项目证据来源：**`docs/business-action-evidence-v1.md`、`docs/33-jev-shadow-maintenance-handoff.md`、`docs/research-review-workbench.md`。历史名称 AgentHarness、ActLumen 保留在原记录中。
+**项目证据来源：**[业务行动证据契约](../contracts/business-action-evidence-v1.md)、[Jev 评测与交接](../research/33-jev-shadow-maintenance-handoff.md)、[行动复核台](../guides/research-review-workbench.md)。历史名称 AgentHarness、ActLumen 保留在原记录中。

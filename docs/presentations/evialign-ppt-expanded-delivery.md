@@ -40,15 +40,15 @@ On 2026-11-05, the latest bilingual description and reviewer DOCX/PDF were copie
 into the formal-edition directory before the old unpacked submission directory
 was removed. All package/artifact digests recorded here remain those of the checked
 2026-11-04 files; relocation did not regenerate their content.
-The current reusable sources are the [bilingual description](../hackathon-entry.md)
-and [reviewer brief](../actlumen-reviewer-brief.md).
+The current reusable sources are the [bilingual description](../product/hackathon-entry.md)
+and [reviewer brief](../product/evialign-reviewer-brief.md).
 
 ## Evidence and provenance
 
 The supply-chain process is a fictional research illustration. Historical E173
 covers a pending-confirmation ticket transfer, not that complete process. The
 actual new video demonstrates E120. The
-[2026-11-04 live acceptance](../research-review-workbench.md#live-acceptance-on-2026-11-04)
+[2026-11-04 live acceptance](../guides/research-review-workbench.md#live-acceptance-on-2026-11-04)
 records three DeepSeek and three OpenRouter/Jev requests, all with valid
 responses:
 
@@ -61,7 +61,7 @@ responses:
 The live E173 is a query, not a blocked unauthorized transfer. These are seen
 synthetic tasks with automated demonstration annotations, not business-colleague
 reviews or an accuracy study. The
-[historical 84-case evaluation](../33-jev-shadow-maintenance-handoff.md) is
+[historical 84-case evaluation](../research/33-jev-shadow-maintenance-handoff.md) is
 separate: AI-authored cases and independent AI blind labels, not human ground
 truth or Lenovo business data. Neither source demonstrates enterprise ROI,
 approval validity or business execution. Outputs retain `not_executed`.

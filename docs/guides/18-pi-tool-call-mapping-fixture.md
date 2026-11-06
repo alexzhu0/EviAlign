@@ -1,6 +1,6 @@
 # EviAlign Pi Tool-Call Mapping Fixture
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 EviAlign is a pre-execution evidence control-plane for agent actions.
 
@@ -30,7 +30,7 @@ T036 adds a library/test-only mock decision validator for these fixture files. T
 
 ## Relationship to T034
 
-T034 established the contract boundary in [`docs/17-pi-integration-boundary-and-contract.md`](./17-pi-integration-boundary-and-contract.md): contract design is ready, live runtime integration is not ready, Pi modification is not ready, and a mock/dry-run adapter mapping task is acceptable if separately planned.
+T034 established the contract boundary in [`docs/17-pi-integration-boundary-and-contract.md`](../contracts/17-pi-integration-boundary-and-contract.md): contract design is ready, live runtime integration is not ready, Pi modification is not ready, and a mock/dry-run adapter mapping task is acceptable if separately planned.
 
 T035 is that mock/dry-run fixture step. It turns the conceptual Pi → EviAlign request and EviAlign → Pi decision shapes into static JSON examples.
 
@@ -40,9 +40,9 @@ T036 adds a pure EviAlign-side mock decision validator for these static files. T
 
 | File | Purpose |
 | --- | --- |
-| [`examples/pi_tool_call_mapping/pi_tool_call_observations.json`](../examples/pi_tool_call_mapping/pi_tool_call_observations.json) | Static Pi-like observation batch with ordered tool-call candidates. |
-| [`examples/pi_tool_call_mapping/expected_mapping.json`](../examples/pi_tool_call_mapping/expected_mapping.json) | Expected EviAlign mapping outcome for each observation. |
-| [`examples/pi_tool_call_mapping/README.md`](../examples/pi_tool_call_mapping/README.md) | Fixture-local boundary summary. |
+| [`examples/pi_tool_call_mapping/pi_tool_call_observations.json`](../../examples/pi_tool_call_mapping/pi_tool_call_observations.json) | Static Pi-like observation batch with ordered tool-call candidates. |
+| [`examples/pi_tool_call_mapping/expected_mapping.json`](../../examples/pi_tool_call_mapping/expected_mapping.json) | Expected EviAlign mapping outcome for each observation. |
+| [`examples/pi_tool_call_mapping/README.md`](../../examples/pi_tool_call_mapping/README.md) | Fixture-local boundary summary. |
 
 The JSON files are deterministic, parse with `python3 -m json.tool`, and remain `result_status: not_executed`.
 

@@ -1,16 +1,60 @@
 # Project maintenance
 
-Updated: 2026-11-05. Current maintenance entry for EviAlign. The user reports
+Updated: 2026-11-06. Current maintenance entry for EviAlign. The user reports
 that hackathon registration has closed and the earlier materials were uploaded.
 This does not independently verify a competition submission or submit a new one.
 
 ## Current sources
 
-- [Purpose and progress](project-purpose-and-progress.md) · [中文版](project-purpose-and-progress.zh-CN.md)
-- [Research-review workbench and actual live acceptance](research-review-workbench.md)
-- [Retained Jev evaluation](33-jev-shadow-maintenance-handoff.md)
+- [Purpose and progress](product/project-purpose-and-progress.md) · [中文版](product/project-purpose-and-progress.zh-CN.md)
+- [Research-review workbench and actual live acceptance](guides/research-review-workbench.md)
+- [Retained Jev evaluation](research/33-jev-shadow-maintenance-handoff.md)
 - [Final presentation files and provenance](presentations/evialign-ppt-expanded-delivery.md)
-- [Engineering guide](engineering-guide.md) · [Repository rules](../AGENTS.md)
+- [Engineering guide](guides/engineering-guide.md) · [Repository rules](../AGENTS.md)
+
+## Documentation layout on 2026-11-06
+
+After the user approved a light organization pass, 36 documents moved from the
+`docs/` root into four groups: [project introduction](product/),
+[technical contracts](contracts/), [usage guides](guides/) and
+[research/handoffs](research/). This index and the [documentation index](README.md)
+remain at the root; presentation and engineering-design directories keep their
+existing locations. Current `actlumen-brand-and-scope.md` and
+`actlumen-reviewer-brief.md` are now named `evialign-brand-and-scope.md` and
+`evialign-reviewer-brief.md` under `product/`.
+
+Relative navigation links and the AGENTS verification-reference path follow the
+new locations. Historical filenames, literal command transcripts, source
+anchors, hashes, dates and frozen results retain their original meanings.
+In particular, the Pi readiness ADR and Phase-0 preflight, together with their
+linked contract/review records, stay adjacent in `contracts/` so their bound
+source bytes and line references remain intact. The contract directory includes
+these historical readiness records; it does not imply implemented execution.
+Existing specification follow-up links and release navigation were rebased;
+original design decisions and historical release statements were not rewritten.
+
+For old paths quoted by earlier records or companion repositories, see the
+[complete pre-layout documentation tree](https://github.com/alexzhu0/EviAlign/tree/9cc423817b484221aabf99227283a6df536f3997/docs).
+The [current index](README.md) gives their maintained locations. This move does
+not create automatic redirects for old GitHub `main` URLs. Independent runtime
+repositories and Windows deliverables are outside this pass. Source, tests,
+fixtures, schemas, policy/data assets, CI, package and command paths are unchanged.
+
+Verification on the isolated documentation worktree based on `9cc4238` passed
+all six repository checks: policy validation, 3/3 smoke evaluations, both loop
+fixtures, 538 tests in 37.856 seconds and whitespace checks. The documentation
+check covered 88 Markdown files, local paths and anchors, fixed-revision Git
+targets and bilingual directory/command parity. All existing code blocks and
+non-document assets match the baseline. Current reviewer-material source
+citations were converted from old literal paths to links at their new locations.
+The initial baseline attempt under the default sandbox had two temporary-directory
+write errors; enabling workspace writes resolved both without changing tests.
+
+Independent read-only review found no Critical, Important or Minor issue. It
+checked the directory mapping, bilingual navigation, local/immutable targets,
+current source citations and the 21 ADR source lines/digests. It did not repeat
+the test suite, inspect external runtimes or Windows files, or verify GitHub
+online availability; fixed Git targets were checked against local objects.
 
 ## Cleanup on 2026-11-05
 

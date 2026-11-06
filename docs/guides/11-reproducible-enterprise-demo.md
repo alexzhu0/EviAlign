@@ -1,6 +1,6 @@
 # EviAlign Reproducible Enterprise Demo
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 EviAlign is a pre-execution evidence control-plane for agent actions.
 
@@ -31,7 +31,7 @@ The demo proves that EviAlign can validate and export reviewable evidence before
 The commands validate and summarize local fixtures without executing tools,
 invoking runtime adapters, or granting runtime authorization. Saved JSON files
 are created by reviewer shell redirection. The full ownership boundary is in
-the [product contract](./08-glossary-and-product-contract.md#product-contract).
+the [product contract](../contracts/08-glossary-and-product-contract.md#product-contract).
 
 ## Prerequisites
 

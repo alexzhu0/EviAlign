@@ -18,11 +18,11 @@ TypeSafe describes Jev as a structured decision model: it evaluates focused ques
 
 本项目已有的 Jev 实验使用 Choice 问题，比较用户请求与 AI 拟议动作，形成“符合请求、可能越界、意图不清”等观察结果。本地分流规则会将意图不清或低置信结果标为复核建议。观察器在独立沙箱中默认关闭，提示本身不会暂停、批准或执行操作，也不属于主仓库 CLI。
 
-The retained experiment requests `typesafe/jev-1.13` through OpenRouter and accepts only the pinned returned model `typesafe/jev-1.13-20260917`. Mentioning Jev does not change that pin, the 0.8 threshold or the rubric, and does not claim use of the latest release. This copy makes no unsupported popularity, performance or production-accuracy claim. [Retained experiment and limitations](33-jev-shadow-maintenance-handoff.md)
+The retained experiment requests `typesafe/jev-1.13` through OpenRouter and accepts only the pinned returned model `typesafe/jev-1.13-20260917`. Mentioning Jev does not change that pin, the 0.8 threshold or the rubric, and does not claim use of the latest release. This copy makes no unsupported popularity, performance or production-accuracy claim. [Retained experiment and limitations](../research/33-jev-shadow-maintenance-handoff.md)
 
-Jev supplies an intent-observation signal. The local workbench supports historical replay and opt-in live DeepSeek proposals, initial judgments, live Jev observations, final reasons and JSON export. Three real requests to each provider completed on 2026-11-04, with actual video and normalized traces. Annotations are automated demo records, without a business-reviewer trial or observed business outcomes. [Workbench / 复核台](research-review-workbench.md) · [Purpose and current progress](project-purpose-and-progress.md) · [中文说明](project-purpose-and-progress.zh-CN.md)
+Jev supplies an intent-observation signal. The local workbench supports historical replay and opt-in live DeepSeek proposals, initial judgments, live Jev observations, final reasons and JSON export. Three real requests to each provider completed on 2026-11-04, with actual video and normalized traces. Annotations are automated demo records, without a business-reviewer trial or observed business outcomes. [Workbench / 复核台](../guides/research-review-workbench.md) · [Purpose and current progress](project-purpose-and-progress.md) · [中文说明](project-purpose-and-progress.zh-CN.md)
 
 ## Presentation material
 
-- [Current PowerPoint delivery record](presentations/evialign-ppt-expanded-delivery.md)
-- [Production history and archived materials](maintenance.md#archived-production-materials)
+- [Current PowerPoint delivery record](../presentations/evialign-ppt-expanded-delivery.md)
+- [Production history and archived materials](../maintenance.md#archived-production-materials)

@@ -1,12 +1,12 @@
 # EviAlign Enterprise Audit Report and Buyer Demo
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 Guidance consolidated: 2026-09-14. Historical T017–T025 references are retained below.
 
 EviAlign is a pre-execution evidence control-plane for agent actions.
 
-This document uses [`docs/08-glossary-and-product-contract.md`](./08-glossary-and-product-contract.md) as the normative glossary and product contract. It also follows the source-backed external-consumer boundaries in [`docs/09-source-backed-integration-strategy.md`](./09-source-backed-integration-strategy.md).
+This document uses [`docs/08-glossary-and-product-contract.md`](../contracts/08-glossary-and-product-contract.md) as the normative glossary and product contract. It also follows the source-backed external-consumer boundaries in [`docs/09-source-backed-integration-strategy.md`](../research/09-source-backed-integration-strategy.md).
 
 Current scope invariant: EviAlign validates and exports evidence only. Runtime, governance, auth, identity, sandbox, signing, trust-root, and execution-plane systems are external consumers, not EviAlign in-repo responsibilities. All handoff, export, manifest, and verification outputs remain `result_status: not_executed`.
 
@@ -59,7 +59,7 @@ The [demo summaries](./11-reproducible-enterprise-demo.md#expected-summary-count
 and [five request cases](./11-reproducible-enterprise-demo.md#ready-blocked-and-unsupported-case-interpretation)
 are maintained in the reproducible demo. Exact tool, intent, scope, preflight,
 and gate fields are in the committed
-[handoff fixture](../examples/agent_bus_adapter_registry/handoffs/T008-handoff-report.yaml).
+[handoff fixture](../../examples/agent_bus_adapter_registry/handoffs/T008-handoff-report.yaml).
 These examples describe evidence; they are not a separate report schema.
 
 The original registry-backed example recorded this canonical package digest:
@@ -86,7 +86,7 @@ The command emits deterministic JSON to stdout with `kind: enterprise_audit_repo
 Failure output uses `kind: enterprise_audit_report_error`, exits 1, and keeps sanitized errors/warnings free of absolute host paths. The command has no `--out`, `--write`, `--save`, `--execute`, `--dispatch`, `--submit`, `--run`, `--mutate`, `--sign`, or `--timestamp` flags.
 
 T020 adds the repo-native enterprise audit report schema at
-[`schemas/enterprise_audit_report.schema.yaml`](../schemas/enterprise_audit_report.schema.yaml)
+[`schemas/enterprise_audit_report.schema.yaml`](../../schemas/enterprise_audit_report.schema.yaml)
 and a pure in-memory payload validator. The schema is a contract/check for the
 pre-execution evidence report; it is not runtime integration, not execution,
 not signing, not timestamping, not attestation, not a trust-root system, and not
@@ -125,7 +125,7 @@ reviewer-provided saved manifest or audit report path; EviAlign does not
 create that file through a product output flag. Checklist statuses are limited
 to `pass`, `fail`, `blocked`, and `manual`, and every check keeps
 `result_status: not_executed`. T024 adds the repo-native checklist schema at
-[`schemas/enterprise_audit_checklist.schema.yaml`](../schemas/enterprise_audit_checklist.schema.yaml)
+[`schemas/enterprise_audit_checklist.schema.yaml`](../../schemas/enterprise_audit_checklist.schema.yaml)
 and a pure in-memory validator; this is payload drift protection, not runtime
 authorization, signing, trust-root, governance enforcement, or file output.
 
@@ -157,7 +157,7 @@ validation; T021 added report readback; T022/T024 added checklist generation and
 validation; T025 added evidence-chain regression coverage. These milestones
 remain evidence-only, with `result_status: not_executed`.
 
-The [product contract](./08-glossary-and-product-contract.md#product-contract)
+The [product contract](../contracts/08-glossary-and-product-contract.md#product-contract)
 is the normative boundary for runtime ownership, authorization, adapters,
 file output, scheduling, signing, and trust roots.
 
@@ -165,6 +165,6 @@ file output, scheduling, signing, and trust roots.
 
 Add further interchange contracts only when an external consumer has a concrete
 need. Any runtime work follows the separate approval and ownership boundaries in
-the [product contract](./08-glossary-and-product-contract.md#product-contract).
-Use the [end-to-end regression harness](../tests/test_end_to_end_evidence_chain.py)
+the [product contract](../contracts/08-glossary-and-product-contract.md#product-contract).
+Use the [end-to-end regression harness](../../tests/test_end_to_end_evidence_chain.py)
 when reviewing later evidence-contract changes.

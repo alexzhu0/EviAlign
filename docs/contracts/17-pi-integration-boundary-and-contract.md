@@ -1,6 +1,6 @@
 # EviAlign Pi Integration Boundary and Contract
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 EviAlign is a pre-execution evidence control-plane for agent actions.
 
@@ -217,9 +217,9 @@ Safe default: fail closed.
 
 Possible future tasks, each requiring separate planning and approval:
 
-- **T035 static Pi-like tool-call mapping fixture**: [`docs/18-pi-tool-call-mapping-fixture.md`](./18-pi-tool-call-mapping-fixture.md) and [`examples/pi_tool_call_mapping/`](../examples/pi_tool_call_mapping/) define Pi-like observations and expected mapping outcomes without importing, calling, depending on, or modifying Pi.
+- **T035 static Pi-like tool-call mapping fixture**: [`docs/18-pi-tool-call-mapping-fixture.md`](../guides/18-pi-tool-call-mapping-fixture.md) and [`examples/pi_tool_call_mapping/`](../../examples/pi_tool_call_mapping/) define Pi-like observations and expected mapping outcomes without importing, calling, depending on, or modifying Pi.
 - **T036 mock decision validator**: add a pure EviAlign-side validator for the static fixture, preserving `allow_candidate` only as a candidate match to existing EviAlign evidence and never emitting, inferring, or normalizing it into runtime allow. T036 is library/test-only, not CLI.
-- **T037 dry-run contract CLI**: [`docs/19-pi-contract-check-cli.md`](./19-pi-contract-check-cli.md) exposes `./agentharness pi contract-check` over static fixture inputs only, still no live hook, no Pi modification, no runtime execution, and no runtime allow.
+- **T037 dry-run contract CLI**: [`docs/19-pi-contract-check-cli.md`](../guides/19-pi-contract-check-cli.md) exposes `./agentharness pi contract-check` over static fixture inputs only, still no live hook, no Pi modification, no runtime execution, and no runtime allow.
 
 A live runtime integration remains out of scope until those earlier steps prove mapping, digest, approval, and safe-default behavior.
 

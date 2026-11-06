@@ -1,12 +1,12 @@
 # EviAlign Synthetic Data Access Lab
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 EviAlign supplies pre-execution evidence correlation for a separate local
 customer/order test lab. The external lab owns simulated identity,
 authorization and actual reads of its synthetic in-memory SQLite database.
 
-See the [lab specification](superpowers/specs/2026-09-14-data-access-lab-design.md).
+See the [lab specification](../superpowers/specs/2026-09-14-data-access-lab-design.md).
 The verifier can also be invoked as a module:
 
 ```bash

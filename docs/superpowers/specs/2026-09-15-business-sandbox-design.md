@@ -2,7 +2,7 @@
 
 日期：2026-09-15。状态：用户已批准按方案 1 构建（查询分析＋模拟业务操作）；
 本地实现和合成环境验收已于 2026-09-15 完成。当前交接与后续边界见
-[`docs/32-business-sandbox-maintenance-handoff.md`](../../32-business-sandbox-maintenance-handoff.md)。
+[`docs/32-business-sandbox-maintenance-handoff.md`](../../research/32-business-sandbox-maintenance-handoff.md)。
 
 ## 目标与方案选择
 

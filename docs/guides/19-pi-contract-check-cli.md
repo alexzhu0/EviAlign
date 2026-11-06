@@ -1,6 +1,6 @@
 # EviAlign Pi Contract-Check CLI
 
-> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](README.md)与[能力范围](actlumen-brand-and-scope.md)提供当前入口。
+> 项目品牌：EviAlign。现有命令与包名保留 `agentharness`；[文档导航](../README.md)与[能力范围](../product/evialign-brand-and-scope.md)提供当前入口。
 
 T037 adds a command wrapper around the T036 mock decision validator for static Pi-like fixture files.
 

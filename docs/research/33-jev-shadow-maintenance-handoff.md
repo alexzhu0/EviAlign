@@ -21,7 +21,7 @@ cost is unknown. Source tested: `b7064afe4926d2ddf28bdbfcc216df686b2adea3`.
 The sandbox retains `reports/live-review-2026-11-04.json` and an actual-operation
 video was delivered locally. Automated annotations are not business-reviewer
 evidence. `result_status: not_executed` remains. See the
-[current workbench handoff](research-review-workbench.md#live-acceptance-on-2026-11-04).
+[current workbench handoff](../guides/research-review-workbench.md#live-acceptance-on-2026-11-04).
 Earlier evaluation results below retain their original inputs and dates.
 
 ## Source maintenance and push scope on 2026-10-22
@@ -46,7 +46,7 @@ The sandbox is clean at `7626e06054a25d57e1ba2879e687faff213fdcc6` on
 hashes, metrics and the raw report hash without repeating paid calls. Its
 109-test and live evaluation evidence remain attributed to the 2026-10-21
 session below. Untracked `.cursor/` and unrelated runtime-authorization worktrees
-are untouched. See the [source maintenance record](../release/2026.10.22.md)
+are untouched. See the [source maintenance record](../../release/2026.10.22.md)
 for results, artifact locations and publication scope.
 
 Fresh 2026-10-22 AgentHarness verification passed all six required commands:
@@ -178,7 +178,7 @@ are unchanged. The independent `agentharness-business-sandbox` checkout is at
 Both trees were clean before this maintenance. Only AgentHarness documentation
 is edited here; the sandbox remains a separate source, review and release unit.
 The [September foundation handoff](32-business-sandbox-maintenance-handoff.md),
-[approved design](superpowers/specs/2026-10-14-jev-sandbox-shadow-design.md) and
+[approved design](../superpowers/specs/2026-10-14-jev-sandbox-shadow-design.md) and
 [completed implementation plan](https://github.com/alexzhu0/EviAlign/blob/0fefab9c521fc4de876e1eba718b751de2e2c30b/docs/superpowers/plans/2026-10-14-jev-sandbox-shadow.md)
 retain their dated evidence and decisions.
 
@@ -218,7 +218,7 @@ descriptions is deferred, not silently claimed as implemented.
 | 2026-10-14 documentation maintenance | AgentHarness `6b99f8e` plus only this documentation diff | Policy validation; 3/3 smoke cases; both loop checks; 538/538 tests in 43.129 seconds | Fresh commands in the maintenance session, Python bytecode disabled |
 
 The maintenance checks were run from AgentHarness using the six required
-commands in [AGENTS.md](../AGENTS.md). No evidence-contract behavior changed,
+commands in [AGENTS.md](../../AGENTS.md). No evidence-contract behavior changed,
 so the extra six-module suite is not required. Fresh local Markdown checks
 resolved 181 path targets across the seven maintenance documents, with zero
 missing; anchor fragments were not checked. `git diff --check` passed.
